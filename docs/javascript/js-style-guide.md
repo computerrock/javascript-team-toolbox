@@ -580,42 +580,6 @@ function ItemList(props) {
 }
 ```
 
-- Bind event handlers for the render method in the constructor. eslint: [`react/jsx-no-bind`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
-
-> Why? A bind call in the render path creates a brand new function on every single render.
-
-Bad:
-```jsx
-class extends React.Component {
-    onClickDiv() {
-    // do stuff
-    }
-
-    render() {
-        return <div onClick={this.onClickDiv.bind(this)} />;
-    }
-}
-```
-
-Good:
-```jsx
-class extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.onClickDiv = this.onClickDiv.bind(this);
-    }
-
-    onClickDiv() {
-    // do stuff
-    }
-
-    render() {
-        return <div onClick={this.onClickDiv} />;
-    }
-}
-```
-
 - Be sure to return a value in your `render` methods. eslint: [`react/require-render-return`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md)
 
 Bad:
@@ -646,6 +610,7 @@ render() {
   1. `componentWillUpdate`
   1. `componentDidUpdate`
   1. `componentWillUnmount`
+  1. `componentDidCatch`
   1. `render`
   1. *clickHandlers or eventHandlers* like `_onClickSubmit()` or `_onChangeDescription()`
   1. *getter methods for `render`* like `_getSelectReason()` or `_getFooterContent()`
@@ -654,19 +619,19 @@ render() {
   - How to define `propTypes`, `defaultProps`, `contextTypes`, etc...
 
 ```jsx
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class Link extends React.Component {
-    static methodsAreOk() {
+class Link extends Component {
+    static _methodsAreOk = () => {
         return true;
     }
 
     // constructor
     constructor(props) {
         super(props)
-    }
-    
+    } 
+
     static propTypes = {
         id: PropTypes.number.isRequired,
         url: PropTypes.string.isRequired,
@@ -679,11 +644,35 @@ class Link extends React.Component {
 
     // Lifecycle methods
 
+    getChildContext() {
+        return {color: "purple"};
+    }
+
+    componentWillMount() {}
+
+    componentDidMount() {}
+
+    componentWillReceiveProps(nextProps) {}
+
+    shouldComponentUpdate(nextProps, nextState) {}
+
+    componentWillUpdate(nextProps, nextState) {}
+
+    componentDidUpdate(prevProps, prevState) {}
+
+    componentWillUnmount() {}
+
+    componentDidCatch(error, info) {}
+
     render() {
         return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>;
     }
 
     // Other methods
+
+    _onClickSubmit = () => {}
+
+    _onMenuClick = () => {}    
 }
 
 export default Link;
