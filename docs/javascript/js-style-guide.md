@@ -16,7 +16,7 @@ everythingElseInCamelCase - everything else in camel case.
 
 Abreviations are kept in block letters only in Class names, in all other situations it is treated as a regular word - in 
 camelCase
-```
+```Javascript
 PINClass - class name
 isPinValid - method name
 pinNumber - variable name
@@ -24,7 +24,7 @@ pinNumber - variable name
 **Naming private methods and properties**
 
 Private methods and properties (in files, classes, and namespaces) should be named with a leading underscore.
-```
+```Javascript
 function _PrivateClass() {
     // should not be instantiated outside of this file
 }
@@ -57,7 +57,7 @@ Use tab for indentation.
 Extra indentation should be used to clearly distinguish multiline conditionals from the following block of code.
 
 Yes:
-```
+```Javascript
 if (someReallyLongBooleanVariableIMeanReallyLong && 
         someOtherBoolean) {
     return "monkeys";
@@ -65,7 +65,7 @@ if (someReallyLongBooleanVariableIMeanReallyLong &&
 ```
 
 No:
-```
+```Javascript
 if (someReallyLongBooleanVariableIMeanReallyLong &&
 someOtherBoolean) {
     return "monkeys";
@@ -84,14 +84,14 @@ Braces should always be used on blocks.
 `if/else/for/while/try` should always have braces and always go on multiple lines, with the opening brace on the same line.
 
 Yes:
-```angular2html
+```Javascript
 if (true) {
     blah();
 }
 ```
 else/else if/catch should go on the same line as the brace:
 
-```angular2html
+```Javascript
 if (blah) {
     baz();
 } else {
@@ -100,7 +100,7 @@ if (blah) {
 ```
 
 No:
-```angular2html
+```Javascript
 if (true)
     blah();
 ```
@@ -108,7 +108,7 @@ if (true)
 **Ternaries**
 
 Ideally, ternaries are written on a single line:
-```angular2html
+```Javascript
 const color = selected ? 'green' : 'orange'
 ```
 
@@ -116,7 +116,7 @@ If the ternary is too long to fit on a single line, within the 121-character lim
 on its own line.
 
 Yes:
-```angular2html
+```Javascript
 const result = reallyVeryLengthConditional
     ? superLongComputationOfPositiveResult()
     : superLongComputationOfNegativeResult();
@@ -132,7 +132,7 @@ const style = selected
 ```
 
 No:
-```angular2html
+```Javascript
 // Unnecessarily split:
 const color = selected
     ? 'green'
@@ -148,7 +148,7 @@ const result = reallyVeryLengthConditional ?
 ```
 Do not use nested ternaries, they are very hard to read and can easily escalate to a mess of a code. Better to resolve extra conditions beforehand
 No:
-```angular2html
+```Javascript
 const result = firstCondition ? subCondition ? firstSubTrue : secondSubFalse : firstConditionFalse
 ```
 
@@ -158,7 +158,7 @@ Don't insert extra spaces between parens, brackets, or braces.
 
 Yes:
 
-```angular2html
+```Javascript
 // Literals:
 const fancyPants = pants.map((pant) => ({...pant, isFancy: true}));
 const toCartesian = (r, theta) => [r * cos(theta), r * sin(theta)];
@@ -176,7 +176,7 @@ if ((a === b) || (b === c)) {...}
 ```
 
 No:
-```angular2html
+```Javascript
 // Literals:
 const fancyPants = pants.map((pant) => ({ ...pant, isFancy: true }));
 const toCartesian = (r, theta) => [ r * cos(theta), r * sin(theta) ];
@@ -205,7 +205,7 @@ Use ES2015 imports (`import foo from 'foo'`). There should be three groups of im
 Each group should be separated with empty line. When there are 5 or more named imports in one line, break them each to its
 own so there is no possibility to break the 120 character limit
 
-```angular2html
+```Javascript
 import React from 'react';
 import moment from 'moment';
 
@@ -233,7 +233,7 @@ All files and classes should have JSDoc comments.
 JSDoc can be parsed by a number of open source tools, and must be well-formed.
 
 Syntax:
-```angular2html
+```Javascript
 /**
  * A JSDoc comment should begin with a slash and 2 asterisks.
  */
@@ -243,7 +243,7 @@ Top-level (top-of-file) comments are designed to orient readers unfamiliar with 
  other disclaimers clients of the code should be given. It should provide a description of the file's contents and any 
  dependencies or compatibility information. As an example:
 
-```angular2html
+```Javascript
 /**
  * Various components to handle management of lists of coaches for
  * the profile page.
@@ -256,7 +256,7 @@ Top-level (top-of-file) comments are designed to orient readers unfamiliar with 
 ```
 Class comments should be used for every class, and give a description along with appropriate type tags (see "Methods and 
 properties" comments for more information on types on the constructor).
-```angular2html
+```Javascript
 /**
  * Class making something fun and easy.
  *
@@ -281,7 +281,7 @@ with one tab.
 
 Example:
 
-```angular2html
+```Javascript
 /**
  * A UI component allows users to select badges from their full list
  * of earned badges, displaying them in a container.
@@ -323,7 +323,7 @@ Prefer `===` (strict equality) to `==` due to the numerous oddities related to J
 
 The only valid use of == is for comparing against null and undefined at the same time:
 
-```angular2html
+```Javascript
 // Check null and undefined, but distinguish between other falsey values
 if (someVariable == null) {
 ```
@@ -345,14 +345,14 @@ more readable.
 Use a new var statement for each declaration
 
 Yes:
-```angular2html
+```Javascript
 var a = "foo";
 var b = a + "bar";
 var c = fn(a, b);
 ```
 
 No:
-```angular2html
+```Javascript
 var a = "foo",
     b = a + "bar",
     c = fn(a, b);
@@ -367,7 +367,7 @@ A single var statement is bad because:
 
 #### ES6/7 rules
 1. Use backticks for strings because variables are easier to interpolate.
-```angular2html
+```Javascript
 Yes:
 let path = `${Config.ROOT}/collection/${collection.id}`;
 
@@ -375,7 +375,7 @@ No:
 let path = Config.ROOT + '/collection/' + collection.id;
 ```
 2. Use deconstructing where possible
-```angular2html
+```Javascript
 Yes:
 let {title, body, btnOk, btnOkClick, btnCancel, btnCancelClick} = this.props;
 
@@ -388,7 +388,7 @@ let btnCancel = this.props.btnCancel;
 let btnCancelClick = this.props.btnCancelClick;
 ```
 3. Use arrow functions. When there is only one return use one line syntax
-```angular2html
+```Javascript
 Yes:
 foo(() => {...})
 
@@ -413,7 +413,7 @@ promise().then((response) => {
 * Autobind event handlers and callbacks.
 
 Example:
-```angular2html
+```JSX
 import React, {Component} from 'react';
 
 class Foo extends Component {
@@ -430,7 +430,7 @@ class Foo extends Component {
 If state depends on props, define it in the constructor.
 
 Example:
-```angular2html
+```JSX
 class Bar extends Component {
     constructor(props) {
         super(props);   // must be called first
@@ -447,7 +447,7 @@ class Bar extends Component {
 Ordering within a React component is strict. The following example illustrates the precise ordering of various component 
 methods and properties:
 
-```angular2html
+```JSX
 class Foo extends Component {
     // Static properties
     static defaultProps = {}
@@ -483,7 +483,7 @@ class Foo extends Component {
 * Name handlers `handleEventName`
 
 Example:
-```angular2html
+```JSX
 <Component onClick={this.handleClick} onLaunchMissiles={this.handleLaunchMissiles} />
 ```
 
@@ -492,19 +492,20 @@ Example:
 This is consistent with React's event naming: onClick, onDrag, onChange, etc.
 
 Example:
-```angular2html
+```JSX
 <Component onLaunchMissiles={this.handleLaunchMissiles} />
 ```
 
 * Open elements on the same line.
-```angular2html
-Yes:
 
+Yes:
+```JSX
 return (<div>
    ...
 </div>);
-
+```
 No:
+```JSX
 return (      // "div" is not on the same line as "return"
     <div>
         ...
@@ -517,9 +518,9 @@ return (      // "div" is not on the same line as "return"
 Fit them all on the same line if you can. If you can't, put first property on the line with the tag, and the rest on a 
 line of its own, indented with 1 tab relative to previous line. The closing angle brace should be on a line of its own, 
 indented the same as the opening angle brace. This makes it easy to see the props at a glance.
-```angular2html
-Yes:
 
+Yes:
+```JSX
 <div className="highlight" key="highlight-div">
 <div className="highlight" 
     key="highlight-div"
@@ -527,9 +528,9 @@ Yes:
 <Image className="highlight"
     key="highlight-div"
 />
-
+```
 No:
-
+```JSX
 <div 
     className="highlight"      // first property not on the same line as element
     key="highlight-div"
@@ -554,3 +555,136 @@ distinction — is to create several stateless components that just render data,
 them in the hierarchy that passes its state to its children via props. 
 The stateful component encapsulates all of the interaction logic, while the stateless components take care of rendering 
 data in a declarative way.
+
+**Never store state in the DOM**
+Do not use `data-` attributes or classes. All information should be stored in JavaScript, either in the React component itself, or in a React store if using a framework such as Redux.
+
+---
+
+### Methods
+
+- Use arrow functions to close over local variables.
+
+```jsx
+function ItemList(props) {
+    return (
+    <ul>
+        {props.items.map((item, index) => (
+        <Item
+            key={item.key}
+            onClick={() => doSomethingWith(item.name, index)}
+        />
+        ))}
+    </ul>
+    );
+}
+```
+
+- Bind event handlers for the render method in the constructor. eslint: [`react/jsx-no-bind`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
+
+> Why? A bind call in the render path creates a brand new function on every single render.
+
+Bad:
+```jsx
+class extends React.Component {
+    onClickDiv() {
+    // do stuff
+    }
+
+    render() {
+        return <div onClick={this.onClickDiv.bind(this)} />;
+    }
+}
+```
+
+Good:
+```jsx
+class extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.onClickDiv = this.onClickDiv.bind(this);
+    }
+
+    onClickDiv() {
+    // do stuff
+    }
+
+    render() {
+        return <div onClick={this.onClickDiv} />;
+    }
+}
+```
+
+- Be sure to return a value in your `render` methods. eslint: [`react/require-render-return`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md)
+
+Bad:
+```jsx
+render() {
+    (<div />);
+}
+```
+Good: 
+```jsx
+render() {
+    return (<div />);
+}
+```
+---
+
+### Ordering
+
+  - Ordering for `class extends React.Component`:
+
+  1. optional `static` methods
+  1. `constructor`
+  1. `getChildContext`
+  1. `componentWillMount`
+  1. `componentDidMount`
+  1. `componentWillReceiveProps`
+  1. `shouldComponentUpdate`
+  1. `componentWillUpdate`
+  1. `componentDidUpdate`
+  1. `componentWillUnmount`
+  1. `render`
+  1. *clickHandlers or eventHandlers* like `_onClickSubmit()` or `_onChangeDescription()`
+  1. *getter methods for `render`* like `_getSelectReason()` or `_getFooterContent()`
+  1. *optional render methods* like `_renderNavigation()` or `_renderProfilePicture()`
+
+  - How to define `propTypes`, `defaultProps`, `contextTypes`, etc...
+
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class Link extends React.Component {
+    static methodsAreOk() {
+        return true;
+    }
+
+    // constructor
+    constructor(props) {
+        super(props)
+    }
+    
+    static propTypes = {
+        id: PropTypes.number.isRequired,
+        url: PropTypes.string.isRequired,
+        text: PropTypes.string,
+    };
+
+    const defaultProps = {
+        text: 'Hello World',
+    };
+
+    // Lifecycle methods
+
+    render() {
+        return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>;
+    }
+
+    // Other methods
+}
+
+export default Link;
+```

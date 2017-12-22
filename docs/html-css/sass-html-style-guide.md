@@ -23,7 +23,7 @@ exactly one level deep, even though in html they might be nested inside other el
 
 Example:
 
-```angular2html
+```SCSS
 /* sass */
 
 .c-navigation {
@@ -40,7 +40,8 @@ Example:
         padding: 30px;
     }
 }
-
+```
+```HTML
 /* html */
 <ul class="c-navigation">
     <li class="c-navigation__item">
@@ -57,7 +58,7 @@ Example:
 
 Bad example:
 
-```
+```SCSS
 .c-navigation {
     background-color: $primary;
     height: 50px;
@@ -77,7 +78,7 @@ There can only be three levels of nested code. Exception from this rule are the 
 Meaning that there can't be more than one modifier class per element, but pseudo classes are allowed one level deep.
 
 Bad example:
-```angular2html
+```SCSS
 .c-navigation {
     &__item {
         &--active {
@@ -90,7 +91,7 @@ Bad example:
 ```
 
 Good example:
-```angular2html
+```SCSS
 .c-navigation {
     &__item {
         &--active {
@@ -112,7 +113,7 @@ Avoid using selectors that are targeting html elements based on their state in t
 apply styling rules for them as modifiers of the element.
 
 Bad Example:
-```
+```HTML
 /* html */
 <ul class="c-navigation">
     <li class="c-navigation__item">
@@ -125,7 +126,8 @@ Bad Example:
         <a class="c-navigation__link">Nav link</a>
     </li>
 </ul>
-
+```
+```SCSS
 /* sass */
 
 .c-navigation {
@@ -138,7 +140,7 @@ Bad Example:
 ```
 
 Good Example: 
-```
+```HTML
 /* html */
 <ul class="c-navigation">
     <li class="c-navigation__item c-navigation__item--first-item"> //render modifier class in html
@@ -151,7 +153,8 @@ Good Example:
         <a class="c-navigation__link">Nav link</a>
     </li>
 </ul>
-
+```
+```SCSS
 /* sass */
 
 .c-navigation {
@@ -170,7 +173,7 @@ Never style naked tags in sass. If something needs to be styled it must have an 
 can be styled. This is to avoid conflicts with other elements inside the block.
 
 Bad example:
-```angular2html
+```SCSS
 /* html */
 <ul class="c-navigation">
     <li class="c-navigation__item">
@@ -192,7 +195,7 @@ Bad example:
 }
 ```
 Good example:
-```angular2html
+```HTML
 /* html */
 <ul class="c-navigation">
     <li class="c-navigation__item">
@@ -205,7 +208,8 @@ Good example:
         <a class="c-navigation__link"><span class="c-navigation__text">Nav link</span></a>
     </li>
 </ul>
-
+```
+```SCSS
 /* sass */
 .c-navigation {
     &__text {
@@ -223,14 +227,14 @@ judgment when to break from it.
 
 Bad example:
 
-```angular2html
+```SCSS
 .c-navigation {
     color: $link //color will be applyed on text elements inside the .c-navigation so it is better to set this rule on them 
 }
 ```
 
 Good example 
-```angular2html
+```SCSS
 .c-navigation {
     &__item {
         color: $link
@@ -244,7 +248,7 @@ not so scalable solution. To overcome this situation, instead of styling the blo
 style the block in its own component file with the parent class as a selector:
 
 Bad example:
-```angular2html
+```SCSS
 
 /* header.scss */
 
@@ -260,7 +264,7 @@ Bad example:
 
 Good example:
 
-```angular2html
+```SCSS
 .c-navigation {
 
     .c-header--collapsed & { //parrent modifier inside navigation file
@@ -275,7 +279,7 @@ In a situation where you applied the rule on the container level for all childre
 apply a different rule to the subset of children items don't use the override pattern, it will get out of hand.
 
 Bad example:
-```angular2html
+```HTML
 /* html */
 <ul class="c-navigation">
     <li class="c-navigation__logo-text">Lorem Ipsum</li>
@@ -289,7 +293,8 @@ Bad example:
         <a class="c-navigation__link"><span class="c-navigation__text">Nav link</span></a>
     </li>
 </ul>
-
+```
+``` SCSS
 /* sass */
 
 .c-navigation {
@@ -301,7 +306,7 @@ Bad example:
 }
 ```
 Good Example:
-```angular2html
+```SCSS
 /* sass */
 
 .c-navigation {
@@ -312,5 +317,84 @@ Good Example:
     &__logo-text {
         color: $text
     }
+}
+```
+
+**Media Queries**
+
+1) You should always have your breakpoints defined in a variables.scss file. Naming and sizes decided on project basis.
+
+```SCSS
+$breakpoint: (
+  default:                    320px,  
+  xxsmall:                    375px,
+  xsmall:                     480px,
+  small:                      568px,
+  medium:                     768px,
+  large:                      1024px,
+  xlarge:                     1180px
+);
+```
+
+2) When doing responsive use mixins for responsive inside of the style block. Responsive mixins don't follow the 3 layer deep rule.
+
+Good Example: 
+```SCSS
+.navigation {
+    @include responsive(large) {
+        display: block;
+        background-color: black;
+    }
+
+    &__item {
+        width: 100%;
+
+        @include responsive(large) {
+            width: 200px;
+        }
+
+        &--first {
+            color: $white;
+            @include responsive(large) {
+                color: $black;
+            }
+        }
+    }
+}
+```
+
+Bad Example: 
+```SCSS
+.navigation {
+    @include responsive(large) {
+        display: block;
+        background-color: black;
+
+        &__item {
+            width: 200px;
+        
+
+            &--first {
+                color: $white;
+            }
+        }
+    }
+}
+```
+
+Bad example (At the end of scss file)
+```SCSS
+@include responsive(large) {
+    .navigation{
+        display: block;
+        background-color: black;
+        &__item {
+            width: 200px;
+            &--first {
+                color: $white;
+            }
+        }
+    }
+    
 }
 ```
