@@ -1,5 +1,7 @@
 # Frontend coding style guide
 This document is created based on the [Kahn academy style guide](https://github.com/Khan/style-guides/blob/master/style/javascript.md)
+and
+[Airbnb Javascript style guide](https://github.com/airbnb/javascript)
 
 ## Javascript
 
@@ -7,19 +9,19 @@ This document is created based on the [Kahn academy style guide](https://github.
 
 #### Syntax
 **Naming**
-```
-ClassNames - capitalised camelcase
-CONSTANT_TO_BE_CONSTANT - block letters with _ denoting space
-everythingElseInCamelCase - everything else in camel case.
+```Javascript
+ClassNames // capitalised camelcase
+CONSTANT_TO_BE_CONSTANT // block letters with _ denoting space
+everythingElseInCamelCase // everything else in camel case.
 ```
 **Abreviation Esceptions**
 
 Abreviations are kept in block letters only in Class names, in all other situations it is treated as a regular word - in 
 camelCase
 ```Javascript
-PINClass - class name
-isPinValid - method name
-pinNumber - variable name
+PINClass // class name
+isPinValid // method name
+pinNumber //  variable name
 ```
 **Naming private methods and properties**
 
@@ -201,8 +203,11 @@ Use ES2015 imports (`import foo from 'foo'`). There should be three groups of im
 1. Vendor libraries and other absolute path modules 
 2. Types, if used
 3. Project modules
+4. Assets
 
-Each group should be separated with empty line. When there are 5 or more named imports in one line, break them each to its
+_Each group should be separated with empty line._
+
+When there are 5 or more named imports in one line, break them each to its
 own so there is no possibility to break the 120 character limit
 
 ```Javascript
@@ -222,9 +227,19 @@ import {
 } from '../utilities/layout'
 ``` 
 #### Comments and Documentation
+
 **Inline Comments**
 
-Inline style comments should be of the `//` variety, not the `/* */` variety.
+Inline style comments should be of the `//` variety, not the `/* */` variety, unless JSX is used then the comments should be:
+- inline: `{/* comment */}`
+- multiline: 
+
+```JSX
+{/* 
+    some
+    commment
+*/}
+```
 
 **Top level file and class comments**
 
@@ -539,64 +554,8 @@ No:
     className="highlight"
     key="highlight-div">        // closing brace not on its own line
 ```
-**Language features**
 
-Make "presentation" components pure. It's useful to think of the React world as divided into
- ["logic" components and "presentation" components.](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
-
-"Logic" components have application logic, but do not emit HTML themselves. "Presentation" components are typically 
-reusable, and do emit HTML.Logic components can have internal state, but presentation components never should.
-
-**Prefer [props to state](https://reactjs.org/docs/state-and-lifecycle.html#what-components-should-have-state).**
-
-You almost always want to use props. By avoiding state when possible, you minimize redundancy, making it easier to 
-reason about your application. A common pattern — which matches the "logic" vs. "presentation" component 
-distinction — is to create several stateless components that just render data, and have a stateful component above 
-them in the hierarchy that passes its state to its children via props. 
-The stateful component encapsulates all of the interaction logic, while the stateless components take care of rendering 
-data in a declarative way.
-
-**Never store state in the DOM**
-Do not use `data-` attributes or classes. All information should be stored in JavaScript, either in the React component itself, or in a React store if using a framework such as Redux.
-
----
-
-### Methods
-
-- Use arrow functions to close over local variables.
-
-```jsx
-function ItemList(props) {
-    return (
-    <ul>
-        {props.items.map((item, index) => (
-        <Item
-            key={item.key}
-            onClick={() => doSomethingWith(item.name, index)}
-        />
-        ))}
-    </ul>
-    );
-}
-```
-
-- Be sure to return a value in your `render` methods. eslint: [`react/require-render-return`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md)
-
-Bad:
-```jsx
-render() {
-    (<div />);
-}
-```
-Good: 
-```jsx
-render() {
-    return (<div />);
-}
-```
----
-
-### Ordering
+**Ordering**
 
   - Ordering for `class extends React.Component`:
 
@@ -677,3 +636,61 @@ class Link extends Component {
 
 export default Link;
 ```
+
+**Language features**
+
+Make "presentation" components pure. It's useful to think of the React world as divided into
+ ["logic" components and "presentation" components.](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+"Logic" components have application logic, but do not emit HTML themselves. "Presentation" components are typically 
+reusable, and do emit HTML.Logic components can have internal state, but presentation components never should.
+
+**Prefer [props to state](https://reactjs.org/docs/state-and-lifecycle.html#what-components-should-have-state).**
+
+You almost always want to use props. By avoiding state when possible, you minimize redundancy, making it easier to 
+reason about your application. A common pattern — which matches the "logic" vs. "presentation" component 
+distinction — is to create several stateless components that just render data, and have a stateful component above 
+them in the hierarchy that passes its state to its children via props. 
+The stateful component encapsulates all of the interaction logic, while the stateless components take care of rendering 
+data in a declarative way.
+
+**Never store state in the DOM**
+Do not use `data-` attributes or classes. All information should be stored in JavaScript, either in the React component itself, or in a React store if using a framework such as Redux.
+
+---
+
+### Methods
+
+- Use arrow functions to close over local variables.
+
+```jsx
+function ItemList(props) {
+    return (
+    <ul>
+        {props.items.map((item, index) => (
+        <Item
+            key={item.key}
+            onClick={() => doSomethingWith(item.name, index)}
+        />
+        ))}
+    </ul>
+    );
+}
+```
+
+- Be sure to return a value in your `render` methods. eslint: [`react/require-render-return`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md)
+
+Bad:
+```jsx
+render() {
+    (<div />);
+}
+```
+Good: 
+```jsx
+render() {
+    return (<div />);
+}
+```
+---
+
