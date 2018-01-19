@@ -597,7 +597,7 @@ class Link extends Component {
         text: PropTypes.string,
     };
 
-    const defaultProps = {
+    static defaultProps = {
         text: 'Hello World',
     };
 
