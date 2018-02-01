@@ -30,7 +30,9 @@
       "one-var": 0,
 
 
-      
+      "camelcase": [2, { "properties": "always" }],
+      "operator-linebreak": [2, "before"],
+      "no-nested-ternary": 1,
       "object-curly-newline": 0,
       "object-curly-spacing": [1, "never"],
       "indent": [1, 4, {
@@ -78,7 +80,11 @@
           "blocks": "never",
           "switches": "always"
         }
-      ]
+      ],
+      "newline-per-chained-call": 1,
+
+
+      "jsx-closing-bracket-location": [1, {"selfClosing": "after-props", "nonEmpty": "after-props"}]
 
 
     },

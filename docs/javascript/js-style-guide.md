@@ -3,11 +3,9 @@ This document is created based on the [Kahn academy style guide](https://github.
 and
 [Airbnb Javascript style guide](https://github.com/airbnb/javascript)
 
-## Javascript
+## Vanilla Javascript
 
-### Vanilla
-
-#### Syntax
+### Syntax
 **Naming**
 ```Javascript
 ClassNames // capitalised camelcase
@@ -60,9 +58,9 @@ Extra indentation should be used to clearly distinguish multiline conditionals f
 
 Yes:
 ```Javascript
-if (someReallyLongBooleanVariableIMeanReallyLong && 
-        someOtherBoolean) {
-    return "monkeys";
+if (someReallyLongBooleanVariableIMeanReallyLong 
+        && someOtherBoolean) {
+    return 'monkeys';
 }
 ```
 
@@ -70,12 +68,12 @@ No:
 ```Javascript
 if (someReallyLongBooleanVariableIMeanReallyLong &&
 someOtherBoolean) {
-    return "monkeys";
+    return 'monkeys';
 }
 
 if (someReallyLongBooleanVariableIMeanReallyLong &&
     someOtherBoolean) {
-    return "monkeys";
+    return 'monkeys';
 }
 ```
 
@@ -163,7 +161,7 @@ Yes:
 ```Javascript
 // Literals:
 const fancyPants = pants.map((pant) => ({...pant, isFancy: true}));
-const toCartesian = (r, theta) => [r * cos(theta), r * sin(theta)];
+const toCartesian = (r, theta) => ([r * cos(theta), r * sin(theta)]);
 
 // Destructuring:
 const {StyleSheet, css} = require('aphrodite');
@@ -180,7 +178,7 @@ if ((a === b) || (b === c)) {...}
 No:
 ```Javascript
 // Literals:
-const fancyPants = pants.map((pant) => ({ ...pant, isFancy: true }));
+const fancyPants = pants.map(pant => ({ ...pant, isFancy: true }));
 const toCartesian = (r, theta) => [ r * cos(theta), r * sin(theta) ];
 
 // Destructuring:
@@ -226,7 +224,7 @@ import {
     Panel
 } from '../utilities/layout'
 ``` 
-#### Comments and Documentation
+### Comments and Documentation
 
 **Inline Comments**
 
@@ -277,6 +275,7 @@ properties" comments for more information on types on the constructor).
  *
  * @param {string} arg1 An argument that makes this more interesting.
  * @param {Array.<number>} arg2 List of numbers to be processed.
+ * @returns {Object} Processed item
  */
 function SomeFunClass(arg1, arg2) {
   // ...
@@ -330,7 +329,7 @@ Badges.DisplayCase = Backbone.View.extend({
 };
 
 ```
-#### Core language rules
+### Core language rules
 
 **Equality**
 
@@ -361,8 +360,8 @@ Use a new var statement for each declaration
 
 Yes:
 ```Javascript
-var a = "foo";
-var b = a + "bar";
+const a = "foo";
+let b = a + "bar";
 var c = fn(a, b);
 ```
 
@@ -408,7 +407,9 @@ Yes:
 foo(() => {...})
 
 //When there is only one return use one line syntax
-promise().then(response => response.body)
+promise()
+    .then(response => response.body)
+
 
 No:
 foo(function() {...}.bind(this))
@@ -418,6 +419,22 @@ promise().then((response) => {
 ```
 4. Use `let` and `const` instead of `var`
 5. Use spread operators 
+
+### Chaining 
+
+```Javascript
+// Promises: 
+promise()
+    .then()
+    .then()
+    .catch()
+    .finally()
+
+// misc chaining
+let string = word.split('')
+                 .map((item) => (`${capitalizeFirstLetter(item)}`))
+                 .join(' ');
+```
 
 ### Frameworks and libraries
 
@@ -462,104 +479,11 @@ class Bar extends Component {
 Ordering within a React component is strict. The following example illustrates the precise ordering of various component 
 methods and properties:
 
-```JSX
-class Foo extends Component {
-    // Static properties
-    static defaultProps = {}
-
-    // The `constructor` method
-    constructor() {
-        super();
-    }
-
-    // Instance properties
-    state = { hi: 5}
-
-    // React lifecycle hooks.
-    // They should follow their chronological ordering:
-    // 1. componentWillMount
-    // 2. componentDidMount
-    // 3. componentWillReceiveProps
-    // 4. shouldComponentUpdate
-    // 5. componentWillUpdate
-    // 6. componentDidUpdate
-    // 7. componentWillUnmount
-    componentDidMount() { ... }
-
-    // The render method
-    render() { ... }
-    
-    // All other instance methods and private properties
-    _handleClick = (e) => { ... }
-    
-    _privateProp = null;
-}
-```
-* Name handlers `handleEventName`
-
-Example:
-```JSX
-<Component onClick={this.handleClick} onLaunchMissiles={this.handleLaunchMissiles} />
-```
-
-* Name handlers in props `onEventName`.
-
-This is consistent with React's event naming: onClick, onDrag, onChange, etc.
-
-Example:
-```JSX
-<Component onLaunchMissiles={this.handleLaunchMissiles} />
-```
-
-* Open elements on the same line.
-
-Yes:
-```JSX
-return (<div>
-   ...
-</div>);
-```
-No:
-```JSX
-return (      // "div" is not on the same line as "return"
-    <div>
-        ...
-    </div>
-);
-
-```
-* Align HTML properties.
-
-Fit them all on the same line if you can. If you can't, put first property on the line with the tag, and the rest on a 
-line of its own, indented with 1 tab relative to previous line. The closing angle brace should be on a line of its own, 
-indented the same as the opening angle brace. This makes it easy to see the props at a glance.
-
-Yes:
-```JSX
-<div className="highlight" key="highlight-div">
-<div className="highlight" 
-    key="highlight-div"
->
-<Image className="highlight"
-    key="highlight-div"
-/>
-```
-No:
-```JSX
-<div 
-    className="highlight"      // first property not on the same line as element
-    key="highlight-div"
->
-<div                            
-    className="highlight"
-    key="highlight-div">        // closing brace not on its own line
-```
-
-**Ordering**
-
   - Ordering for `class extends React.Component`:
 
   1. optional `static` methods
+  1. `static propTypes`
+  1. `default propTypes` 
   1. `constructor`
   1. `getChildContext`
   1. `componentWillMount`
@@ -571,9 +495,10 @@ No:
   1. `componentWillUnmount`
   1. `componentDidCatch`
   1. `render`
-  1. *clickHandlers or eventHandlers* like `_onClickSubmit()` or `_onChangeDescription()`
+  1. *clickHandlers or eventHandlers* like `_handleClickSubmit()` or `_onChangeDescription()`
   1. *getter methods for `render`* like `_getSelectReason()` or `_getFooterContent()`
   1. *optional render methods* like `_renderNavigation()` or `_renderProfilePicture()`
+  1. private props
 
   - How to define `propTypes`, `defaultProps`, `contextTypes`, etc...
 
@@ -586,11 +511,6 @@ class Link extends Component {
         return true;
     }
 
-    // constructor
-    constructor(props) {
-        super(props)
-    } 
-
     static propTypes = {
         id: PropTypes.number.isRequired,
         url: PropTypes.string.isRequired,
@@ -600,6 +520,11 @@ class Link extends Component {
     static defaultProps = {
         text: 'Hello World',
     };
+
+    // constructor
+    constructor(props) {
+        super(props)
+    } 
 
     // Lifecycle methods
 
@@ -629,13 +554,81 @@ class Link extends Component {
 
     // Other methods
 
-    _onClickSubmit = () => {}
+    _handleClickSubmit = () => {}
 
-    _onMenuClick = () => {}    
+    _handleMenuClick = () => {}
+
+    _renderNavigation = () => {}    
+
+    _privateProp = null;
 }
 
 export default Link;
 ```
+
+Example:
+```JSX
+<Component onClick={this.handleClick} onLaunchMissiles={this.handleLaunchMissiles} />
+```
+
+* Name handlers in props `handleEventName`.
+* Name render functions `renderFunction`.
+* Name getter methods `getFunction`.
+
+Example:
+```JSX
+<Component onLaunchMissiles={this.handleLaunchMissiles} />
+```
+
+* Open elements on the same line.
+
+Yes:
+```JSX
+return (
+    <div>
+        ...
+    </div>
+);
+```
+No:
+```JSX
+return (<div>
+    ...
+    </div>);
+
+```
+* Align HTML properties.
+
+Fit them all on the same line if you can. If you can't, put first property on the line with the tag, and the rest on a 
+line of its own, indented with 1 tab relative to previous line. The closing angle brace should be on a line of its own, 
+indented the same as the opening angle brace. This makes it easy to see the props at a glance.
+
+Yes:
+```JSX
+<div className="highlight" key="highlight-div">
+
+<div className="highlight" 
+    key="highlight-div" >
+    HELLO WORLD
+</div>
+
+
+<Image className="highlight"
+    key="highlight-div" />
+```
+No:
+```JSX
+<div 
+    className="highlight"      // first property not on the same line as element
+    key="highlight-div"
+>
+<Image                            
+    className="highlight"
+    key="highlight-div" 
+    />        
+```
+
+
 
 **Language features**
 
@@ -675,6 +668,10 @@ function ItemList(props) {
         ))}
     </ul>
     );
+
+    doSomethingWith = (name, index) => {
+        // ...
+    }
 }
 ```
 
@@ -685,12 +682,73 @@ Bad:
 render() {
     (<div />);
 }
+
 ```
 Good: 
 ```jsx
 render() {
     return (<div />);
 }
+
+render() {
+    return (
+        <div>
+            {/* ... */}
+        </div>
+    );
+}
 ```
 ---
+
+## Object calisthenics 
+
+Object calisthenics is a group of rules for software development exercises (like code katas) that - when followed - should boost code readability and overall maintainability and performance.
+
+There are 9 of these rules:
+
+1. Only One Level Of Indentation Per Method
+1. Don’t Use The ELSE Keyword
+1. One Dot Per Line
+1. Keep All Entities/Funcions Small
+
+### 1. Only One Level Of Indentation Per Method
+
+It’s basically about avoiding Arrow anti-pattern which looks like this:
+
+```Javascript
+if () {
+    if () {
+        if () {
+            if () {
+                if () {
+                    // ***
+                }
+            }
+        }
+    }
+}
+```
+The key is to clean this sort of mess and extract responsibilities to other methods with meaningful names.
+
+### 2. Don’t Use The ELSE Keyword
+
+By using else block you are adding complexity to your code. Solution for that is simple - don’t use the else keyword and return from the method as soon as something is not ok:
+
+```Javascript
+if (isSthThatYouWantToDoImpossible) {
+    return new Error();
+}
+
+let theRightStuff = GetTheRightStuff();
+
+return theRighStuff;
+```
+
+### 3. One dot per line
+
+Using the chaining method mentioned above.
+
+### 4. Keep All Entities/Functions Small
+
+
 
