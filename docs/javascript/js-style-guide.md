@@ -378,7 +378,7 @@ foo(() => {...})
 
 //When there is only one return use one line syntax
 promise()
-    .then((response) => {response.body})
+    .then(response => response.body)
 
 
 No:
