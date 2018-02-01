@@ -52,8 +52,6 @@ ClassFile.scss
 
 **Indentation**
 
-Use tab for indentation.
-
 Extra indentation should be used to clearly distinguish multiline conditionals from the following block of code.
 
 Yes:
@@ -75,34 +73,6 @@ if (someReallyLongBooleanVariableIMeanReallyLong &&
     someOtherBoolean) {
     return 'monkeys';
 }
-```
-
-**Braces**
-
-Braces should always be used on blocks.
-
-`if/else/for/while/try` should always have braces and always go on multiple lines, with the opening brace on the same line.
-
-Yes:
-```Javascript
-if (true) {
-    blah();
-}
-```
-else/else if/catch should go on the same line as the brace:
-
-```Javascript
-if (blah) {
-    baz();
-} else {
-    baz2();
-}
-```
-
-No:
-```Javascript
-if (true)
-    blah();
 ```
 
 **Ternaries**
@@ -160,8 +130,8 @@ Yes:
 
 ```Javascript
 // Literals:
-const fancyPants = pants.map((pant) => ({...pant, isFancy: true}));
-const toCartesian = (r, theta) => ([r * cos(theta), r * sin(theta)]);
+const fancyPants = pants.map((pant) => {...pant, isFancy: true});
+const toCartesian = (r, theta) => {[r * cos(theta), r * sin(theta)});
 
 // Destructuring:
 const {StyleSheet, css} = require('aphrodite');
@@ -178,7 +148,7 @@ if ((a === b) || (b === c)) {...}
 No:
 ```Javascript
 // Literals:
-const fancyPants = pants.map(pant => ({ ...pant, isFancy: true }));
+const fancyPants = pants.map(pant => { ...pant, isFancy: true });
 const toCartesian = (r, theta) => [ r * cos(theta), r * sin(theta) ];
 
 // Destructuring:
@@ -408,7 +378,7 @@ foo(() => {...})
 
 //When there is only one return use one line syntax
 promise()
-    .then(response => response.body)
+    .then((response) => {response.body})
 
 
 No:
@@ -702,13 +672,12 @@ render() {
 
 ## Object calisthenics 
 
-Object calisthenics is a group of rules for software development exercises (like code katas) that - when followed - should boost code readability and overall maintainability and performance.
+Object calisthenics is a group of rules for software development exercises (like code katas) that - when followed - should boost code readability and overall maintainability.
 
-There are 9 of these rules:
+There are 3 of these rules (for now):
 
 1. Only One Level Of Indentation Per Method
 1. Don’t Use The ELSE Keyword
-1. One Dot Per Line
 1. Keep All Entities/Funcions Small
 
 ### 1. Only One Level Of Indentation Per Method
@@ -744,11 +713,7 @@ let theRightStuff = GetTheRightStuff();
 return theRighStuff;
 ```
 
-### 3. One dot per line
+### 3. Keep All Entities/Functions Small
 
-Using the chaining method mentioned above.
-
-### 4. Keep All Entities/Functions Small
-
-
+Refactor to smaller Entities if it gets unreadable.
 
