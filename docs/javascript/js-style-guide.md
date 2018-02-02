@@ -136,8 +136,21 @@ const toCartesian = (r, theta) => {[r * cos(theta), r * sin(theta)});
 // Destructuring:
 const {StyleSheet, css} = require('aphrodite');
 const [x, y] = coordinates;
+```
+*NOTE: When there is more then `5` variables then put each of them on a new line like this:* 
 
+```Javascript
+let {
+    prop1,
+    prop2,
+    prop3,
+    prop4,
+    prop5,
+    chocolate,
+} = this.props
+```
 
+```Javascript
 // Template strings:
 const mission = `A ${price}, ${quality} education for ${clientele}.`;
 
