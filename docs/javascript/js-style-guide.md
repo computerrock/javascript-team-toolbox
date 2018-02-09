@@ -5,14 +5,16 @@ and
 
 ## Vanilla Javascript
 
-### Syntax
-**Naming**
+## Syntax
+
+### Naming
+
 ```Javascript
 ClassNames // capitalised camelcase
 CONSTANT_TO_BE_CONSTANT // block letters with _ denoting space
 everythingElseInCamelCase // everything else in camel case.
 ```
-**Abreviation Esceptions**
+### Abreviation Esceptions
 
 Abreviations are kept in block letters only in Class names, in all other situations it is treated as a regular word - in 
 camelCase
@@ -21,9 +23,10 @@ PINClass // class name
 isPinValid // method name
 pinNumber //  variable name
 ```
-**Naming private methods and properties**
+### Naming private methods and properties
 
 Private methods and properties (in files, classes, and namespaces) should be named with a leading underscore.
+
 ```Javascript
 function _PrivateClass() {
     // should not be instantiated outside of this file
@@ -38,10 +41,11 @@ var x = new _PrivateClass();  // OK - we’re in the same file.
 var y = new PublicClass();    // OK
 var z = y._privateMember;     // NOT OK!
 ```
+
 Rationale: leading underscores for private methods and properties is consistent with the styles used in numerous 
 JavaScript libraries, many of which we include in our code base.
 
-**FileNames**
+### FileNames
 
 General rule is camelCase. Exception are files that are exporting a single class or are intended to be used by a single class, then file name should match the class name.
 ```
@@ -50,7 +54,7 @@ ClassFile.js
 ClassFile.scss
 ```
 
-**Indentation**
+### Indentation
 
 Extra indentation should be used to clearly distinguish multiline conditionals from the following block of code.
 
@@ -75,7 +79,7 @@ if (someReallyLongBooleanVariableIMeanReallyLong &&
 }
 ```
 
-**Ternaries**
+### Ternaries
 
 Ideally, ternaries are written on a single line:
 ```Javascript
@@ -116,13 +120,15 @@ const result = reallyVeryLengthConditional ?
     superLongComputationOfPositiveResult() :
     superLongComputationOfNegativeResult();
 ```
-Do not use nested ternaries, they are very hard to read and can easily escalate to a mess of a code. Better to resolve extra conditions beforehand
+Do not use nested ternaries, they are very hard to read and can easily escalate to a mess of a code. 
+### Better to resolve extra conditions beforehand.
+
 No:
 ```Javascript
 const result = firstCondition ? subCondition ? firstSubTrue : secondSubFalse : firstConditionFalse
 ```
 
-**Spaces**
+### Spaces
 
 Don't insert extra spaces between parens, brackets, or braces.
 
@@ -154,6 +160,9 @@ let {
 // Template strings:
 const mission = `A ${price}, ${quality} education for ${clientele}.`;
 
+// solve everything before returning the template
+const price = discount ? priceDiscounted : regularPrice;
+
 // Parens:
 if ((a === b) || (b === c)) {...}
 ```
@@ -175,21 +184,22 @@ const mission = `A ${ price }, ${ quality } education for ${ clientele }.`;
 if ( ( a === b ) || ( b === c ) ) {...}
 ```
 
-**Line length**
+### Line length
 
 Lines should not exceed 121 characters so that two files can be opened next to each other
 
-**Imports and grouping**
+### Imports and grouping
+
 Use ES2015 imports (`import foo from 'foo'`). There should be three groups of imports in the following order form the top:
 1. Vendor libraries and other absolute path modules 
 2. Types, if used
 3. Project modules
 4. Assets
 
-_Each group should be separated with empty line._
+**_Each group should be separated with empty line._**
 
 When there are 5 or more named imports in one line, break them each to its
-own so there is no possibility to break the 120 character limit
+own so there is no possibility to break the 121 character limit
 
 ```Javascript
 import React from 'react';
@@ -207,9 +217,9 @@ import {
     Panel
 } from '../utilities/layout'
 ``` 
-### Comments and Documentation
+## Comments and Documentation
 
-**Inline Comments**
+### Inline Comments
 
 Inline style comments should be of the `//` variety, not the `/* */` variety, unless JSX is used then the comments should be:
 - inline: `{/* comment */}`
@@ -222,7 +232,7 @@ Inline style comments should be of the `//` variety, not the `/* */` variety, un
 */}
 ```
 
-**Top level file and class comments**
+### Top level file and class comments
 
 All files and classes should have JSDoc comments.
 
@@ -265,7 +275,7 @@ function SomeFunClass(arg1, arg2) {
 }
 ```
 
-**Methods and properties comments**
+### Methods and properties comments
 
 All non-trivial methods and properties should also have JSDoc comments.
 Type annotations are strongly encouraged; if there is even a slight chance that the type will be ambiguous to future 
@@ -312,9 +322,9 @@ Badges.DisplayCase = Backbone.View.extend({
 };
 
 ```
-### Core language rules
+## Core language rules
 
-**Equality**
+### Equality
 
 Prefer `===` (strict equality) to `==` due to the numerous oddities related to JavaScript's type coercion.
 
@@ -327,7 +337,9 @@ if (someVariable == null) {
 
 Though you will often want to just check against falsey values, and can just say `if (!someVariable) {...}`.
 
-**Array and Object literals**
+Be careful `![]  // false`
+
+### Array and Object literals
 
 Always use `[]` and `{}` style literals to initialize arrays and objects, not the Array and Object constructors.
 
@@ -336,10 +348,10 @@ not `[3]`.
 
 To avoid these kinds of weird cases, always use the more readable array literal.
 
-Object constructors don't have the same problems, but follow the same rule for consistency with arrays. Plus, {} is 
+Object constructors don't have the same problems, but follow the same rule for consistency with arrays. Plus, `{}` is 
 more readable.
 
-Use a new var statement for each declaration
+Use a new statement for each declaration
 
 Yes:
 ```Javascript
@@ -355,15 +367,17 @@ var a = "foo",
     c = fn(a, b);
 ```
 
-A single var statement is bad because:
+A single statement is bad because:
 
 1. If you forget a comma, you just made a global
 1. It originated when people wanted to save bytes, but we have a minifier
 1. It makes line-based diffs/editing messier
 1. It encourages C89-style declarations at the top of scope, preventing you from only declaring vars before first use, the latter preferable as it conveys intended scope to the reader
 
-#### ES6/7 rules
+### ES6/7 rules
+
 1. Use backticks for strings because variables are easier to interpolate.
+
 ```Javascript
 Yes:
 let path = `${Config.ROOT}/collection/${collection.id}`;
@@ -371,7 +385,9 @@ let path = `${Config.ROOT}/collection/${collection.id}`;
 No:
 let path = Config.ROOT + '/collection/' + collection.id;
 ```
+
 2. Use deconstructing where possible
+
 ```Javascript
 Yes:
 let {title, body, btnOk, btnOkClick, btnCancel, btnCancelClick} = this.props;
@@ -384,12 +400,13 @@ let btnOkClick = this.props.btnOkClick;
 let btnCancel = this.props.btnCancel;
 let btnCancelClick = this.props.btnCancelClick;
 ```
+
 3. Use arrow functions. When there is only one return use one line syntax
+
 ```Javascript
 Yes:
 foo(() => {...})
 
-//When there is only one return use one line syntax
 promise()
     .then(response => response.body)
 
@@ -400,8 +417,10 @@ promise().then((response) => {
     return promise.body;
 })
 ```
+
 4. Use `let` and `const` instead of `var`
-5. Use spread operators 
+
+5. Use spread operators `[... ]`, `{... }`
 
 ### Chaining 
 
@@ -419,9 +438,10 @@ let string = word.split('')
                  .join(' ');
 ```
 
-### Frameworks and libraries
+## Frameworks and libraries
 
-#### React stack
+### React stack
+
 * Use ES2015 classes
 * Use static properties for defaultProps.
 * Use an instance property for state.
@@ -457,7 +477,7 @@ class Bar extends Component {
 ```
 * Use higher order components instead of mixins. ES6 style classes do not support mixins.
 
-**Component method and property ordering**
+### Component method and property ordering
 
 Ordering within a React component is strict. The following example illustrates the precise ordering of various component 
 methods and properties:
@@ -532,7 +552,11 @@ class Link extends Component {
     componentDidCatch(error, info) {}
 
     render() {
-        return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>;
+        return (
+            <a href={this.props.url}>
+                {this.props.text}
+            </a>;
+        )
     }
 
     // Other methods
@@ -549,14 +573,17 @@ class Link extends Component {
 export default Link;
 ```
 
-Example:
-```JSX
-<Component onClick={this.handleClick} onLaunchMissiles={this.handleLaunchMissiles} />
-```
-
 * Name handlers in props `handleEventName`.
 * Name render functions `renderFunction`.
 * Name getter methods `getFunction`.
+
+Example:
+```JSX
+<Component 
+    onClick={this.handleClick} 
+    onLaunchMissiles={this.handleLaunchMissiles} 
+/>
+```
 
 Example:
 ```JSX
@@ -591,13 +618,14 @@ Yes:
 <div className="highlight" key="highlight-div">
 
 <div className="highlight" 
-    key="highlight-div" >
+     key="highlight-div" >
     HELLO WORLD
 </div>
 
 
 <Image className="highlight"
-    key="highlight-div" />
+       key="highlight-div" />
+
 ```
 No:
 ```JSX
@@ -605,15 +633,25 @@ No:
     className="highlight"      // first property not on the same line as element
     key="highlight-div"
 >
+
 <Image                            
     className="highlight"
     key="highlight-div" 
-    />        
+    />  
+
+<Image                            
+className="highlight"
+key="highlight-div" 
+/>
+
+<Image className="highlight"
+       key="highlight-div" 
+/>                
 ```
+---
 
 
-
-**Language features**
+### Language features
 
 Make "presentation" components pure. It's useful to think of the React world as divided into
  ["logic" components and "presentation" components.](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
@@ -630,10 +668,8 @@ them in the hierarchy that passes its state to its children via props.
 The stateful component encapsulates all of the interaction logic, while the stateless components take care of rendering 
 data in a declarative way.
 
-**Never store state in the DOM**
+### Never store state in the DOM
 Do not use `data-` attributes or classes. All information should be stored in JavaScript, either in the React component itself, or in a React store if using a framework such as Redux.
-
----
 
 ### Methods
 
@@ -664,6 +700,12 @@ Bad:
 ```jsx
 render() {
     (<div />);
+}
+
+render() {
+    (<div>
+        
+    </div>);
 }
 
 ```
@@ -710,7 +752,8 @@ if () {
     }
 }
 ```
-The key is to clean this sort of mess and extract responsibilities to other methods with meaningful names.
+The key is to clean this sort of mess and extract responsibilities to other methods with meaningful names. 
+**Do not nest `if` statements iside other `if` or `case` statements.**
 
 ### 2. Don’t Use The ELSE Keyword
 
@@ -728,5 +771,5 @@ return theRighStuff;
 
 ### 3. Keep All Entities/Functions Small
 
-Refactor to smaller Entities if it gets unreadable.
+Refactor to smaller Entities if it gets unreadable. Preferably under 300 lines of code.
 
