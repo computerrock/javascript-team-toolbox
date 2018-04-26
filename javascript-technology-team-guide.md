@@ -75,8 +75,8 @@ role you may need some or all from the list: Slack, Skype, LastPass, different b
 Explorer) and extensions for them (React/Redux Devtools, Livereload), NVM, Node.js, Homebrew, iTerm, Postman, Charles, 
 virtualization platforms for testing (VirtualBox, Vagrant, ansible), Sketch, Photoshop, Xcode, Android Studio.
 
-Detailed environment setup steps are documented in team’s living processes guide located at 
-[spoiledmilk.beanstalkapp.com/javascript-team-guides](https://spoiledmilk.beanstalkapp.com/javascript-team-guides)
+Detailed environment setup steps are documented in team’s processes guide located at 
+[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
 
 ## Online services & tools
 
@@ -111,8 +111,8 @@ Code related resources will be on *Beanstalkapp* platform. After cloning project
 file located in root of project. It will contain basic project information, prerequisites installation, setup and build 
 steps. 
 
-Detailed project setup steps and contribution rules are in team’s living processes guide located at 
-[spoiledmilk.beanstalkapp.com/javascript-team-guides](https://spoiledmilk.beanstalkapp.com/javascript-team-guides)
+Detailed project setup steps and contribution rules are in team’s processes guide located at 
+[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
 
 ### Technology stack overview
 
@@ -126,5 +126,5 @@ Older projects may use more legacy stack based on: React, Flux, built and transp
 For JavaScript we use variation of Crockford/AirBnB style guide checked and validated with eslint. For SCSS/SASS we use 
 BEM methodology (getbem.com). 
 
-For detailed coding style rules check team’s living processes guide located at 
-[spoiledmilk.beanstalkapp.com/javascript-team-guides](https://spoiledmilk.beanstalkapp.com/javascript-team-guides)
+For detailed coding style rules check team’s processes guides located at 
+[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
