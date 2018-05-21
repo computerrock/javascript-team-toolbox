@@ -123,8 +123,9 @@ Older projects may use more legacy stack based on: React, Flux, built and transp
 
 ### Coding standards & processes
 
-For JavaScript we use variation of Crockford/AirBnB style guide checked and validated with eslint. For SCSS/SASS we use 
-BEM methodology (getbem.com). 
+For JavaScript we use variation of Crockford/AirBnB style guide checked and validated with eslint. 
+
+For Sass/SCSS we use BEM methodology and variation of [Brad Frost’s CSS architecture for design systems](http://bradfrost.com/blog/post/css-architecture-for-design-systems), checked and validated with stylelint. 
 
 For detailed coding style rules check team’s processes guides located at 
 [spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
