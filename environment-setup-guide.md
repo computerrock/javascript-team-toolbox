@@ -12,6 +12,10 @@ As IDE of choice, in  Computer Rock we use [Webstorm/Phpstorm](https://www.jetbr
 license for it. You may use any other IDE as long it is set up to output code that respects coding style guides and 
 standards used in team.
 
+For IDE code style configuration manuals please check  `./other-docs/` folder in this project. There, you will also find 
+`.editorconfig` file from [EditorConfig](http://editorconfig.org/ ) initiative that you may copy to your `Projects` folder. 
+While rule set in it is still limited, in the future it may become standard for easy IDE setup.
+
 ### Install Homebrew
 
 Homebrew is package manager for OS X. It will allow you to install missing Unix packages you may need during work.
