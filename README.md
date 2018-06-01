@@ -22,6 +22,7 @@ Example project starter packs? (TODO)
 For projects we use and centrally maintain basic packages needed (presets, configs, and tools). This saves us time 
 configuring, maintaining and keeping them up to date on individual projects. You can find them in `./packages` folder
 and use them via npm. Packages available: 
+
 * @computerrock/babel-preset-react-app
 * @computerrock/eslint-config-base
 * @computerrock/eslint-config-react-app
