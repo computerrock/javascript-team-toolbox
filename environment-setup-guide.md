@@ -35,6 +35,7 @@ Download and install here: [developer.apple.com/xcode/](https://developer.apple.
 ### Other software
 
 You will also need:
+
 * Chrome & Firefox
 * Lightshot [app.prntscr.com](https://app.prntscr.com/en/index.html)
 * Postman [getpostman.com](https://www.getpostman.com/newhostnamenewhostnamenewhostnamenewhostname)
@@ -43,6 +44,7 @@ You will also need:
 * Charles [charlesproxy.com](https://www.charlesproxy.com/)
 
 Chrome extensions: 
+
 * [LastPass](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd)
 * [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 * [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
@@ -50,6 +52,7 @@ Chrome extensions:
 * [Awesome Screenshot recorder](https://chrome.google.com/webstore/detail/awesome-screenshot-screen/nlipoenfbbikpbjkfpfillcgkoblgpmj?hl=en)
 
 Firefox extensions:
+
 * [LastPass](https://addons.mozilla.org/en-US/firefox/addon/lastpass-password-manager/)
 
 

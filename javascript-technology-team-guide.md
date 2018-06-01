@@ -22,6 +22,7 @@ will be determined based on knowledge, experience and tasks need to be done.
 
 Depending on focus of the role (UI/design, application development, operations, etc..), responsibilities may include all 
 or some from the list: 
+
 * delivering high quality, maintainable and well-tested code
 * following team coding standards and processes
 * planning, estimating and implementing application features  for given platform
@@ -82,6 +83,7 @@ Detailed environment setup steps are documented in team’s processes guide loca
 
 Beside software on your workstation, you will have access to several online services and tools we use to organize processes, 
 document and track progress on projects:
+
 * **Google G Suite** - Gmail, Calendar, Drive, Docs, Sheets, Slides and Forms
 * **Blueprint** ([blueprint.computerrock.com](https://blueprint.computerrock.com)) - project time tracking tool
 * **Redmine** ([redmine.computerrock.com](https://redmine.computerrock.com)) - project and issue tracking tool
@@ -99,6 +101,7 @@ GitHub, GitLab, etc..
 ### Documentation
 
 All project documentation that is not directly related to code, is kept and maintained in *Basecamp*. This may include: 
+
 * documentation for features, requirements and solutions,
 * back-end services information,
 * third party services documentation,

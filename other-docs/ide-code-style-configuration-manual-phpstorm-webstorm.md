@@ -7,6 +7,7 @@ fixing, it is a bit easier when IDE auto-complete settings follow same rules.
 #### Editor > Code Style > HTML
 
 Section `Other`:
+
 * In `Spaces` check `In empty tag`
 * New line before first attribute, select `When multiline`
 * New line after last attribute, select `When multiline`
@@ -16,12 +17,14 @@ Section `Other`:
 #### Editor > Code Style > CSS
 
 Section `Other`:
+
 * Convert hex colors to, check `Lower case`
 
 
 #### Editor > Code Style > SCSS
 
 Section `Tabs and Indents`
+
 * Tab size, set 4
 * Indent size, set 4
 * Continuation indent, set 4
@@ -30,6 +33,7 @@ Section `Tabs and Indents`
 #### Editor > Code Style > JavaScript
 
 Section `Punctuation`: 
+
 * `Use` semicolon to terminate statements `always`
 * Use `single` quotes `always`
 * Trailing comma: `Add when multiline`
@@ -38,5 +42,6 @@ Section `Punctuation`:
 #### Editor > Code Style > JSON
 
 Section `Tabs and Indents`
+
 * Tab size, set 2
 * Indent size, set 2
