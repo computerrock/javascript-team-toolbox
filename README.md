@@ -6,6 +6,7 @@ In this project you will find all necessary information, guides, tools, and pack
 ### Guides
 
 Start by reading [`JavaScript Technology Team Guide`](./javascript-technology-team-guide.md), then also check:
+
 * [`Development Environment Setup Guide`](./environment-setup-guide.md)
 * [`JavaScript Style Guide`](./javascript-style-guide.md)
 * [`Sass/SCSS Style Guide`](./sass-scss-style-guide.md)
