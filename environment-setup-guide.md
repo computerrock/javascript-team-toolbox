@@ -26,7 +26,7 @@ $ brew install wget # example usage
 $ brew list # lists installed packages
 ``` 
 
-TODO: list of packages we install using brew.
+TODO: update with list of packages we install using brew
 
 ### Install Xcode
 
