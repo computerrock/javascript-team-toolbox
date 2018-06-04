@@ -22,11 +22,13 @@ For IDE code style configuration manuals please check  `./other-docs/` folder in
 ### Possible errors
 
 ✕ Examples of *incorrect* code:
+
 ```scss
 
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```scss
 
 ``` 

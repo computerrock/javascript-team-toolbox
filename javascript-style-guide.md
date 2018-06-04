@@ -70,6 +70,7 @@ function foo(fooBar) {
 (`+`, `-`, `*`, `&`, `/`) since their precedence is broadly understood. (`no-mixed-operators`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 let a = b = c = 1;
 a++;
@@ -91,6 +92,7 @@ if (a || b && c) { // one may be confused into thinking (a || b) && c
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 let a = 1;
 let b = a;
@@ -125,6 +127,7 @@ a new line. The logical operator should begin the line.
 * Don't use selection operators in place of control statements.
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 if (foo) {
     // ...
@@ -157,6 +160,7 @@ function cats() {
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 if (foo) {
     // ...
@@ -207,6 +211,7 @@ if (!isRunning) {
 * Do not unnecessarily escape characters in strings. (`no-useless-escape`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 const name = "Batman";
 
@@ -218,6 +223,7 @@ const foo = '\'this\' \i\s \"quoted\"';
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 const name = 'Batman';
 
@@ -244,6 +250,7 @@ declaration. (`object-shorthand: off`)
 with a variable.(`dot-notation: off`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 const item = new Object();
 
@@ -255,6 +262,7 @@ const item = {
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 const item = {};
 
@@ -275,6 +283,7 @@ const item = {
 * Decide when to use array destructuring. (`prefer-destructuring: off`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 const items = new Array();
 
@@ -286,6 +295,7 @@ const arr = [
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 const items = [];
 
@@ -312,6 +322,7 @@ const arr = [
 * Prefer the use of the spread operator `...` to call variadic functions. (`prefer-spread`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 function foo() {
   // ...
@@ -339,6 +350,7 @@ console.log.apply(console, x);
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 const foo = function fromFoo() {
   // ...
@@ -375,6 +387,7 @@ console.log(...x);
 * Avoid confusing arrow function syntax `=>` with comparison operators `<=`, `>=`. (`no-confusing-arrow`) 
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 [1, 2, 3].map(function (x) {
     const y = x + 1;
@@ -391,6 +404,7 @@ const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize;
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 [1, 2, 3].map(x => {
     const y = x + 1;
@@ -418,6 +432,7 @@ const itemHeight = item => {
 * Always use parentheses when invoking a constructor with no arguments. (`new-parens`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 function Queue(contents = []) {
     this.queue = [...contents];
@@ -439,6 +454,7 @@ const bad = new user({
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 class Queue {
     constructor(contents = []) {
@@ -480,11 +496,13 @@ const good = new User({
 * Multiline imports should be indented just like multiline array and object literals.
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 import { foo, bar, baz } from './fooBarBaz';
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 import {foo, bar, baz} from './fooBarBaz';
 ``` 
@@ -502,6 +520,7 @@ import {foo, bar, baz} from './fooBarBaz';
 * Don't use spacing in template literal expressions and template tags. (`template-curly-spacing`, `template-tag-spacing`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 let foo  =  'foo' ;
 let bar = {
@@ -515,6 +534,7 @@ bar.baz = foo;
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 let foo = 'foo';
 let bar = {
@@ -536,6 +556,7 @@ bar.baz = foo;
 * Use space around word unary operations, don't use them around non-word operations. (`space-unary-ops`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 const foo
     = 'superLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongString';
@@ -548,6 +569,7 @@ let bar=baz+5;
 ``` 
 
 ✔ Examples of *correct* code:
+
 ```javascript
 const foo = (
     'superLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongString'
@@ -571,6 +593,7 @@ let bar = baz + 5;
 * Use correct spacing around colons of switch statements. (`switch-colon-spacing`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 let foo;
 
@@ -588,6 +611,7 @@ switch (a) {
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 let name;
 
@@ -623,6 +647,7 @@ switch (a) {
 * Don't use spacing when using spread operator. (`rest-spread-spacing`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 const foo = [ 1, 2 , 3 , 4, 5 ];
 const foo2 = [1,
@@ -639,6 +664,7 @@ let { x, y, ... z } = { x: 1, y: 2, a: 3, b: 4 };
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 const foo = [1, 2, 3, 4, 5];
 const foo2a = [
@@ -672,6 +698,7 @@ let {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
 * Use empty lines between class members. (`lines-between-class-members`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 const foo = function *(bar) {
     yield *other(bar);
@@ -689,6 +716,7 @@ class Foo {
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 const foo = function* (bar) {
     yield* other(bar);
@@ -733,6 +761,7 @@ empty line before the comment unless it’s on the first line of a block.
 the directory name as the component name when importing.
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 const Hello  = React.createClass({
     // ...
@@ -745,6 +774,7 @@ import Hello  from './Hello /Hello ';
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 class Hello  extends React.Component {
     // ...
@@ -768,6 +798,7 @@ import Hello  from './Hello ';
 * When rendering multiline JSX, put parenthesis around it (`react/jsx-wrap-multilines`)
 
 ✕ Examples of *incorrect* code:
+
 ```javascript
 class Hello  extends React.Component {
     static propTypes = {
@@ -783,6 +814,7 @@ class Hello  extends React.Component {
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```javascript
 class Hello  extends React.Component {
     static propTypes = {
