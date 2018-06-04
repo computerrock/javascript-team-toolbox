@@ -1,4 +1,4 @@
-# Sass/SCSS BEM Architecture Guide
+# Sass/SCSS BEM Project Architecture
 
 !Work in progress!
 

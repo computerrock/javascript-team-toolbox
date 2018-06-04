@@ -4,19 +4,20 @@
 
 Purpose of this document is to make you familiar with style of writing Sass/SCSS code within Computer Rock.
 
-For validating best code practices, avoiding possible errors and checking code style we use `stylelint`. Configuration for 
-`stylelint` is centrally maintained and published from next package (sourcecode is in `./packages` folder):
+For validating best code practices, avoiding possible errors and checking code style we use `stylelint`. Configuration 
+for `stylelint` is centrally maintained and published from next package (sourcecode is in [`./packages`](./packages) 
+folder):
 
 * @computerrock/stylelint-config-react-app
 
 We use `stylelint-webpack-plugin` in Webpack so even warnings are very visible. This is why we set default severity to
 "WARNING". Steps for configuring project to use `stylelint-webpack-plugin` and configuration package are described 
-in [`Project setup guide`](./project-setup-guide.md).
+in [`Project setup`](./project-setup.md) document.
 
 Main focus of this document  are stylistic choices we made, so not all activated stylelint rules are mentioned, but just 
 those related to style. Style is based on existing projects and it mostly doesn't go against IDE's used.
 
-For IDE code style configuration manuals please check  `./other-docs/` folder in this project.
+For IDE code style configuration manuals please check  [`./other-docs/`](./other-docs) folder in this project.
 
 
 ### Possible errors

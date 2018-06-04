@@ -1,4 +1,4 @@
-# Development Environment Setup Guide
+# Development Environment Setup Manual
 
 Please read this guide carefully and try to set your development environment accordingly. All members of team should 
 have their environments set as similarly as possible. 

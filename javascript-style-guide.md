@@ -3,7 +3,7 @@
 Purpose of this document is to make you familiar with style of writing JavaScript code within Computer Rock.
 
 For validating best code practices, avoiding possible errors and checking code style we use *ESLint*. Configuration for 
-`eslint` is centrally maintained and published from next packages (sourcecode is in `./packages` folder):
+`eslint` is centrally maintained and published from next packages (sourcecode is in [`./packages`](./packages) folder):
 
 * @computerrock/eslint-config-base
 * @computerrock/eslint-config-react-app
@@ -11,13 +11,13 @@ For validating best code practices, avoiding possible errors and checking code s
 
 We use `eslint-loader` in Webpack so even warnings are very visible. This is why we mostly use "WARNING" level for 
 potential errors, and avoid "ERROR" level. Steps for configuring project to use `eslint-loader` and configuration 
-packages are described in [`Project setup guide`](./project-setup-guide.md).
+packages are described in [`Project setup`](./project-setup.md) document.
 
 Main focus of this document are stylistic choices we made, so not all activated ESLint rules are mentioned, but just those 
 related to style. Style is based on existing projects, it mostly doesn't go against IDE's used and is as close as possible 
 to style in main third party libraries we use and their documentations (React, Redux, etc..) 
 
-For IDE code style configuration manuals please check  `./other-docs/` folder in this project.
+For IDE code style configuration manuals please check  [`./other-docs/`](./other-docs) folder in this project.
 
 
 ### 1. Variables & References
