@@ -852,6 +852,7 @@ class Hello  extends React.Component {
 * Don't put spaces around content in JSX prop curly braces. (`react/jsx-curly-spacing`)
 
 ✕ Examples of *incorrect* code:
+
 ```jsx
 <Foo superLongParam='bar'
      anotherSuperLongParam='baz' />
@@ -860,6 +861,7 @@ class Hello  extends React.Component {
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```jsx
 <Foo
   superLongParam="bar"
