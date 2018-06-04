@@ -35,7 +35,7 @@ For IDE code style configuration manuals please check  `./other-docs/` folder in
 
 ✕ Examples of *incorrect* code:
 
-```
+```javascript
 function foo() {
     var bar_, baz;
     var bar_baz;
