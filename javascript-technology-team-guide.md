@@ -83,8 +83,7 @@ role you may need some or all from the list: Slack, Skype, LastPass, different b
 Explorer) and extensions for them (React/Redux Devtools, Livereload), NVM, Node.js, Homebrew, iTerm, Postman, Charles, 
 virtualization platforms for testing (VirtualBox, Vagrant, ansible), Sketch, Photoshop, Xcode, Android Studio.
 
-Detailed environment setup steps are documented in team’s processes guide located at 
-[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
+Detailed environment setup steps are documented in [Development Environment Setup Guide](./environment-setup-guide.md).
 
 ## Online services & tools
 
@@ -128,16 +127,13 @@ use application level libraries: redux-saga, redux-thunk, moment.js, Immutable.j
 
 Older projects may use more legacy stack based on: React, Flux, built and transpilled with Gulp, Browserify and Babel. 
 
-Detailed project setup steps and contribution rules are in team’s processes guide located at 
-[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
-
+Detailed project setup steps are documented in [Project setup guide](./project-setup-guide.md). Project delivery process is
+ covered in [Project delivery process guide](./project-delivery-process-guide.md).
 
 ### Coding standards & processes
 
-For JavaScript we use variation of Crockford/AirBnB style guide checked and validated with eslint. 
+For JavaScript we use variation of Crockford/AirBnB style guide checked and validated with eslint. Style guide document 
+is published here: [JavaScript Style Guide](./javascript-style-guide.md).
 
-For Sass/SCSS we use BEM methodology and variation of [Brad Frost’s CSS architecture for design systems](http://bradfrost.com/blog/post/css-architecture-for-design-systems), 
-checked and validated with stylelint. 
-
-For detailed coding style rules check team’s processes guides located at 
-[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
+We check and validate Sass/SCSS with stylelint. Style guide document is published here: [Sass/SCSS Style Guide](./sass-scss-style-guide.md).
+On projects we use BEM architecture, you can find more information in this document: [Sass/SCSS BEM Architecture Guide](./sass-scss-bem-architecture-guide.md).

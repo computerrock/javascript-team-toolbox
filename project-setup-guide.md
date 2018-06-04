@@ -1,4 +1,4 @@
-# Project setup and contribution guide
+# Project setup guide
 
 !Work in progress!
 

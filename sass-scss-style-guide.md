@@ -11,7 +11,7 @@ For validating best code practices, avoiding possible errors and checking code s
 
 We use `stylelint-webpack-plugin` in Webpack so even warnings are very visible. This is why we set default severity to
 "WARNING". Steps for configuring project to use `stylelint-webpack-plugin` and configuration package are described 
-in [`Project setup and contribution guide`](./project-setup-and-contribution-guide.md).
+in [`Project setup guide`](./project-setup-guide.md).
 
 Main focus of this document  are stylistic choices we made, so not all activated stylelint rules are mentioned, but just 
 those related to style. Style is based on existing projects and it mostly doesn't go against IDE's used.
