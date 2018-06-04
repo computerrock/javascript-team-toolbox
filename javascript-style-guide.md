@@ -34,6 +34,7 @@ For IDE code style configuration manuals please check  `./other-docs/` folder in
 * Don't use leading or trailing underscores. (`no-underscore-dangle`)
 
 ✕ Examples of *incorrect* code:
+
 ```
 function foo() {
     var bar_, baz;
@@ -44,6 +45,7 @@ function foo() {
 ``` 
  
 ✔ Examples of *correct* code:
+
 ```
 function foo(fooBar) {
     const bar = 'bar';
