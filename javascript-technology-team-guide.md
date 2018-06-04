@@ -121,15 +121,15 @@ Code related resources will be on *Beanstalkapp* platform. After cloning project
 file located in root of project. It will contain basic project information, prerequisites installation, setup and build 
 steps. 
 
-Detailed project setup steps and contribution rules are in team’s processes guide located at 
-[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
-
 ### Technology stack overview
 
 Main technology stack we use in team is: React, Redux, Sass/SCSS, built and transpilled with Webpack and Babel. We also 
 use application level libraries: redux-saga, redux-thunk, moment.js, Immutable.js
 
-Older projects may use more legacy stack based on: React, Flux, built and transpilled with Gulp and Browserify. 
+Older projects may use more legacy stack based on: React, Flux, built and transpilled with Gulp, Browserify and Babel. 
+
+Detailed project setup steps and contribution rules are in team’s processes guide located at 
+[spoiledmilk.beanstalkapp.com/javascript-team-toolbox](https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox)
 
 
 ### Coding standards & processes
