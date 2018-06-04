@@ -116,6 +116,7 @@ Note: With nvm, global packages need to be installed per active node version.
 ## GIT setup
 
 If git is not installed use:
+
 ```bash
 $ brew install git
 ```
@@ -123,6 +124,7 @@ $ brew install git
 ### Global .gitignore file
 
 Create global `.gitignore` file:
+
 ```bash
 $ cd ~/
 $ nano .gitignore
@@ -130,6 +132,7 @@ $ git config --global core.excludesfile ~/.gitignore
 ```
 
 contents for the file:
+
 ```bash
 .DS_Store
 .idea 
@@ -147,6 +150,7 @@ $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com" # generates new key
 ```
 
 Copy public key and add to your profile on Beanstalk/GitHub:
+
 ```bash
 $ cat ~/.ssh/id_rsa.pub | pbcopy
 ```
