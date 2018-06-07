@@ -3,7 +3,7 @@
 Here are some ease of life settings for VS Code editor. While we have ESLint configured in projects for auto
 fixing, it is a bit easier when editor auto-complete settings follow same rules. 
 
-#### Editor > General Settings
+#### Editor > General code style settings
 
 ```JS
     // Code max width in characters
@@ -61,7 +61,9 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
 **REQUERED: Eslint extension**
 
 ```JS
+    // Node package manager
     "eslint.packageManager": "yarn",
+    // Node path
     "eslint.nodePath": "/Users/alekz/.nvm/versions/node/v9.11.1/bin/node",
     // Run the linter on save (onSave) or on type (onType)
     "eslint.run": "onType",
@@ -71,7 +73,7 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
     "eslint.alwaysShowStatus": true,
 ```
 
-#### Editor > Optional settings that make life easier
+#### Editor > Recommended settings for cleaner workspace
 
 ```JS
     // Controls how lines should wrap. Can be:
@@ -87,7 +89,7 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
     // this lets you quickly open multiple items in a row and not have the previous ones closed on you
     "workbench.editor.enablePreviewFromQuickOpen": false,
 
-    // Hide files & folders from sidebar
+    // Hide files & folders from sidebar for less cluttered look
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -97,7 +99,7 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
         "**/node_modules": true,
         "**/.idea": true,
     },
-
+    
     // Do not search in these folders
     "search.exclude": {
         "**/.git": true,
@@ -109,7 +111,7 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
     },
 ```
 
-#### VS Code packages that will make your life easy
+#### Useful VS Code packages that will help you in your workflow
 
 - ESlint
 - Stylelint
