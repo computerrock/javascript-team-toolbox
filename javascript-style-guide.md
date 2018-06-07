@@ -838,6 +838,20 @@ class Hello  extends React.Component {
 
 #### 13.3
 
+When creating React components it is more convenient to always follow the same organisation for method order to help you 
+easily find lifecycle methods, event handlers, etc. (`react/sort-comp`) The following order must be followed:
+                                                                        
+* static methods and properties
+* lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`, `defaultProps`, 
+`constructor`, `getDefaultProps`, `state`, `getInitialState`, `getChildContext`, `getDerivedStateFromProps`, `componentWillMount`, 
+`UNSAFE_componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `UNSAFE_componentWillReceiveProps`, 
+`shouldComponentUpdate`, `componentWillUpdate`, `UNSAFE_componentWillUpdate`, `getSnapshotBeforeUpdate`, `componentDidUpdate`, 
+`componentDidCatch`, `componentWillUnmount` (in this order).
+* custom methods
+* `render` method
+
+#### 13.4
+
 * Indent JSX with 4 spaces (`react/jsx-indent: 4`, `react/jsx-indent-props: 4`)
 * Closing bracket location should be aligned with opening bracket (`react/jsx-closing-bracket-location: tag-aligned`)
 * For multiline element, first prop should be in next line (`react/jsx-first-prop-new-line: multiline-multiprop`)
