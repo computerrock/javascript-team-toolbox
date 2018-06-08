@@ -5,6 +5,12 @@
 This guide will help you quickly settle down and familiarize yourself with all the procedures and technologies that are 
 being used in our team.
 
+### Purpose of This Document
+The purpose of this document is to standardize the procedures inside the Technology Team. Only in doing so we can achieve 
+that each member can collaborate on another project with the minimal adjustment period. This is living document. Changes 
+will be added to it on a regular basis. If you have any suggestions contact your Technology Team Leader or bring it up 
+on one of the 1 on 1 meetings.
+
 ### About
 
 JavaScript Technology team is responsible for development and publishing cross-platform applications using 
