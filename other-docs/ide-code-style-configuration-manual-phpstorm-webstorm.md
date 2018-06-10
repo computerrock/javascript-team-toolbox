@@ -4,6 +4,11 @@ Here are some ease of life settings for JetBrains IDEs. While we have ESLint and
 fixing, it is a bit easier when IDE auto-complete settings follow same rules. 
 
 
+#### Editor > General > Auto Import 
+
+Uncheck all boxes for JavaScript. IDE is not aware of set Webpack aliases and set imports paths to long relative values.
+
+
 #### Editor > Code Style > HTML
 
 Section `Other`:
