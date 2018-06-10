@@ -13,8 +13,8 @@ We use `eslint-loader` in Webpack so even warnings are very visible. This is why
 potential errors, and avoid "ERROR" level. Steps for configuring project to use `eslint-loader` and configuration 
 packages are described in [`Project setup`](./project-setup.md) document.
 
-Main focus of this document are stylistic choices we made, so not all activated ESLint rules are mentioned, but just those 
-related to style. Style is based on existing projects, it mostly doesn't go against IDE's used and is as close as possible 
+Main focus of this document are stylistic choices we made. So not all activated ESLint rules are mentioned, but just those 
+related to style. Style is based on existing projects. It mostly doesn't go against IDE's used and is as close as possible 
 to style in main third party libraries we use and their documentations (React, Redux, etc..) 
 
 For IDE code style configuration manuals please check  [`./other-docs/`](./other-docs) folder in this project.
