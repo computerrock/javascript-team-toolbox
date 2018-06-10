@@ -10,7 +10,7 @@ Start by reading [`JavaScript Technology Team Guide`](./javascript-technology-te
 * [`Development Environment Setup Manual`](./development-environment-setup-manual.md)
 * [`JavaScript Style Guide`](./javascript-style-guide.md)
 * [`Sass/SCSS Style Guide`](./sass-scss-style-guide.md)
-* [`Sass/SCSS BEM Project Architecture`](./sass-scss-bem-project-architecture.md)
+* [`Sass/SCSS Project Architecture`](./sass-scss-project-architecture.md)
 * [`Project setup`](./project-setup.md)
 * [`Project delivery process`](./project-delivery-process.md)
 

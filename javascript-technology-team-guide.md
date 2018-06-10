@@ -37,6 +37,8 @@ in time and with quality in mind.
 
 ![image](./images/technology-delivery-matrix.png "Technology Team / Delivery Team Matrix")
 
+Figure 1: [Technology Team / Delivery Team Matrix](./images/technology-delivery-matrix.png)
+
 ### Developer roles & responsibilities
 
 As a member of JavaScript team you will be assigned in certain developer role to delivery team. Your exact role on project 
@@ -44,7 +46,7 @@ will be determined based on knowledge, experience and tasks need to be done.
 
 Depending on focus of the role (UI/design, application development, operations, etc..), responsibilities may include all 
 or some from the list: 
-
+F0:D5:BF:68:27:1B
 * delivering high quality, maintainable and well-tested code
 * following team coding standards and processes
 * planning, estimating and implementing application features  for given platform
@@ -142,5 +144,6 @@ For JavaScript we use variation of Crockford/AirBnB style guide checked and vali
 is published here: [JavaScript Style Guide](./javascript-style-guide.md).
 
 We check and validate Sass/SCSS with stylelint. Style guide document is published here: [Sass/SCSS Style Guide](./sass-scss-style-guide.md).
-On projects we use BEM architecture, you can find more information in 
-[Sass/SCSS BEM Project Architecture](./sass-scss-bem-project-architecture.md) document.
+In [Sass/SCSS Project Architecture](./sass-scss-project-architecture.md) document you will find overview of architecture 
+we use on projects.
+
