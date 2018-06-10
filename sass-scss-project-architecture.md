@@ -28,7 +28,7 @@ definition and category prefix. Here is an example:
 
 Let's analyze each part of class name in detail.
 
-#### Global namespace
+### Global namespace
 
 All classes should be prefixed with a global namespace, which is abbreviation of client's company name (in examples 
 `Client Name`) or `Computer Rock` followed by hyphen:
@@ -42,7 +42,7 @@ For truly re-usable (between projects) and on-every-project stuff we use `.cr-` 
 specific code we use abbreviation of client's company name. Abbreviation should be 4 characters maximum in order to keep 
 things short. Examples: Vubiquity `.vub-`, Daimler Smart `.ds-`, Red Bull `.rb-`, etc.
 
-#### Class category prefix
+### Class category prefix
 
 Each class should be also prefixed with category explaining what job it is doing. Prefixes are:
 
