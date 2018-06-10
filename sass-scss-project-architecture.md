@@ -82,14 +82,15 @@ is limited to BEM modifiers, built in states, and utility state classes. We don'
 ```scss
 .cn-c-tile {
     &--special {}
-    &:hover {}   
+    &:hover {}
     &.cr-is-disabled {}
 }
 
 .cn-c-tile__image {
     &--special {}
     &:hover {}   
-    &.cr-is-disabled {}
+    &.cr-is-broken {}
+    .cn-c-tile.cr-is-disabled & {}
 }
 ```
 
