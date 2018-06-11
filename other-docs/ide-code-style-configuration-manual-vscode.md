@@ -5,62 +5,65 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
 
 #### Editor > General code style settings
 
-```JS
+```json
+{
     // Code max width in characters
     "editor.wordWrapColumn": 120,
-
-     // The number of spaces a tab is equal to. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
+    
+    // The number of spaces a tab is equal to. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
     "editor.tabSize": 4,
-
+    
     // Controls auto save of dirty files. Accepted values: "off", "afterDelay", "onFocusChange" (editor loses focus), "onWindowChange" (window loses focus). If set to "afterDelay", you can configure the delay in "files.autoSaveDelay".
     "files.autoSave": "onFocusChange",
-
+    
     // Path to the git executable
     "git.path": "/usr/bin/git",
-
+    
     "[html]": {
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
         "editor.tabSize": 4,
-        "editor.foldingStrategy": "indentation",
+        "editor.foldingStrategy": "indentation"
     },
-
+    
     "[css]": {
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
-        "editor.tabSize": 4,
+        "editor.tabSize": 4
     },
-
+    
     "[scss]": {
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
-        "editor.tabSize": 4,
+        "editor.tabSize": 4
     },
-
+    
     "[javascript]": {
         "editor.formatOnSave": false,
         "editor.formatOnPaste": false,
-        "editor.tabSize": 4,
+        "editor.tabSize": 4
     },
-
+    
     "[json]": {
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
-
+    
     "[markdown]": {
         "editor.formatOnSave": true,
         "editor.wordWrap": "on",
         "editor.renderWhitespace": "all",
         "editor.acceptSuggestionOnEnter": "off"
-    },
+    }
+}
 ```
 
 #### Editor > ESLint settings
 **REQUERED: Eslint extension**
 
-```JS
+```json
+{
     // Node package manager
     "eslint.packageManager": "yarn",
     // Node path
@@ -70,12 +73,14 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
     // Turns auto fix on save on or off.
     "eslint.autoFixOnSave": true,
     // "editor.formatOnSave": false,
-    "eslint.alwaysShowStatus": true,
+    "eslint.alwaysShowStatus": true
+}    
 ```
 
 #### Editor > Recommended settings for cleaner workspace
 
-```JS
+```json
+{
     // Controls how lines should wrap. Can be:
     // - 'off' (disable wrapping),
     // - 'on' (viewport wrapping),
@@ -97,7 +102,7 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/node_modules": true,
-        "**/.idea": true,
+        "**/.idea": true
     },
     
     // Do not search in these folders
@@ -107,26 +112,27 @@ fixing, it is a bit easier when editor auto-complete settings follow same rules.
         "**/bower_components": true,
         "**/tmp": true,
         "**/dist": true,
-        "**/dev": true,
-    },
+        "**/dev": true
+    }
+}    
 ```
 
 #### Useful VS Code packages that will help you in your workflow
 
-- ESlint
-- Stylelint
+* ESlint
+* Stylelint
 
 [optional] 
 
-- Babel Javascript
-- Auto Close Tag
-- Auto Rename Tag
-- Document This
-- Git Lens
-- IntelliSense for CSS class names in HTML
-- Path Inteliisense
-- Terminal
-- TODO Hightlight
-- Syncing
-- SCSS IntelliSense
-- Sass Yah
+* Babel Javascript
+* Auto Close Tag
+* Auto Rename Tag
+* Document This
+* Git Lens
+* IntelliSense for CSS class names in HTML
+* Path Inteliisense
+* Terminal
+* TODO Hightlight
+* Syncing
+* SCSS IntelliSense
+* Sass Yah
