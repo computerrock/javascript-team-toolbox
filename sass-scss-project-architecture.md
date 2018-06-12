@@ -65,10 +65,11 @@ that is meaningful on its own. While blocks can be nested and interact with each
 there is no precedence or hierarchy.
 
 * **Element** is a child of the primary block, such as `.cn-c-card__title`. Elements are parts of a block and have no 
-standalone meaning. Any element is semantically tied to its block.
+standalone meaning. Any element is semantically tied to its block. Elements can be nested while inside one block, but 
+they are still named as if in root of block (incorrect: `.cn-c-card__top-section__title`, correct: `.cn-c-card__section-title`).
 
 * **Modifier** is a variation of a component style, such as `.cn-c-alert--error`. Modifiers are flags on blocks or elements.
-Use them to change appearance or behaviour. 
+Use them to change appearance or behaviour of block/element. If blocks and elements are nouns, modifiers are adjectives. 
 
 For block, element and modifier names we always use *kebab-case*. We prefer to use full nouns instead of abbreviations. 
 You can read more about [BEM methodology](http://getbem.com/) on official documentation page. 
