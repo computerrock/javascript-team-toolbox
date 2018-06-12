@@ -1,0 +1,42 @@
+{
+  "name": "@computerrock/react-dev-utils",
+  "version": "1.0.0",
+  "description": "Webpack utilities used for React projects",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "checkRequiredFiles.js",
+    "clearConsole.js",
+    "eslintFormatter.js",
+    "FileSizeReporter.js",
+    "formatWebpackMessages.js",
+    "getProcessForPort.js",
+    "InterpolateHtmlPlugin.js",
+    "ModuleScopePlugin.js",
+    "printBuildError.js",
+    "WatchMissingNodeModulesPlugin.js",
+    "WebpackDevServerUtils.js"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "address": "1.0.3",
+    "chalk": "^2.4.1",
+    "detect-port-alt": "1.1.6",
+    "escape-string-regexp": "^1.0.5",
+    "filesize": "3.6.1",
+    "gzip-size": "4.1.0",
+    "inquirer": "5.1.0",
+    "is-root": "1.0.0",
+    "recursive-readdir": "2.2.2",
+    "strip-ansi": "4.0.0",
+    "text-table": "0.2.0"
+  }
+}

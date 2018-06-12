@@ -1,0 +1,25 @@
+{
+  "name": "@computerrock/stylelint-config-react-app",
+  "version": "1.0.0",
+  "description": "stylelint configuration used for React projects",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "peerDependencies": {
+    "stylelint": "^9.2.1",
+    "stylelint-scss": "^3.1.0",
+    "stylelint-selector-bem-pattern": "^2.0.0"
+  }
+}
