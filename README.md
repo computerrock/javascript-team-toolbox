@@ -18,12 +18,7 @@ Start by reading [`JavaScript Technology Team Guide`](./javascript-technology-te
 ### Other documents
 
 In [`./other-docs/`](./other-docs) folder you will find other equally useful guides and files. Feel free to check them 
-out on your own. Have idea about some new useful guide? Please submit it in pull request. Happy hacking!
-
-
-### Starter packs
-
-Example project starter packs located in [`./starter-packs`](./starter-packs) folder (TODO)
+out on your own. Have idea about some new useful guide? Please submit it in pull request.
 
 
 ### Packages
@@ -31,12 +26,21 @@ Example project starter packs located in [`./starter-packs`](./starter-packs) fo
 For projects we use and centrally maintain basic packages needed (presets, configs, and tools). This saves us time 
 configuring, maintaining and keeping them up to date on individual projects. Packages available: 
 
-* @computerrock/babel-preset-react-app
-* @computerrock/eslint-config-base
-* @computerrock/eslint-config-react-app
-* @computerrock/eslint-config-react-native-app
-* @computerrock/stylelint-config-react-app
-* @computerrock/react-dev-utils
+* [@computerrock/babel-preset-react-app](https://www.npmjs.com/package/@computerrock/babel-preset-react-app)
+* [@computerrock/eslint-config-base](https://www.npmjs.com/package/@computerrock/eslint-config-base)
+* [@computerrock/eslint-config-react-app](https://www.npmjs.com/package/@computerrock/eslint-config-react-app)
+* [@computerrock/eslint-config-react-native-app](https://www.npmjs.com/package/@computerrock/eslint-config-react-native-app)
+* [@computerrock/stylelint-config-react-app](https://www.npmjs.com/package/@computerrock/stylelint-config-react-app)
+* [@computerrock/react-dev-utils](https://www.npmjs.com/package/@computerrock/react-dev-utils)
 
 You can find sourcecode for them in [`./packages`](./packages) folder and use them via `npm install`. For installation
 and usage steps refer to [`Project setup`](./project-setup.md) document.
+
+
+### Starter packs (work in progress)
+
+In [`./packages`](./packages) folder you can also find example project starter packs that you can use to jump start new
+project with some specific setup:
+
+* [@comrock/starter-react-app](./packages)
+* [@comrock/starter-react-app-redux-saga](./packages)
