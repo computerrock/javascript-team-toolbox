@@ -5,9 +5,9 @@ Purpose of this document is to make you familiar with style of writing JavaScrip
 For validating best code practices, avoiding possible errors and checking code style we use *ESLint*. Configuration for 
 `eslint` is centrally maintained and published from next packages (sourcecode is in [`./packages`](./packages) folder):
 
-* @computerrock/eslint-config-base
-* @computerrock/eslint-config-react-app
-* @computerrock/eslint-config-react-native-app
+* [@computerrock/eslint-config-base](https://www.npmjs.com/package/@computerrock/eslint-config-base)
+* [@computerrock/eslint-config-react-app](https://www.npmjs.com/package/@computerrock/eslint-config-react-app)
+* [@computerrock/eslint-config-react-native-app](https://www.npmjs.com/package/@computerrock/eslint-config-react-native-app)
 
 We use `eslint-loader` in Webpack so even warnings are very visible. This is why we mostly use "WARNING" level for 
 potential errors, and avoid "ERROR" level. Steps for configuring project to use `eslint-loader` and configuration 

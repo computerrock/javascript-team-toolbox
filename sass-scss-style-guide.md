@@ -8,7 +8,7 @@ For validating best code practices, avoiding possible errors and checking code s
 for `stylelint` is centrally maintained and published from next package (sourcecode is in [`./packages`](./packages) 
 folder):
 
-* @computerrock/stylelint-config-react-app
+* [@computerrock/stylelint-config-react-app](https://www.npmjs.com/package/@computerrock/stylelint-config-react-app)
 
 We use `stylelint-webpack-plugin` in Webpack so even warnings are very visible. This is why we set default severity to
 "WARNING". Steps for configuring project to use `stylelint-webpack-plugin` and configuration package are described 
