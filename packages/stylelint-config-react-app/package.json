@@ -11,9 +11,6 @@
     "access": "public"
   },
   "main": "index.js",
-  "files": [
-    "index.js"
-  ],
   "engines": {
     "node": ">=8"
   },
