@@ -202,7 +202,7 @@ by Sass. Also, we don't create large comment headers at the beginning of file. E
 
 /* Header component */
 .vub-c-header {
-    align-items: center; // inline comments are allowed
+    align-items: center;
 }
 
 /*
