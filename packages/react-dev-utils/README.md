@@ -1,21 +1,29 @@
 # @computerrock/react-dev-utils
 
-This package contains Webpack utilities used for React projects. It is based on Create React App [package](https://github.com/facebook/create-react-app).<br>
+This package contains Webpack utilities used for React projects. It is based on Create React App 
+[package](https://github.com/facebook/create-react-app).<br>
 
 ## Usage
 
+Install package by running:
+
+```sh
+$ npm install @computerrock/react-dev-utils --save-dev 
+```
+
 There is no single entry point. You can only import individual top-level modules:
 
-```js
+```
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
 ```
 
 ### `new InterpolateHtmlPlugin(replacements: {[key:string]: string})`
 
 This Webpack plugin lets us interpolate custom variables into `index.html`.<br>
-It works in tandem with [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plugin) 2.x via its [events](https://github.com/ampedandwired/html-webpack-plugin#events).
+It works in tandem with [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plugin) 2.x via its 
+[events](https://github.com/ampedandwired/html-webpack-plugin#events).
 
-```js
+```
 var path = require('path');
 var HtmlWebpackPlugin = require('html-dev-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
@@ -53,7 +61,7 @@ module.exports = {
 
 This Webpack plugin ensures that relative imports from app's source directories don't reach outside of it.
 
-```js
+```
 var path = require('path');
 var ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 
@@ -77,7 +85,7 @@ module.exports = {
 This Webpack plugin ensures `npm install <library>` forces a project rebuild.<br>
 See [#186](https://github.com/facebook/create-react-app/issues/186) for details.
 
-```js
+```
 var path = require('path');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
@@ -102,7 +110,7 @@ Makes sure that all passed files exist.<br>
 Filenames are expected to be absolute.<br>
 If a file is not found, prints a warning message and returns `false`.
 
-```js
+```
 var path = require('path');
 var checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 
@@ -118,7 +126,7 @@ if (!checkRequiredFiles([
 
 Clears the console, hopefully in a cross-platform way.
 
-```js
+```
 var clearConsole = require('react-dev-utils/clearConsole');
 
 clearConsole();
@@ -130,7 +138,7 @@ console.log('Just cleared the screen!');
 This is custom ESLint formatter that integrates well with Create React App console output.<br>
 You can use the default one instead if you prefer so.
 
-```js
+```
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 
 // In your webpack config:
@@ -163,9 +171,11 @@ Captures JS and CSS asset sizes inside the passed `buildFolder`. Save the result
 
 #### `printFileSizesAfterBuild(webpackStats: WebpackStats, previousFileSizes: OpaqueFileSizes, buildFolder: string, maxBundleGzipSize?: number, maxChunkGzipSize?: number)`
 
-Prints the JS and CSS asset sizes after the build, and includes a size comparison with `previousFileSizes` that were captured earlier using `measureFileSizesBeforeBuild()`. `maxBundleGzipSize` and `maxChunkGzipSizemay` may optionally be specified to display a warning when the main bundle or a chunk exceeds the specified size (in bytes).
+Prints the JS and CSS asset sizes after the build, and includes a size comparison with `previousFileSizes` that were 
+captured earlier using `measureFileSizesBeforeBuild()`. `maxBundleGzipSize` and `maxChunkGzipSizemay` may optionally be 
+specified to display a warning when the main bundle or a chunk exceeds the specified size (in bytes).
 
-```js
+```
 var {
   measureFileSizesBeforeBuild,
   printFileSizesAfterBuild,
@@ -180,9 +190,10 @@ measureFileSizesBeforeBuild(buildFolder).then(previousFileSizes => {
 
 ### `formatWebpackMessages({errors: Array<string>, warnings: Array<string>}): {errors: Array<string>, warnings: Array<string>}`
 
-Extracts and prettifies warning and error messages from webpack [stats](https://github.com/webpack/docs/wiki/node.js-api#stats) object.
+Extracts and prettifies warning and error messages from webpack 
+[stats](https://github.com/webpack/docs/wiki/node.js-api#stats) object.
 
-```js
+```
 var webpack = require('webpack');
 var config = require('../config/webpack.config.dev');
 var formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
@@ -235,7 +246,7 @@ create-react-app
 in /Users/developer/create-react-app
 ```
 
-```js
+```
 var getProcessForPort = require('react-dev-utils/getProcessForPort');
 
 getProcessForPort(3000);
@@ -245,11 +256,14 @@ getProcessForPort(3000);
 
 #### `choosePort(host: string, defaultPort: number): Promise<number | null>`
 
-Returns a Promise resolving to either `defaultPort` or next available port if the user confirms it is okay to do. If the port is taken and the user has refused to use another port, or if the terminal is not interactive and can’t present user with the choice, resolves to `null`.
+Returns a Promise resolving to either `defaultPort` or next available port if the user confirms it is okay to do. If the 
+port is taken and the user has refused to use another port, or if the terminal is not interactive and can’t present user 
+with the choice, resolves to `null`.
 
 #### `createCompiler(webpack: Function, config: Object, appName: string, urls: Object, useYarn: boolean): WebpackCompiler`
 
-Creates a Webpack compiler instance for WebpackDevServer with built-in helpful messages. Takes the `require('webpack')` entry point as the first argument. To provide the `urls` argument, use `prepareUrls()` described below.
+Creates a Webpack compiler instance for WebpackDevServer with built-in helpful messages. Takes the `require('webpack')` 
+entry point as the first argument. To provide the `urls` argument, use `prepareUrls()` described below.
 
 #### `prepareProxy(proxySetting: string, appPublicFolder: string): Object`
 
@@ -257,4 +271,5 @@ Creates a WebpackDevServer `proxy` configuration object from the `proxy` setting
 
 #### `prepareUrls(protocol: string, host: string, port: number): Object`
 
-Returns an object with local and remote URLs for the development server. Pass this object to `createCompiler()` described above.
+Returns an object with local and remote URLs for the development server. Pass this object to `createCompiler()` 
+described above.
