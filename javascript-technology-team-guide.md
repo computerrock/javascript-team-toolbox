@@ -128,22 +128,68 @@ Code related resources will be on *Beanstalkapp* platform. After cloning project
 file located in root of project. It will contain basic project information, prerequisites installation, setup and build 
 steps. 
 
-### Technology stack overview
+### Technology stack
 
 Main technology stack we use in team is: React, Redux, Sass/SCSS, built and transpilled with Webpack and Babel. We also 
-use application level libraries: redux-saga, redux-thunk, moment.js, Immutable.js
+use application level libraries: redux-saga, redux-thunk, moment.js, Immutable.js. Older projects may use more legacy 
+stack based on: React, Flux, built and transpilled with Gulp, Browserify and Babel. 
 
-Older projects may use more legacy stack based on: React, Flux, built and transpilled with Gulp, Browserify and Babel. 
+In [JavaScript Project Architecture](./javascript-project-architecture.md) and [Sass/SCSS Project Architecture](./sass-scss-project-architecture.md) 
+documents you will find overview of architecture we use on projects.
 
-Detailed project setup steps are documented in [Project setup](./project-setup.md) document. Project delivery process is
- covered in [Project delivery process](./project-delivery-process.md) document.
+Detailed project setup steps are documented in [Project setup](./project-setup.md) document.
 
-### Coding standards & processes
+### Coding standards
 
 For JavaScript we use variation of Crockford/AirBnB style guide checked and validated with eslint. Style guide document 
-is published here: [JavaScript Style Guide](./javascript-style-guide.md).
+is published here: [JavaScript Style Guide](./javascript-style-guide.md). 
 
 We check and validate Sass/SCSS with stylelint. Style guide document is published here: [Sass/SCSS Style Guide](./sass-scss-style-guide.md).
-In [Sass/SCSS Project Architecture](./sass-scss-project-architecture.md) document you will find overview of architecture 
-we use on projects.
+ 
+
+### Continuous Integration
+
+We use Continuous Integration (CI) development practice when working on projects. It allows us to detects bugs early,
+and deploy solutions quickly. We follow these best practices:
+
+* **Maintain a code repository** - Project source code is kept in revision control system. All artifacts required
+to build the project are placed in repository. Baseline contains working version of the software at any point of time.
+
+* **Automate the build** - Project should be buildable with a single command. Automation of the build should include 
+automating the integration, which may include deployment to production-like environment.
+
+* **Make the build self-testing** - Once the code is built, all tests should run to confirm that it behaves as the 
+developers expect it to behave.
+
+* **Everyone commit to the baseline every day** - By merging to the baseline regularly, number of conflicting changes is 
+reduced. Checking in a week's worth of work runs the risk of conflicting with other features and can be very difficult 
+to resolve. 
+
+* **Every commit to the baseline should be built** - The system should build commits to the current working version to 
+verify that they integrate correctly. This process is automated, but sometimes it may be done manually. 
+
+* **Keep the build fast** - The build needs to complete rapidly, so that if there is a problem with integration, it is 
+quickly identified.
+
+* **Test in a clone of the production environment** - Test should be done in production-like environment.
+
+* **Make it easy to get the latest deliverables** - We should be able to create latest deliverables at any point of time.
+
+* **Everyone can see the results of the latest build** - It should be easy to find out whether the build breaks and, 
+if so, who made the relevant change and what that change was.
+
+* **Automate deployment** - Project should be deployable with automated script.
+
+Technical details regarding CI process are covered in [Project delivery process](./project-delivery-process.md) document.
+
+
+### Quality Assurance
+
+QA team should receive builds for testing daily. If needed they can request manual build or one with specific changes.
+Make sure to follow CI best practices to be able to achieve this. 
+
+By submitting code to QA you are granting that solution is implemented for all platforms delivery is agreed for and is 
+accessible on testing environment. 
+ 
+Technical details regarding QA process are covered in [Project delivery process](./project-delivery-process.md) document.
 
