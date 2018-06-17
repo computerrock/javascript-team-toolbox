@@ -1,23 +1,18 @@
 # Sass/SCSS Style Guide
 
-!Work in progress!
-
 Purpose of this document is to make you familiar with style of writing Sass/SCSS code within Computer Rock.
 
-For validating best code practices, avoiding possible errors and checking code style we use `stylelint`. Configuration 
-for `stylelint` is centrally maintained and published from next package (sourcecode is in [`./packages`](./packages) 
-folder):
+For validating best code practices, avoiding possible errors and checking code style we use `stylelint`. Projects are 
+built using Webpack with interactive output, so default severity is set to "warning". This allows you to develop fast, 
+but doesn't mean you should deploy code before fixing all errors and warnings.
 
-* [@computerrock/stylelint-config-react-app](https://www.npmjs.com/package/@computerrock/stylelint-config-react-app)
+Main focus of this document are stylistic choices we made. So not all activated stylelint rules are mentioned, but just 
+those related to style. Style is based on existing projects and it mostly doesn't go against IDE's used. 
 
-We use `stylelint-webpack-plugin` in Webpack so even warnings are very visible. This is why we set default severity to
-"WARNING". Steps for configuring project to use `stylelint-webpack-plugin` and configuration package are described 
-in [`Project setup`](./project-setup.md) document.
+For IDE code style configuration manuals please check [`./other-docs/`](./other-docs) folder in this project.
 
-Main focus of this document  are stylistic choices we made. So not all activated stylelint rules are mentioned, but just 
-those related to style. Style is based on existing projects and it mostly doesn't go against IDE's used.
-
-For IDE code style configuration manuals please check  [`./other-docs/`](./other-docs) folder in this project.
+If project you are working on doesn't use `stylelint` yet, you can find configuration overview in 
+[`Project setup`](./project-setup.md) document.
 
 
 ### 1. Properties & Values
@@ -37,7 +32,7 @@ For IDE code style configuration manuals please check  [`./other-docs/`](./other
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 a { Color:pink; top:3px; }
 
 a {
@@ -47,7 +42,7 @@ a {
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 a { 
     color: pink; 
     top: 3px;
@@ -75,7 +70,7 @@ a {
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 a { color: #ffffff; }
 
 a { font-family: Times New Roman, "Times", serif; }
@@ -89,7 +84,7 @@ a { display: Block; }
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 a { color: #fff; }
 
 a { font-family: 'Times New Roman', 'Times', serif; }
@@ -118,7 +113,7 @@ new line after colon. (`value-list-comma-newline-after: always-multi-line`, `val
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 a{background-size: 0 ,0;}
 a{
 
@@ -130,7 +125,7 @@ a{
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 a { background-size: 0, 0; }
 
 a {
@@ -158,7 +153,7 @@ of pseudo class selector brackets. For pseudo classes use single colon (`:`), fo
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 a , b,
 
 i {
@@ -179,7 +174,7 @@ div:before {}
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 a,
 b,
 i {
@@ -222,7 +217,7 @@ opening bracket. When arguments are in one line use space after comma character,
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 a {
   transform: translate(1
   
@@ -236,7 +231,7 @@ b {
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 a {
   transform:
     translate(
@@ -270,7 +265,7 @@ b {
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 @media ( MIN-WIDTH :700px ) {}
 
 @media (width>=600px) {}
@@ -281,7 +276,7 @@ b {
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 @media (min-width: 700px) {}
 
 @media (width >= 600px) {}
@@ -313,7 +308,7 @@ b {
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 a { 
     $foo:100px;$baz:20; 
     
@@ -328,7 +323,7 @@ a {
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 a { 
     $foo: 100px;
     $baz: 20;
@@ -350,7 +345,7 @@ a {
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 a {
   @if ($x == 1) {
     // ...
@@ -373,7 +368,7 @@ a {
 
 ✕ Examples of *incorrect* code:
 
-```scss
+```
 p {
   @extend .some-class;
   
@@ -385,7 +380,7 @@ p {
  
 ✔ Examples of *correct* code:
 
-```scss
+```
 p {
   @extend %placeholder;
   

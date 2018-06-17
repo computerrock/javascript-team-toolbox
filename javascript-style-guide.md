@@ -2,22 +2,18 @@
 
 Purpose of this document is to make you familiar with style of writing JavaScript code within Computer Rock.
 
-For validating best code practices, avoiding possible errors and checking code style we use *ESLint*. Configuration for 
-`eslint` is centrally maintained and published from next packages (sourcecode is in [`./packages`](./packages) folder):
+For validating best code practices, avoiding possible errors and checking code style we use *ESLint*. Projects are built 
+using Webpack with interactive output, so we mostly use "warn" level for potential errors, and avoid "error" level. 
+This allows you to develop fast, but doesn't mean you should deploy code before fixing all errors and warnings.
 
-* [@computerrock/eslint-config-base](https://www.npmjs.com/package/@computerrock/eslint-config-base)
-* [@computerrock/eslint-config-react-app](https://www.npmjs.com/package/@computerrock/eslint-config-react-app)
-* [@computerrock/eslint-config-react-native-app](https://www.npmjs.com/package/@computerrock/eslint-config-react-native-app)
-
-We use `eslint-loader` in Webpack so even warnings are very visible. This is why we mostly use "WARNING" level for 
-potential errors, and avoid "ERROR" level. Steps for configuring project to use `eslint-loader` and configuration 
-packages are described in [`Project setup`](./project-setup.md) document.
-
-Main focus of this document are stylistic choices we made. So not all activated ESLint rules are mentioned, but just those 
-related to style. Style is based on existing projects. It mostly doesn't go against IDE's used and is as close as possible 
-to style in main third party libraries we use and their documentations (React, Redux, etc..) 
+Main focus of this document are stylistic choices we made. So not all activated ESLint rules are mentioned, but just 
+those related to style. Style is based on existing projects. It mostly doesn't go against IDE's used and is as close as 
+possible to style in main third party libraries we use and their documentations (React, Redux, etc..) 
 
 For IDE code style configuration manuals please check  [`./other-docs/`](./other-docs) folder in this project.
+
+If project you are working on doesn't use *ESLint* yet, you can find configuration overview in 
+[`Project setup`](./project-setup.md) document.
 
 
 ### 1. Variables & References
@@ -35,7 +31,7 @@ For IDE code style configuration manuals please check  [`./other-docs/`](./other
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 function foo() {
     var bar_, baz;
     var bar_baz;
@@ -71,7 +67,7 @@ function foo(fooBar) {
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 let a = b = c = 1;
 a++;
 a = a + b;
@@ -93,7 +89,7 @@ if (a || b && c) { // one may be confused into thinking (a || b) && c
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 let a = 1;
 let b = a;
 let c = a;
@@ -128,7 +124,7 @@ a new line. The logical operator should begin the line.
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 if (foo) {
     // ...
 } else {
@@ -161,7 +157,7 @@ function cats() {
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 if (foo) {
     // ...
 } else if (bar) {
@@ -212,7 +208,7 @@ if (!isRunning) {
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 const name = "Batman";
 
 function sayHi(name) {
@@ -224,7 +220,7 @@ const foo = '\'this\' \i\s \"quoted\"';
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 const name = 'Batman';
 
 function sayHi(name) {
@@ -251,7 +247,7 @@ with a variable.(`dot-notation: off`)
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 const item = new Object();
 
 const item = {
@@ -263,7 +259,7 @@ const item = {
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 const item = {};
 
 const item = {
@@ -284,7 +280,7 @@ const item = {
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 const items = new Array();
 
 const arr = [
@@ -296,7 +292,7 @@ const arr = [
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 const items = [];
 
 const arr = [
@@ -323,7 +319,7 @@ const arr = [
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 function foo() {
   // ...
 }
@@ -351,7 +347,7 @@ console.log.apply(console, x);
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 const foo = function fromFoo() {
   // ...
 };
@@ -388,7 +384,7 @@ console.log(...x);
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 [1, 2, 3].map(function (x) {
     const y = x + 1;
   
@@ -405,7 +401,7 @@ const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize;
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 [1, 2, 3].map(x => {
     const y = x + 1;
   
@@ -433,7 +429,7 @@ const itemHeight = item => {
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 function Queue(contents = []) {
     this.queue = [...contents];
 }
@@ -455,7 +451,7 @@ const bad = new user({
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 class Queue {
     constructor(contents = []) {
         this.queue = [...contents];
@@ -497,13 +493,13 @@ const good = new User({
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 import { foo, bar, baz } from './fooBarBaz';
 ``` 
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 import {foo, bar, baz} from './fooBarBaz';
 ``` 
 
@@ -521,7 +517,7 @@ import {foo, bar, baz} from './fooBarBaz';
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 let foo  =  'foo' ;
 let bar = {
     baz: null,
@@ -535,7 +531,7 @@ bar.baz = foo;
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 let foo = 'foo';
 let bar = {
     baz: null,
@@ -557,7 +553,7 @@ bar.baz = foo;
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 const foo
     = 'superLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongString';
 let fooType = typeof!foo;
@@ -570,7 +566,7 @@ let bar=baz+5;
 
 ✔ Examples of *correct* code:
 
-```javascript
+```
 const foo = (
     'superLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongString'
 );
@@ -594,7 +590,7 @@ let bar = baz + 5;
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 let foo;
 
 if( !foo ){
@@ -612,7 +608,7 @@ switch (a) {
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 let name;
 
 if (!name) {
@@ -648,7 +644,7 @@ switch (a) {
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 const foo = [ 1, 2 , 3 , 4, 5 ];
 const foo2 = [1,
     2, 3, 4,
@@ -665,7 +661,7 @@ let { x, y, ... z } = { x: 1, y: 2, a: 3, b: 4 };
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 const foo = [1, 2, 3, 4, 5];
 const foo2a = [
     1, 2, 3, 4, 5
@@ -699,7 +695,7 @@ let {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 const foo = function *(bar) {
     yield *other(bar);
 };
@@ -717,7 +713,7 @@ class Foo {
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 const foo = function* (bar) {
     yield* other(bar);
 };
@@ -762,7 +758,7 @@ the directory name as the component name when importing.
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 const Hello  = React.createClass({
     // ...
     render() {
@@ -775,7 +771,7 @@ import Hello  from './Hello /Hello ';
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 class Hello  extends React.Component {
     // ...
     render() {
@@ -799,7 +795,7 @@ import Hello  from './Hello ';
 
 ✕ Examples of *incorrect* code:
 
-```javascript
+```
 class Hello  extends React.Component {
     static propTypes = {
         enabled: PropTypes.bool,
@@ -815,7 +811,7 @@ class Hello  extends React.Component {
  
 ✔ Examples of *correct* code:
 
-```javascript
+```
 class Hello  extends React.Component {
     static propTypes = {
         name: PropTypes.string.isRequired,

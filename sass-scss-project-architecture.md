@@ -19,8 +19,8 @@ selector should be clear from name. We sacrifice shorter class names in exchange
 
 ## Class usage and naming
 
-We use class names only, no tag names or ids. To name classes we use BEM methodology together with global namespace 
-definition and category prefix. Here is an example:
+We use class names only. We avoid usage of tag names and ids. To name classes we use BEM methodology together with 
+global namespace definition and category prefix. Here is an example:
 
 ```scss
 .cn-c-header__logo--large {}
@@ -39,8 +39,8 @@ All classes should be prefixed with a global namespace, which is abbreviation of
 ```
 
 For truly re-usable (between projects) and on-every-project stuff we use `.cr-` prefix. For all other, client project 
-specific code we use abbreviation of client's company name. Abbreviation should be 4 characters maximum in order to keep 
-things short. Examples: Vubiquity `.vub-`, Daimler Smart `.ds-`, Red Bull `.rb-`, etc.
+specific code, we use abbreviation of client's company name. Abbreviation should be 4 characters maximum in order to keep 
+names short. Examples: Vubiquity `.vub-`, Daimler Smart `.ds-`, Red Bull `.rb-`, etc.
 
 ### Class category prefix
 
@@ -197,7 +197,7 @@ adopted standard and set of tools for in-code documentation. This is why we don'
 format or style for documentation blocks. We use simple `/* ... */` blocks and inline comments `// ...` which are provided
 by Sass. Also, we don't create large comment headers at the beginning of file. Example:
 
-```scss
+```
 @import '../styles/config';
 
 /* Header component */

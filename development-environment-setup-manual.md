@@ -56,6 +56,11 @@ Firefox extensions:
 * [LastPass](https://addons.mozilla.org/en-US/firefox/addon/lastpass-password-manager/)
 
 
+## Project folder
+
+In your home (`~`) folder create new one named `Projects`. Here you will be placing all JavaScript projects. 
+
+
 ## Node.js & JavaScript tooling
 
 ### Prepare *bash* profile files
