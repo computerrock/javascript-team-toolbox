@@ -1,12 +1,12 @@
 {
   "name": "@comrock/starter-react-app-base",
   "version": "1.0.0",
-  "description": "WLS core app, starting point for React/Redux based project",
+  "description": "React base starter app",
   "author": "Computer Rock",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://spoiledmilk.git.beanstalkapp.com/vubiquity-wls-next.git"
+    "url": "https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox"
   },
   "private": true,
   "main": "index.js",
