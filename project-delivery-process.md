@@ -96,11 +96,26 @@ at 72 characters (all but URL's). Webstorm/Phpstorm conveniently marks column wi
 This a description for change.
 ```
 
+* Before pushing your commit, always do a rebase of working branch. This produces clean tree, 
+while avoiding un-necessary merge:  
+
+```bash
+$ git status
+    On branch feature-name
+    Your branch is up-to-date with 'origin/feature-name'.
+    ...
+$ git commit -m "implement some aspect of feature"
+$ git pull --rebase origin fature-name
+$ git push origin feature-name
+```
+
+
 ## `git` branching model
 
 We use [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model) for projects. It allows
 us to regularly deploy and work on both new features and fixes for code in QA process without accidentally mixing up 
 untested and tested code. Let's go over procedures described by model.
+
 
 ### The main branches: `master` & `develop`
 
@@ -108,22 +123,96 @@ Repository has only two permanent branches:
 
 * `master` - is the main branch where the source code of *HEAD* always reflects a production-ready code.
 
-* `develop` - is the main branch where the source code of *HEAD* always reflects latest delivered development changes.
-for the next release. New code is not committed directly to `develop` branch, but through feature branches.
+* `develop` - is the main branch where the source code of *HEAD* always reflects latest delivered development changes
+for the next release. This is a CI baseline. New code is rarely committed directly to `develop` branch, but is merged 
+through feature branches.
+
+We intentionally avoid naming branches like 'production', 'staging', etc. These are deployment environments and there 
+can be many of them - 'pre-production', 'integration', 'pre-staging'... From code perspective there are only two types of 
+code - tested (stable) and untested (still worked on). So to avoid confusion and code loss, we stick to `master` and `develop`
 
 When the source code in the `develop` branch reaches a stable point and is ready to be released, all of the changes should 
-be merged back into `master`. This is a achieved indirectly with `release-*` branch.
+be merged back into `master`. This is a achieved indirectly with `release-*` branch. We will cover this procedure in 
+next chapters.
 
-Unlike the main branches, feature and release branches always have a limited life time, since they will be removed eventually.
+Beside main branches, on daily basis we use variety of supporting branches: 
+
+* feature branches, 
+* release branches and 
+* hotfix branches
+
+Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
+
 
 ### Feature branches: `feature-*`
 
-...
+> Branches off from: `develop`
+>
+> Merges back into: `develop`
+>
+> Naming: `feature-*`
+
+Feature branches are used to develop new features for the upcoming or a distant future release. Target release in which
+feature will be incorporated may be unknown but branch can exist and eventually be merged back to `develop` or discarded.
+
+Creating a feature branch:
+
+```bash
+$ git checkout -b feature-name origin/develop
+```
+
+Incorporating a finished feature back to `develop`:
+
+```bash
+$ git checkout develop
+$ git checkout --pull-rebase origin/develop # make sure you have latest state
+$ git merge --no-ff feature-name
+$ git push origin develop
+$ git branch -d feature-name # delete branch
+$ git push origin :feature-name # delete branch from remote
+```
+
+When merging, always use `--no-ff` tag. This causes the merge to always create a new commit object, even if the merge
+could be performed with a fast-forward. This avoids  losing information about the historical existence of a feature 
+branch and groups together all commits that together added the feature. It is also easier to revert the merge.
+
 
 ### Release branches: `release-*`
 
-...
+> Branches off from: `develop`
+>
+> Merges back into: `develop`, `master`
+>
+> Naming: `release-*`
 
-### Deployment environments
+Release branches support preparation of a new production release. They allow for last-minute changes and more importantly
+bug fixes. Here we also prepare meta-data for release: version number, build date, etc. In the meantime `develop` branch
+is free to receive features for next big release without jeopardizing QA process with untested code.
+
+Creating a release branch:
+
+```bash
+$ git checkout -b release-name origin/develop
+$ npm --no-git-tag-version version minor # we may bump major version instead
+$ git commit -a -m "update version number"
+```
+
+When we create release branch, we decide will it be a *major* or *minor* [SemVer](https://semver.org/) release. From now
+on branch enters into final QA process. It is deployed to appropriate environment and worked on with possible changes 
+and bug fixes. Before each deployment patch number of version number should be raised:
+
+```bash
+$ npm --no-git-tag-version version patch
+$ git commit -a -m "update version number"
+```
+
+When branch is ready to be published to production we merge `release-*` to `master` and tag the release:
+
+```bash
+
+```
+
+
+### Deployment environments vs. branching model
 
 ...
