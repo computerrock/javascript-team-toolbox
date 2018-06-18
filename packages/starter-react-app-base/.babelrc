@@ -1,0 +1,3 @@
+{
+  "presets": ["@computerrock/babel-preset-react-app"]
+}
