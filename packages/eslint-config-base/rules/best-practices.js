@@ -69,10 +69,10 @@ module.exports = {
         'no-eq-null': 'off',
 
         // disallow use of eval()
-        'no-eval': 'error',
+        'no-eval': 'warn',
 
         // disallow adding to native types
-        'no-extend-native': 'error',
+        'no-extend-native': 'warn',
 
         // disallow unnecessary calls to .bind()
         'no-extra-bind': 'warn',
@@ -87,7 +87,7 @@ module.exports = {
         'no-floating-decimal': 'warn',
 
         // disallow assignments to native objects or read-only global variables
-        'no-global-assign': ['error', {exceptions: []}],
+        'no-global-assign': ['warn', {exceptions: []}],
 
         // disallow shorthand type conversions
         'no-implicit-coercion': 'off',
@@ -144,11 +144,11 @@ module.exports = {
         'no-proto': 'off',
 
         // disallow variable redeclaration
-        'no-redeclare': 'error',
+        'no-redeclare': 'warn',
 
         // disallow certain properties on certain objects
         'no-restricted-properties': [
-            'error',
+            'warn',
             {
                 object: 'require',
                 property: 'ensure',
@@ -162,7 +162,7 @@ module.exports = {
         ],
 
         // disallow assignment operators in return statements
-        'no-return-assign': 'error',
+        'no-return-assign': 'warn',
 
         // disallow unnecessary return await
         'no-return-await': 'off',
@@ -187,7 +187,7 @@ module.exports = {
 
         // disallow unused expressions
         'no-unused-expressions': [
-            'error',
+            'warn',
             {
                 allowShortCircuit: true,
                 allowTernary: true,
@@ -220,7 +220,7 @@ module.exports = {
         'no-with': 'warn',
 
         // require using Error objects as Promise rejection reasons
-        'prefer-promise-reject-errors': ['warn', {allowEmptyReject: true}],
+        'prefer-promise-reject-warns': ['warn', {allowEmptyReject: true}],
 
         // require use of the second argument for parseInt()
         'radix': 'warn',
@@ -229,7 +229,7 @@ module.exports = {
         'require-await': 'off',
 
         // require var declarations be placed at the top of their containing scope
-        'vars-on-top': 'error',
+        'vars-on-top': 'warn',
 
         // require parentheses around immediate function invocations
         'wrap-iife': ['warn', 'outside', {functionPrototypeMethods: false}],

@@ -24,10 +24,10 @@ module.exports = {
         // Static analysis:
 
         // Ensure imports point to a file/module that can be resolved
-        'import/no-unresolved': ['error', {commonjs: true, caseSensitive: true}],
+        'import/no-unresolved': ['warn', {commonjs: true, caseSensitive: true}],
 
         // Ensure named imports correspond to a named export in the remote file
-        'import/named': 'error',
+        'import/named': 'warn',
 
         // Ensure a default export is present, given a default import
         'import/default': 'off',
@@ -39,7 +39,7 @@ module.exports = {
         'import/no-restricted-paths': 'off',
 
         // Forbid import of modules using absolute paths
-        'import/no-absolute-path': 'error',
+        'import/no-absolute-path': 'warn',
 
         // Forbid require() calls with expressions
         'import/no-dynamic-require': 'off',
@@ -48,27 +48,27 @@ module.exports = {
         'import/no-internal-modules': 'off',
 
         // Forbid webpack loader syntax in imports
-        'import/no-webpack-loader-syntax': 'error',
+        'import/no-webpack-loader-syntax': 'warn',
 
         // Forbid a module from importing itself
-        'import/no-self-import': 'error',
+        'import/no-self-import': 'warn',
 
         // Forbid a module from importing a module with a dependency path back to itself
-        'import/no-cycle': 'error',
+        'import/no-cycle': 'warn',
 
         // Prevent unnecessary path segments in import and require statements
-        'import/no-useless-path-segments': 'error',
+        'import/no-useless-path-segments': 'warn',
 
         // Helpful warnings:
 
         // Report any invalid exports, i.e. re-export of the same name
-        'import/export': 'error',
+        'import/export': 'warn',
 
         // Report use of exported name as identifier of default export
-        'import/no-named-as-default': 'error',
+        'import/no-named-as-default': 'warn',
 
         // Report use of exported name as property of default export
-        'import/no-named-as-default-member': 'error',
+        'import/no-named-as-default-member': 'warn',
 
         // Report imported names marked with @deprecated documentation tag
         'import/no-deprecated': 'off',
@@ -76,7 +76,7 @@ module.exports = {
         // Forbid the use of extraneous packages
         // paths are treated both as absolute paths, and relative to process.cwd()
         'import/no-extraneous-dependencies': [
-            'error',
+            'warn',
             {
                 devDependencies: [
                     'test/**', // tape, common npm pattern
@@ -103,7 +103,7 @@ module.exports = {
         ],
 
         // Forbid the use of mutable exports with var or let
-        'import/no-mutable-exports': 'error',
+        'import/no-mutable-exports': 'warn',
 
         // Module systems:
 
@@ -114,7 +114,7 @@ module.exports = {
         'import/no-commonjs': 'off',
 
         // Report AMD require and define calls
-        'import/no-amd': 'error',
+        'import/no-amd': 'warn',
 
         // No Node.js builtin modules
         'import/no-nodejs-modules': 'off',

@@ -87,10 +87,10 @@ module.exports = {
         'react/no-did-mount-set-state': 'off',
 
         // Prevent usage of setState in componentDidUpdate
-        'react/no-did-update-set-state': 'error',
+        'react/no-did-update-set-state': 'warn',
 
         // Prevent direct mutation of this.state
-        'react/no-direct-mutation-state': 'error',
+        'react/no-direct-mutation-state': 'warn',
 
         // Prevent usage of findDOMNode
         'react/no-find-dom-node': 'warn',
@@ -105,19 +105,19 @@ module.exports = {
         'react/no-redundant-should-component-update': 'warn',
 
         // Prevent usage of the return value of React.render
-        'react/no-render-return-value': 'error',
+        'react/no-render-return-value': 'warn',
 
         // Prevent usage of setState
         'react/no-set-state': 'off',
 
         // Prevent common casing typos
-        'react/no-typos': 'error',
+        'react/no-typos': 'warn',
 
         // Prevent using string references in ref attribute
         'react/no-string-refs': 'warn',
 
         // Prevent using this in stateless functional components
-        'react/no-this-in-sfc': 'error',
+        'react/no-this-in-sfc': 'warn',
 
         // Prevent invalid characters from appearing in markup
         'react/no-unescaped-entities': 'warn',
@@ -151,7 +151,7 @@ module.exports = {
         ],
 
         // Prevent missing React when using JSX
-        'react/react-in-jsx-scope': 'error',
+        'react/react-in-jsx-scope': 'warn',
 
         // Enforce a defaultProps definition for every prop that is not a required prop
         'react/require-default-props': ['warn', {forbidDefaultForRequired: true}],
@@ -160,7 +160,7 @@ module.exports = {
         'react/require-optimization': 'off',
 
         // Enforce ES5 or ES6 class for returning value in render function
-        'react/require-render-return': 'error',
+        'react/require-render-return': 'warn',
 
         // Prevent extra closing tags for components without children
         'react/self-closing-comp': 'warn',
@@ -175,7 +175,7 @@ module.exports = {
         'react/style-prop-object': 'warn',
 
         // Prevent void DOM elements (e.g. <img />, <br />) from receiving children
-        'react/void-dom-elements-no-children': 'error',
+        'react/void-dom-elements-no-children': 'warn',
 
         // JSX-specific rules
 
@@ -198,7 +198,7 @@ module.exports = {
         'react/jsx-equals-spacing': ['warn', 'never'],
 
         // Restrict file extensions that may contain JSX
-        'react/jsx-filename-extension': ['error', {extensions: ['.js']}],
+        'react/jsx-filename-extension': ['warn', {extensions: ['.js']}],
 
         // Enforce position of the first prop in JSX
         'react/jsx-first-prop-new-line': ['warn', 'multiline-multiprop'],

@@ -28,7 +28,7 @@ module.exports = {
         'no-label-var': 'warn',
 
         // disallow specified global variables
-        'no-restricted-globals': ['error'].concat(restrictedGlobals),
+        'no-restricted-globals': ['warn'].concat(restrictedGlobals),
 
         // disallow variable declarations from shadowing variables declared in the outer scope
         'no-shadow': 'off',
@@ -37,7 +37,7 @@ module.exports = {
         'no-shadow-restricted-names': 'warn',
 
         // disallow the use of undeclared variables unless mentioned in /*global */ comments
-        'no-undef': 'error',
+        'no-undef': 'warn',
 
         // disallow initializing variables to undefined
         'no-undef-init': 'off',

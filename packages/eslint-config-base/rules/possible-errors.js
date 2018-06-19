@@ -21,7 +21,7 @@ module.exports = {
         'no-compare-neg-zero': 'warn',
 
         // disallow assignment operators in conditional expressions
-        'no-cond-assign': ['error', 'except-parens'],
+        'no-cond-assign': ['warn', 'except-parens'],
 
         // disallow the use of console
         'no-console': 'warn',
@@ -69,7 +69,7 @@ module.exports = {
         'no-inner-declarations': 'warn',
 
         // disallow invalid regular expression strings in RegExp constructors
-        'no-invalid-regexp': 'error',
+        'no-invalid-regexp': 'warn',
 
         // disallow irregular whitespace outside of strings and comments
         'no-irregular-whitespace': 'warn',
@@ -90,19 +90,19 @@ module.exports = {
         'no-template-curly-in-string': 'warn',
 
         // disallow confusing multiline expressions
-        'no-unexpected-multiline': 'error',
+        'no-unexpected-multiline': 'warn',
 
         // disallow unreachable statements after a return, throw, continue, or break statement
         'no-unreachable': 'warn',
 
         // disallow control flow statements in finally blocks
-        'no-unsafe-finally': 'error',
+        'no-unsafe-finally': 'warn',
 
         // disallow negating the left operand of relational operators
         'no-unsafe-negation': 'off',
 
         // require calls to isNaN() when checking for NaN
-        'use-isnan': 'error',
+        'use-isnan': 'warn',
 
         // ensure JSDoc comments are valid
         'valid-jsdoc': [

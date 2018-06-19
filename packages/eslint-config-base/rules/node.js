@@ -10,20 +10,20 @@ module.exports = {
         // require require() calls to be placed at top-level module scope
         'global-require': 'off',
 
-        // require error handling in callbacks
+        // require warn handling in callbacks
         'handle-callback-err': 'off',
 
         // disallow use of the Buffer() constructor
-        'no-buffer-constructor': 'error',
+        'no-buffer-constructor': 'warn',
 
         // disallow require calls to be mixed with regular variable declarations
         'no-mixed-requires': 'off',
 
         // disallow new operators with calls to require
-        'no-new-require': 'error',
+        'no-new-require': 'warn',
 
         // disallow string concatenation with __dirname and __filename
-        'no-path-concat': 'error',
+        'no-path-concat': 'warn',
 
         // disallow the use of process.env
         'no-process-env': 'off',

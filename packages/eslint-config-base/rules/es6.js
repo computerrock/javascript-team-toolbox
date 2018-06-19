@@ -18,35 +18,35 @@ module.exports = {
         'arrow-spacing': 'warn',
 
         // require super() calls in constructors
-        'constructor-super': 'error',
+        'constructor-super': 'warn',
 
         // enforce consistent spacing around * operators in generator functions
         'generator-star-spacing': ['warn', {before: false, after: true}],
 
         // disallow reassigning class members
-        'no-class-assign': 'error',
+        'no-class-assign': 'warn',
 
         // disallow arrow functions where they could be confused with comparisons
         'no-confusing-arrow': ['warn', {allowParens: true}],
 
         // disallow reassigning const variables
-        'no-const-assign': 'error',
+        'no-const-assign': 'warn',
 
         // disallow duplicate class members
-        'no-dupe-class-members': 'error',
+        'no-dupe-class-members': 'warn',
 
         // disallow duplicate module imports
         // replaced by https://github.com/benmosher/eslint-plugin-import
         'no-duplicate-imports': 'off',
 
         // disallow new operators with the Symbol object
-        'no-new-symbol': 'error',
+        'no-new-symbol': 'warn',
 
         // disallow specified modules when loaded by import
         'no-restricted-imports': 'off',
 
         // disallow this/super before calling super() in constructors
-        'no-this-before-super': 'error',
+        'no-this-before-super': 'warn',
 
         // disallow unnecessary computed property keys in object literals
         'no-useless-computed-key': 'warn',
@@ -92,7 +92,7 @@ module.exports = {
         'prefer-destructuring': 'off',
 
         // disallow parseInt() and Number.parseInt() in favor of binary, octal, and hexadecimal literals
-        'prefer-numeric-literals': 'error',
+        'prefer-numeric-literals': 'warn',
 
         // require rest parameters instead of arguments
         'prefer-rest-params': 'warn',

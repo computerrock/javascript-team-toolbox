@@ -229,7 +229,7 @@ module.exports = {
         ],
 
         // disallow mixed spaces and tabs for indentation
-        'no-mixed-spaces-and-tabs': 'error',
+        'no-mixed-spaces-and-tabs': 'warn',
 
         // disallow use of chained assignment expressions
         'no-multi-assign': 'warn',
@@ -253,7 +253,7 @@ module.exports = {
         'no-restricted-syntax': ['warn', 'WithStatement'],
 
         // disallow all tabs
-        'no-tabs': 'error',
+        'no-tabs': 'warn',
 
         // disallow ternary operators
         'no-ternary': 'off',
@@ -313,10 +313,10 @@ module.exports = {
         'semi': ['warn', 'always'],
 
         // enforce consistent spacing before and after semicolons
-        'semi-spacing': 'error',
+        'semi-spacing': 'warn',
 
         // enforce location of semicolons
-        'semi-style': ['error', 'last'],
+        'semi-style': ['warn', 'last'],
 
         // require object keys to be sorted
         'sort-keys': 'off',
