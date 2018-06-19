@@ -1,6 +1,6 @@
 {
   "name": "@comrock/starter-react-app-base",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React base starter app",
   "author": "Computer Rock",
   "license": "ISC",
@@ -13,8 +13,8 @@
   "devDependencies": {
     "@babel/core": "7.0.0-beta.49",
     "@babel/runtime": "7.0.0-beta.49",
-    "@computerrock/babel-preset-react-app": "^1.0.1",
-    "@computerrock/eslint-config-react-app": "^1.1.0",
+    "@computerrock/babel-preset-react-app": "^1.0.2",
+    "@computerrock/eslint-config-react-app": "^1.2.0",
     "@computerrock/react-dev-utils": "^1.0.1",
     "@computerrock/stylelint-config-react-app": "^1.0.2",
     "autoprefixer": "^8.1.0",
