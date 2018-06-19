@@ -10,7 +10,7 @@ module.exports = {
         // require require() calls to be placed at top-level module scope
         'global-require': 'off',
 
-        // require warn handling in callbacks
+        // require error handling in callbacks
         'handle-callback-err': 'off',
 
         // disallow use of the Buffer() constructor

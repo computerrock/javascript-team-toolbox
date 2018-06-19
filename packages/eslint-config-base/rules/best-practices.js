@@ -220,7 +220,7 @@ module.exports = {
         'no-with': 'warn',
 
         // require using Error objects as Promise rejection reasons
-        'prefer-promise-reject-warns': ['warn', {allowEmptyReject: true}],
+        'prefer-promise-reject-errors': ['warn', {allowEmptyReject: true}],
 
         // require use of the second argument for parseInt()
         'radix': 'warn',
