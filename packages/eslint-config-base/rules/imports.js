@@ -24,7 +24,7 @@ module.exports = {
         // Static analysis:
 
         // Ensure imports point to a file/module that can be resolved
-        'import/no-unresolved': ['warn', {commonjs: true, caseSensitive: true}],
+        'import/no-unresolved': 'off',
 
         // Ensure named imports correspond to a named export in the remote file
         'import/named': 'warn',
