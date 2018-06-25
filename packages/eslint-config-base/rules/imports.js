@@ -65,10 +65,10 @@ module.exports = {
         'import/export': 'warn',
 
         // Report use of exported name as identifier of default export
-        'import/no-named-as-default': 'warn',
+        'import/no-named-as-default': 'off',
 
         // Report use of exported name as property of default export
-        'import/no-named-as-default-member': 'warn',
+        'import/no-named-as-default-member': 'off',
 
         // Report imported names marked with @deprecated documentation tag
         'import/no-deprecated': 'off',
