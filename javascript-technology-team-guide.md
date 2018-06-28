@@ -1,24 +1,24 @@
 # JavaScript Technology Team Guide
 
-## Welcome to JavaScript team!
+## Welcome to JavaScript Team!
 
 This guide will help you quickly settle down and familiarize yourself with all the procedures and technologies that are 
 being used in our team.
 
 ### Purpose of This Document
-The purpose of this document is to standardize the procedures inside the Technology Team. Only in doing so we can achieve 
+The purpose of this document is to standardize the procedures inside the JavaScript Team. Only in doing so we can achieve 
 that each member can collaborate on another project with the minimal adjustment period. This is living document. Changes 
 will be added to it on a regular basis. If you have any suggestions contact your Technology Team Leader or bring it up 
 on one of the 1 on 1 meetings.
 
-### About
+### About JavaScript team
 
-JavaScript Technology team is responsible for development and publishing cross-platform applications using 
+JavaScript Team is responsible for development and publishing cross-platform applications using 
 JavaScript and related technologies within Computer Rock. 
 
 ### Technology Team organization
 
-The JavaScript Technology team consists of numerous JavaScript developers and is led by technology team leader, Ivan D. Stanković.
+The JavaScript Team consists of numerous JavaScript developers and is led by technology team leader, Ivan D. Stanković.
 
 Technology team leader is responsible for maintaining the discipline, work ethics, quality, exploring technical solutions, 
 estimating projects and also helping resolve any issues members of the team might have.
@@ -99,6 +99,7 @@ Beside software on your workstation, you will have access to several online serv
 document and track progress on projects:
 
 * **Google G Suite** - Gmail, Calendar, Drive, Docs, Sheets, Slides and Forms
+* **Slack** ([computerrock.slack.com](https://computerrock.slack.com)) - messaging, team channel is *#javascript-team*
 * **Blueprint** ([blueprint.computerrock.com](https://blueprint.computerrock.com)) - project time tracking tool
 * **Redmine** ([redmine.computerrock.com](https://redmine.computerrock.com)) - project and issue tracking tool
 * **Basecamp** ([computerrock.basecamphq.com](https://computerrock.basecamphq.com)) - project documentation
