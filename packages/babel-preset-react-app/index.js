@@ -47,6 +47,7 @@ module.exports = function () {
                     polyfill: false,
                     regenerator: true,
                 }],
+                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
                 [require('babel-plugin-transform-react-remove-prop-types').default, {removeImport: true}],
             ],
         };
@@ -65,6 +66,7 @@ module.exports = function () {
                     polyfill: false,
                     regenerator: true,
                 }],
+                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
             ],
         };
     }
