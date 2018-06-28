@@ -37,6 +37,7 @@ For all projects we use and centrally maintain basic packages needed (presets, c
 This saves us time configuring, maintaining and keeping them up to date on individual projects. Packages available: 
 
 * [`@computerrock/babel-preset-react-app`](https://www.npmjs.com/package/@computerrock/babel-preset-react-app)
+* [`@computerrock/babel-preset-react-lib`](https://www.npmjs.com/package/@computerrock/babel-preset-react-lib)
 * [`@computerrock/react-dev-utils`](https://www.npmjs.com/package/@computerrock/react-dev-utils)
 * [`@computerrock/eslint-config-base`](https://www.npmjs.com/package/@computerrock/eslint-config-base)
 * [`@computerrock/eslint-config-react-app`](https://www.npmjs.com/package/@computerrock/eslint-config-react-app)
