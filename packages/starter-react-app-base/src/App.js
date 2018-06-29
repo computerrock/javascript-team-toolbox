@@ -1,4 +1,5 @@
 import React from 'react';
+import {hot} from 'react-hot-loader';
 import logo from './logo.svg';
 import './App.scss';
 import SVGSpriteSymbol from './SVGSpriteSymbol';
@@ -15,4 +16,4 @@ const App = () => (
     </div>
 );
 
-export default App;
+export default hot(module)(App);

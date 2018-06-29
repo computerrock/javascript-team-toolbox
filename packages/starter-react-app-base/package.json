@@ -13,7 +13,7 @@
   "devDependencies": {
     "@babel/core": "7.0.0-beta.49",
     "@babel/runtime": "7.0.0-beta.49",
-    "@computerrock/babel-preset-react-app": "^1.0.3",
+    "@computerrock/babel-preset-react-app": "^1.1.0",
     "@computerrock/eslint-config-react-app": "^1.2.0",
     "@computerrock/react-dev-utils": "^1.0.1",
     "@computerrock/stylelint-config-react-app": "^1.0.2",
@@ -68,9 +68,9 @@
     "promise": "^8.0.1",
     "prop-types": "^15.6.1",
     "raf": "^3.4.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-hot-loader": "^4.1.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-hot-loader": "^4.3.3",
     "svgxuse": "^1.2.6",
     "url-search-params-polyfill": "^4.0.0",
     "whatwg-fetch": "^2.0.4"
