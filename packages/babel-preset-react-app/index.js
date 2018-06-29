@@ -24,6 +24,7 @@ module.exports = function () {
                 [require('@babel/preset-stage-3').default, {useBuiltIns: true, loose: true}],
             ],
             plugins: [
+                require('react-hot-loader/babel'),
                 [require('@babel/plugin-transform-runtime').default, {
                     helpers: false,
                     polyfill: false,
