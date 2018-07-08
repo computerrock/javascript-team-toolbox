@@ -109,8 +109,10 @@ $ nvm use node
 
 ### Install global packages
 
+There are many global packages we use. Install those you need from the list:
+
 ```bash
-$ npm install -g create-react-app lerna gulp
+$ npm install -g create-react-app http-server nodemon lerna gulp 
 $ npm list -g --depth 0 # lists all globally installed packages
 ```
 
