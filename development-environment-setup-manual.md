@@ -107,6 +107,11 @@ $ nvm ls
 $ nvm use node
 ```
 
+Add `.nvmrc` file in project root for storing node version number. File content:
+```[node version number]```
+
+Use with `nvm use` from projet root.
+
 ### Install global packages
 
 There are many global packages we use. Install those you need from the list:
