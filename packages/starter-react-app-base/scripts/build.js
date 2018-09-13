@@ -10,32 +10,17 @@ process.on('unhandledRejection', err => {
 });
 
 // load env variables
-const fs = require('fs-extra');
-const paths = require('../config/paths');
-const NODE_ENV = process.env.NODE_ENV;
-[
-    `${paths.dotenv}.${NODE_ENV}.local`,
-    `${paths.dotenv}.${NODE_ENV}`,
-    `${paths.dotenv}.local`,
-    `${paths.dotenv}`,
-]
-    .forEach(dotenvFile => {
-        if (fs.existsSync(dotenvFile)) {
-            require('dotenv-expand')(
-                require('dotenv').config({
-                    path: dotenvFile,
-                })
-            );
-        }
-    });
+require('../config/env');
 
+const fs = require('fs-extra');
 const chalk = require('chalk');
 const webpack = require('webpack');
-const config = require('../config/webpack.config.prod');
 const checkRequiredFiles = require('@computerrock/react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('@computerrock/react-dev-utils/formatWebpackMessages');
 const FileSizeReporter = require('@computerrock/react-dev-utils/FileSizeReporter');
 const printBuildError = require('@computerrock/react-dev-utils/printBuildError');
+const paths = require('../config/paths');
+const config = require('../config/webpack.config.prod');
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
@@ -61,16 +46,6 @@ measureFileSizesBeforeBuild(paths.appBuild)
       if (warnings.length) {
         console.log(chalk.yellow('Compiled with warnings.\n'));
         console.log(warnings.join('\n\n'));
-        console.log(
-          '\nSearch for the ' +
-            chalk.underline(chalk.yellow('keywords')) +
-            ' to learn more about each warning.'
-        );
-        console.log(
-          'To ignore, add ' +
-            chalk.cyan('// eslint-disable-next-line') +
-            ' to the line before.\n'
-        );
       } else {
         console.log(chalk.green('Compiled successfully.\n'));
       }

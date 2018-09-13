@@ -9,7 +9,7 @@ if (typeof Promise === 'undefined') {
 }
 
 // fetch() polyfill for making API calls.
-require('whatwg-fetch');
+require('isomorphic-fetch');
 
 // polyfill for URLSearchParams
 require('url-search-params-polyfill');

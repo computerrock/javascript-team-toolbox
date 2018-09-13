@@ -3,42 +3,36 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const InterpolateHtmlPlugin = require('@computerrock/react-dev-utils/InterpolateHtmlPlugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
 const getEnvironment = require('./env');
 const paths = require('./paths');
 
-const publicPath = paths.servedPath;
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-const publicUrl = publicPath.slice(0, -1);
+const publicPath = '/';
+const publicUrl = '';
 const env = getEnvironment(publicUrl);
 
-if (env.stringified['process.env'].NODE_ENV !== '"production"') {
-    throw new Error('Production builds must have NODE_ENV=production.');
-}
-
 module.exports = {
-    mode: 'production',
-    bail: true,
-    devtool: shouldUseSourceMap ? 'source-map' : false,
-    entry: [require.resolve('./polyfills'), paths.appIndexJs],
+    name: 'server',
+    mode: 'development',
+    devtool: 'cheap-module-eval-source-map',
+    target: 'node',
+    entry: [
+        require.resolve('./polyfills'),
+        paths.appServerJs,
+    ],
     output: {
         path: paths.appBuild,
-        filename: 'js/[name].[chunkhash:8].js',
-        chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
+        filename: 'universalAppMiddleware.js',
         publicPath: publicPath,
+        libraryTarget: 'this',
         // point sourcemap entries to original disk location
         devtoolModuleFilenameTemplate: info => path
-            .relative(paths.appSrc, info.absoluteResourcePath)
+            .resolve(info.absoluteResourcePath)
             .replace(/\\/g, '/'),
     },
     resolve: {
@@ -65,6 +59,7 @@ module.exports = {
                         options: {
                             formatter: eslintFormatter,
                             eslintPath: require.resolve('eslint'),
+                            fix: true,
                         },
                     },
                 ],
@@ -74,11 +69,11 @@ module.exports = {
                 oneOf: [
                     // js/jsx
                     {
-                        test: /\.(js|jsx)$/,
+                        test: /\.(js|jsx|mjs)$/,
                         include: paths.appSrc,
                         loader: require.resolve('babel-loader'),
                         options: {
-                            compact: true,
+                            cacheDirectory: true,
                         },
                     },
                     // svg
@@ -115,14 +110,12 @@ module.exports = {
                     // styles
                     {
                         test: /\.(css|scss)$/,
-                        loader: [
-                            MiniCssExtractPlugin.loader,
+                        use: [
                             {
-                                loader: require.resolve('css-loader'),
+                                loader: require.resolve('css-loader/locals'),
                                 options: {
                                     importLoaders: 1,
-                                    minimize: true,
-                                    sourceMap: shouldUseSourceMap,
+                                    sourceMap: true,
                                 },
                             },
                             require.resolve('svg-transform-loader/encode-query'),
@@ -130,6 +123,7 @@ module.exports = {
                                 loader: require.resolve('postcss-loader'),
                                 options: {
                                     ident: 'postcss',
+                                    sourceMap: true,
                                     plugins: () => [
                                         require('postcss-flexbugs-fixes'),
                                         autoprefixer({
@@ -150,7 +144,13 @@ module.exports = {
                                     keepQuery: true,
                                 },
                             },
-                            require.resolve('sass-loader'),
+                            {
+                                loader: require.resolve('sass-loader'),
+                                options: {
+                                    sourceMap: true,
+                                    sourceMapContents: true,
+                                },
+                            },
                         ],
                     },
                     // media
@@ -164,8 +164,8 @@ module.exports = {
                     },
                     // catch all
                     {
-                        loader: require.resolve('file-loader'),
                         exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.svg$/],
+                        loader: require.resolve('file-loader'),
                         options: {
                             name: 'media/[name].[hash:8].[ext]',
                         },
@@ -175,81 +175,25 @@ module.exports = {
         ],
     },
     plugins: [
-        // generate index.html file
-        new HtmlWebpackPlugin({
-            inject: true,
-            template: paths.appHtml,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true,
-            },
-        }),
-        // make environment variables available in index.html
-        new InterpolateHtmlPlugin(env.raw),
         // make environment variables available in application code
         new webpack.DefinePlugin(env.stringified),
         // lint styles
-        new StyleLintPlugin({syntax: 'scss'}),
-        // won't work without MiniCssExtractPlugin.loader in `module.rules`.
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[id].[contenthash:8].chunk.css',
+        new StyleLintPlugin({
+            syntax: 'scss',
+            fix: false,
         }),
         // SVG sprite loader
         new SpriteLoaderPlugin(),
-        // generate manifest file
-        new ManifestPlugin({
-            fileName: 'asset-manifest.json',
-        }),
-        // generate a service worker script for pre-caching HTML & assets
-        new SWPrecacheWebpackPlugin({
-            dontCacheBustUrlsMatching: /\.\w{8}\./,
-            filename: 'service-worker.js',
-            logger(message) {
-                if (message.indexOf('Total precache size is') === 0) {
-                    return;
-                }
-                if (message.indexOf('Skipping static resource') === 0) {
-                    // no op return;
-                }
-            },
-            minify: true,
-            navigateFallback: publicUrl + '/index.html',
-            navigateFallbackWhitelist: [/^(?!\/__).*/],
-            staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-        }),
+        // enforce case sensitive paths in Webpack requires
+        new CaseSensitivePathsPlugin(),
+        // on `npm install` rebuild
+        new WatchMissingNodeModulesPlugin(paths.appNodeModules),
         // ignore modules that cause large bundles
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
     optimization: {
-        // minify the code
-        minimizer: [
-            new UglifyJsPlugin({
-                sourceMap: shouldUseSourceMap,
-                uglifyOptions: {
-                    compress: {
-                        warnings: false,
-                        comparisons: false,
-                    },
-                    mangle: {
-                        safari10: true,
-                    },
-                    output: {
-                        comments: false,
-                        ascii_only: true,
-                    },
-                },
-            }),
-            new OptimizeCSSAssetsPlugin(),
-        ],
+        // when HMR is enabled display relative path of the module
+        namedModules: true,
     },
     // tell Webpack to provide empty mocks for imported Node modules not used in the browser
     node: {
@@ -258,5 +202,9 @@ module.exports = {
         net: 'empty',
         tls: 'empty',
         child_process: 'empty',
+    },
+    // turn off performance hints during development
+    performance: {
+        hints: false,
     },
 };

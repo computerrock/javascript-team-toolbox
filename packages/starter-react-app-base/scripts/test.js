@@ -11,23 +11,7 @@ process.on('unhandledRejection', err => {
 });
 
 // load env variables
-const fs = require('fs');
-const paths = require('../config/paths');
-const NODE_ENV = process.env.NODE_ENV;
-[
-    `${paths.dotenv}.${NODE_ENV}.local`,
-    `${paths.dotenv}.${NODE_ENV}`,
-    `${paths.dotenv}`,
-]
-    .forEach(dotenvFile => {
-        if (fs.existsSync(dotenvFile)) {
-            require('dotenv-expand')(
-                require('dotenv').config({
-                    path: dotenvFile,
-                })
-            );
-        }
-    });
+require('../config/env');
 
 const jest = require('jest');
 const argv = process.argv.slice(2);

@@ -11,32 +11,34 @@ const InterpolateHtmlPlugin = require('@computerrock/react-dev-utils/Interpolate
 const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
+const getEnvironment = require('./env');
 const paths = require('./paths');
 
-const clientEnvironment = {
-    NODE_ENV: process.env.NODE_ENV || 'development',
-    PUBLIC_URL: '',
-};
+const publicPath = '/';
+const publicUrl = '';
+const env = getEnvironment(publicUrl);
 
 module.exports = {
+    name: 'client',
     mode: 'development',
-    devtool: 'eval',
+    devtool: 'cheap-module-eval-source-map',
+    target: 'web',
     entry: [
         require.resolve('./polyfills'),
-        require.resolve('webpack-dev-server/client') + '?/',
-        require.resolve('webpack/hot/dev-server'),
+        require.resolve('webpack-hot-middleware/client') + '?/__what&name=client',
         paths.appIndexJs,
     ],
     output: {
         path: paths.appBuild,
-        pathinfo: true,
-        filename: 'js/build.js',
+        filename: 'js/index.js',
         chunkFilename: 'js/[name].chunk.js',
-        publicPath: '/',
+        publicPath: publicPath,
         hotUpdateChunkFilename: 'hot/[id].[hash].hot-update.js',
         hotUpdateMainFilename: 'hot/[hash].hot-update.json',
         // point sourcemap entries to original disk location
-        devtoolModuleFilenameTemplate: info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+        devtoolModuleFilenameTemplate: info => path
+            .resolve(info.absoluteResourcePath)
+            .replace(/\\/g, '/'),
     },
     resolve: {
         modules: ['node_modules'],
@@ -79,6 +81,37 @@ module.exports = {
                             cacheDirectory: true,
                         },
                     },
+                    // svg
+                    {
+                        test: [/\.svg$/],
+                        issuer: /\.(js|jsx|mjs)$/,
+                        use: [
+                            {
+                                loader: require.resolve('svg-sprite-loader'),
+                                options: {
+                                    symbolId: 'symbol-[name]',
+                                    extract: true,
+                                    spriteFilename: 'media/sprite.[hash:8].svg',
+                                    esModule: false,
+                                },
+                            },
+                            require.resolve('svgo-loader'),
+                        ],
+                    },
+                    {
+                        test: [/\.svg$/],
+                        issuer: /\.(css|scss)$/,
+                        use: [
+                            {
+                                loader: require.resolve('svg-url-loader'),
+                                options: {
+                                    iesafe: true,
+                                },
+                            },
+                            require.resolve('svg-transform-loader'),
+                            require.resolve('svgo-loader'),
+                        ],
+                    },
                     // styles
                     {
                         test: /\.(css|scss)$/,
@@ -91,6 +124,7 @@ module.exports = {
                                     sourceMap: true,
                                 },
                             },
+                            require.resolve('svg-transform-loader/encode-query'),
                             {
                                 loader: require.resolve('postcss-loader'),
                                 options: {
@@ -125,23 +159,6 @@ module.exports = {
                             },
                         ],
                     },
-                    // svg
-                    {
-                        test: [/\.svg$/],
-                        use: [
-                            {
-                                loader: require.resolve('svg-sprite-loader'),
-                                options: {
-                                    symbolId: 'icon-[name]',
-                                    extract: true,
-                                    spriteFilename: 'media/sprite.[hash:8].svg',
-                                    esModule: false,
-                                },
-                            },
-                            require.resolve('svg-transform-loader'),
-                            require.resolve('svgo-loader'),
-                        ],
-                    },
                     // media
                     {
                         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -170,17 +187,9 @@ module.exports = {
             template: paths.appHtml,
         }),
         // make environment variables available in index.html
-        new InterpolateHtmlPlugin(Object.keys(process.env).reduce((env, key) => {
-            env[key] = process.env[key];
-            return env;
-        }, clientEnvironment)),
+        new InterpolateHtmlPlugin(env.raw),
         // make environment variables available in application code
-        new webpack.DefinePlugin({
-            'process.env': Object.keys(process.env).reduce((env, key) => {
-                env[key] = JSON.stringify(process.env[key]);
-                return env;
-            }, clientEnvironment),
-        }),
+        new webpack.DefinePlugin(env.stringified),
         // lint styles
         new StyleLintPlugin({
             syntax: 'scss',

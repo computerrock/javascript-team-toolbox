@@ -9,37 +9,31 @@ process.on('unhandledRejection', err => {
     throw err;
 });
 
+// SSR
+const argv = require('yargs').argv;
+const isSSREnabled = typeof argv['with-ssr'] !== 'undefined' ? true : '';
+process.env.SSR_ENABLED = isSSREnabled;
+
 // load env variables
-const fs = require('fs-extra');
-const paths = require('../config/paths');
-const NODE_ENV = process.env.NODE_ENV;
-[
-    `${paths.dotenv}.${NODE_ENV}.local`,
-    `${paths.dotenv}.${NODE_ENV}`,
-    `${paths.dotenv}.local`,
-    `${paths.dotenv}`,
-]
-    .forEach(dotenvFile => {
-        if (fs.existsSync(dotenvFile)) {
-            require('dotenv-expand')(
-                require('dotenv').config({
-                    path: dotenvFile,
-                })
-            );
-        }
-    });
+require('../config/env');
 
 const chalk = require('chalk');
 const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
+const express = require('express');
+const history = require('connect-history-api-fallback');
+const WebpackDevMiddleware = require('webpack-dev-middleware');
+const WebpackHotMiddleware = require('webpack-hot-middleware');
 const clearConsole = require('@computerrock/react-dev-utils/clearConsole');
 const checkRequiredFiles = require('@computerrock/react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('@computerrock/react-dev-utils/formatWebpackMessages');
 const {choosePort} = require('@computerrock/react-dev-utils/WebpackDevServerUtils');
+const webpackUniversalAppMiddleware = require('../server/webpackUniversalAppMiddleware');
+const paths = require('../config/paths');
 const config = require('../config/webpack.config.dev');
+const serverConfig = require('../config/webpack.config.server-dev');
 
 // warn and exit if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([paths.appHtml, paths.appServerJs])) {
     process.exit(1);
 }
 
@@ -55,9 +49,7 @@ if (process.env.HOST) {
             )}`
         )
     );
-    console.log(
-        `If this was unintentional, check that you haven't mistakenly set it in your shell.`
-    );
+    console.log(`If this was unintentional, check that you haven't mistakenly set it in your shell.`);
     console.log(`Learn more here: ${chalk.yellow('http://bit.ly/2mwWSwH')}`);
     console.log();
 }
@@ -71,7 +63,11 @@ choosePort(HOST, DEFAULT_PORT)
         // create webpack compiler
         let compiler;
         try {
-            compiler = webpack(config);
+            if (isSSREnabled) {
+                compiler = webpack([config, serverConfig]);
+            } else {
+                compiler = webpack(config);
+            }
         } catch (err) {
             console.log(chalk.red('Failed to compile.'));
             console.log();
@@ -107,6 +103,7 @@ choosePort(HOST, DEFAULT_PORT)
             if (messages.errors.length) {
                 console.log(chalk.red('Failed to compile.\n'));
                 console.log(messages.errors.join('\n\n'));
+                console.log();
                 return;
             }
 
@@ -114,19 +111,28 @@ choosePort(HOST, DEFAULT_PORT)
             if (messages.warnings.length) {
                 console.log(chalk.yellow('Compiled with warnings.\n'));
                 console.log(messages.warnings.join('\n\n'));
+                console.log();
             }
         });
 
-        // configure WebpackDevServer
-        const devServer = new WebpackDevServer(compiler, {
+        // initialize dev server
+        const devServer = express();
+
+        // history fallback
+        if (!isSSREnabled) {
+            devServer.use(history());
+        }
+
+        // configure WebpackDevMiddleware
+        devServer.use(WebpackDevMiddleware(compiler, {
             compress: true,
             contentBase: paths.appPublic,
             watchContentBase: true,
             publicPath: config.output.publicPath,
             // enable hot reloading
             hot: true,
-            // silence all default messages, formatted stats will be shown instead
-            clientLogLevel: 'none',
+            // display only error messages, formatted warning stats will be shown in terminal
+            logLevel: 'error',
             quiet: true,
             // do not watch node_modules
             watchOptions: {
@@ -134,11 +140,31 @@ choosePort(HOST, DEFAULT_PORT)
             },
             // allow period symbol in paths
             historyApiFallback: {
-                disableDotRule: true
-            }
-        });
+                disableDotRule: true,
+            },
+            // enable server side rendering
+            // index needs to be falsy due to incompatibility with HtmlWebpackPlugin:
+            // https://github.com/webpack/webpack-dev-middleware/issues/142
+            serverSideRender: isSSREnabled,
+            index: isSSREnabled ? false : 'index.html',
+        }));
 
-        // launch WebpackDevServer
+        // configure WebpackHotMiddleware
+        devServer.use(WebpackHotMiddleware(compiler));
+
+        // serve files from the public dir
+        devServer.use(express.static(paths.appPublic, {
+            index: false,
+        }));
+
+        // server side rendering
+        if (isSSREnabled) {
+            devServer.use(webpackUniversalAppMiddleware(compiler, {
+                index: 'index.html',
+            }));
+        }
+
+        // launch webpack dev server
         devServer.listen(port, HOST, err => {
             if (err) {
                 return console.log(err);
@@ -151,7 +177,7 @@ choosePort(HOST, DEFAULT_PORT)
 
         ['SIGINT', 'SIGTERM'].forEach(function (sig) {
             process.on(sig, function () {
-                devServer.close();
+                // devServer.close();
                 process.exit();
             });
         });
