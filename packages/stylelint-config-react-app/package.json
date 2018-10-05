@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/stylelint-config-react-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "stylelint configuration used for React projects",
   "license": "MIT",
   "repository": {
