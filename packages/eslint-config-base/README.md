@@ -10,8 +10,8 @@ This package is extended by `@computerrock/eslint-config-react-app` and `@comput
 Install this package, ESLint and the necessary plugins.
 
 ```sh
-$ npm install eslint@^4.19.0 babel-eslint@^8.2.0 --save-dev
-$ npm install eslint-plugin-import@^2.11.0 --save-dev
+$ npm install eslint@^5.6.0 babel-eslint@^10.0.0 --save-dev
+$ npm install eslint-plugin-import@^2.14.0 --save-dev
 $ npm install @computerrock/eslint-config-base --save-dev
 ```
 

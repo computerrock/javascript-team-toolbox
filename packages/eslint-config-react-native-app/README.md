@@ -9,8 +9,8 @@ This package contains shareable ESLint configuration used for React projects. It
 Install this package, ESLint and the necessary plugins.
 
 ```sh
-$ npm install eslint@^4.19.0 babel-eslint@^8.2.0 --save-dev
-$ npm install eslint-plugin-import@^2.11.0 eslint-plugin-react@^7.9.0 eslint-plugin-react-native@^3.2.0 eslint-plugin-jsx-a11y@^6.0.0 --save-dev
+$ npm install eslint@^5.6.0 babel-eslint@^10.0.0 --save-dev
+$ npm install eslint-plugin-import@^2.14.0 eslint-plugin-react@^7.11.0 eslint-plugin-react-native@^3.3.0 eslint-plugin-jsx-a11y@^6.1.0 --save-dev
 $ npm install @computerrock/eslint-config-react-native-app --save-dev
 ```
 
