@@ -7,8 +7,8 @@ This package contains Babel preset used for JavaScript/React libraries.
 Install package and peer dependencies by running:
 
 ```sh
-$ npm install babel-core@7.0.0-bridge.0 @babel/core@7.0.0-beta.49 @babel/runtime@7.0.0-beta.49 --save-dev 
-$ npm install @computerrock/babel-preset-react-lib --save-dev 
+$ npm install babel-core@^7.0.0-bridge.0 @babel/core@^7.0.0 @babel/runtime@^7.0.0 --save-dev 
+$ npm install @computerrock/babel-preset-react-lib@^2.0.0 --save-dev 
 ```
 
 Create a file named `.babelrc` with following contents in the root folder of your project:
