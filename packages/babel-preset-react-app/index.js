@@ -21,15 +21,19 @@ module.exports = function () {
             presets: [
                 [require('@babel/preset-env').default, {useBuiltIns: 'entry', modules: false}],
                 [require('@babel/preset-react').default, {development: true, useBuiltIns: true}],
-                [require('@babel/preset-stage-3').default, {useBuiltIns: true, loose: true}],
             ],
             plugins: [
                 require('react-hot-loader/babel'),
                 [require('@babel/plugin-transform-runtime').default, {
                     helpers: false,
-                    polyfill: false,
                     regenerator: true,
                 }],
+                [require('@babel/plugin-transform-react-constant-elements').default],
+                [require('@babel/plugin-transform-react-display-name').default],
+                [require('@babel/plugin-syntax-dynamic-import').default],
+                [require('@babel/plugin-syntax-import-meta').default],
+                [require('@babel/plugin-proposal-json-strings').default],
+                [require('@babel/plugin-proposal-class-properties').default],
                 [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
             ],
         };
@@ -40,14 +44,18 @@ module.exports = function () {
             presets: [
                 [require('@babel/preset-env').default, {useBuiltIns: 'entry', modules: false}],
                 [require('@babel/preset-react').default, {development: false, useBuiltIns: true}],
-                [require('@babel/preset-stage-3').default, {useBuiltIns: true, loose: true}],
             ],
             plugins: [
                 [require('@babel/plugin-transform-runtime').default, {
                     helpers: false,
-                    polyfill: false,
                     regenerator: true,
                 }],
+                [require('@babel/plugin-transform-react-constant-elements').default],
+                [require('@babel/plugin-transform-react-display-name').default],
+                [require('@babel/plugin-syntax-dynamic-import').default],
+                [require('@babel/plugin-syntax-import-meta').default],
+                [require('@babel/plugin-proposal-json-strings').default],
+                [require('@babel/plugin-proposal-class-properties').default],
                 [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
                 [require('babel-plugin-transform-react-remove-prop-types').default, {removeImport: true}],
             ],
@@ -59,14 +67,18 @@ module.exports = function () {
             presets: [
                 [require('@babel/preset-env').default, {targets: {node: '6.12'}}],
                 [require('@babel/preset-react').default, {development: true, useBuiltIns: true}],
-                [require('@babel/preset-stage-3').default, {useBuiltIns: true, loose: true}],
             ],
             plugins: [
                 [require('@babel/plugin-transform-runtime').default, {
                     helpers: false,
-                    polyfill: false,
                     regenerator: true,
                 }],
+                [require('@babel/plugin-transform-react-constant-elements').default],
+                [require('@babel/plugin-transform-react-display-name').default],
+                [require('@babel/plugin-syntax-dynamic-import').default],
+                [require('@babel/plugin-syntax-import-meta').default],
+                [require('@babel/plugin-proposal-json-strings').default],
+                [require('@babel/plugin-proposal-class-properties').default],
                 [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
             ],
         };
