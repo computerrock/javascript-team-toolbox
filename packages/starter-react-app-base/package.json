@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
+    "@babel/runtime": "^7.1.0",
     "@computerrock/babel-preset-react-app": "^2.1.2",
     "@computerrock/eslint-config-react-app": "^1.4.0",
     "@computerrock/react-dev-utils": "^1.0.2",
