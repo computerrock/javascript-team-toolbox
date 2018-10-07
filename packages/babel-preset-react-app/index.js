@@ -27,7 +27,7 @@ module.exports = function () {
                 [require('@babel/plugin-transform-runtime').default, {
                     corejs: false,
                     helpers: false,
-                    regenerator: true,
+                    regenerator: false,
                     useESModules: false,
                 }],
                 [require('@babel/plugin-transform-react-constant-elements').default],
