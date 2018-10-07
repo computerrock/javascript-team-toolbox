@@ -20,16 +20,17 @@ module.exports = function () {
         return {
             presets: [
                 [require('@babel/preset-env').default, {useBuiltIns: 'entry', modules: false}],
-                [require('@babel/preset-react').default, {development: true, useBuiltIns: true}],
+                [require('@babel/preset-react').default, {useBuiltIns: true, development: true}],
             ],
             plugins: [
                 require('react-hot-loader/babel'),
                 [require('@babel/plugin-transform-runtime').default, {
+                    corejs: false,
                     helpers: false,
                     regenerator: true,
+                    useESModules: false,
                 }],
                 [require('@babel/plugin-transform-react-constant-elements').default],
-                [require('@babel/plugin-transform-react-display-name').default],
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
@@ -40,18 +41,20 @@ module.exports = function () {
     }
 
     if (isEnvProduction) {
+
         return {
             presets: [
                 [require('@babel/preset-env').default, {useBuiltIns: 'entry', modules: false}],
-                [require('@babel/preset-react').default, {development: false, useBuiltIns: true}],
+                [require('@babel/preset-react').default, {useBuiltIns: true, development: false}],
             ],
             plugins: [
                 [require('@babel/plugin-transform-runtime').default, {
+                    corejs: false,
                     helpers: false,
-                    regenerator: true,
+                    regenerator: false,
+                    useESModules: false,
                 }],
                 [require('@babel/plugin-transform-react-constant-elements').default],
-                [require('@babel/plugin-transform-react-display-name').default],
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
@@ -65,16 +68,17 @@ module.exports = function () {
     if (isEnvTest) {
         return {
             presets: [
-                [require('@babel/preset-env').default, {targets: {node: '6.12'}}],
-                [require('@babel/preset-react').default, {development: true, useBuiltIns: true}],
+                [require('@babel/preset-env').default, {targets: {node: '8.12'}}],
+                [require('@babel/preset-react').default, {useBuiltIns: true, development: true}],
             ],
             plugins: [
                 [require('@babel/plugin-transform-runtime').default, {
+                    corejs: false,
                     helpers: false,
-                    regenerator: true,
+                    regenerator: false,
+                    useESModules: false,
                 }],
                 [require('@babel/plugin-transform-react-constant-elements').default],
-                [require('@babel/plugin-transform-react-display-name').default],
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
