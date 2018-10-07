@@ -27,7 +27,7 @@ module.exports = function () {
                 [require('@babel/plugin-transform-runtime').default, {
                     corejs: false,
                     helpers: false,
-                    regenerator: false,
+                    regenerator: true,
                     useESModules: false,
                 }],
                 [require('@babel/plugin-transform-react-constant-elements').default],
@@ -51,7 +51,7 @@ module.exports = function () {
                 [require('@babel/plugin-transform-runtime').default, {
                     corejs: false,
                     helpers: false,
-                    regenerator: false,
+                    regenerator: true,
                     useESModules: false,
                 }],
                 [require('@babel/plugin-transform-react-constant-elements').default],
@@ -75,7 +75,7 @@ module.exports = function () {
                 [require('@babel/plugin-transform-runtime').default, {
                     corejs: false,
                     helpers: false,
-                    regenerator: false,
+                    regenerator: true,
                     useESModules: false,
                 }],
                 [require('@babel/plugin-transform-react-constant-elements').default],
