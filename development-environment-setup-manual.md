@@ -155,6 +155,7 @@ contents for the file:
 Create (if you don't have one) `.bashrc` file in home directory and add one of two versions of content below:
 
 * one-line version:
+
 ```bash
 source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -166,6 +167,7 @@ PROMPT_COMMAND='__git_ps1 "\[\e[01;31m\]\u\[\e[01;33m\]@\[\e[01;36m\]\h \[\e[01;
 
 or 
 * multi line version:
+
 ```bash
 source ~/.git-prompt.sh
 source ~/git-completion.bash
@@ -177,6 +179,7 @@ PROMPT_COMMAND='__git_ps1 "\[\e[01;33m\]@\[\e[01;36m\]\h>-----------------------
 ```
 
 then put two files from this repository to home directory:
+
 ```bash
 ../other-docs/.git-prompt.sh
 ../other-docs/git-completition.bash
