@@ -158,6 +158,7 @@ Create (if you don't have one) `.bashrc` file in home directory and add one of t
 
 ```bash
 source ~/.git-prompt.sh
+source ~/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWCOLORHINTS=true
