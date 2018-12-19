@@ -36,7 +36,7 @@ module.exports = {
         // Main list of rules
 
         // Enforces consistent naming for boolean props
-        'react/boolean-prop-naming': ['warn', {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'}],
+        'react/boolean-prop-naming': ['warn', {rule: '^(is|has|are)[A-Z]([A-Za-z0-9]?)+'}],
 
         // Forbid "button" element without an explicit "type" attribute
         'react/button-has-type': 'warn',
