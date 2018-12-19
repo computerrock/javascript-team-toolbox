@@ -301,7 +301,7 @@ module.exports = {
         'padding-line-between-statements': 'off',
 
         // require quotes around object literal property names
-        'quote-props': ['warn', 'consistent-as-needed', {keywords: true}],
+        'quote-props': ['warn', 'consistent'],
 
         // enforce the consistent use of either backticks, double, or single quotes
         'quotes': ['warn', 'single', {allowTemplateLiterals: true}],
