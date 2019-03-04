@@ -144,7 +144,7 @@ module.exports = {
         'react/prop-types': [
             'warn',
             {
-                ignore: [],
+                ignore: ['children'],
                 customValidators: [],
                 skipUndeclared: false,
             },
@@ -295,5 +295,13 @@ module.exports = {
             'logical': 'parens-new-line',
             'prop': 'parens-new-line',
         }],
+
+        'lines-between-class-members': [
+            'warn',
+            'always',
+            {
+                'exceptAfterSingleLine': true,
+            },
+        ],
     },
 };
