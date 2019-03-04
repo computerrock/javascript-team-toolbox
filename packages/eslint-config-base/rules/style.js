@@ -141,7 +141,7 @@ module.exports = {
         'lines-around-comment': 'off',
 
         // require or disallow an empty line between class members
-        'lines-between-class-members': ['warn', 'always', {exceptAfterSingleLine: false}],
+        'lines-between-class-members': ['warn', 'always', {exceptAfterSingleLine: true}],
 
         // enforce a maximum depth that blocks can be nested
         'max-depth': ['off', 4],

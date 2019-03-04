@@ -295,13 +295,5 @@ module.exports = {
             'logical': 'parens-new-line',
             'prop': 'parens-new-line',
         }],
-
-        'lines-between-class-members': [
-            'warn',
-            'always',
-            {
-                'exceptAfterSingleLine': true,
-            },
-        ],
     },
 };
