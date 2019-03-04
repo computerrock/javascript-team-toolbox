@@ -1,3 +1,7 @@
 {
-  "extends": "@computerrock/eslint-config-react-app"
+  "extends": "@computerrock/eslint-config-react-app",
+  "rules": {
+    "lines-between-class-members": ["warn", "always", {"exceptAfterSingleLine": true}],
+    "react/prop-types": ["warn", {"ignore": ["children"]}]
+  }
 }
