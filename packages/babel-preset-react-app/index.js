@@ -34,8 +34,8 @@ module.exports = function () {
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
+                [require('@babel/plugin-proposal-decorators').default, {decoratorsBeforeExport: false}],
                 [require('@babel/plugin-proposal-class-properties').default],
-                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
             ],
         };
     }
@@ -58,8 +58,8 @@ module.exports = function () {
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
+                [require('@babel/plugin-proposal-decorators').default, {decoratorsBeforeExport: false}],
                 [require('@babel/plugin-proposal-class-properties').default],
-                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
                 [require('babel-plugin-transform-react-remove-prop-types').default, {removeImport: true}],
             ],
         };
@@ -82,8 +82,8 @@ module.exports = function () {
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
+                [require('@babel/plugin-proposal-decorators').default, {decoratorsBeforeExport: false}],
                 [require('@babel/plugin-proposal-class-properties').default],
-                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
             ],
         };
     }
