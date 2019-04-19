@@ -4,11 +4,6 @@ import logo from './logo.svg';
 import './App.scss';
 import SVGSpriteSymbol from './SVGSpriteSymbol';
 
-const test = () => {
-    //
-    return true;
-};
-
 const App = () => (
     <div className="cn-c-app">
         <header className="cn-c-app__header">

@@ -45,6 +45,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json'],
         alias: {
             'react-native': 'react-native-web',
+            'react-dom': '@hot-loader/react-dom',
         },
         plugins: [
             // check that used modules are inside the source scope
@@ -149,6 +150,7 @@ module.exports = {
                                 loader: require.resolve('resolve-url-loader'),
                                 options: {
                                     keepQuery: true,
+                                    removeCR: true,
                                 },
                             },
                             {

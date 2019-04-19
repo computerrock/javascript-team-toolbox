@@ -112,10 +112,11 @@ module.exports = {
                         test: /\.(css|scss)$/,
                         use: [
                             {
-                                loader: require.resolve('css-loader/locals'),
+                                loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
                                     sourceMap: true,
+                                    exportOnlyLocals: true,
                                 },
                             },
                             require.resolve('svg-transform-loader/encode-query'),
@@ -142,6 +143,7 @@ module.exports = {
                                 loader: require.resolve('resolve-url-loader'),
                                 options: {
                                     keepQuery: true,
+                                    removeCR: true,
                                 },
                             },
                             {
