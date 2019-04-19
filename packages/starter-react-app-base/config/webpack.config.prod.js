@@ -10,7 +10,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const InterpolateHtmlPlugin = require('@computerrock/react-dev-utils/InterpolateHtmlPlugin');
 const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
@@ -121,7 +121,6 @@ module.exports = {
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    minimize: true,
                                     sourceMap: shouldUseSourceMap,
                                 },
                             },
@@ -142,6 +141,9 @@ module.exports = {
                                             flexbox: 'no-2009',
                                             grid: true,
                                         }),
+                                        require('cssnano')({
+                                            preset: 'default',
+                                        }),
                                     ],
                                 },
                             },
@@ -149,6 +151,7 @@ module.exports = {
                                 loader: require.resolve('resolve-url-loader'),
                                 options: {
                                     keepQuery: true,
+                                    removeCR: true,
                                 },
                             },
                             require.resolve('sass-loader'),
@@ -233,9 +236,9 @@ module.exports = {
     optimization: {
         // minify the code
         minimizer: [
-            new UglifyJsPlugin({
+            new TerserPlugin({
                 sourceMap: shouldUseSourceMap,
-                uglifyOptions: {
+                terserOptions: {
                     compress: {
                         warnings: false,
                         comparisons: false,
