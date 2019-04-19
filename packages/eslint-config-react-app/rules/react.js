@@ -10,6 +10,7 @@
 module.exports = {
     plugins: [
         'react',
+        'react-hooks',
     ],
     parserOptions: {
         ecmaFeatures: {
@@ -295,5 +296,11 @@ module.exports = {
             'logical': 'parens-new-line',
             'prop': 'parens-new-line',
         }],
+
+        // Checks rules of Hooks
+        'react-hooks/rules-of-hooks': 'error',
+
+        // Checks effect dependencies
+        'react-hooks/exhaustive-deps': 'warn',
     },
 };

@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/eslint-config-react-app",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "ESLint configuration used for React projects",
   "license": "MIT",
   "repository": {
@@ -15,13 +15,14 @@
     "node": ">=8"
   },
   "dependencies": {
-    "@computerrock/eslint-config-base": "^1.5.2"
+    "@computerrock/eslint-config-base": "^1.6.0"
   },
   "peerDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0"
   }
 }
