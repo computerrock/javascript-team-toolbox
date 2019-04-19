@@ -19,13 +19,13 @@ module.exports = function () {
     if (isEnvDevelopment) {
         return {
             presets: [
-                [require('@babel/preset-env').default, {useBuiltIns: 'entry', modules: false}],
+                [require('@babel/preset-env').default, {useBuiltIns: 'entry', corejs: "core-js@3", modules: false}],
                 [require('@babel/preset-react').default, {useBuiltIns: true, development: true}],
             ],
             plugins: [
                 require('react-hot-loader/babel'),
                 [require('@babel/plugin-transform-runtime').default, {
-                    corejs: false,
+                    corejs: 3,
                     helpers: false,
                     regenerator: true,
                     useESModules: false,
@@ -34,22 +34,21 @@ module.exports = function () {
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
-                [require('@babel/plugin-proposal-decorators').default, {decoratorsBeforeExport: false}],
-                [require('@babel/plugin-proposal-class-properties').default],
+                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
+                [require('@babel/plugin-proposal-class-properties').default, {loose: true}],
             ],
         };
     }
 
     if (isEnvProduction) {
-
         return {
             presets: [
-                [require('@babel/preset-env').default, {useBuiltIns: 'entry', modules: false}],
+                [require('@babel/preset-env').default, {useBuiltIns: 'entry', corejs: "core-js@3", modules: false}],
                 [require('@babel/preset-react').default, {useBuiltIns: true, development: false}],
             ],
             plugins: [
                 [require('@babel/plugin-transform-runtime').default, {
-                    corejs: false,
+                    corejs: 3,
                     helpers: false,
                     regenerator: true,
                     useESModules: false,
@@ -58,8 +57,8 @@ module.exports = function () {
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
-                [require('@babel/plugin-proposal-decorators').default, {decoratorsBeforeExport: false}],
-                [require('@babel/plugin-proposal-class-properties').default],
+                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
+                [require('@babel/plugin-proposal-class-properties').default, {loose: true}],
                 [require('babel-plugin-transform-react-remove-prop-types').default, {removeImport: true}],
             ],
         };
@@ -82,8 +81,8 @@ module.exports = function () {
                 [require('@babel/plugin-syntax-dynamic-import').default],
                 [require('@babel/plugin-syntax-import-meta').default],
                 [require('@babel/plugin-proposal-json-strings').default],
-                [require('@babel/plugin-proposal-decorators').default, {decoratorsBeforeExport: false}],
-                [require('@babel/plugin-proposal-class-properties').default],
+                [require('@babel/plugin-proposal-decorators').default, {legacy: true}],
+                [require('@babel/plugin-proposal-class-properties').default, {loose: true}],
             ],
         };
     }
