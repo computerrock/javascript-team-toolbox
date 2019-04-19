@@ -1,6 +1,6 @@
 {
   "name": "@comrock/starter-react-lib",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "React starter lib",
   "author": "Computer Rock",
   "license": "ISC",
@@ -19,7 +19,7 @@
     "node": ">=8"
   },
   "devDependencies": {
-    "@computerrock/babel-preset-react-lib": "^2.1.0",
+    "@computerrock/babel-preset-react-lib": "^2.3.1",
     "cross-env": "^5.2.0",
     "rollup": "^0.66.4",
     "rollup-plugin-babel": "^4.0.3",
