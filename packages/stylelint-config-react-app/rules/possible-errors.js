@@ -29,7 +29,7 @@ module.exports = {
         'property-no-unknown': [
             true,
             {
-                ignore: ['composes']
+                ignoreProperties: ['composes']
             }
         ],
 
