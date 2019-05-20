@@ -252,6 +252,22 @@ var getProcessForPort = require('react-dev-utils/getProcessForPort');
 getProcessForPort(3000);
 ```
 
+### `css-loader` - `getLocalBEMIdent()`
+
+Use with `css-loader` in module mode to ensure BEM class names based on file name (Block) and local class 
+name (Element/Modifier):
+
+```
+{
+    loader: require.resolve('css-loader'),
+    options: {
+        modules: true,
+        localIdentName: '[bem]---[contenthash:8]',
+        getLocalIdent: getLocalBEMIdent,
+    }
+}
+```
+
 ### `WebpackDevServerUtils`
 
 #### `choosePort(host: string, defaultPort: number): Promise<number | null>`
