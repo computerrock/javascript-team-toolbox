@@ -76,6 +76,7 @@
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
     "core-js": "^3.0.1",
+    "classnames": "^2.2.6",
     "include-media": "^1.4.9",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
@@ -92,7 +93,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "nodemon scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   }

@@ -79,7 +79,7 @@ choosePort(HOST, DEFAULT_PORT)
         // on webpack invalidation display pending status
         compiler.plugin('invalid', () => {
             if (isInteractive) {
-                clearConsole();
+                // clearConsole();
             }
             console.log('Compiling...');
         });
@@ -87,7 +87,7 @@ choosePort(HOST, DEFAULT_PORT)
         // on webpack compile display result status and formatted stats
         compiler.plugin('done', stats => {
             if (isInteractive) {
-                clearConsole();
+                // clearConsole();
             }
 
             const messages = formatWebpackMessages(stats.toJson({}, true));
@@ -170,7 +170,7 @@ choosePort(HOST, DEFAULT_PORT)
                 return console.log(err);
             }
             if (isInteractive) {
-                clearConsole();
+                // clearConsole();
             }
             console.log(chalk.cyan('Starting the development server...\n'));
         });
