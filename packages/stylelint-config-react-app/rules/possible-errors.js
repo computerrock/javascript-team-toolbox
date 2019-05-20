@@ -26,7 +26,12 @@ module.exports = {
         'unit-no-unknown': true,
 
         // Disallow unknown properties.
-        'property-no-unknown': true,
+        'property-no-unknown': [
+            true,
+            {
+                ignore: ['composes']
+            }
+        ],
 
         // Disallow !important within keyframe declarations.
         'keyframe-declaration-no-important': true,
