@@ -3,12 +3,12 @@
 module.exports = function () {
     return {
         presets: [
-            [require('@babel/preset-env').default, {useBuiltIns: false, modules: false}],
+            [require('@babel/preset-env').default, {useBuiltIns: 'entry', corejs: "core-js@3", modules: false}],
             [require('@babel/preset-react').default, {useBuiltIns: true, development: false}],
         ],
         plugins: [
             [require('@babel/plugin-transform-runtime').default, {
-                corejs: false,
+                corejs: 3,
                 helpers: false,
                 regenerator: true,
                 useESModules: false,
