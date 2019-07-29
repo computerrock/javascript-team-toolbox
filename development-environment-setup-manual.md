@@ -77,10 +77,11 @@ In `.bash_profile` and `.profile` insert content:
 [[ -s ~/.bashrc ]] && source ~/.bashrc
 ```
 
-### Install Node version manager (nvm)
+### Install Node version manager (nvm), Node.js, npm & global npm packages
 
 *Node Version Manager* is a simple bash script to manage multiple active node.js versions 
-[(website)](https://github.com/creationix/nvm)
+[(website)](https://github.com/creationix/nvm) If you have some version of Node.js previously installed via some other 
+method (eg. *homebrew*, native installer, etc..) uninstall it first.
 
 To install or update *nvm*, run install script using cURL:
 
@@ -97,31 +98,40 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-### Install Node.js & NPM
-
-Installing node and node versions, listing version and switching versions using nvm:
+Installing Node: 
 
 ```bash
-$ nvm install node
+# install latest long term support version of node:
+$ nvm install --lts
+
+# to list installed versions type:
 $ nvm ls
-$ nvm use node
 ```
 
-Add `.nvmrc` file in project root for storing node version number. File content:
-```[node version number]```
-
-Use with `nvm use` from projet root.
-
-### Install global packages
-
-There are many global packages we use. Install those you need from the list:
+There are many global npm packages we use. Install at least those from the list:
 
 ```bash
-$ npm install -g create-react-app http-server nodemon lerna gulp 
-$ npm list -g --depth 0 # lists all globally installed packages
+$ npm install -g create-react-app http-server nodemon lerna gulp yarn
+
+# lists all globally installed packages
+$ npm list -g --depth 0 
+
+# to install some new node version and all global packages from existing version you can use:
+$ nvm install NodeVersion --reinstall-packages-from=OldNodeVersion
+
+# to use some node version type:
+$ nvm use NodeVersion
 ```
 
 Note: With nvm, global packages need to be installed per active node version.
+
+When working on project, you can add `.nvmrc` file in project root for storing node version number with next content:
+
+```
+[node version number]
+```
+
+Use by calling `nvm use` while in project root.
 
 
 ## GIT setup
