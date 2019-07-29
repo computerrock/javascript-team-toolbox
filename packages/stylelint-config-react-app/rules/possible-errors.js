@@ -51,7 +51,12 @@ module.exports = {
         'block-no-empty': true,
 
         // Disallow unknown pseudo-class selectors.
-        'selector-pseudo-class-no-unknown': true,
+        'selector-pseudo-class-no-unknown': [
+            true,
+            {
+                ignorePseudoClasses: ['global', 'local']
+            }
+        ],
 
         // Disallow unknown pseudo-element selectors.
         'selector-pseudo-element-no-unknown': true,
