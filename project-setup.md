@@ -16,8 +16,8 @@ $ cd ~/Projects
 $ mkdir project-name-here
 ``` 
 
-* Copy all contents (except `node_modules`) from starter pack folder `./packages/starter-*-base`, into newly created 
-project folder. For example you can use [`starter-react-app-base`](./packages/starter-react-app-base).
+* Copy all contents (except `node_modules`!) from starter pack folder `./packages/starter-*`, into newly created 
+project folder. For example you can use [`starter-react-app`](./packages/starter-react-app).
 
 * Open `package.json` file and change `name`, `description` and `repository` fields according to project specification. 
 Project name should be scoped with `@comrock`, example: `@comrock/project-name-here`.
@@ -50,10 +50,6 @@ $ git push origin develop
 ```
 
 And that's it. Your project is set and ready for use!
-
-> If needed, additional upgrade steps from related starter packs can be applied by following 
-> instructions in their `README.md` documents. Eg. upgrade `starter-react-app-base` with 
-> [`starter-react-app-src-redux-saga`](./packages/starter-react-app-src-redux-saga).
 
 
 ## React project folder structure overview 
@@ -155,7 +151,7 @@ For parsing, manipulating, and display of dates and times we use [*moment.js*](h
 This is an overview of [*Webpack*](https://webpack.js.org/) configuration for React projects and latest version of 
 base React starter pack. 
 
-> This chapter contains overview for configurations done in `starter-react-app-base` package. There is no need to
+> This chapter contains overview for configurations done in `starter-react-app` package. There is no need to
 > do any additional configuration steps if you use starter package. Contents is purely educational and none of the 
 > given commands is meant for running. If you do need to make project from scratch, please refer to documentation
 > of linked packages and projects.

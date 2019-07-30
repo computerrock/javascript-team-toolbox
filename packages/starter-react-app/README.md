@@ -1,4 +1,4 @@
-# starter-react-app-base
+# starter-react-app
 
 This is a starter pack that you can use to quickly bootstrap new project with latest React configuration.
 

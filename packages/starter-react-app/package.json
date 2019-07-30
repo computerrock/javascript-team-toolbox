@@ -1,7 +1,7 @@
 {
-  "name": "@comrock/starter-react-app-base",
+  "name": "@comrock/starter-react-app",
   "version": "1.8.2",
-  "description": "React base starter app",
+  "description": "React starter app",
   "author": "Computer Rock",
   "license": "ISC",
   "repository": {

@@ -25,8 +25,8 @@ If you need to setup new project, or just want to learn how project is bootstrap
 In [`./packages`](./packages) folder you can find starter packs that you can use to jump start new project with some 
 specific setup:
 
-* [`starter-react-app-base`](./packages/starter-react-app-base)
-* [`starter-react-app-src-redux-saga`](./packages/starter-react-app-src-redux-saga)
+* [`starter-react-app`](./packages/starter-react-app)
+* [`starter-react-lib`](./packages/starter-react-lib)
 
 Always refer to `README.md` project files for additional instructions on how to use them.
 
