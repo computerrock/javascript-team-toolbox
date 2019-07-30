@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/eslint-config-base",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "ESLint configuration used for JavaScript projects",
   "license": "MIT",
   "repository": {
