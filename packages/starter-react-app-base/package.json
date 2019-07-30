@@ -23,7 +23,7 @@
     "@hot-loader/react-dom": "^16.8.6",
     "autoprefixer": "^9.5.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.2",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
