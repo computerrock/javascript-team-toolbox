@@ -51,7 +51,10 @@ function getLocalBEMIdent(loaderContext, localIdentName, localName, options) {
     // Also directories can contains invalid characters for css we need escape their too
     return cssesc(
         loaderUtils
-            .interpolateName(loaderContext, localIdentName, options)
+            .interpolateName(loaderContext, localIdentName, {
+                ...options,
+                content: bemName,
+            })
             // For `[hash]` placeholder
             .replace(/^((-?[0-9])|--)/, '_$1'),
         {isIdentifier: true}
