@@ -1,0 +1,7 @@
+node_modules/
+/build/
+/hot/
+/coverage/
+npm-debug.log
+.env.*
+!.env.example

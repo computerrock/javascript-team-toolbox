@@ -1,0 +1,3 @@
+{
+  "extends": "@computerrock/eslint-config-react-app"
+}

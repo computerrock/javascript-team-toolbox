@@ -1,0 +1,17 @@
+/* Extended UI Component */
+@import './OriginalUIComponent.module';
+
+.vub-c-extended-ui-component__element-2 {
+    background-color: orange;
+    height: 25px;
+}
+
+.vub-c-original-ui-component__element-3 {
+    background-color: yellow;
+    height: 50px;
+}
+
+.vub-c-original-ui-component__element-4 {
+    composes: vub-c-original-ui-component__element-2 from './OriginalUIComponent.module.scss';
+    height: 50px;
+}
