@@ -1,7 +1,7 @@
 # @computerrock/babel-preset-react-app
 
-This package contains Babel preset used for JavaScript/React application projects. It is based on Create React App 
-[package](https://github.com/facebook/create-react-app)
+This package contains Babel preset used for React projects.
+
 
 ## Usage
 
