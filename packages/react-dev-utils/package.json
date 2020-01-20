@@ -1,7 +1,7 @@
 {
   "name": "@computerrock/react-dev-utils",
   "version": "1.2.0",
-  "description": "Webpack utilities used for React projects",
+  "description": "Webpack utilities for React projects",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
   "files": [
     "checkRequiredFiles.js",
     "clearConsole.js",
+    "crossSpawn.js",
     "eslintFormatter.js",
     "FileSizeReporter.js",
     "formatWebpackMessages.js",
@@ -25,11 +26,12 @@
     "WebpackDevServerUtils.js"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "dependencies": {
     "address": "1.0.3",
     "chalk": "^2.4.1",
+    "cross-spawn": "7.0.1",
     "change-case": "^3.1.0",
     "cssesc": "^3.0.0",
     "detect-port-alt": "1.1.6",

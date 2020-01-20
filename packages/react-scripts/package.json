@@ -1,19 +1,29 @@
 {
-  "name": "@comrock/testing-react-app",
-  "version": "1.0.1",
-  "description": "Testing react app",
-  "author": "Computer Rock",
-  "license": "ISC",
+  "name": "@computerrock/react-scripts",
+  "version": "3.3.0",
+  "description": "Custom configuration and scripts for Create React App.",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox"
   },
-  "private": true,
-  "main": "index.js",
-  "engines": {
-    "node": ">=8"
+  "publishConfig": {
+    "access": "public"
   },
-  "devDependencies": {
+  "files": [
+    "bin",
+    "config",
+    "lib",
+    "scripts",
+    "server"
+  ],
+  "bin": {
+    "react-scripts": "./bin/react-scripts.js"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
     "@babel/core": "^7.4.3",
     "@babel/runtime-corejs3": "^7.4.3",
     "@computerrock/babel-preset-react-app": "^2.4.2",
@@ -82,19 +92,11 @@
     "webpack-manifest-plugin": "^2.0.4",
     "yargs": "^13.2.2"
   },
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "include-media": "^1.4.9",
-    "moment": "^2.24.0",
-    "normalize.css": "^8.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-hot-loader": "^4.8.3"
+  "devDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
-  "scripts": {
-    "start": "nodemon scripts/start.js -w ../react-dev-utils",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+  "optionalDependencies": {
+    "fsevents": "2.1.2"
   }
 }
