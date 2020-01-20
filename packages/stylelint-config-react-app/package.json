@@ -1,7 +1,7 @@
 {
   "name": "@computerrock/stylelint-config-react-app",
   "version": "1.4.0",
-  "description": "stylelint configuration used for React projects",
+  "description": "stylelint configuration for React projects",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "peerDependencies": {
     "stylelint": "^9.10.1",
