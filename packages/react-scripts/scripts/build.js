@@ -12,6 +12,14 @@ process.on('unhandledRejection', err => {
 // load env variables
 require('../config/env');
 
+// @remove-on-eject-begin
+// Do the pre-flight dependency check (only happens before eject).
+const verifyPackageTree = require('./utils/verifyPackageTree');
+if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
+    verifyPackageTree();
+}
+// @remove-on-eject-end
+
 const fs = require('fs-extra');
 const chalk = require('chalk');
 const webpack = require('webpack');
