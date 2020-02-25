@@ -13,6 +13,9 @@ module.exports = {
         // Disallow missing generic families in lists of font family names.
         'font-family-no-missing-generic-family-keyword': true,
 
+        // Disallow an invalid expression within calc functions
+        'function-calc-no-invalid': true,
+
         // Disallow an unspaced operator within calc functions.
         'function-calc-no-unspaced-operator': true,
 

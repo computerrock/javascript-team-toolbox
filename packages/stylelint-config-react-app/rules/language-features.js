@@ -151,6 +151,9 @@ module.exports = {
         // Disallow vendor prefixes for media feature names.
         // 'media-feature-name-no-vendor-prefix': false,
 
+        // Specify a whitelist of allowed media feature name and value pairs.
+        // 'media-feature-name-value-whitelist': false,
+
         // Specify a whitelist of allowed media feature names.
         // 'media-feature-name-whitelist': [],
 
@@ -162,6 +165,9 @@ module.exports = {
 
         // Disallow vendor prefixes for at-rules.
         // 'at-rule-no-vendor-prefix': false,
+
+        // Specify a requirelist of properties for an at-rule.
+        // 'at-rule-property-requirelist': false,
 
         // Specify a whitelist of allowed at-rules.
         // 'at-rule-whitelist': [],
