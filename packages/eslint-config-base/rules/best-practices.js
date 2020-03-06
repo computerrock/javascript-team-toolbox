@@ -48,7 +48,7 @@ module.exports = {
         'eqeqeq': ['warn', 'always', {'null': 'ignore'}],
 
         // require grouped accessor pairs in object literals and classes
-        'grouped-accessor-pairs': 'anyOrder',
+        'grouped-accessor-pairs': ['error', 'anyOrder'],
 
         // require for-in loops to include an if statement
         'guard-for-in': 'off',
