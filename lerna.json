@@ -1,12 +1,9 @@
 {
-  "lerna": "3.16.1",
   "packages": [
     "packages/*"
   ],
   "version": "independent",
-  "command": {
-    "publish": {
-      "message": "[release] publish packages"
-    }
+  "bootstrap": {
+    "npmClientArgs": ["--no-package-lock"]
   }
 }
