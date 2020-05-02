@@ -26,6 +26,10 @@ function getServedPath(appPackageJson) {
     return ensureSlash(servedUrl, true);
 }
 
+// @remove-on-eject-begin
+const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
+// @remove-on-eject-end
+
 module.exports = {
     dotenv: resolveApp('.env'),
     appBuild: resolveApp('build'),
@@ -35,8 +39,11 @@ module.exports = {
     appServerJs: resolveApp('src/server.js'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
-    testsSetup: resolveApp('src/setupTests.js'),
     appNodeModules: resolveApp('node_modules'),
     publicUrl: getPublicUrl(resolveApp('package.json')),
     servedPath: getServedPath(resolveApp('package.json')),
+    // @remove-on-eject-begin
+    ownPath: resolveOwn('.'),
+    ownNodeModules: resolveOwn('node_modules'),
+    // @remove-on-eject-end
 };

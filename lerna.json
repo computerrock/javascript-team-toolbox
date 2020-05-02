@@ -3,7 +3,9 @@
     "packages/*"
   ],
   "version": "independent",
-  "bootstrap": {
-    "npmClientArgs": ["--no-package-lock"]
+  "command": {
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"]
+    }
   }
 }

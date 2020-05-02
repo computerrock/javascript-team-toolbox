@@ -243,6 +243,9 @@ module.exports = {
         new StyleLintPlugin({
             syntax: 'scss',
             fix: false,
+            // @remove-on-eject-begin
+            configFile: path.join(paths.ownPath, '/config/stylelint.config.js'),
+            // @remove-on-eject-end
         }),
         // SVG sprite loader
         new SpriteLoaderPlugin(),

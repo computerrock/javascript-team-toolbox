@@ -14,6 +14,11 @@
   "engines": {
     "node": ">=12"
   },
+  "dependencies": {
+    "stylelint": "^9.10.1",
+    "stylelint-scss": "^3.5.4",
+    "stylelint-selector-bem-pattern": "^2.1.0"
+  },
   "peerDependencies": {
     "stylelint": "^9.10.1",
     "stylelint-scss": "^3.5.4",
