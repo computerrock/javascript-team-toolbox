@@ -191,7 +191,7 @@ module.exports = {
             },
         }),
         // make environment variables available in index.html
-        new InterpolateHtmlPlugin(env.raw),
+        new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
         // make environment variables available in application code
         new webpack.DefinePlugin(env.stringified),
         // lint styles
