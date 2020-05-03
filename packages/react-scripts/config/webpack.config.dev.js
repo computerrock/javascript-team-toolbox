@@ -23,6 +23,54 @@ const publicPath = '/';
 const publicUrl = '';
 const env = getEnvironment(publicUrl);
 
+// TODO switch to resource.use function to reduce loader config more nicely
+// will be available when issue fixed: https://github.com/webpack/webpack/issues/8952
+// Webpack 5?
+// use: (info) => {
+//     const isModule = !!info.resource.match(/\.module.(css|scss)$/);
+//     return [...];
+// }
+//
+// common function to get style loaders
+const getStyleLoaders = (cssLoaderOptions) => {
+   return [
+        require.resolve('style-loader'),
+        {
+            loader: require.resolve('css-loader'),
+            options: cssLoaderOptions,
+        },
+        require.resolve('svg-transform-loader/encode-query'),
+        {
+            loader: require.resolve('postcss-loader'),
+            options: {
+                ident: 'postcss',
+                sourceMap: true,
+                plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                        flexbox: 'no-2009',
+                        grid: true,
+                    }),
+                ],
+            },
+        },
+        {
+            loader: require.resolve('resolve-url-loader'),
+            options: {
+                keepQuery: true,
+                removeCR: true,
+            },
+        },
+        {
+            loader: require.resolve('sass-loader'),
+            options: {
+                sourceMap: true,
+                sourceMapContents: true,
+            },
+        },
+    ];
+};
+
 module.exports = {
     name: 'client',
     mode: 'development',
@@ -137,96 +185,20 @@ module.exports = {
                     // styles
                     {
                         test: /\.module.(css|scss)$/,
-                        // TODO switch to resource.use function to reduce loader config
-                        // will be available when issue fixed: https://github.com/webpack/webpack/issues/8952
-                        // use: (info) => {
-                        //     const isModule = !!info.resource.match(/\.module.(css|scss)$/);
-                        //     return [...];
-                        // }
-                        use: [
-                            require.resolve('style-loader'),
-                            {
-                                loader: require.resolve('css-loader'),
-                                options: {
-                                    importLoaders: 4,
-                                    sourceMap: true,
-                                    modules: true,
-                                    localIdentName: '[bem]---[contenthash:8]',
-                                    getLocalIdent: getLocalBEMIdent,
-                                },
-                            },
-                            require.resolve('svg-transform-loader/encode-query'),
-                            {
-                                loader: require.resolve('postcss-loader'),
-                                options: {
-                                    ident: 'postcss',
-                                    sourceMap: true,
-                                    plugins: () => [
-                                        require('postcss-flexbugs-fixes'),
-                                        autoprefixer({
-                                            flexbox: 'no-2009',
-                                            grid: true,
-                                        }),
-                                    ],
-                                },
-                            },
-                            {
-                                loader: require.resolve('resolve-url-loader'),
-                                options: {
-                                    keepQuery: true,
-                                    removeCR: true,
-                                },
-                            },
-                            {
-                                loader: require.resolve('sass-loader'),
-                                options: {
-                                    sourceMap: true,
-                                    sourceMapContents: true,
-                                },
-                            },
-                        ],
+                        use: getStyleLoaders({
+                            importLoaders: 4,
+                            sourceMap: true,
+                            modules: true,
+                            localIdentName: '[bem]---[contenthash:8]',
+                            getLocalIdent: getLocalBEMIdent,
+                        }),
                     },
                     {
                         test: /\.(css|scss)$/,
-                        use: [
-                            require.resolve('style-loader'),
-                            {
-                                loader: require.resolve('css-loader'),
-                                options: {
-                                    importLoaders: 1,
-                                    sourceMap: true,
-                                },
-                            },
-                            require.resolve('svg-transform-loader/encode-query'),
-                            {
-                                loader: require.resolve('postcss-loader'),
-                                options: {
-                                    ident: 'postcss',
-                                    sourceMap: true,
-                                    plugins: () => [
-                                        require('postcss-flexbugs-fixes'),
-                                        autoprefixer({
-                                            flexbox: 'no-2009',
-                                            grid: true,
-                                        }),
-                                    ],
-                                },
-                            },
-                            {
-                                loader: require.resolve('resolve-url-loader'),
-                                options: {
-                                    keepQuery: true,
-                                    removeCR: true,
-                                },
-                            },
-                            {
-                                loader: require.resolve('sass-loader'),
-                                options: {
-                                    sourceMap: true,
-                                    sourceMapContents: true,
-                                },
-                            },
-                        ],
+                        use: getStyleLoaders({
+                            importLoaders: 1,
+                            sourceMap: true,
+                        }),
                     },
                     // media
                     {
