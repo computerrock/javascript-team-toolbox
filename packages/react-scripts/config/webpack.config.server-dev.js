@@ -22,7 +22,6 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     target: 'node',
     entry: [
-        require.resolve('./polyfills'),
         paths.appServerJs,
     ],
     output: {
