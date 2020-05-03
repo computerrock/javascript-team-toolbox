@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const InterpolateHtmlPlugin = require('@computerrock/react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
@@ -49,7 +50,6 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json'],
         alias: {
             'react-native': 'react-native-web',
-            'react-dom': '@hot-loader/react-dom',
         },
         plugins: [
             // check that used modules are inside the source scope
@@ -270,8 +270,10 @@ module.exports = {
         }),
         // SVG sprite loader
         new SpriteLoaderPlugin(),
-        // enable HMR
+        // enable HMR (CSS only)
         new webpack.HotModuleReplacementPlugin(),
+        // enable React refresh
+        new ReactRefreshWebpackPlugin(),
         // enforce case sensitive paths in Webpack requires
         new CaseSensitivePathsPlugin(),
         // on `npm install` rebuild
