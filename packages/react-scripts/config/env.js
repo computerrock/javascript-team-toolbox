@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const moment = require('moment');
 const paths = require('./paths');
 const packageJSON = require('../package');
 
@@ -41,6 +40,7 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
     .join(path.delimiter);
 
 function getEnvironment(publicUrl) {
+    const currentTime = new Date();
     const raw = Object.keys(process.env)
         .reduce(
             (env, key) => {
@@ -50,8 +50,8 @@ function getEnvironment(publicUrl) {
             {
                 NODE_ENV: process.env.NODE_ENV || 'development',
                 PUBLIC_URL: publicUrl,
-                VERSION: packageJSON.version,
-                BUILD: moment().format('YYYYMMDD.HHmmss'),
+                APP_VERSION: packageJSON.version,
+                APP_BUILD: currentTime.toISOString(),
             },
         );
 
