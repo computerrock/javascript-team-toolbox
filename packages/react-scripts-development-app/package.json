@@ -13,8 +13,14 @@
   "engines": {
     "node": ">=12"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@babel/runtime-corejs3": "^7.4.3",
     "@computerrock/react-scripts":  "^3.3.0",
+    "core-js": "^3.0.1",
+    "regenerator-runtime": "^0.13.2",
+    "svgxuse": "^1.2.6"
+  },
+  "dependencies": {
     "classnames": "^2.2.6",
     "include-media": "^1.4.9",
     "moment": "^2.24.0",
@@ -25,9 +31,9 @@
     "react-hot-loader": "^4.8.3"
   },
   "scripts": {
-    "start": "@computerrock/react-scripts start",
-    "build": "@computerrock/react-scripts build",
-    "test": "@computerrock/react-scripts test",
-    "eject": "@computerrock/react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   }
 }

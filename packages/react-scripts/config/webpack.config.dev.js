@@ -12,6 +12,9 @@ const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/Wat
 const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
 const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent');
+// @remove-on-eject-begin
+const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdentifier');
+// @remove-on-eject-end
 const getEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -74,13 +77,31 @@ module.exports = {
             },
             {
                 oneOf: [
-                    // js/jsx
+                    // js/jsx/mjs
                     {
                         test: /\.(js|jsx|mjs)$/,
                         include: paths.appSrc,
                         loader: require.resolve('babel-loader'),
                         options: {
                             cacheDirectory: true,
+                            // @remove-on-eject-begin
+                            babelrc: false,
+                            configFile: false,
+                            presets: [require.resolve('@computerrock/babel-preset-react-app')],
+                            cacheIdentifier: getCacheIdentifier(
+                                'development',
+                                // TODO env config optimization
+                                // isEnvProduction
+                                //     ? 'production'
+                                //     : isEnvDevelopment && 'development',
+                                [
+                                    'babel-plugin-named-asset-import',
+                                    'babel-preset-react-app',
+                                    'react-dev-utils',
+                                    'react-scripts',
+                                ]
+                            ),
+                            // @remove-on-eject-end
                         },
                     },
                     // svg

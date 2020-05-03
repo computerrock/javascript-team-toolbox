@@ -17,6 +17,7 @@
     "eslintFormatter.js",
     "FileSizeReporter.js",
     "formatWebpackMessages.js",
+    "getCacheIdentifier.js",
     "getProcessForPort.js",
     "getLocalBEMIdent.js",
     "InterpolateHtmlPlugin.js",
