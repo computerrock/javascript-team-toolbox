@@ -13,11 +13,11 @@ const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/Wat
 const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
 const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent');
+const getEnvironment = require('./env');
+const paths = require('./paths');
 // @remove-on-eject-begin
 const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdentifier');
 // @remove-on-eject-end
-const getEnvironment = require('./env');
-const paths = require('./paths');
 
 const publicPath = '/';
 const publicUrl = '';

@@ -8,7 +8,7 @@
 
 'use strict';
 
-const chalk = require('react-dev-utils/chalk');
+const chalk = require('chalk');
 const fs = require('fs');
 const semver = require('semver');
 const path = require('path');
@@ -27,7 +27,6 @@ function verifyPackageTree() {
     'eslint',
     'jest',
     'webpack',
-    'webpack-dev-server',
   ];
   // Inlined from semver-regex, MIT license.
   // Don't want to make this a dependency after ejecting.
