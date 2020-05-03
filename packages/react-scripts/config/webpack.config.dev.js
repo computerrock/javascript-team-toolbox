@@ -29,7 +29,6 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     target: 'web',
     entry: [
-        require.resolve('./polyfills'),
         require.resolve('webpack-hot-middleware/client') + '?/__what&name=client',
         paths.appIndexJs,
     ],

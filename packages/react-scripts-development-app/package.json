@@ -14,11 +14,8 @@
     "node": ">=12"
   },
   "devDependencies": {
-    "@babel/runtime-corejs3": "^7.4.3",
-    "@computerrock/react-scripts":  "^3.3.0",
-    "core-js": "^3.0.1",
-    "regenerator-runtime": "^0.13.2",
-    "svgxuse": "^1.2.6"
+    "@computerrock/react-app-polyfill":  "^0.1.0",
+    "@computerrock/react-scripts":  "^3.3.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",
