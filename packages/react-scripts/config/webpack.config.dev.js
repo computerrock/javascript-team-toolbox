@@ -23,15 +23,13 @@ const publicPath = '/';
 const publicUrl = '';
 const env = getEnvironment(publicUrl);
 
-// TODO switch to resource.use function to reduce loader config more nicely
-// will be available when issue fixed: https://github.com/webpack/webpack/issues/8952
-// Webpack 5?
+// common function to get style loaders
+// TODO resource.use callback function is better way to reduce loader config, will be available when
+//  issue is fixed: https://github.com/webpack/webpack/issues/8952 in Webpack 5 (?)
 // use: (info) => {
 //     const isModule = !!info.resource.match(/\.module.(css|scss)$/);
 //     return [...];
 // }
-//
-// common function to get style loaders
 const getStyleLoaders = (cssLoaderOptions) => {
    return [
         require.resolve('style-loader'),
@@ -137,10 +135,6 @@ module.exports = {
                             presets: [require.resolve('@computerrock/babel-preset-react-app')],
                             cacheIdentifier: getCacheIdentifier(
                                 'development',
-                                // TODO env config optimization
-                                // isEnvProduction
-                                //     ? 'production'
-                                //     : isEnvDevelopment && 'development',
                                 [
                                     'babel-plugin-named-asset-import',
                                     'babel-preset-react-app',
