@@ -28,7 +28,7 @@ const formatWebpackMessages = require('@computerrock/react-dev-utils/formatWebpa
 const FileSizeReporter = require('@computerrock/react-dev-utils/FileSizeReporter');
 const printBuildError = require('@computerrock/react-dev-utils/printBuildError');
 const paths = require('../config/paths');
-const config = require('../config/webpack.config.prod');
+const createWebpackConfig = require('../config/webpack.config');
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
@@ -77,7 +77,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
-  let compiler = webpack(config);
+  let compiler = webpack(createWebpackConfig('production'));
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       if (err) {

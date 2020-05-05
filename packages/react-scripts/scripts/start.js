@@ -37,8 +37,8 @@ const formatWebpackMessages = require('@computerrock/react-dev-utils/formatWebpa
 const {choosePort} = require('@computerrock/react-dev-utils/WebpackDevServerUtils');
 const webpackUniversalAppMiddleware = require('../server/webpackUniversalAppMiddleware');
 const paths = require('../config/paths');
-const config = require('../config/webpack.config.dev');
-const serverConfig = require('../config/webpack.config.server-dev');
+const createWebpackConfig = require('../config/webpack.config');
+const createWebpackServerConfig = require('../config/webpack.server.config');
 
 // warn and exit if required files are missing
 if (!checkRequiredFiles([paths.appHtml, paths.appServerJs])) {
@@ -70,9 +70,13 @@ choosePort(HOST, DEFAULT_PORT)
 
         // create webpack compiler
         let compiler;
+        let config;
+        let configServer;
         try {
+            config = createWebpackConfig('development');
+            configServer = createWebpackServerConfig('development');
             if (isSSREnabled) {
-                compiler = webpack([config, serverConfig]);
+                compiler = webpack([config, configServer]);
             } else {
                 compiler = webpack(config);
             }
