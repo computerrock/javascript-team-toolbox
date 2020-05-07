@@ -1,3 +1,4 @@
+// @remove-file-on-eject
 'use strict';
 
 // pre-eject stylelint config
