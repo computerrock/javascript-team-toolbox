@@ -1,0 +1,14 @@
+{
+  "package": {
+    "dependencies": {
+      "@computerrock/react-app-polyfill":  "^0.1.0",
+      "@computerrock/react-scripts":  "^3.3.0",
+      "classnames": "^2.2.6",
+      "include-media": "^1.4.9",
+      "moment": "^2.24.0",
+      "normalize.css": "^8.0.1",
+      "prop-types": "^15.7.2",
+      "react-hot-loader": "^4.8.3"
+    }
+  }
+}
