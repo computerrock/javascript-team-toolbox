@@ -17,7 +17,7 @@
     "stable.js"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=12"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.4.3",
