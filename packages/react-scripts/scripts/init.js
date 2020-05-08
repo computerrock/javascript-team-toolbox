@@ -103,20 +103,7 @@ module.exports = function(
 
     // Keys to ignore in templatePackage
     const templatePackageBlacklist = [
-        'name',
         'version',
-        'description',
-        'keywords',
-        'bugs',
-        'license',
-        'author',
-        'contributors',
-        'files',
-        'browser',
-        'bin',
-        'man',
-        'directories',
-        'repository',
         'devDependencies',
         'peerDependencies',
         'bundledDependencies',
@@ -125,8 +112,6 @@ module.exports = function(
         'os',
         'cpu',
         'preferGlobal',
-        'private',
-        'publishConfig',
     ];
 
     // Keys from templatePackage that will be merged with appPackage
@@ -141,8 +126,21 @@ module.exports = function(
         );
     });
 
-    // Copy over some of the devDependencies
-    appPackage.dependencies = appPackage.dependencies || {};
+    // Add templatePackage keys/values to appPackage, replacing existing entries
+    templatePackageToReplace.forEach(key => {
+        if (key === 'name') {
+            appPackage[key] = (templatePackage[key] || '@computerrock/application-name')
+                .replace('application-name', appName);
+            return;
+        }
+
+        appPackage[key] = templatePackage[key];
+    });
+
+    // Ensure 'dependencies' key order in package.json
+    const tempDependencies = appPackage.dependencies;
+    delete appPackage.dependencies;
+    appPackage.dependencies = tempDependencies;
 
     // Setup the script rules
     const templateScripts = templatePackage.scripts || {};
@@ -166,11 +164,6 @@ module.exports = function(
             {}
         );
     }
-
-    // Add templatePackage keys/values to appPackage, replacing existing entries
-    templatePackageToReplace.forEach(key => {
-        appPackage[key] = templatePackage[key];
-    });
 
     fs.writeFileSync(
         path.join(appPath, 'package.json'),
@@ -281,59 +274,33 @@ module.exports = function(
         console.log('Created git commit.');
     }
 
-    // Display the most elegant way to cd.
-    // This needs to handle an undefined originalDirectory for
-    // backward compatibility with old global-cli's.
-    let cdpath;
-    if (originalDirectory && path.join(originalDirectory, appName) === appPath) {
-        cdpath = appName;
-    } else {
-        cdpath = appPath;
-    }
-
     // Change displayed command to yarn instead of yarnpkg
     const displayedCommand = useYarn ? 'yarn' : 'npm';
 
-    console.log();
+    // print logo
     printCompanyLogo();
-    console.log(`Success! Created ${appName} at ${appPath}`);
-    console.log('Inside that directory, you can run several commands:');
+
+    // print final messages
+    console.log(`Success! Project @computerrock/${appName} created at ${appPath}`);
     console.log();
+    console.log('We suggest that you begin by reading README.md file. Update package.json and');
+    console.log('README.md according to your project requirements.');
+    console.log();
+    console.log('Inside project directory, you can run:');
     console.log(chalk.cyan(`  ${displayedCommand} start`));
     console.log('    Starts the development server.');
     console.log();
-    console.log(
-        chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`)
-    );
+    console.log(chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`));
     console.log('    Bundles the app into static files for production.');
     console.log();
     console.log(chalk.cyan(`  ${displayedCommand} test`));
     console.log('    Starts the test runner.');
     console.log();
-    console.log(
-        chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`)
-    );
-    console.log(
-        '    Removes this tool and copies build dependencies, configuration files'
-    );
-    console.log(
-        '    and scripts into the app directory. If you do this, you can’t go back!'
-    );
+    console.log(chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`));
+    console.log('    Removes @computerrock/react-scripts dependency and copies configuration files');
+    console.log('    and build scripts into the app directory. Reverting back this action is hard!');
     console.log();
-    console.log('We suggest that you begin by typing:');
-    console.log();
-    console.log(chalk.cyan('  cd'), cdpath);
-    console.log(`  ${chalk.cyan(`${displayedCommand} start`)}`);
-    if (readmeExists) {
-        console.log();
-        console.log(
-            chalk.yellow(
-                'You had a `README.md` file, we renamed it to `README.old.md`'
-            )
-        );
-    }
-    console.log();
-    console.log('Happy hacking!');
+    console.log('Happy coding!!!');
 };
 
 function isReactInstalled(appPackage) {

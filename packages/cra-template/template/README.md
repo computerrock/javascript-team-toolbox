@@ -1,4 +1,4 @@
-# computer-rock-react-app
+# @computerrock/cra-template
 
 This is custom react app template you can use to quickly bootstrap new project with latest React configuration.
 
@@ -6,17 +6,17 @@ This is custom react app template you can use to quickly bootstrap new project w
 ## Getting started 
 
 Modify `package.json` and `README.md` files  according to you project specification. Application specific 
-code should be placed in `./src` folder. For more detailed explanation please consult 
-with `Project setup` document from JavaScript team guides. 
+code should be placed in `./src` folder. For more detailed explanation please consult `Project setup` document 
+you can find in JavaScript team guides. 
 
 
 ## Development builds
 
-Then in project root create 
-`.env.development` file (see `.env.example` for reference). Then run:
+In project root create `.env.development` file (see `.env.example` for reference). Then run:
 
-```bash
-$ npm start # to start the app
+```shell
+$ npm install # to install project dependencies
+$ npm start # to start the app with development environment settings
 $ npm test # to run Jest test suite (in separate terminal)
 ```
 
@@ -26,8 +26,11 @@ at [http://localhost:3000](http://localhost:3000/)
 
 ## Production build
 
-To build application for production, run:
+In project root create `.env.production` file (see `.env.example` for reference). Then run:
 
 ```bash
-$ npm build
+$ npm install # to install project dependencies
+$ npm run build # to build the app with production environment settings
 ```
+
+Files prepared for deployment will be placed in `./build` folder. 
