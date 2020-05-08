@@ -22,6 +22,7 @@
     "getLocalBEMIdent.js",
     "InterpolateHtmlPlugin.js",
     "ModuleScopePlugin.js",
+    "printCompanyLogo.js",
     "printBuildError.js",
     "WatchMissingNodeModulesPlugin.js",
     "WebpackDevServerUtils.js"
