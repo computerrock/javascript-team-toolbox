@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/eslint-config-react-native-app",
-  "version": "1.8.1",
+  "version": "1.9.0-alpha.0",
   "description": "ESLint configuration for React Native projects",
   "license": "MIT",
   "repository": {
@@ -15,8 +15,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@computerrock/eslint-config-base": "^1.8.1",
-    "@computerrock/eslint-config-react-app": "^1.8.1"
+    "@computerrock/eslint-config-base": "^1.9.0-alpha.0",
+    "@computerrock/eslint-config-react-app": "^1.9.0-alpha.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",

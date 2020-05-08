@@ -1,6 +1,6 @@
 {
   "name": "@comrock/react-scripts-development-app",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.0",
   "description": "Development app for custom react-script package",
   "author": "Computer Rock",
   "license": "UNLICENSED",
@@ -14,8 +14,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@computerrock/react-app-polyfill":  "^0.1.0",
-    "@computerrock/react-scripts":  "^3.3.0",
+    "@computerrock/react-app-polyfill": "^1.0.0-alpha.0",
+    "@computerrock/react-scripts": "^3.4.0-alpha.0",
     "classnames": "^2.2.6",
     "include-media": "^1.4.9",
     "moment": "^2.24.0",
