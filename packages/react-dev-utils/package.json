@@ -20,6 +20,7 @@
     "getCacheIdentifier.js",
     "getProcessForPort.js",
     "getLocalBEMIdent.js",
+    "inquirer.js",
     "InterpolateHtmlPlugin.js",
     "ModuleScopePlugin.js",
     "printCompanyLogo.js",

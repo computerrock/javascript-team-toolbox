@@ -298,7 +298,7 @@ module.exports = function(
     console.log();
     console.log(chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`));
     console.log('    Removes @computerrock/react-scripts dependency and copies configuration files');
-    console.log('    and build scripts into the app directory. Reverting back this action is hard!');
+    console.log('    and build scripts into the app directory. Reverting back this action is not simple!');
     console.log();
     console.log('Happy coding!!!');
 };
