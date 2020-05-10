@@ -1,3 +1,3 @@
-# testing-react-app
+# react-scripts-development-app
 
-This is a testing react app based on a starter pack
+This is a react scripts development app initialized through @computerrock/react-scripts
