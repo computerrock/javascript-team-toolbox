@@ -304,7 +304,7 @@ module.exports = function (webpackEnv) {
                 syntax: 'scss',
                 fix: false,
                 // @remove-on-eject-begin
-                configFile: path.join(paths.ownPath, '/config/stylelint.config.js'),
+                configBasedir: paths.ownPath,
                 // @remove-on-eject-end
             }),
             // SVG sprite loader

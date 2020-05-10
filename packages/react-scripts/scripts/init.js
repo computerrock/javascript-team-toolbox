@@ -13,6 +13,7 @@ const chalk = require('chalk');
 const spawn = require('@computerrock/react-dev-utils/crossSpawn');
 const printCompanyLogo = require('@computerrock/react-dev-utils/printCompanyLogo');
 const execSync = require('child_process').execSync;
+const paths = require('../config/paths');
 
 function isInGitRepository() {
     try {
@@ -178,7 +179,13 @@ module.exports = function(
         );
     }
 
-    // Copy the files for the user
+    // Copy .rc config files
+    const rcConfigDir = path.join(paths.ownPath, 'rc-config');
+    if (fs.existsSync(rcConfigDir)) {
+        fs.copySync(rcConfigDir, appPath);
+    }
+
+    // Copy template files
     const templateDir = path.join(templatePath, 'template');
     if (fs.existsSync(templateDir)) {
         fs.copySync(templateDir, appPath);
@@ -189,6 +196,7 @@ module.exports = function(
         return;
     }
 
+    // Set .gitignore file
     const gitignoreExists = fs.existsSync(path.join(appPath, '.gitignore'));
     if (gitignoreExists) {
         // Append if there's already a `.gitignore` file there
