@@ -3,19 +3,19 @@ module.exports = {
         'src/**/*.{js,jsx,mjs}'
     ],
     setupFiles: [
-        '<rootDir>/config/polyfills.js',
-        '<rootDir>/config/jest/configureEnzyme.js'
+        '@computerrock/react-app-polyfill/jsdom',
+        '@computerrock/react-scripts/config/jest/configureEnzyme.js'
     ],
     testMatch: [
         '<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}',
-        '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}'
+        '<rootDir>/src/**/*.{spec,test}.{js,jsx,mjs}',
     ],
-    testEnvironment: 'node',
+    testEnvironment: 'jest-environment-jsdom-fourteen',
     testURL: 'http://localhost',
     transform: {
-        '^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
-        '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
-        '^(?!.*\\.(js|jsx|mjs|css|json)$)': '<rootDir>/config/jest/fileTransform.js'
+        '^.+\\.(js|jsx|mjs)$': '@computerrock/react-scripts/config/jest/babelTransform',
+        '^.+\\.css$': '@computerrock/react-scripts/config/jest/cssTransform.js',
+        '^(?!.*\\.(js|jsx|mjs|css|json)$)': '@computerrock/react-scripts/config/jest/fileTransform.js'
     },
     transformIgnorePatterns: [
         '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$'
@@ -24,12 +24,9 @@ module.exports = {
         '^react-native$': 'react-native-web'
     },
     moduleFileExtensions: [
-        'web.js',
-        'mjs',
         'js',
-        'json',
-        'web.jsx',
         'jsx',
-        'node'
+        'mjs',
+        'json'
     ]
 };

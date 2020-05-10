@@ -22,11 +22,21 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
 // @remove-on-eject-end
 
 const jest = require('jest');
+const execSync = require('child_process').execSync;
 const argv = process.argv.slice(2);
 
-// watch unless in coverage mode
+function isInGitRepository() {
+    try {
+        execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
+// watch unless on CI or in coverage mode
 if (!process.env.CI && argv.indexOf('--coverage') < 0) {
-    argv.push('--watch');
+    argv.push(isInGitRepository() ? '--watch' : '--watchAll');
 }
 
 jest.run(argv);

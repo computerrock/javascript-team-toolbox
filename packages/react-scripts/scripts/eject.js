@@ -11,7 +11,6 @@ const path = require('path');
 const os = require('os');
 const execSync = require('child_process').execSync;
 const chalk = require('chalk');
-// const createJestConfig = require('./utils/createJestConfig');
 const inquirer = require('@computerrock/react-dev-utils/inquirer');
 const spawnSync = require('@computerrock/react-dev-utils/crossSpawn').sync;
 const paths = require('../config/paths');
@@ -110,14 +109,6 @@ inquirer
         folders.forEach(verifyAbsent);
         files.forEach(verifyAbsent);
 
-        // TODO Jest config
-        // Prepare Jest config early in case it throws
-        // const jestConfig = createJestConfig(
-        //     filePath => path.posix.join('<rootDir>', filePath),
-        //     null,
-        //     true
-        // );
-
         console.log();
         console.log(chalk.cyan(`Copying files into ${appPath}`));
 
@@ -201,17 +192,25 @@ inquirer
             });
         });
 
-        // TODO Jest config
-        // console.log();
-        // console.log(chalk.cyan('Configuring package.json'));
-        // // Add Jest config
-        // console.log(`  Adding ${chalk.cyan('Jest')} configuration`);
-        // appPackage.jest = jestConfig;
+        // Update Jest config
+        const jestConfig = path.join(appPath, 'jest.config.js');
+        if (fs.existsSync(jestConfig)) {
+            console.log(`  Updating ${chalk.cyan('jest.config.js')} configuration`);
+            let content = fs.readFileSync(jestConfig, 'utf8');
+            content = content.replace(/@computerrock\/react-scripts\/config\/jest\/babelTransform/g, '<rootDir>/node_modules/babel-jest');
+            content = content.replace(/@computerrock\/react-scripts/g, '<rootDir>');
+
+            try {
+                fs.writeFileSync(jestConfig, content, 'utf8');
+            } catch (e) {
+                console.log(`  Updating ${chalk.red('jest.config.js')} failed!`);
+            }
+        }
 
         // Copy Babel config
         const babelConfig = path.join(paths.ownPath, '.babelrc');
         if (fs.existsSync(babelConfig)) {
-            console.log(`  Adding ${chalk.cyan('Babel')} preset`);
+            console.log(`  Adding ${chalk.cyan('Babel')} config`);
             fs.copySync(babelConfig, path.join(appPath, '.babelrc'));
         }
 
