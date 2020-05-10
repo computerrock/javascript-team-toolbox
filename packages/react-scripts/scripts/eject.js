@@ -208,11 +208,12 @@ inquirer
         // console.log(`  Adding ${chalk.cyan('Jest')} configuration`);
         // appPackage.jest = jestConfig;
 
-        // Add Babel config
-        console.log(`  Adding ${chalk.cyan('Babel')} preset`);
-        appPackage.babel = {
-            presets: ['react-app'],
-        };
+        // Copy Babel config
+        const babelConfig = path.join(paths.ownPath, '.babelrc');
+        if (fs.existsSync(babelConfig)) {
+            console.log(`  Adding ${chalk.cyan('Babel')} preset`);
+            fs.copySync(babelConfig, path.join(appPath, '.babelrc'));
+        }
 
         fs.writeFileSync(
             path.join(appPath, 'package.json'),
