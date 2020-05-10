@@ -10,7 +10,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const InterpolateHtmlPlugin = require('@computerrock/react-dev-utils/InterpolateHtmlPlugin');
@@ -325,7 +325,7 @@ module.exports = function (webpackEnv) {
                 chunkFilename: 'css/[id].[contenthash:8].chunk.css',
             }),
             // generate manifest file
-            isEnvProduction && new ManifestPlugin({
+            new ManifestPlugin({
                 fileName: 'asset-manifest.json',
                 publicPath: paths.publicUrl,
                 generate: (seed, files, entrypoints) => {
@@ -344,21 +344,19 @@ module.exports = function (webpackEnv) {
                 },
             }),
             // generate a service worker script for pre-caching HTML & assets
-            isEnvProduction && new SWPrecacheWebpackPlugin({
-                dontCacheBustUrlsMatching: /\.\w{8}\./,
-                filename: 'service-worker.js',
-                logger(message) {
-                    if (message.indexOf('Total precache size is') === 0) {
-                        return;
-                    }
-                    if (message.indexOf('Skipping static resource') === 0) {
-                        // no op return;
-                    }
-                },
-                minify: true,
-                navigateFallback: publicUrl + '/index.html',
-                navigateFallbackWhitelist: [/^(?!\/__).*/],
-                staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+            isEnvProduction && new WorkboxWebpackPlugin.GenerateSW({
+                clientsClaim: true,
+                exclude: [/\.map$/, /asset-manifest\.json$/],
+                navigateFallback: paths.publicUrl + 'index.html',
+                navigateFallbackDenylist: [
+                    // Exclude URLs starting with /_, as they're likely an API call
+                    new RegExp('^/_'),
+                    // Exclude any URLs whose last part seems to be a file extension
+                    // as they're likely a resource and not a SPA route.
+                    // URLs containing a "?" character won't be blacklisted as they're likely
+                    // a route with query params (e.g. auth callbacks).
+                    new RegExp('/[^/?]+\\.[^/]+$'),
+                ],
             }),
         ].filter(Boolean),
         // tell Webpack to provide empty mocks for imported Node modules not used in the browser
