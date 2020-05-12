@@ -42,6 +42,9 @@ module.exports = {
         // disallow new operators with the Symbol object
         'no-new-symbol': 'warn',
 
+        // disallow specified names in exports
+        'no-restricted-exports': 'off',
+
         // disallow specified modules when loaded by import
         'no-restricted-imports': 'off',
 

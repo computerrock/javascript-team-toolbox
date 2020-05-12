@@ -32,6 +32,12 @@ module.exports = {
         // require default cases in switch statements
         'default-case': 'off',
 
+        // enforce default clauses in switch statements to be last
+        'default-case-last': 'off',
+
+        // enforce default parameters to be last
+        'default-param-last': 'off',
+
         // enforce consistent newlines before and after dots
         'dot-location': ['warn', 'property'],
 
@@ -41,8 +47,14 @@ module.exports = {
         // require the use of === and !==
         'eqeqeq': ['warn', 'always', {'null': 'ignore'}],
 
+        // require grouped accessor pairs in object literals and classes
+        'grouped-accessor-pairs': ['error', 'anyOrder'],
+
         // require for-in loops to include an if statement
         'guard-for-in': 'off',
+
+        // enforce a maximum number of classes per file
+        'max-classes-per-file': 'off',
 
         // disallow the use of alert, confirm, and prompt
         'no-alert': 'warn',
@@ -52,6 +64,9 @@ module.exports = {
 
         // disallow lexical declarations in case clauses
         'no-case-declarations': 'warn',
+
+        // disallow returning value from constructor
+        'no-constructor-return': 'off',
 
         // disallow division operators explicitly at the beginning of regular expressions
         'no-div-regex': 'off',
@@ -201,6 +216,9 @@ module.exports = {
         // disallow unnecessary .call() and .apply()
         'no-useless-call': 'off',
 
+        // disallow unnecessary `catch` clauses
+        'no-useless-catch': 'off',
+
         // disallow unnecessary concatenation of literals or template literals
         'no-useless-concat': 'warn',
 
@@ -219,14 +237,23 @@ module.exports = {
         // disallow with statements
         'no-with': 'warn',
 
+        // enforce using named capture group in regular expression
+        'prefer-named-capture-group': 'off',
+
         // require using Error objects as Promise rejection reasons
         'prefer-promise-reject-errors': ['warn', {allowEmptyReject: true}],
+
+        // disallow use of the `RegExp` constructor in favor of regular expression literals
+        'prefer-regex-literals': 'off',
 
         // require use of the second argument for parseInt()
         'radix': 'warn',
 
         // disallow async functions which have no await expression
         'require-await': 'off',
+
+        // enforce the use of `u` flag on RegExp
+        'require-unicode-regexp': 'off',
 
         // require var declarations be placed at the top of their containing scope
         'vars-on-top': 'warn',

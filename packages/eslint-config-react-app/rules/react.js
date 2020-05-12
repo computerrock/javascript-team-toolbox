@@ -60,14 +60,20 @@ module.exports = {
         // Forbid certain elements
         'react/forbid-elements': 'off',
 
-        // Forbid certain propTypes
-        'react/forbid-prop-types': 'off',
-
         // Forbid foreign propTypes
         'react/forbid-foreign-prop-types': 'off',
 
+        // Forbid certain propTypes
+        'react/forbid-prop-types': 'off',
+
+        // Standardize the way function component get defined (fixable)
+        'react/function-component-definition': 'off',
+
         // Prevent using this.state inside this.setState
         'react/no-access-state-in-setstate': 'warn',
+
+        // Prevent adjacent inline elements not separated by whitespace
+        'react/no-adjacent-inline-elements:': 'off',
 
         // Prevent using Array index in key props
         'react/no-array-index-key': 'off',
@@ -111,20 +117,23 @@ module.exports = {
         // Prevent usage of setState
         'react/no-set-state': 'off',
 
-        // Prevent common casing typos
-        'react/no-typos': 'warn',
-
         // Prevent using string references in ref attribute
         'react/no-string-refs': 'warn',
 
         // Prevent using this in stateless functional components
         'react/no-this-in-sfc': 'warn',
 
+        // Prevent common casing typos
+        'react/no-typos': 'warn',
+
         // Prevent invalid characters from appearing in markup
         'react/no-unescaped-entities': 'warn',
 
         // Prevent usage of unknown DOM property
         'react/no-unknown-property': 'warn',
+
+        // Prevent usage of unsafe lifecycle methods
+        'react/no-unsafe': ['warn', {checkAliases: true }],
 
         // Prevent definitions of unused prop types
         'react/no-unused-prop-types': 'warn',
@@ -137,6 +146,9 @@ module.exports = {
 
         // Enforce ES5 or ES6 class for React Components
         'react/prefer-es6-class': ['warn', 'always'],
+
+        // Require read-only props. (fixable)
+        'react/prefer-read-only-props': 'off',
 
         // Enforce stateless React Components to be written as a pure function
         'react/prefer-stateless-function': ['warn', {ignorePureComponents: true}],
@@ -172,6 +184,12 @@ module.exports = {
         // Enforce propTypes declarations alphabetical sorting
         'react/sort-prop-types': 'off',
 
+        // State initialization in an ES6 class component should be in a constructor
+        'react/state-in-constructor': 'off',
+
+        // Defines where React component static properties should be positioned.
+        'react/static-property-placement': 'off',
+
         // Enforce style prop value being an object
         'react/style-prop-object': 'warn',
 
@@ -192,6 +210,12 @@ module.exports = {
         // Validate closing tag location in JSX
         'react/jsx-closing-tag-location': 'warn',
 
+        // Enforce curly braces or disallow unnecessary curly braces in JSX
+        'react/jsx-curly-brace-presence': ['warn', {props: 'never', children: 'never'}],
+
+        // Enforce consistent line breaks inside jsx curly (fixable)
+        'react/jsx-curly-newline': 'off',
+
         // Enforce or disallow spaces inside of curly braces in JSX attributes and expressions
         'react/jsx-curly-spacing': ['warn', 'never', {allowMultiline: true}],
 
@@ -203,6 +227,9 @@ module.exports = {
 
         // Enforce position of the first prop in JSX
         'react/jsx-first-prop-new-line': ['warn', 'multiline-multiprop'],
+
+        // Enforce shorthand or standard form for React fragments (fixable)
+        'react/jsx-fragments': 'off',
 
         // Enforce event handler naming conventions in JSX
         'react/jsx-handler-names': 'off',
@@ -241,23 +268,29 @@ module.exports = {
         // Prevent usage of unwrapped JSX strings
         'react/jsx-no-literals': 'off',
 
+        // Forbid javascript: URLs
+        'react/jsx-no-script-url': 'off',
+
         // Prevent usage of unsafe target='_blank'
         'react/jsx-no-target-blank': 'warn',
 
         // Disallow undeclared variables in JSX
         'react/jsx-no-undef': 'warn',
 
+        // Disallow unnecessary fragments (fixable)
+        'react/jsx-no-useless-fragment': 'off',
+
         // Limit to one expression per line in JSX
         'react/jsx-one-expression-per-line': 'off',
-
-        // Enforce curly braces or disallow unnecessary curly braces in JSX
-        'react/jsx-curly-brace-presence': ['warn', {props: 'never', children: 'never'}],
 
         // Enforce PascalCase for user-defined JSX components
         'react/jsx-pascal-case': ['warn', {allowAllCaps: true, ignore: []}],
 
         // Disallow multiple spaces between inline JSX props
         'react/jsx-props-no-multi-spaces': 'warn',
+
+        // Prevent JSX prop spreading
+        'react/jsx-props-no-spreading': 'off',
 
         // Enforce default props alphabetical sorting
         'react/jsx-sort-default-props': 'off',
