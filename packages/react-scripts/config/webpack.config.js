@@ -15,7 +15,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const InterpolateHtmlPlugin = require('@computerrock/react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/WatchMissingNodeModulesPlugin');
-const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
 const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent');
 const getEnvironment = require('./env');
@@ -27,7 +26,14 @@ const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdenti
 const publicPath = '/';
 const publicUrl = '';
 const env = getEnvironment(publicUrl);
+
+// set environment user settings
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+// @remove-on-eject-begin
+const isExtendingESLintConfig = process.env.EXTEND_ESLINT === 'true';
+// @remove-on-eject-end
+const fixESLintErrors = typeof process.env.FIX_ESLINT_ERRORS !== 'undefined'
+    ? !(process.env.FIX_ESLINT_ERRORS === 'false') : true;
 
 // production and development configuration
 module.exports = function (webpackEnv) {
@@ -163,9 +169,19 @@ module.exports = function (webpackEnv) {
                         {
                             loader: require.resolve('eslint-loader'),
                             options: {
-                                formatter: eslintFormatter,
+                                cache: true,
+                                formatter: require.resolve('@computerrock/react-dev-utils/eslintFormatter'),
                                 eslintPath: require.resolve('eslint'),
-                                fix: true,
+                                resolvePluginsRelativeTo: __dirname,
+                                fix: fixESLintErrors,
+                                // @remove-on-eject-begin
+                                ignore: isExtendingESLintConfig,
+                                baseConfig: isExtendingESLintConfig ? undefined
+                                    : {
+                                        extends: [require.resolve('@computerrock/eslint-config-react-app')],
+                                    },
+                                useEslintrc: isExtendingESLintConfig,
+                                // @remove-on-eject-end
                             },
                         },
                     ],

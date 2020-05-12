@@ -206,12 +206,27 @@ inquirer
                 console.log(`  Updating ${chalk.red('jest.config.js')} failed!`);
             }
         }
+        console.log();
 
-        // Copy Babel config
-        const babelConfig = path.join(paths.ownPath, '.babelrc');
-        if (fs.existsSync(babelConfig)) {
-            console.log(`  Adding ${chalk.cyan('Babel')} config`);
-            fs.copySync(babelConfig, path.join(appPath, '.babelrc'));
+        // Copy additional .rc config files
+        const rcConfigDir = path.join(paths.ownPath, 'rc-config-eject');
+        if (fs.existsSync(rcConfigDir)) {
+            console.log(chalk.cyan('Copying configuration files'));
+            const rcFiles = fs
+                .readdirSync(path.join(ownPath, 'rc-config-eject'))
+                // omit dirs from file list
+                .filter(file => fs.lstatSync(path.join(ownPath, 'rc-config-eject', file)).isFile());
+
+            rcFiles.forEach(file => {
+                if (fs.existsSync(path.join(appPath, file))) {
+                    console.log(`  Skipping existing: ${file}`);
+                    return;
+                }
+
+                console.log(`  Copying: ${file}`);
+                fs.copySync(path.join(ownPath, 'rc-config-eject', file), path.join(appPath, file));
+            });
+            console.log();
         }
 
         // Write package.json file
