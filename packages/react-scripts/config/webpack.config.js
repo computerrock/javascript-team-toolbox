@@ -31,9 +31,12 @@ const env = getEnvironment(publicUrl);
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // @remove-on-eject-begin
 const isExtendingESLintConfig = process.env.EXTEND_ESLINT === 'true';
+const isExtendingStylelintConfig = process.env.EXTEND_STYLELINT === 'true';
 // @remove-on-eject-end
 const fixESLintErrors = typeof process.env.FIX_ESLINT_ERRORS !== 'undefined'
     ? !(process.env.FIX_ESLINT_ERRORS === 'false') : true;
+const fixStylelintErrors = typeof process.env.FIX_STYLELINT_ERRORS !== 'undefined'
+    ? process.env.FIX_STYLELINT_ERRORS === 'true' : false;
 
 // production and development configuration
 module.exports = function (webpackEnv) {
@@ -318,9 +321,12 @@ module.exports = function (webpackEnv) {
             // lint styles
             new StyleLintPlugin({
                 syntax: 'scss',
-                fix: false,
+                fix: fixStylelintErrors,
                 // @remove-on-eject-begin
-                configBasedir: paths.ownPath,
+                configBasedir: isExtendingStylelintConfig
+                    ? paths.ownPath : undefined,
+                configFile: isExtendingStylelintConfig
+                    ? undefined : path.join(paths.ownPath, '/config/stylelint.config.js'),
                 // @remove-on-eject-end
             }),
             // SVG sprite loader

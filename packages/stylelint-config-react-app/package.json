@@ -15,13 +15,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "stylelint": "^9.10.1",
-    "stylelint-scss": "^3.5.4",
-    "stylelint-selector-bem-pattern": "^2.1.0"
-  },
-  "peerDependencies": {
-    "stylelint": "^13.2.0",
-    "stylelint-scss": "^3.14.2",
+    "stylelint": "^13.3.3",
+    "stylelint-scss": "^3.17.2",
     "stylelint-selector-bem-pattern": "^2.1.0"
   }
 }
