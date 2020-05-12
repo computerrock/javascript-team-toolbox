@@ -1,6 +1,6 @@
 {
   "name": "@comrock/starter-react-lib",
-  "version": "1.6.0",
+  "version": "1.7.0-alpha.0",
   "description": "React starter lib",
   "author": "Computer Rock",
   "license": "UNLICENSED",
@@ -21,8 +21,8 @@
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/runtime-corejs3": "^7.4.3",
-    "@computerrock/babel-preset-react-lib": "^2.5.2",
-    "@computerrock/eslint-config-base": "^1.8.1",
+    "@computerrock/babel-preset-react-lib": "^2.6.0-alpha.0",
+    "@computerrock/eslint-config-base": "^1.9.0-alpha.0",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.0.1",
     "cross-env": "^5.2.0",

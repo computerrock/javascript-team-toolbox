@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/babel-preset-react-lib",
-  "version": "2.5.2",
+  "version": "2.6.0-alpha.0",
   "description": "Babel preset for React libraries",
   "license": "MIT",
   "repository": {

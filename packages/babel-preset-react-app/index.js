@@ -23,7 +23,7 @@ module.exports = function () {
                 [require('@babel/preset-react').default, {useBuiltIns: true, development: true}],
             ],
             plugins: [
-                require('react-hot-loader/babel'),
+                require('react-refresh/babel'),
                 [require('@babel/plugin-transform-runtime').default, {
                     corejs: 3,
                     helpers: false,

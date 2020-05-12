@@ -1,0 +1,21 @@
+/* Global styling */
+@import '~normalize.css';
+@import './styles/reset';
+@import './styles/box-sizing';
+@import './styles/config';
+
+// Basics
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+// fixes inconsistent API issue in `svg-sprite-loader`
+// see: https://github.com/kisenka/svg-sprite-loader/issues/123
+.sprite-symbol-usage {
+    display: block !important;
+}
