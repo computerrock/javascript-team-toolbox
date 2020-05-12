@@ -91,7 +91,7 @@ inquirer
             }
         }
 
-        const folders = ['config', 'config/jest', 'scripts'];
+        const folders = ['config', 'config/jest', 'scripts', 'server'];
 
         // Make shallow array of files paths
         const files = folders.reduce((files, folder) => {
@@ -214,6 +214,7 @@ inquirer
             fs.copySync(babelConfig, path.join(appPath, '.babelrc'));
         }
 
+        // Write package.json file
         fs.writeFileSync(
             path.join(appPath, 'package.json'),
             JSON.stringify(appPackage, null, 2) + os.EOL
