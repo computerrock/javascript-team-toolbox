@@ -1,6 +1,5 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,6 +8,8 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const postcssNormalize = require('postcss-normalize');
+const safePostCssParser = require('postcss-safe-parser');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -42,56 +43,6 @@ const fixStylelintErrors = typeof process.env.FIX_STYLELINT_ERRORS !== 'undefine
 module.exports = function (webpackEnv) {
     const isEnvDevelopment = webpackEnv === 'development';
     const isEnvProduction = webpackEnv === 'production';
-
-    // common function to get style loaders
-    // TODO resource.use callback function is better way to reduce loader config, will be available when
-    //  issue is fixed: https://github.com/webpack/webpack/issues/8952 in Webpack 5 (?)
-    // use: (info) => {
-    //     const isModule = !!info.resource.match(/\.module.(css|scss)$/);
-    //     return [...];
-    // }
-    const getStyleLoaders = (cssLoaderOptions) => {
-        return [
-            isEnvDevelopment && require.resolve('style-loader'),
-            isEnvProduction && MiniCssExtractPlugin.loader,
-            {
-                loader: require.resolve('css-loader'),
-                options: cssLoaderOptions,
-            },
-            require.resolve('svg-transform-loader/encode-query'),
-            {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                    ident: 'postcss',
-                    sourceMap: true,
-                    plugins: () => [
-                        require('postcss-flexbugs-fixes'),
-                        autoprefixer({
-                            flexbox: 'no-2009',
-                            grid: true,
-                        }),
-                        isEnvProduction && require('cssnano')({
-                            preset: 'default',
-                        }),
-                    ].filter(Boolean),
-                },
-            },
-            {
-                loader: require.resolve('resolve-url-loader'),
-                options: {
-                    keepQuery: true,
-                    removeCR: true,
-                },
-            },
-            {
-                loader: require.resolve('sass-loader'),
-                options: isEnvDevelopment ? {
-                    sourceMap: true,
-                    sourceMapContents: true,
-                } : undefined,
-            },
-        ].filter(Boolean);
-    };
 
     return {
         name: 'client',
@@ -151,7 +102,21 @@ module.exports = function (webpackEnv) {
                         },
                     },
                 }),
-                new OptimizeCSSAssetsPlugin(),
+                new OptimizeCSSAssetsPlugin({
+                    cssProcessorOptions: {
+                        parser: safePostCssParser,
+                        map: shouldUseSourceMap ? {
+                            // `inline: false` forces the sourcemap to be output into a separate file
+                            inline: false,
+                            // `annotation: true` appends the sourceMappingURL to the end of
+                            // the css file, helping the browser find the sourcemap
+                            annotation: true,
+                        } : false,
+                    },
+                    cssProcessorPluginOptions: {
+                        preset: ['default', {minifyFontValues: {removeQuotes: false}}],
+                    },
+                }),
             ],
             // when HMR is enabled display relative path of the module
             namedModules: true,
@@ -254,21 +219,61 @@ module.exports = function (webpackEnv) {
                         },
                         // styles
                         {
-                            test: /\.module\.(css|scss)$/,
-                            use: getStyleLoaders({
-                                importLoaders: 4,
-                                sourceMap: isEnvProduction && shouldUseSourceMap,
-                                modules: true,
-                                localIdentName: '[bem]---[contenthash:8]',
-                                getLocalIdent: getLocalBEMIdent,
-                            }),
-                        },
-                        {
                             test: /\.(css|scss)$/,
-                            use: getStyleLoaders({
-                                importLoaders: 1,
-                                sourceMap: isEnvProduction && shouldUseSourceMap,
-                            }),
+                            use: [
+                                isEnvDevelopment && require.resolve('style-loader'),
+                                isEnvProduction && {
+                                    loader: MiniCssExtractPlugin.loader,
+                                    options: paths.publicUrl.startsWith('.') ? {publicPath: '../'} : {},
+                                },
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        importLoaders: 4,
+                                        sourceMap: isEnvProduction && shouldUseSourceMap,
+                                        modules: {
+                                            mode: 'local',
+                                            auto: /\.module\.(css|scss)$/,
+                                            exportGlobals: true,
+                                            localIdentName: '[bem]---[contenthash:8]',
+                                            getLocalIdent: getLocalBEMIdent,
+                                        },
+                                    },
+                                },
+                                require.resolve('svg-transform-loader/encode-query'),
+                                {
+                                    loader: require.resolve('postcss-loader'),
+                                    options: {
+                                        ident: 'postcss',
+                                        sourceMap: isEnvProduction && shouldUseSourceMap,
+                                        plugins: () => [
+                                            require('postcss-flexbugs-fixes'),
+                                            require('postcss-preset-env')({
+                                                autoprefixer: {
+                                                    flexbox: 'no-2009',
+                                                    grid: true,
+                                                },
+                                                stage: 3,
+                                            }),
+                                            postcssNormalize(),
+                                        ].filter(Boolean),
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('resolve-url-loader'),
+                                    options: {
+                                        sourceMap: isEnvProduction && shouldUseSourceMap,
+                                        keepQuery: true,
+                                        removeCR: true,
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('sass-loader'),
+                                    options: isEnvDevelopment ? {
+                                        sourceMap: shouldUseSourceMap,
+                                    } : undefined,
+                                },
+                            ].filter(Boolean),
                         },
                         // media
                         {
