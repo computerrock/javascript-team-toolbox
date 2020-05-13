@@ -255,6 +255,7 @@ module.exports = function (webpackEnv) {
                                                 },
                                                 stage: 3,
                                             }),
+                                            require('postcss-input-range', {strict: false}),
                                             postcssNormalize(),
                                         ].filter(Boolean),
                                     },

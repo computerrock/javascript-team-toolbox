@@ -54,6 +54,8 @@ module.exports = {
         'block-no-empty': true,
 
         // Disallow unknown pseudo-class selectors.
+        // exceptions:
+        // 'global', 'local' - css modules related
         'selector-pseudo-class-no-unknown': [
             true,
             {
@@ -62,7 +64,14 @@ module.exports = {
         ],
 
         // Disallow unknown pseudo-element selectors.
-        'selector-pseudo-element-no-unknown': true,
+        // exceptions:
+        // 'range-track', 'range-thumb', 'range-lower', 'range-upper' - postcss-input-range plugin
+        'selector-pseudo-element-no-unknown': [
+            true,
+            {
+                ignorePseudoElements: ['range-track', 'range-thumb', 'range-lower', 'range-upper']
+            }
+        ],
 
         // Disallow unknown type selectors.
         'selector-type-no-unknown': true,

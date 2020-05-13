@@ -61,6 +61,7 @@
     "nodemon": "^1.18.11",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-input-range": "^4.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-normalize": "^9.0.0",
     "postcss-preset-env": "^6.7.0",
