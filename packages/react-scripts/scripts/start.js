@@ -89,15 +89,15 @@ choosePort(HOST, DEFAULT_PORT)
         }
 
         // on webpack invalidation display pending status
-        compiler.plugin('invalid', () => {
+        const onCompileInvalid = () => {
             if (isInteractive) {
                 clearConsole();
             }
             console.log('Compiling...');
-        });
+        };
 
         // on webpack compile display result status and formatted stats
-        compiler.plugin('done', stats => {
+        const onCompileDone = stats => {
             if (isInteractive) {
                 clearConsole();
             }
@@ -125,7 +125,22 @@ choosePort(HOST, DEFAULT_PORT)
                 console.log(messages.warnings.join('\n\n'));
                 console.log();
             }
-        });
+        };
+
+        // attach compiler hooks
+        const attachHooks = (compiler) => {
+            const {compile, invalid, done} = compiler.hooks;
+
+            compile.tap('webpack-dev-server', onCompileInvalid);
+            invalid.tap('webpack-dev-server', onCompileInvalid);
+            done.tap('webpack-dev-server', onCompileDone);
+        };
+
+        if (compiler.compilers) {
+            compiler.compilers.forEach(attachHooks);
+        } else {
+            attachHooks(compiler);
+        }
 
         // initialize dev server
         const devServer = express();
