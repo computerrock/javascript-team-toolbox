@@ -29,8 +29,8 @@ const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdenti
 const env = getEnvironment(paths.publicPath.slice(0, -1));
 
 // set environment user settings
-const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
 // @remove-on-eject-begin
 const isExtendingESLintConfig = process.env.EXTEND_ESLINT === 'true';
 const isExtendingStylelintConfig = process.env.EXTEND_STYLELINT === 'true';

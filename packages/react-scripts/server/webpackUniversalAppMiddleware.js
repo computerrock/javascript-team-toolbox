@@ -1,7 +1,7 @@
 'use strict';
 
-const createIndexRenderer = require('./createIndexRenderer');
-const requireServerExports = require('./requireServerExports');
+const createIndexRenderer = require('./lib/createIndexRenderer');
+const requireServerExports = require('./lib/requireServerExports');
 
 /**
  * Webpack universal app middleware

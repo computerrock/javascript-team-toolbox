@@ -91,7 +91,7 @@ inquirer
             }
         }
 
-        const folders = ['config', 'config/jest', 'scripts', 'server'];
+        const folders = ['config', 'config/jest', 'scripts', 'server', 'server/lib'];
 
         // Make shallow array of files paths
         const files = folders.reduce((files, folder) => {
@@ -208,26 +208,25 @@ inquirer
         }
         console.log();
 
-        // Copy additional .rc config files
-        const rcConfigDir = path.join(paths.ownPath, 'rc-config-eject');
-        if (fs.existsSync(rcConfigDir)) {
-            console.log(chalk.cyan('Copying configuration files'));
-            const rcFiles = fs
-                .readdirSync(path.join(ownPath, 'rc-config-eject'))
-                // omit dirs from file list
-                .filter(file => fs.lstatSync(path.join(ownPath, 'rc-config-eject', file)).isFile());
+        // Copy additional .rc configuration files
+        console.log(chalk.cyan('Copying .rc configuration files'));
+        const rcConfigurationFiles = ['.babelrc', '.eslintrc', '.stylelintrc', 'nodemon.json'];
+        rcConfigurationFiles.forEach(file => {
+            const rcFilePath = path.join(ownPath, 'config/rc', file);
+            if (!fs.existsSync(rcFilePath) || !fs.lstatSync(rcFilePath).isFile()) {
+                console.log(`  Skipping file - not found or is folder: ${file}`);
+                return;
+            }
 
-            rcFiles.forEach(file => {
-                if (fs.existsSync(path.join(appPath, file))) {
-                    console.log(`  Skipping existing: ${file}`);
-                    return;
-                }
+            if (fs.existsSync(path.join(appPath, file))) {
+                console.log(`  Skipping file - exist at target: ${file}`);
+                return;
+            }
 
-                console.log(`  Copying: ${file}`);
-                fs.copySync(path.join(ownPath, 'rc-config-eject', file), path.join(appPath, file));
-            });
-            console.log();
-        }
+            console.log(`  Copying file: ${file}`);
+            fs.copySync(rcFilePath, path.join(appPath, file));
+        });
+        console.log();
 
         // Write package.json file
         fs.writeFileSync(
