@@ -179,11 +179,15 @@ module.exports = function(
         );
     }
 
-    // Copy .rc config files
-    const rcConfigDir = path.join(paths.ownPath, 'rc-config');
-    if (fs.existsSync(rcConfigDir)) {
-        fs.copySync(rcConfigDir, appPath);
-    }
+    // Copy .rc configuration files
+    const rcConfigurationFiles = ['.browserslistrc', 'gitignore', 'jest.config.js'];
+    rcConfigurationFiles.forEach(file => {
+        const rcFilePath = path.join(paths.ownPath, 'config/rc', file);
+        if (!fs.existsSync(rcFilePath) || !fs.lstatSync(rcFilePath).isFile()) return;
+        if (fs.existsSync(path.join(appPath, file))) return;
+
+        fs.copySync(rcFilePath, path.join(appPath, file));
+    });
 
     // Copy template files
     const templateDir = path.join(templatePath, 'template');
