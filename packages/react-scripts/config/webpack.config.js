@@ -24,9 +24,9 @@ const paths = require('./paths');
 const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdentifier');
 // @remove-on-eject-end
 
-const publicPath = '/';
-const publicUrl = '';
-const env = getEnvironment(publicUrl);
+// get environment variables to inject into app.
+// omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
+const env = getEnvironment(paths.publicPath.slice(0, -1));
 
 // set environment user settings
 const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
@@ -65,7 +65,7 @@ module.exports = function (webpackEnv) {
                 : isEnvDevelopment && 'js/index.js',
             chunkFilename: isEnvProduction ? 'js/[name].[contenthash:8].chunk.js'
                 : isEnvDevelopment && 'js/[name].chunk.js',
-            publicPath: publicPath,
+            publicPath: paths.publicPath,
             // point sourcemap entries to original disk location
             devtoolModuleFilenameTemplate: isEnvProduction
                 ? info => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/')
@@ -232,7 +232,7 @@ module.exports = function (webpackEnv) {
                                 isEnvDevelopment && require.resolve('style-loader'),
                                 isEnvProduction && {
                                     loader: MiniCssExtractPlugin.loader,
-                                    options: paths.publicUrl.startsWith('.') ? {publicPath: '../'} : {},
+                                    options: paths.publicPath.startsWith('.') ? {publicPath: '../'} : {},
                                 },
                                 {
                                     loader: require.resolve('css-loader'),
@@ -369,7 +369,7 @@ module.exports = function (webpackEnv) {
             // generate manifest file
             new ManifestPlugin({
                 fileName: 'asset-manifest.json',
-                publicPath: paths.publicUrl,
+                publicPath: paths.publicPath,
                 generate: (seed, files, entrypoints) => {
                     const manifestFiles = files.reduce((manifest, file) => {
                         manifest[file.name] = file.path;
@@ -389,7 +389,7 @@ module.exports = function (webpackEnv) {
             isEnvProduction && new WorkboxWebpackPlugin.GenerateSW({
                 clientsClaim: true,
                 exclude: [/\.map$/, /asset-manifest\.json$/],
-                navigateFallback: (paths.publicUrl || '') + 'index.html',
+                navigateFallback: (paths.publicPath || '') + 'index.html',
                 navigateFallbackDenylist: [
                     // Exclude URLs starting with /_, as they're likely an API call
                     new RegExp('^/_'),

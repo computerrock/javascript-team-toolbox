@@ -39,7 +39,7 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
     .map(folder => path.resolve(appDirectory, folder))
     .join(path.delimiter);
 
-function getEnvironment(publicUrl) {
+function getEnvironment(publicPath) {
     const currentTime = new Date();
     const raw = Object.keys(process.env)
         .reduce(
@@ -49,7 +49,7 @@ function getEnvironment(publicUrl) {
             },
             {
                 NODE_ENV: process.env.NODE_ENV || 'development',
-                PUBLIC_URL: publicUrl,
+                PUBLIC_URL: publicPath,
                 APP_VERSION: packageJSON.version,
                 APP_BUILD: currentTime.toISOString(),
             },
