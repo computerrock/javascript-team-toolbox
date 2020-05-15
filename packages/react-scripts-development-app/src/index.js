@@ -9,6 +9,12 @@ import * as serviceWorker from './serviceWorker';
 // render app
 ReactDOM.render(<App />, document.getElementById('root'));
 
+if (module.hot) {
+    module.hot.accept('./App', () => {
+        ReactDOM.render(<App />, document.getElementById('root'));
+    });
+}
+
 // register service worker
 serviceWorker.register({
     onUpdate: () => {
