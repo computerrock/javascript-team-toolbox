@@ -29,6 +29,7 @@ const publicUrl = '';
 const env = getEnvironment(publicUrl);
 
 // set environment user settings
+const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // @remove-on-eject-begin
 const isExtendingESLintConfig = process.env.EXTEND_ESLINT === 'true';
@@ -60,19 +61,15 @@ module.exports = function (webpackEnv) {
         output: {
             path: isEnvProduction ? paths.appBuild : undefined,
             pathinfo: isEnvDevelopment,
-            filename: isEnvProduction ? 'js/[name].[chunkhash:8].js'
+            filename: isEnvProduction ? 'js/[name].[contenthash:8].js'
                 : isEnvDevelopment && 'js/index.js',
-            chunkFilename: isEnvProduction ? 'js/[name].[chunkhash:8].chunk.js'
+            chunkFilename: isEnvProduction ? 'js/[name].[contenthash:8].chunk.js'
                 : isEnvDevelopment && 'js/[name].chunk.js',
             publicPath: publicPath,
             // point sourcemap entries to original disk location
             devtoolModuleFilenameTemplate: isEnvProduction
-                ? info => path
-                    .relative(paths.appSrc, info.absoluteResourcePath)
-                    .replace(/\\/g, '/')
-                : isEnvDevelopment && (info => path
-                .resolve(info.absoluteResourcePath)
-                .replace(/\\/g, '/')),
+                ? info => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/')
+                : isEnvDevelopment && (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
             hotUpdateChunkFilename: 'hot/[id].[hash].hot-update.js',
             hotUpdateMainFilename: 'hot/[hash].hot-update.json',
         },
@@ -118,8 +115,17 @@ module.exports = function (webpackEnv) {
                     },
                 }),
             ],
-            // when HMR is enabled display relative path of the module
-            namedModules: true,
+            // split vendor and common chunks
+            splitChunks: {
+                chunks: 'all',
+                name: false,
+            },
+            // split webpack runtime chunk
+            runtimeChunk: {
+                name: entrypoint => `runtime-${entrypoint.name}`,
+            },
+            // when HMR is enabled display relative path of the module for debugging
+            moduleIds: 'named',
         },
         resolve: {
             modules: ['node_modules', paths.appNodeModules],
@@ -139,6 +145,7 @@ module.exports = function (webpackEnv) {
                 {
                     test: /\.(js|jsx|mjs)$/,
                     enforce: 'pre',
+                    include: paths.appSrc,
                     use: [
                         {
                             loader: require.resolve('eslint-loader'),
@@ -159,7 +166,6 @@ module.exports = function (webpackEnv) {
                             },
                         },
                     ],
-                    include: paths.appSrc,
                 },
                 {
                     oneOf: [
@@ -170,6 +176,8 @@ module.exports = function (webpackEnv) {
                             loader: require.resolve('babel-loader'),
                             options: {
                                 cacheDirectory: true,
+                                cacheCompression: false,
+                                compact: isEnvProduction,
                                 // @remove-on-eject-begin
                                 babelrc: false,
                                 configFile: false,
@@ -281,7 +289,7 @@ module.exports = function (webpackEnv) {
                             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
                             loader: require.resolve('url-loader'),
                             options: {
-                                limit: 10000,
+                                limit: imageInlineSizeLimit,
                                 name: 'media/[name].[hash:8].[ext]',
                             },
                         },
@@ -395,8 +403,11 @@ module.exports = function (webpackEnv) {
         ].filter(Boolean),
         // tell Webpack to provide empty mocks for imported Node modules not used in the browser
         node: {
+            module: 'empty',
             dgram: 'empty',
+            dns: 'mock',
             fs: 'empty',
+            http2: 'empty',
             net: 'empty',
             tls: 'empty',
             child_process: 'empty',
