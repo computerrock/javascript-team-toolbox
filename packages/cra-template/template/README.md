@@ -21,7 +21,7 @@ $ npm test # to run Jest test suite (in separate terminal)
 ```
 
 If `PORT` *.env* value is same as in the example configuration, application will be accessible 
-at [http://localhost:3000](http://localhost:3000/) 
+at [http://localhost:11000](http://localhost:11000/) 
 
 
 ## Production build

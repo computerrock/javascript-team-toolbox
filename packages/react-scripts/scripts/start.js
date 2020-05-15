@@ -45,7 +45,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appServerJs])) {
     process.exit(1);
 }
 
-const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 11000;
 const HOST = process.env.HOST || '0.0.0.0';
 const isInteractive = process.stdout.isTTY;
 
