@@ -12,9 +12,9 @@ const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlug
 const getEnvironment = require('./env');
 const paths = require('./paths');
 
-const publicPath = '/';
-const publicUrl = '';
-const env = getEnvironment(publicUrl);
+// get environment variables to inject into app.
+// omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
+const env = getEnvironment(paths.publicPath.slice(0, -1));
 
 module.exports = function (webpackEnv) {
     const isEnvDevelopment = webpackEnv === 'development';
@@ -32,7 +32,7 @@ module.exports = function (webpackEnv) {
         output: {
             path: paths.appBuild,
             filename: 'universalAppMiddleware.js',
-            publicPath: publicPath,
+            publicPath: paths.publicPath,
             libraryTarget: 'this',
             // point sourcemap entries to original disk location
             devtoolModuleFilenameTemplate: info => path
