@@ -91,7 +91,7 @@ inquirer
             }
         }
 
-        const folders = ['config', 'config/jest', 'scripts', 'server'];
+        const folders = ['config', 'config/jest', 'scripts', 'server', 'server/lib'];
 
         // Make shallow array of files paths
         const files = folders.reduce((files, folder) => {
