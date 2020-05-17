@@ -37,7 +37,9 @@ module.exports = {
         // Main list of rules
 
         // Enforces consistent naming for boolean props
-        'react/boolean-prop-naming': ['warn', {rule: '^(is|has|are)[A-Z]([A-Za-z0-9]?)+'}],
+        // all "missing" verbs and forms can be replaced like this:
+        // https://en.wikipedia.org/wiki/English_modal_verbs#Replacements_for_defective_forms
+        'react/boolean-prop-naming': ['warn', {rule: '^(is|are|has|have)[A-Z]([A-Za-z0-9]?)+'}],
 
         // Forbid "button" element without an explicit "type" attribute
         'react/button-has-type': 'warn',
