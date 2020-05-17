@@ -104,7 +104,7 @@ module.exports = {
         ],
 
         // Require or disallow //-comments to be inline comments.
-        'scss/double-slash-comment-inline': 'never',
+        // 'scss/double-slash-comment-inline': 'never',
 
         // Require or disallow whitespace after the // in //-comments
         'scss/double-slash-comment-whitespace-inside': 'always',
