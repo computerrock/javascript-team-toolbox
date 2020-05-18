@@ -149,6 +149,7 @@ module.exports = function(
         {
             start: 'react-scripts start',
             build: 'react-scripts build',
+            analyze: 'react-scripts analyze',
             test: 'react-scripts test',
             eject: 'react-scripts eject',
         },
@@ -303,7 +304,10 @@ module.exports = function(
     console.log('    Starts the development server.');
     console.log();
     console.log(chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`));
-    console.log('    Bundles the app into static files for production.');
+    console.log('    Bundles the app into static files for production. Results are place in /build folder.');
+    console.log();
+    console.log(chalk.cyan(`  ${displayedCommand} analyze`));
+    console.log('    Analyzes JavaScript & Sass code bloat through source maps. Results are placed in /stats folder.');
     console.log();
     console.log(chalk.cyan(`  ${displayedCommand} test`));
     console.log('    Starts the test runner.');
