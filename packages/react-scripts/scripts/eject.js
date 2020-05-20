@@ -31,9 +31,7 @@ function tryGitAdd(appPath) {
         spawnSync(
             'git',
             ['add', path.join(appPath, 'config'), path.join(appPath, 'scripts')],
-            {
-                stdio: 'inherit',
-            }
+            {stdio: 'inherit'},
         );
 
         return true;
@@ -58,18 +56,11 @@ inquirer
         const gitStatus = getGitStatus();
         if (gitStatus) {
             console.error(
-                chalk.red(
-                    'This git repository has untracked files or uncommitted changes:'
-                ) +
-                '\n\n' +
-                gitStatus
-                    .split('\n')
-                    .map(line => line.match(/ .*/g)[0].trim())
-                    .join('\n') +
-                '\n\n' +
-                chalk.red(
-                    'Remove untracked files, stash or commit any changes, and try again.'
-                )
+                chalk.red('This git repository has untracked files or uncommitted changes:')
+                + '\n\n'
+                + gitStatus.split('\n').map(line => line.match(/ .*/g)[0].trim()).join('\n')
+                + '\n\n'
+                + chalk.red('Remove untracked files, stash or commit any changes, and try again.'),
             );
             process.exit(1);
         }
@@ -82,10 +73,10 @@ inquirer
         function verifyAbsent(file) {
             if (fs.existsSync(path.join(appPath, file))) {
                 console.error(
-                    `\`${file}\` already exists in your app folder. We cannot ` +
-                    'continue as you would lose all the changes in that file or directory. ' +
-                    'Please move or delete it (maybe make a copy for backup) and run this ' +
-                    'command again.'
+                    `\`${file}\` already exists in your app folder. We cannot `
+                    + 'continue as you would lose all the changes in that file or directory. '
+                    + 'Please move or delete it (maybe make a copy for backup) and run this '
+                    + 'command again.',
                 );
                 process.exit(1);
             }
@@ -95,14 +86,12 @@ inquirer
 
         // Make shallow array of files paths
         const files = folders.reduce((files, folder) => {
-            return files.concat(
-                fs
-                    .readdirSync(path.join(ownPath, folder))
-                    // set full path
-                    .map(file => path.join(ownPath, folder, file))
-                    // omit dirs from file list
-                    .filter(file => fs.lstatSync(file).isFile())
-            );
+            return files.concat(fs
+                .readdirSync(path.join(ownPath, folder))
+                // set full path
+                .map(file => path.join(ownPath, folder, file))
+                // omit dirs from file list
+                .filter(file => fs.lstatSync(file).isFile()));
         }, []);
 
         // Ensure that the app folder is clean and we won't override any files
@@ -125,16 +114,10 @@ inquirer
             }
             content =
                 content
-                // Remove dead code from .js files on eject
-                    .replace(
-                        /\/\/ @remove-on-eject-begin([\s\S]*?)\/\/ @remove-on-eject-end/gm,
-                        ''
-                    )
+                    // Remove dead code from .js files on eject
+                    .replace(/\/\/ @remove-on-eject-begin([\s\S]*?)\/\/ @remove-on-eject-end/gm, '')
                     // Remove dead code from .applescript files on eject
-                    .replace(
-                        /-- @remove-on-eject-begin([\s\S]*?)-- @remove-on-eject-end/gm,
-                        ''
-                    )
+                    .replace(/-- @remove-on-eject-begin([\s\S]*?)-- @remove-on-eject-end/gm, '')
                     .trim() + '\n';
             console.log(`  Adding ${chalk.cyan(file.replace(ownPath, ''))} to the project`);
             fs.writeFileSync(file.replace(ownPath, appPath), content);
@@ -180,14 +163,8 @@ inquirer
                 if (!regex.test(appPackage.scripts[key])) {
                     return;
                 }
-                appPackage.scripts[key] = appPackage.scripts[key].replace(
-                    regex,
-                    'node scripts/$1.js'
-                );
-                console.log(
-                    `  Replacing ${chalk.cyan(`"${binKey} ${key}"`)} with ${chalk.cyan(
-                        `"node scripts/${key}.js"`
-                    )}`
+                appPackage.scripts[key] = appPackage.scripts[key].replace(regex, 'node scripts/$1.js');
+                console.log(`  Replacing ${chalk.cyan(`"${binKey} ${key}"`)} with ${chalk.cyan(`"node scripts/${key}.js"`)}`,
                 );
             });
         });
@@ -229,10 +206,7 @@ inquirer
         console.log();
 
         // Write package.json file
-        fs.writeFileSync(
-            path.join(appPath, 'package.json'),
-            JSON.stringify(appPackage, null, 2) + os.EOL
-        );
+        fs.writeFileSync(path.join(appPath, 'package.json'), JSON.stringify(appPackage, null, 2) + os.EOL);
         console.log();
 
         // remove react-scripts and react-scripts binaries from app node_modules
@@ -248,12 +222,7 @@ inquirer
         }
 
         if (fs.existsSync(paths.yarnLockFile)) {
-            const windowsCmdFilePath = path.join(
-                appPath,
-                'node_modules',
-                '.bin',
-                'react-scripts.cmd'
-            );
+            const windowsCmdFilePath = path.join(appPath, 'node_modules', '.bin', 'react-scripts.cmd');
             let windowsCmdFileContent;
             if (process.platform === 'win32') {
                 // https://github.com/facebook/create-react-app/pull/3806#issuecomment-357781035
@@ -268,7 +237,7 @@ inquirer
             }
 
             console.log(chalk.cyan('Running yarn...'));
-            spawnSync('yarnpkg', ['--cwd', process.cwd()], { stdio: 'inherit' });
+            spawnSync('yarnpkg', ['--cwd', process.cwd()], {stdio: 'inherit'});
 
             if (windowsCmdFileContent && !fs.existsSync(windowsCmdFilePath)) {
                 try {
