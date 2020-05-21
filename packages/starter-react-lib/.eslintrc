@@ -1,4 +1,4 @@
 {
-  "extends": "@computerrock/eslint-config-base",
+  "extends": "@computerrock/eslint-config-react-app",
   "rules": {}
 }
