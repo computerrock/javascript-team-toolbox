@@ -14,6 +14,9 @@ module.exports = {
         // enforce return statements in getters
         'getter-return': ['warn', {allowImplicit: true}],
 
+        // disallow using an async function as a Promise executor
+        'no-async-promise-executor': 'off',
+
         // disallow await inside of loops
         'no-await-in-loop': 'off',
 
@@ -37,6 +40,9 @@ module.exports = {
 
         // disallow duplicate arguments in function definitions
         'no-dupe-args': 'warn',
+
+        // disallow duplicate conditions in if-else-if chains
+        'no-dupe-else-if': 'off',
 
         // disallow duplicate keys in object literals
         'no-dupe-keys': 'warn',
@@ -65,6 +71,9 @@ module.exports = {
         // disallow reassigning function declarations
         'no-func-assign': 'warn',
 
+        // disallow assigning to imported bindings
+        'no-import-assign': 'off',
+
         // disallow variable or function declarations in nested blocks
         'no-inner-declarations': 'warn',
 
@@ -74,6 +83,9 @@ module.exports = {
         // disallow irregular whitespace outside of strings and comments
         'no-irregular-whitespace': 'warn',
 
+        // disallow characters which are made with multiple code points in character class syntax
+        'no-misleading-character-class': 'off',
+
         // disallow calling global object properties as functions
         'no-obj-calls': 'warn',
 
@@ -82,6 +94,9 @@ module.exports = {
 
         // disallow multiple spaces in a regular expression literal
         'no-regex-spaces': 'warn',
+
+        // disallow returning values from setters
+        'no-setter-return': 'off',
 
         // disallow sparse arrays
         'no-sparse-arrays': 'warn',
@@ -101,20 +116,14 @@ module.exports = {
         // disallow negating the left operand of relational operators
         'no-unsafe-negation': 'off',
 
+        // disallow useless back references in regular expressions
+        'no-useless-backreference': 'off',
+
+        // disallow assignments that can lead to race conditions due to usage of `await` or `yield`
+        'require-atomic-updates': 'off',
+
         // require calls to isNaN() when checking for NaN
         'use-isnan': 'warn',
-
-        // ensure JSDoc comments are valid
-        'valid-jsdoc': [
-            'off',
-            {
-                prefer: {'return': 'returns'},
-                preferType: {Boolean: 'boolean', Number: 'number', object: 'Object', String: 'string'},
-                requireParamDescription: false,
-                requireReturn: false,
-                requireReturnDescription: false,
-            },
-        ],
 
         // enforce comparing typeof expressions against valid strings
         'valid-typeof': ['warn', {requireStringLiterals: true}],
