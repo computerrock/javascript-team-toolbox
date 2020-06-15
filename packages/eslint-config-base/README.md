@@ -1,9 +1,9 @@
 # @computerrock/eslint-config-base
 
-This package contains shareable ESLint configuration used for JavaScript projects. It is based on Create React App 
-[package](https://github.com/facebook/create-react-app) and [AirBnB style guide](https://github.com/airbnb/javascript).
+This package contains shareable ESLint configuration used for JavaScript projects.
 
 This package is extended by `@computerrock/eslint-config-react-app` and `@computerrock/eslint-config-react-native-app`.
+
 
 ## Usage
 

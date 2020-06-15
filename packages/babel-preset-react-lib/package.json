@@ -1,7 +1,7 @@
 {
   "name": "@computerrock/babel-preset-react-lib",
   "version": "2.5.2",
-  "description": "Babel preset used for React libraries",
+  "description": "Babel preset for React libraries",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
@@ -25,5 +25,11 @@
     "@babel/plugin-transform-runtime": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/runtime-corejs3": "^7.4.3",
+    "core-js": "^3.0.1",
+    "regenerator-runtime": "^0.13.2"
   }
 }

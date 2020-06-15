@@ -2,6 +2,7 @@
 
 This package contains shareable stylelint configuration used for React projects. 
 
+
 ## Usage
 
 Install this package, stylelint and the necessary plugins.
@@ -20,4 +21,5 @@ Create a file named `.stylelintrc` with following contents in the root folder of
 }
 ```
 
-You can override the settings from `@computerrock/stylelint-config-react-app` by editing the `.stylelintrc` file. Learn more about [configuring stylelint](https://stylelint.io/user-guide/configuration/) on the stylelint website.
+You can override the settings from `@computerrock/stylelint-config-react-app` by editing the `.stylelintrc` file. Learn 
+more about [configuring stylelint](https://stylelint.io/user-guide/configuration/) on the stylelint website.

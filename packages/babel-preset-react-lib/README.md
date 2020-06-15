@@ -2,6 +2,7 @@
 
 This package contains Babel preset used for JavaScript/React libraries.
 
+
 ## Usage
 
 Install package and peer dependencies by running:

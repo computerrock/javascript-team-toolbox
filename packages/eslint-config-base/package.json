@@ -1,7 +1,7 @@
 {
   "name": "@computerrock/eslint-config-base",
   "version": "1.8.1",
-  "description": "ESLint configuration used for JavaScript projects",
+  "description": "ESLint configuration for JavaScript projects",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,16 +12,18 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.2",
-    "eslint": "^5.16.0",
-    "eslint-plugin-import": "^2.16.0"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsdoc": "^22.0.0"
   },
   "peerDependencies": {
-    "babel-eslint": "^10.0.2",
-    "eslint": "^5.16.0",
-    "eslint-plugin-import": "^2.16.0"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsdoc": "^22.0.0"
   }
 }

@@ -300,6 +300,9 @@ module.exports = {
         // Specify indentation (Autofixable).
         'indentation': [4],
 
+        // Specify unix or windows linebreaks (Autofixable)
+        // 'linebreaks': ['unix'],
+
         // Limit the number of adjacent empty lines.
         'max-empty-lines': 1,
 
@@ -311,5 +314,11 @@ module.exports = {
 
         // Disallow missing end-of-source newlines (Autofixable).
         'no-missing-end-of-source-newline': true,
+
+        // Disallow empty first lines (Autofixable).
+        'no-empty-first-line': true,
+
+        // Require or disallow Unicode BOM.
+        // 'unicode-bom': ['never'],
     },
 };

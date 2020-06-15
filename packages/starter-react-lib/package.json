@@ -3,7 +3,7 @@
   "version": "1.6.0",
   "description": "React starter lib",
   "author": "Computer Rock",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox"
@@ -16,17 +16,18 @@
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/runtime-corejs3": "^7.4.3",
     "@computerrock/babel-preset-react-lib": "^2.5.2",
     "@computerrock/eslint-config-base": "^1.8.1",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.1.0",
     "core-js": "^3.0.1",
     "cross-env": "^5.2.0",
-    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsdoc": "^22.0.0",
     "regenerator-runtime": "^0.13.2",
     "rollup": "^1.16.3",
     "rollup-plugin-babel": "^4.3.3",

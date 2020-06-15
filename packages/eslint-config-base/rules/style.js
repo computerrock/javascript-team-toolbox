@@ -77,6 +77,9 @@ module.exports = {
         // enforce the consistent use of either function declarations or expressions
         'func-style': ['warn', 'expression', {allowArrowFunctions: true}],
 
+        // enforce line breaks between arguments of a function call
+        'function-call-argument-newline': 'off',
+
         // enforce consistent line breaks inside function parentheses
         'function-paren-newline': ['warn', 'consistent'],
 
@@ -162,6 +165,9 @@ module.exports = {
 
         // enforce a maximum number of lines per file
         'max-lines': 'off',
+
+        // 	enforce a maximum number of line of code in a function
+        'max-lines-per-function': 'off',
 
         // enforce a maximum depth that callbacks can be nested
         'max-nested-callbacks': 'off',
@@ -300,14 +306,17 @@ module.exports = {
         // require or disallow padding lines between statements
         'padding-line-between-statements': 'off',
 
+        // disallow the use of `Math.pow` in favor of the `**` operator
+        'prefer-exponentiation-operator': 'off',
+
+        // disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead.
+        'prefer-object-spread': 'off',
+
         // require quotes around object literal property names
         'quote-props': ['warn', 'consistent'],
 
         // enforce the consistent use of either backticks, double, or single quotes
         'quotes': ['warn', 'single', {allowTemplateLiterals: true}],
-
-        // require JSDoc comments
-        'require-jsdoc': 'off',
 
         // require or disallow semicolons instead of ASI
         'semi': ['warn', 'always'],

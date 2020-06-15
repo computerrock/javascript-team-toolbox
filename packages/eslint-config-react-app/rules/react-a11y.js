@@ -63,7 +63,7 @@ module.exports = {
         'jsx-a11y/interactive-supports-focus': 'off',
 
         // Enforce that <label> elements have the htmlFor prop
-        'jsx-a11y/label-has-for': 'off',
+        'jsx-a11y/label-has-associated-control': 'off',
 
         // Enforce lang attribute has a valid value
         'jsx-a11y/lang': 'off',
