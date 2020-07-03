@@ -243,6 +243,30 @@ $ git config --global user.email "you@your.email"
 $ git config --global user.name  "Name Surname"
 ```
 
+### Configure CRLF
+
+Windows and Linux/macOS use different characters to mark line-endings in a file. Windows system uses carriage-return 
+character and a linefeed character for newlines in its files (CRLF), while macOS and Linux systems use only the linefeed 
+character (LF). Git can handle this for us if we configure `core.autocrlf` correctly. To check current system 
+configuration use `git config -l`.
+
+On *Windows 10*, we need Git to auto-convert CRLF line endings into LF when adding them to the index, and vice versa when 
+it checks out code onto your filesystem. Configure `core.autocrlf` like this:
+
+```shell
+$ git config --global core.autocrlf true
+```
+
+On *macOS / Linux / WSL2*, we need Git to fix any accidentally introduced CRLF endings, but only when we commit the file, 
+not during code check out. Configure `core.autocrlf` like this:
+
+```shell
+$ git config --global core.autocrlf input
+```
+
+This way we ensure that we can work with system based line-endings while always having LF line-endings in the repository.
+
+
 ### Connecting to GitHub/Beanstalkapp with SSH key
 
 First generate new key or find existing you wish to use:
