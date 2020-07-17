@@ -16,6 +16,7 @@ module.exports = {
     'plugins': [
         'react',
         'react-native',
+        '@react-native-community',
     ],
     'parserOptions': {
         ecmaVersion: 2017,
