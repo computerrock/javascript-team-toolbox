@@ -6,8 +6,9 @@ This guide will help you quickly settle down and familiarize yourself with all t
 being used in our team.
 
 ### Purpose of This Document
+
 The purpose of this document is to standardize the procedures inside the JavaScript Team. Only in doing so we can achieve 
-that each member can collaborate on another project with the minimal adjustment period. This is living document. Changes 
+that each member can collaborate on another project with the minimal adjustment period. This is a living document. Changes 
 will be added to it on a regular basis. If you have any suggestions contact your Technology Team Leader or bring it up 
 on one of the 1 on 1 meetings.
 
@@ -23,7 +24,7 @@ The JavaScript Team consists of numerous JavaScript developers and is led by tec
 Technology team leader is responsible for maintaining the discipline, work ethics, quality, exploring technical solutions, 
 estimating projects and also helping resolve any issues members of the team might have.
 
-In JavaScript team we strive for technical excellence, high quality code and constant innovation in solving problems. We 
+In the JavaScript team we strive for technical excellence, high quality code and constant innovation in solving problems. We 
 achieve this by maintaining best technical practices and development principles. Together, we define and follow processes 
 for all phases of the project development. We organize and share knowledge accumulated during the work on projects.
 
@@ -41,12 +42,12 @@ Figure 1: [Technology Team / Delivery Team Matrix](./images/technology-delivery-
 
 ### Developer roles & responsibilities
 
-As a member of JavaScript team you will be assigned in certain developer role to delivery team. Your exact role on project 
-will be determined based on knowledge, experience and tasks need to be done. 
+As a member of the JavaScript team you will be assigned in a certain developer role to the delivery team. Your exact role 
+on a project will be determined based on knowledge, experience and tasks need to be done. 
 
 Depending on focus of the role (UI/design, application development, operations, etc..), responsibilities may include all 
 or some from the list: 
-F0:D5:BF:68:27:1B
+
 * delivering high quality, maintainable and well-tested code
 * following team coding standards and processes
 * planning, estimating and implementing application features  for given platform
@@ -67,14 +68,15 @@ As JavaScript and Delivery team member you will attend several types of meetings
 **Delivery team meetings**, 15-60’, daily/weekly - depending on delivery team, project managers and agile process used, 
 meetings can include daily stand ups, sprint planning, sprint reviews, retrospectives, etc..
 
-**JavaScript team meeting**, 40’, every 2-3 weeks - team activities planning & discussion meeting. Here we address current 
+**JavaScript team meeting**, 40’, every 4-5 weeks - team activities planning & discussion meeting. Here we address current 
 technology and project challenges, share achievements and knowledge, plan research and innovation, plan Web-tech 
 presentations and Rock IT meetups.
 
 **Web-tech presentation**, 60’, monthly - Organized together / in same time slot with Web back-end team. Presentation and 
-discussion on given technological topic. Attendance not mandatory.  
+discussion on given technological topics. Attendance is not mandatory but desirable as upcoming  standards and technology 
+are usually presented.   
 
-**One-on-One meeting**, 30’, every 5 weeks - Meeting with technology team leader for two directional feedback and addressing 
+**One-on-One meeting**, 30’, every 7-8 weeks - Meeting with technology team leader for two directional feedback and addressing 
 topics not appropriate for office or other meetings. During employee’s 3 month trial period this meeting will be held 
 every 2 weeks.
 
@@ -84,14 +86,14 @@ every 2 weeks.
 ### Software
 
 As IDE of choice, most team members use Webstorm/Phpstorm (IntelliJ) for which Computer Rock provides license. You may 
-use any other IDE as long it is set up to output code that respects coding style guides and standards used in team.
+use any other IDE as long as it is set up to output code that respects coding style guides and standards used in a team.
 
 You will also need to install all needed software and set system environment for development. Depending on your team 
 role you may need some or all from the list: Slack, Skype, LastPass, different browsers (Chrome, Firefox, Internet 
 Explorer) and extensions for them (React/Redux Devtools, Livereload), NVM, Node.js, Homebrew, iTerm, Postman, Charles, 
 virtualization platforms for testing (VirtualBox, Vagrant, ansible), Sketch, Photoshop, Xcode, Android Studio.
 
-Detailed environment setup steps are documented in [Development Environment Setup Manual](./development-environment-setup-manual.md).
+Detailed environment setup steps are documented in the [Development Environment Setup Manual](./development-environment-setup-manual.md).
 
 ## Online services & tools
 
@@ -115,7 +117,8 @@ GitHub, GitLab, etc..
 
 ### Documentation
 
-All project documentation that is not directly related to code, is kept and maintained in *Basecamp*. This may include: 
+All project documentation that is not directly related to code, is kept and maintained in *Basecamp*, *Confluence* or 
+other service depending on client and/or project.. This may include: 
 
 * documentation for features, requirements and solutions,
 * back-end services information,
@@ -123,15 +126,15 @@ All project documentation that is not directly related to code, is kept and main
 * deployment environments listing and setup information.
 
 Credentials for any services used will be stored and shared in LastPass. Ask your team leader and/or project manager for 
-enabling access to any resource you are missing when joining project.
+enabling access to any resource you are missing when joining a project.
 
-Code related resources will be on *Beanstalkapp* platform. After cloning project repository, always first check README.md 
-file located in root of project. It will contain basic project information, prerequisites installation, setup and build 
-steps. 
+Code related resources will be on *Beanstalkapp* platform. Some projects may use other source control services depending 
+on client and/or project. After cloning project repository, always first check README.md file located in the root of the 
+project. It will contain basic project information, prerequisites installation, setup and build steps. 
 
 ### Technology stack
 
-Main technology stack we use in team is: React, Redux, Sass/SCSS, built and transpilled with Webpack and Babel. We also 
+Main technology stack we use in a team is: React, Redux, Sass/SCSS, built and transpilled with Webpack and Babel. We also 
 use application level libraries: redux-saga, redux-thunk, moment.js, Immutable.js. Older projects may use more legacy 
 stack based on: React, Flux, built and transpilled with Gulp, Browserify and Babel. 
 
@@ -142,7 +145,7 @@ Detailed project setup steps are documented in [Project setup](./project-setup.m
 
 ### Coding standards
 
-For JavaScript we use variation of Crockford/AirBnB style guide checked and validated with eslint. Style guide document 
+For JavaScript we use a variation of Crockford/AirBnB style guide checked and validated with eslint. Style guide document 
 is published here: [JavaScript Style Guide](./javascript-style-guide.md). 
 
 We check and validate Sass/SCSS with stylelint. Style guide document is published here: [Sass/SCSS Style Guide](./sass-scss-style-guide.md).
@@ -150,20 +153,20 @@ We check and validate Sass/SCSS with stylelint. Style guide document is publishe
 
 ### Continuous Integration
 
-We use Continuous Integration (CI) development practice when working on projects. It allows us to detects bugs early,
+We use Continuous Integration (CI) development practice when working on projects. It allows us to detect bugs early,
 and deploy solutions quickly. We follow these best practices:
 
 * **Maintain a code repository** - Project source code is kept in revision control system. All artifacts required
 to build the project are placed in repository. Baseline contains working version of the software at any point of time.
 
 * **Automate the build** - Project should be buildable with a single command. Automation of the build should include 
-automating the integration, which may include deployment to production-like environment.
+automating the integration, which may include deployment to a production-like environment.
 
 * **Make the build self-testing** - Once the code is built, all tests should run to confirm that it behaves as the 
 developers expect it to behave.
 
-* **Everyone commit to the baseline every day** - By merging to the baseline regularly, number of conflicting changes is 
-reduced. Checking in a week's worth of work runs the risk of conflicting with other features and can be very difficult 
+* **Everyone commits to the baseline every day** - By merging to the baseline regularly, the number of conflicting changes 
+is reduced. Checking in a week's worth of work runs the risk of conflicting with other features and can be very difficult 
 to resolve. 
 
 * **Every commit to the baseline should be built** - The system should build commits to the current working version to 
@@ -172,9 +175,9 @@ verify that they integrate correctly. This process is automated, but sometimes i
 * **Keep the build fast** - The build needs to complete rapidly, so that if there is a problem with integration, it is 
 quickly identified.
 
-* **Test in a clone of the production environment** - Test should be done in production-like environment.
+* **Test in a clone of the production environment** - Test should be done in a production-like environment.
 
-* **Make it easy to get the latest deliverables** - We should be able to create latest deliverables at any point of time.
+* **Make it easy to get the latest deliverables** - We should be able to create the latest deliverables at any point of time.
 
 * **Everyone can see the results of the latest build** - It should be easy to find out whether the build breaks and, 
 if so, who made the relevant change and what that change was.
@@ -189,8 +192,8 @@ Technical details regarding CI process are covered in [Project delivery process]
 QA team should receive builds for testing daily. If needed they can request manual build or one with specific changes.
 Make sure to follow CI best practices to be able to achieve this. 
 
-By submitting code to QA you are granting that solution is implemented for all platforms delivery is agreed for and is 
-accessible on testing environment. 
+By submitting code to QA you are granting that solution is implemented for all platforms. Delivery is agreed for and the 
+project is accessible on testing environment.
  
-Technical details regarding QA process are covered in [Project delivery process](./project-delivery-process.md) document.
+Technical details regarding the QA process are covered in [Project delivery process](./project-delivery-process.md) document.
 

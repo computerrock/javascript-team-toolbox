@@ -1,79 +1,144 @@
 # Development Environment Setup Manual
 
 Please read this guide carefully and try to set your development environment accordingly. All members of team should 
-have their environments set as similarly as possible. 
+have their environments set as similarly as possible. All installation steps are mandatory unless not applicable to your 
+operating system or marked as [optional].
 
-See something missing? Please submit pull request with update :)
+See something missing? Please submit pull request with the update :)
 
 
-## IDE & other software 
+### [macOS] System requirements: Install Xcode & Homebrew
 
-As IDE of choice, in  Computer Rock we use [Webstorm/Phpstorm](https://www.jetbrains.com/) and you will be provided with 
-license for it. You may use any other IDE as long it is set up to output code that respects coding style guides and 
-standards used in team.
+You can download and install Xcode here: [developer.apple.com/xcode/](https://developer.apple.com/xcode/) or from App Store.
 
-For IDE code style configuration manuals please check  `./other-docs/` folder in this project. There, you will also find 
-`.editorconfig` file from [EditorConfig](http://editorconfig.org/ ) initiative that you may copy to your `Projects` folder. 
-While rule set in it is still limited, in the future it may become standard for easy IDE setup.
+Homebrew is package manager for macOS. It will allow you to install missing Unix packages you may need during work. You 
+primarily need it for installing Git.
 
-### Install Homebrew
-
-Homebrew is package manager for OS X. It will allow you to install missing Unix packages you may need during work.
-
-```bash
+```shell
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 $ brew install wget # example usage
 $ brew list # lists installed packages
 ``` 
 
-TODO: update with list of packages we install using brew
 
-### Install Xcode
+### [Ubuntu] System requirements: none
 
-Download and install here: [developer.apple.com/xcode/](https://developer.apple.com/xcode/) or from App Store.
+You are all set. 
 
-### Other software
+
+### [Windows 10] System requirements: Install WSL2 & Ubuntu
+
+WSL2 is only available in Windows 10, Version 2004, Build 19041 or higher.
+
+To enable it open PowerShell as administrator and run:
+
+```
+PS C:\> Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+PS C:\> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+This can also be done from "Turn Windows features on or off" application. Options to select are "Virtual Machine Platform" 
+and "Windows Subsystem for Linux".
+
+After system restart run:
+
+```
+PS C:\> wsl --set-default-version 2
+```
+
+It is also recommended to uninstall or convert any existing WSL1 distributions into WSL2. 
+
+In Microsoft store search for Ubuntu (or some other distribution) and install it. Launch the app to finish setup.
+
+Once in Ubuntu, run to update:
+
+```
+$ sudo apt update
+$ sudo apt -y upgrade
+```
+
+#### WSL2 network drive
+
+You may also want to assign drive letter to WSL2 network drive to Ubuntu file system for ease of access. In Windows 
+explorer in right side menu right click on `This PC` and select `Map network drive`. Choose drive letter and for 
+location type `\\wsl$\Ubuntu` or according to your distribution name.
+
+#### Windows Terminal
+
+*Windows Terminal* can be installed from Microsoft store. Alternatively you may want to use *ConEmu*. Setup tips and download
+links are in Miscellaneous section of this document.
+
+#### WSL2/Ubuntu installation troubleshooting
+
+If WSL2 is not getting enabled or Ubuntu installation fails try troubleshooting steps from the official guide 
+or linked git thread:
+
+* [Windows Subsystem for Linux Installation Guide for Windows 10](http://aka.ms/wsl2);
+* [Virtual hard disk files must be uncompressed and unencrypted and must not be sparse](https://github.com/microsoft/WSL/issues/4103).
+
+
+## IDE
+
+As IDE of choice, in  Computer Rock we use [IntelliJ](https://www.jetbrains.com/) IDEs for web, Phpstorm/Webstorm and 
+you will be provided with license for one those. You may use any other IDE as long it is set up to output code that 
+respects coding style guides and standards used in team.
+
+For IDE code style configuration manuals please check `./other-docs/` folder:
+
+* [PhpStorm/Webstorm code style configuration](./other-docs/ide-code-style-configuration-manual-phpstorm-webstorm.md)
+* [VSCode code style configuration](./other-docs/ide-code-style-configuration-manual-vscode.md)
+
+In `./other-docs/` folder you will also find `.editorconfig` file from [EditorConfig](http://editorconfig.org/ ) initiative 
+which you may copy to your `Projects` folder. While rule set in it is still limited, in the future it may become standard 
+for easy IDE setup.
+
+#### [Windows 10] WSL2/Ubuntu and Webstorm/Phpstorm
+
+To have Ubuntu's terminal from WSL as default in Webstorm/Phpstorm go to `Settings > Tools > Terminal` and set `Shell path`
+to `wsl.exe`. IntelliJ IDEs automatically use Git from Ubuntu if project is located in wsl network drive.
+
+
+## Other software
 
 You will also need:
 
 * Chrome & Firefox
-* Lightshot [app.prntscr.com](https://app.prntscr.com/en/index.html)
 * Postman [getpostman.com](https://www.getpostman.com/newhostnamenewhostnamenewhostnamenewhostname)
 * Insomnia [insomnia.rest](https://insomnia.rest/)
-* iTerm [iterm2.com](https://www.iterm2.com/)
-* Charles [charlesproxy.com](https://www.charlesproxy.com/)
+* Lightshot [app.prntscr.com](https://app.prntscr.com/en/index.html)
+* [macOS] iTerm [iterm2.com](https://www.iterm2.com/)
+* [Win 10] Windows Terminal [Microsoft Store](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)
+* [optional] Charles [charlesproxy.com](https://www.charlesproxy.com/)
 
-Chrome extensions: 
+Browser extensions: 
 
-* [LastPass](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd)
+* [LastPass (Chrome)](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd)
+* [LastPass (Firefox)](https://addons.mozilla.org/en-US/firefox/addon/lastpass-password-manager/)
 * [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 * [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
 * [Node.js inspector manager](https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj?hl=en)
 * [Awesome Screenshot recorder](https://chrome.google.com/webstore/detail/awesome-screenshot-screen/nlipoenfbbikpbjkfpfillcgkoblgpmj?hl=en)
 
-Firefox extensions:
 
-* [LastPass](https://addons.mozilla.org/en-US/firefox/addon/lastpass-password-manager/)
+## Projects folder
 
-
-## Project folder
-
-In your home (`~`) folder create new one named `Projects`. Here you will be placing all JavaScript projects. 
+In your home (`~`) folder create new one named `Projects` (macOS) or `projects` (WSL2/Ubuntu). Here you will be 
+placing all JavaScript projects. 
 
 
 ## Node.js & JavaScript tooling
 
 ### Prepare *bash* profile files
 
-```bash
+```shell
 $ touch .profile
 $ touch .bash_profile
-$ touch .profile
+$ touch .bashrc # if not present
 ```
 
 In `.bash_profile` and `.profile` insert content:
 
-```bash
+```shell
 [[ -s ~/.bashrc ]] && source ~/.bashrc
 ```
 
@@ -81,18 +146,18 @@ In `.bash_profile` and `.profile` insert content:
 
 *Node Version Manager* is a simple bash script to manage multiple active node.js versions 
 [(website)](https://github.com/creationix/nvm) If you have some version of Node.js previously installed via some other 
-method (eg. *homebrew*, native installer, etc..) uninstall it first.
+method (*homebrew*, native installer, etc) uninstall it first.
 
 To install or update *nvm*, run install script using cURL:
 
-```bash
+```shell
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
 ```
 
 The script clones the nvm repository to `~/.nvm` and adds the source line to your bash profile file (`~/.bashrc` ). Make 
 sure this content is in file after installation:
 
-```bash
+```shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -100,19 +165,26 @@ export NVM_DIR="$HOME/.nvm"
 
 Installing Node: 
 
-```bash
+```shell
 # install latest long term support version of node:
 $ nvm install --lts
 
 # to list installed versions type:
 $ nvm ls
+
+# to install any other version of node:
+$ nvm install vX.X.X
 ```
 
-There are many global npm packages we use. Install at least those from the list:
+It is recommended to install these global packages:
 
-```bash
-$ npm install -g create-react-app http-server nodemon lerna gulp yarn
+```shell
+$ npm install -g http-server nodemon lerna yarn
+```
 
+Note: global packages need to be installed for each node version.
+
+```shell
 # lists all globally installed packages
 $ npm list -g --depth 0 
 
@@ -122,8 +194,6 @@ $ nvm install NodeVersion --reinstall-packages-from=OldNodeVersion
 # to use some node version type:
 $ nvm use NodeVersion
 ```
-
-Note: With nvm, global packages need to be installed per active node version.
 
 When working on project, you can add `.nvmrc` file in project root for storing node version number with next content:
 
@@ -136,17 +206,23 @@ Use by calling `nvm use` while in project root.
 
 ## GIT setup
 
-If git is not installed use:
+macOS:
 
-```bash
+```shell
 $ brew install git
+```
+
+WSL2 / Ubuntu:
+
+```shell
+$ sudo apt install git-all
 ```
 
 ### Global .gitignore file
 
 Create global `.gitignore` file:
 
-```bash
+```shell
 $ cd ~/
 $ nano .gitignore
 $ git config --global core.excludesfile ~/.gitignore
@@ -154,55 +230,48 @@ $ git config --global core.excludesfile ~/.gitignore
 
 contents for the file:
 
-```bash
+```shell
 .DS_Store
 .idea 
 # here you must also define any other config folder used by your IDE
 ```
 
-### Git autocomplete (optional)
+### Configure your name and email 
 
-Create (if you don't have one) `.bashrc` file in home directory and add one of two versions of content below:
-
-* one-line version:
-
-```bash
-source ~/.git-prompt.sh
-source ~/git-completion.bash
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWCOLORHINTS=true
-GIT_PS1_SHOWUPSTREAM="auto"
-PROMPT_COMMAND='__git_ps1 "\[\e[01;31m\]\u\[\e[01;33m\]@\[\e[01;36m\]\h \[\e[01;33m\]\w \[\e[01;35m\]\[\e[00m\]" "\\\$ " "[%s]"'
+```shell
+$ git config --global user.email "you@your.email"
+$ git config --global user.name  "Name Surname"
 ```
 
-or 
-* multi line version:
+### Configure CRLF
 
-```bash
-source ~/.git-prompt.sh
-source ~/git-completion.bash
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWCOLORHINTS=true
-GIT_PS1_SHOWUPSTREAM="auto"
-PROMPT_COMMAND='__git_ps1 "\[\e[01;33m\]@\[\e[01;36m\]\h>----------------------------------->\n \[\e[01;33m\]\w\n \[\e[01;35m\]\[\e[00m\]" "\\\$ " "[%s]"'
+Windows and Linux/macOS use different characters to mark line-endings in a file. Windows system uses carriage-return 
+character and a linefeed character for newlines in its files (CRLF), while macOS and Linux systems use only the linefeed 
+character (LF). Git can handle this for us if we configure `core.autocrlf` correctly. To check current system 
+configuration use `git config -l`.
+
+On *Windows 10*, we need Git to auto-convert CRLF line endings into LF when adding them to the index, and vice versa when 
+it checks out code onto your filesystem. Configure `core.autocrlf` like this:
+
+```shell
+$ git config --global core.autocrlf true
 ```
 
-then put two files from this repository to home directory:
+On *macOS / Linux / WSL2*, we need Git to fix any accidentally introduced CRLF endings, but only when we commit the file, 
+not during code check out. Configure `core.autocrlf` like this:
 
-```bash
-../other-docs/.git-prompt.sh
-../other-docs/git-completition.bash
+```shell
+$ git config --global core.autocrlf input
 ```
 
-Logout and login from current terminal session.
+This way we ensure that we can work with system based line-endings while always having LF line-endings in the repository.
 
-### Connecting to Beanstalkapp/GitHub with SSH key
+
+### Connecting to GitHub/Beanstalkapp with SSH key
 
 First generate new key or find existing you wish to use:
 
-```bash
+```shell
 $ cd ~/
 $ ls -al ~/.ssh # lists files in .ssh directory
 $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com" # generates new key
@@ -210,20 +279,20 @@ $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com" # generates new key
 
 Copy public key and add to your profile on Beanstalk/GitHub:
 
-```bash
+```shell
 $ cat ~/.ssh/id_rsa.pub | pbcopy
 ```
 
 Validating connection:
 
-```bash
+```shell
 $ ssh -T git@spoiledmilk.git.beanstalkapp.com
 $ ssh -T git@github.com
 ```
 
 If note using default name for the key, you will need to add it to the agent
 
-```bash
+```shell
 $ eval "$(ssh-agent -s)"
 Agent pid 59566
 $ ssh-add -K ~/.ssh/id_rsa_key_name
@@ -232,7 +301,7 @@ $ ssh-add -K ~/.ssh/id_rsa_key_name
 If you're using macOS Sierra 10.12.2 or later, you will need to modify your `~/.ssh/config` file to automatically load 
 keys into the ssh-agent and store passphrases in your keychain. Example setup:
 
-```bash
+```shell
 #GitHub
 Host github.com
   HostName github.com
@@ -250,28 +319,42 @@ Host spoiledmilk.git.beanstalkapp.com
   IdentitiesOnly yes
 ```
 
-### Set nano as default editor
+### [optional] Set nano as default editor
 
-```bash
+```shell
 $ git config --global core.editor "nano"
 ```
 
-### Configure your name and email 
+### [optional] Git autocomplete
 
-```bash
-$ git config --global user.email "you@your.email"
-$ git config --global user.name  "Name Surname"
-```
+* [Git autocomplete](./other-docs/git-autocomplete-configuration-manual.md)
 
 
 ## Miscellaneous
 
-### Setting hostname and computer name
+### Permission settings for `.ssh` directory and key files
 
-```bash
+In case of copying `.ssh` directory to new machine you will need to set permission values:
+
+* `.ssh` directory permissions should be 700 (drwx------);
+* public keys (`.pub`) files should be 644 (-rw-r--r--);
+* private keys (`id_rsa`) on the client host should be 600 (-rw-------);
+* authorized_keys file on the server should be 600 (-rw-------). 
+
+### [macOS] Setting hostname and computer name
+
+```shell
 $ sudo scutil --set HostName newhostname
 $ sudo scutil --set LocalHostName newhostname
 $ sudo scutil --set ComputerName newhostname
 $ dscacheutil -flushcache
 # restart mac to make permanent
 ```
+
+### [Windows 10] ConEmu
+
+**ConEmu-Maximus5** is Windows console emulator. It will add all available system consoles automatically (eg. Git, CygWin). 
+[(download)](http://conemu.github.io/)
+
+In case your WSL2 distribution console is missing you can add it by going to `Settings > Startup > Tasks` then setting 
+new task group with name `Bash::WSL2 bash` and command value `wsl.exe -d Ubuntu` or according to your distribution name.
