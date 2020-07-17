@@ -1,5 +1,4 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+// import '@computerrock/react-app-polyfill/stable';
 
 /**
  * Starter React library

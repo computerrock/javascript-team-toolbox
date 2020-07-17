@@ -1,54 +1,51 @@
+import babel from '@rollup/plugin-babel';
+import json from '@rollup/plugin-json';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import {eslint} from 'rollup-plugin-eslint';
-import babel from 'rollup-plugin-babel';
-import json from 'rollup-plugin-json';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import terser from 'rollup-plugin-terser';
+import postcss from 'rollup-plugin-postcss'
+import {terser} from 'rollup-plugin-terser';
+import postcssPresetEnv from 'postcss-preset-env';
+import postcssFlexbugsFixes from 'postcss-flexbugs-fixes';
 import pkg from './package.json';
 
 export default [
-    // UMD build
-    {
-        input: 'src/index.js',
-        external: [],
-        output: {
-            name: 'CRStarterReactLib',
-            file: pkg.browser,
-            format: 'umd',
-        },
-        plugins: [
-            eslint({
-                fix: true,
-            }),
-            babel({
-                exclude: ['node_modules/**'],
-            }),
-            json(),
-            resolve(),
-            commonjs(),
-        ],
-    },
     // ES & CJS build
     {
         input: 'src/index.js',
-        external: [],
+        external: [
+            '@computerrock/react-app-polyfill',
+        ],
         output: [
             {
                 file: pkg.main,
                 format: 'cjs',
-                sourceMap: true,
+                sourcemap: true,
             },
             {
                 file: pkg.module,
                 format: 'es',
-                sourceMap: true,
+                sourcemap: true,
             },
         ],
         plugins: [
+            postcss({
+                plugins: [
+                    postcssFlexbugsFixes(),
+                    postcssPresetEnv({
+                        autoprefixer: {
+                            flexbox: 'no-2009',
+                            grid: true,
+                        },
+                        stage: 3,
+                    })
+                ],
+            }),
             eslint({
                 fix: true,
             }),
             babel({
+                babelHelpers: 'bundled',
                 exclude: ['node_modules/**'],
             }),
             json(),
@@ -57,14 +54,20 @@ export default [
             (process.env.NODE_ENV === 'production' && terser({
                 sourceMap: true,
                 terserOptions: {
+                    parse: {
+                        ecma: 8,
+                    },
                     compress: {
+                        ecma: 5,
                         warnings: false,
                         comparisons: false,
+                        inline: 2,
                     },
                     mangle: {
                         safari10: true,
                     },
                     output: {
+                        ecma: 5,
                         comments: false,
                         ascii_only: true,
                     },
