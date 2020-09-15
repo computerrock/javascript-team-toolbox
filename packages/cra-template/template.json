@@ -15,10 +15,29 @@
     },
     "dependencies": {
       "@computerrock/react-app-polyfill":  "^1.0.0-alpha.0",
+      "prop-types": "^15.7.2",
       "classnames": "^2.2.6",
+      "connected-react-router": "^6.4.0",
+      "content-type": "^1.0.4",
+      "flux-standard-action": "^2.0.3",
+      "history": "^4.7.2",
+      "immutable": "^3.8.2",
       "include-media": "^1.4.9",
-      "moment": "^2.25.3",
-      "prop-types": "^15.7.2"
+      "moment": "^2.27.0",
+      "path-to-regexp": "^2.2.1",
+      "prop-types": "^15.7.2",
+      "qs": "^6.6.0",
+      "react": "^16.13.1",
+      "react-dom": "^16.13.1",
+      "react-redux": "^7.0.3",
+      "react-router": "^5.0.0",
+      "react-router-config": "^5.0.0",
+      "react-router-dom": "^5.0.0",
+      "redux": "^4.0.1",
+      "redux-devtools-extension": "^2.13.8",
+      "redux-logger": "^4.0.0",
+      "redux-saga": "^1.0.2",
+      "reselect": "^3.0.1"
     }
   }
 }

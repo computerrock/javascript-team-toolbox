@@ -1,0 +1,24 @@
+{
+  "package": {
+    "name": "@computerrock/application-name",
+    "description": "FILL APPLICATION DESCRIPTION",
+    "author": "Computer Rock",
+    "license": "UNLICENSED",
+    "repository": {
+      "type": "git",
+      "url": "https://spoiledmilk.beanstalkapp.com/FILL-APPLICATION-REPOSITORY"
+    },
+    "private": true,
+    "main": "index.js",
+    "engines": {
+      "node": ">=12"
+    },
+    "dependencies": {
+      "@computerrock/react-app-polyfill":  "^1.0.0-alpha.0",
+      "classnames": "^2.2.6",
+      "include-media": "^1.4.9",
+      "moment": "^2.25.3",
+      "prop-types": "^15.7.2"
+    }
+  }
+}
