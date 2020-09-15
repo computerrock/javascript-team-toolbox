@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/react-native-babel-transformer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Custom transformer for react-native",
   "author": "Computer Rock",
   "license": "UNLICENSED",
