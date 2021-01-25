@@ -12,6 +12,7 @@ Then, setup your work environment and get your self familiar with team developme
 * [`Sass/SCSS Project Architecture`](./sass-scss-project-architecture.md)
 * [`Sass/SCSS Style Guide`](./sass-scss-style-guide.md)
 * [`Project delivery process`](./project-delivery-process.md)
+* [`Code review guide`](./javascript-code-review-guide.md)
 
 In [`./other-docs/`](./other-docs) folder you will find other equally useful guides and files. Feel free to check them 
 out on your own. Have idea about some new useful guide? Please submit it in pull request.
