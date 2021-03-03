@@ -144,8 +144,8 @@ module.exports = function (webpackEnv) {
                 // eslint
                 {
                     test: /\.(js|jsx|mjs)$/,
+                    include: paths.appSources,
                     enforce: 'pre',
-                    include: paths.appSrc,
                     use: [
                         {
                             loader: require.resolve('eslint-loader'),
@@ -172,7 +172,7 @@ module.exports = function (webpackEnv) {
                         // js/jsx/mjs
                         {
                             test: /\.(js|jsx|mjs)$/,
-                            include: paths.appSrc,
+                            include: paths.appSources,
                             loader: require.resolve('babel-loader'),
                             options: {
                                 cacheDirectory: true,

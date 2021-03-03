@@ -181,7 +181,7 @@ module.exports = function(
     }
 
     // Copy .rc configuration files
-    const rcConfigurationFiles = ['.env.example', '.browserslistrc', 'gitignore', 'jest.config.js'];
+    const rcConfigurationFiles = ['.env.example', '.browserslistrc', 'gitignore', 'jest.config.js', 'app.config.js'];
     rcConfigurationFiles.forEach(file => {
         const rcFilePath = path.join(paths.ownPath, 'config/rc', file);
         if (!fs.existsSync(rcFilePath) || !fs.lstatSync(rcFilePath).isFile()) return;

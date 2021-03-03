@@ -5,6 +5,7 @@ const fs = require('fs');
 const {URL} = require('url');
 
 const appDirectory = fs.realpathSync(process.cwd());
+const appConfig = require(path.resolve(appDirectory, 'app.config.js'));
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const getPublicPath = envPublicPath => {
@@ -25,6 +26,17 @@ const getPublicPath = envPublicPath => {
         ? (isEnvDevelopment ? '/' : envPublicPath) : validPublicPath.pathname
 };
 
+const getSourcePaths = () => {
+    const sourcePaths = [
+        resolveApp('src'),
+    ];
+    (appConfig.sourceModules || []).forEach(sourceModule => {
+        sourcePaths.push(fs.realpathSync(process.cwd() + '/node_modules/' + sourceModule));
+    });
+
+    return sourcePaths;
+};
+
 // @remove-on-eject-begin
 const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 // @remove-on-eject-end
@@ -39,6 +51,7 @@ module.exports = {
     appServerJs: resolveApp('src/server.js'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
+    appSources: getSourcePaths(),
     appNodeModules: resolveApp('node_modules'),
     publicPath: getPublicPath(process.env.PUBLIC_URL),
     // @remove-on-eject-begin
