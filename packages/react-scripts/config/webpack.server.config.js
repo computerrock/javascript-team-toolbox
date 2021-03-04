@@ -9,6 +9,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('@computerrock/react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
+const getStylelintPaths = require('@computerrock/react-dev-utils/getStylelintPaths');
 const getEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -187,6 +188,8 @@ module.exports = function (webpackEnv) {
             new StyleLintPlugin({
                 syntax: 'scss',
                 fix: false,
+                context: paths.appSrc,
+                files: getStylelintPaths(paths.appSrc, paths.appSources),
             }),
             // SVG sprite loader
             new SpriteLoaderPlugin(),

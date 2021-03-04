@@ -30,8 +30,8 @@ const getSourcePaths = () => {
     const sourcePaths = [
         resolveApp('src'),
     ];
-    (appConfig.sourceModules || []).forEach(sourceModule => {
-        sourcePaths.push(fs.realpathSync(process.cwd() + '/node_modules/' + sourceModule));
+    (appConfig.moduleSourcePaths || []).forEach(moduleSourcePath => {
+        sourcePaths.push(fs.realpathSync(process.cwd() + '/node_modules/' + moduleSourcePath));
     });
 
     return sourcePaths;

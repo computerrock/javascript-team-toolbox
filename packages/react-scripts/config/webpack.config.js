@@ -18,6 +18,7 @@ const InterpolateHtmlPlugin = require('@computerrock/react-dev-utils/Interpolate
 const WatchMissingNodeModulesPlugin = require('@computerrock/react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlugin');
 const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent');
+const getStylelintPaths = require('@computerrock/react-dev-utils/getStylelintPaths');
 const getEnvironment = require('./env');
 const paths = require('./paths');
 // @remove-on-eject-begin
@@ -342,6 +343,8 @@ module.exports = function (webpackEnv) {
             new StyleLintPlugin({
                 syntax: 'scss',
                 fix: fixStylelintErrors,
+                context: paths.appSrc,
+                files: getStylelintPaths(paths.appSrc, paths.appSources),
                 // @remove-on-eject-begin
                 configBasedir: isExtendingStylelintConfig
                     ? paths.ownPath : undefined,
