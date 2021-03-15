@@ -107,8 +107,6 @@ choosePort(HOST, DEFAULT_PORT)
             if (isSuccessful) {
                 console.log(chalk.green('Compiled successfully!'));
                 console.log();
-                console.log(chalk.gray(`Listening on http://localhost:${port}`));
-                console.log();
             }
 
             // if errors exist, only show errors
@@ -123,6 +121,11 @@ choosePort(HOST, DEFAULT_PORT)
             if (messages.warnings.length) {
                 console.log(chalk.yellow('Compiled with warnings.\n'));
                 console.log(messages.warnings.join('\n\n'));
+                console.log();
+            }
+
+            if (isSuccessful || messages.warnings.length) {
+                console.log(chalk.gray(`Listening on http://localhost:${port}`));
                 console.log();
             }
         };
