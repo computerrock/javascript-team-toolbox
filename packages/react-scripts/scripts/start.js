@@ -11,8 +11,8 @@ process.on('unhandledRejection', err => {
 
 // SSR
 const argv = require('yargs').argv;
-const isSSREnabled = typeof argv['with-ssr'] !== 'undefined' ? true : '';
-process.env.SSR_ENABLED = isSSREnabled;
+const isSSREnabled = typeof argv['with-ssr'] !== 'undefined';
+process.env.SSR_ENABLED = isSSREnabled.toString();
 
 // load env variables
 require('../config/env');
