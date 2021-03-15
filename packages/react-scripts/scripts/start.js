@@ -11,8 +11,8 @@ process.on('unhandledRejection', err => {
 
 // SSR
 const argv = require('yargs').argv;
-const isSSREnabled = typeof argv['with-ssr'] !== 'undefined' ? true : '';
-process.env.SSR_ENABLED = isSSREnabled;
+const isSSREnabled = typeof argv['with-ssr'] !== 'undefined';
+process.env.SSR_ENABLED = isSSREnabled.toString();
 
 // load env variables
 require('../config/env');
@@ -107,8 +107,6 @@ choosePort(HOST, DEFAULT_PORT)
             if (isSuccessful) {
                 console.log(chalk.green('Compiled successfully!'));
                 console.log();
-                console.log(chalk.gray(`Listening on http://localhost:${port}`));
-                console.log();
             }
 
             // if errors exist, only show errors
@@ -123,6 +121,11 @@ choosePort(HOST, DEFAULT_PORT)
             if (messages.warnings.length) {
                 console.log(chalk.yellow('Compiled with warnings.\n'));
                 console.log(messages.warnings.join('\n\n'));
+                console.log();
+            }
+
+            if (isSuccessful || messages.warnings.length) {
+                console.log(chalk.gray(`Listening on http://localhost:${port}`));
                 console.log();
             }
         };
@@ -152,23 +155,6 @@ choosePort(HOST, DEFAULT_PORT)
 
         // configure WebpackDevMiddleware
         devServer.use(WebpackDevMiddleware(compiler, {
-            compress: true,
-            contentBase: paths.appPublic,
-            watchContentBase: true,
-            publicPath: config.output.publicPath,
-            // enable hot reloading
-            hot: true,
-            // display only error messages, formatted warning stats will be shown in terminal
-            logLevel: 'error',
-            quiet: true,
-            // do not watch node_modules
-            watchOptions: {
-                ignored: /node_modules/,
-            },
-            // allow period symbol in paths
-            historyApiFallback: {
-                disableDotRule: true,
-            },
             // enable server side rendering
             // index needs to be falsy due to incompatibility with HtmlWebpackPlugin:
             // https://github.com/webpack/webpack-dev-middleware/issues/142

@@ -14,7 +14,6 @@
 // This is quite hacky and hopefully won't be needed when Webpack fixes this.
 // https://github.com/webpack/webpack/issues/2878
 
-var chalk = require('chalk');
 var friendlySyntaxErrorLabel = 'Syntax error:';
 
 function isLikelyASyntaxError(message) {
@@ -24,7 +23,19 @@ function isLikelyASyntaxError(message) {
 // Cleans up webpack error messages.
 // eslint-disable-next-line no-unused-vars
 function formatMessage(message, isError) {
-    var lines = message.split('\n');
+    let lines = [];
+
+    if (typeof message === 'string') {
+        lines = message.split('\n');
+    } else if ('message' in message) {
+        lines = message['message'].split('\n');
+    } else if (Array.isArray(message)) {
+        message.forEach(message => {
+            if ('message' in message) {
+                lines = message['message'].split('\n');
+            }
+        });
+    }
 
     if (lines.length > 2 && lines[1] === '') {
         // Remove extra newline.
@@ -100,8 +111,6 @@ function formatMessage(message, isError) {
             "$1 '$4' does not contain an export named '$3'."
         );
     }
-
-    lines[0] = chalk.inverse(lines[0]);
 
     // Reassemble the message.
     message = lines.join('\n');

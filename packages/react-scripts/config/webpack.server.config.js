@@ -27,6 +27,13 @@ module.exports = function (webpackEnv) {
             : isEnvDevelopment && 'development',
         devtool: 'cheap-module-eval-source-map',
         target: 'node',
+        stats: {
+            warnings: false,
+            errors: false,
+            assets: false,
+            modules: false,
+            entrypoints: false,
+        },
         entry: [
             paths.appServerJs,
         ],
@@ -48,7 +55,7 @@ module.exports = function (webpackEnv) {
             },
             plugins: [
                 // check that used modules are inside the source scope
-                new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+                // new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
             ],
         },
         module: {
@@ -166,7 +173,7 @@ module.exports = function (webpackEnv) {
                             loader: require.resolve('url-loader'),
                             options: {
                                 limit: 10000,
-                                name: 'media/[name].[hash:8].[ext]',
+                                name: 'media/[name].[contenthash:8].[ext]',
                             },
                         },
                         // catch all
@@ -174,7 +181,7 @@ module.exports = function (webpackEnv) {
                             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.svg$/],
                             loader: require.resolve('file-loader'),
                             options: {
-                                name: 'media/[name].[hash:8].[ext]',
+                                name: 'media/[name].[contenthash:8].[ext]',
                             },
                         },
                     ],
@@ -198,20 +205,23 @@ module.exports = function (webpackEnv) {
             // on `npm install` rebuild
             new WatchMissingNodeModulesPlugin(paths.appNodeModules),
             // ignore modules that cause large bundles
-            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+            new webpack.IgnorePlugin({
+                resourceRegExp: /^\.\/locale$/,
+                contextRegExp: /moment$/,
+            }),
         ],
         optimization: {
             // when HMR is enabled display relative path of the module
             namedModules: true,
         },
-        // tell Webpack to provide empty mocks for imported Node modules not used in the browser
-        node: {
-            dgram: 'empty',
-            fs: 'empty',
-            net: 'empty',
-            tls: 'empty',
-            child_process: 'empty',
-        },
+        // TODO tell Webpack to provide empty mocks for imported Node modules not used in the browser
+        // node: {
+        //     dgram: 'empty',
+        //     fs: 'empty',
+        //     net: 'empty',
+        //     tls: 'empty',
+        //     child_process: 'empty',
+        // },
         // turn off performance hints during development
         performance: {
             hints: false,

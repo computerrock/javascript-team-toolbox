@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
 const safePostCssParser = require('postcss-safe-parser');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
@@ -54,13 +54,20 @@ module.exports = function (webpackEnv) {
         devtool: isEnvProduction ? (shouldUseSourceMap ? 'source-map' : false)
             : isEnvDevelopment && 'cheap-module-source-map',
         target: 'web',
+        stats: {
+            warnings: false,
+            errors: false,
+            assets: false,
+            modules: false,
+            entrypoints: false,
+        },
         entry: isEnvProduction ? paths.appIndexJs
             : isEnvDevelopment && [
             require.resolve('webpack-hot-middleware/client') + '?/__what&name=client',
             paths.appIndexJs,
         ],
         output: {
-            path: isEnvProduction ? paths.appBuild : undefined,
+            path: isEnvProduction ? paths.appBuild : '/',
             pathinfo: isEnvDevelopment,
             filename: isEnvProduction ? 'js/[name].[contenthash:8].js'
                 : isEnvDevelopment && 'js/index.js',
@@ -79,7 +86,6 @@ module.exports = function (webpackEnv) {
             // minify code in production
             minimizer: [
                 new TerserPlugin({
-                    sourceMap: shouldUseSourceMap,
                     terserOptions: {
                         parse: {
                             ecma: 8,
@@ -116,17 +122,6 @@ module.exports = function (webpackEnv) {
                     },
                 }),
             ],
-            // split vendor and common chunks
-            splitChunks: {
-                chunks: 'all',
-                name: false,
-            },
-            // split webpack runtime chunk
-            runtimeChunk: {
-                name: entrypoint => `runtime-${entrypoint.name}`,
-            },
-            // when HMR is enabled display relative path of the module for debugging
-            moduleIds: 'named',
         },
         resolve: {
             modules: ['node_modules', paths.appNodeModules],
@@ -136,7 +131,7 @@ module.exports = function (webpackEnv) {
             },
             plugins: [
                 // check that used modules are inside the source scope
-                new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+                // new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
             ],
         },
         module: {
@@ -291,7 +286,7 @@ module.exports = function (webpackEnv) {
                             loader: require.resolve('url-loader'),
                             options: {
                                 limit: imageInlineSizeLimit,
-                                name: 'media/[name].[hash:8].[ext]',
+                                name: 'media/[name].[contenthash:8].[ext]',
                             },
                         },
                         // catch all
@@ -299,7 +294,7 @@ module.exports = function (webpackEnv) {
                             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.svg$/],
                             loader: require.resolve('file-loader'),
                             options: {
-                                name: 'media/[name].[hash:8].[ext]',
+                                name: 'media/[name].[contenthash:8].[ext]',
                             },
                         },
                     ],
@@ -355,7 +350,10 @@ module.exports = function (webpackEnv) {
             // SVG sprite loader
             new SpriteLoaderPlugin(),
             // ignore modules that cause large bundles
-            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+            new webpack.IgnorePlugin({
+                resourceRegExp: /^\.\/locale$/,
+                contextRegExp: /moment$/,
+            }),
             // enable HMR (CSS only)
             isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
             // enable React refresh
@@ -370,7 +368,7 @@ module.exports = function (webpackEnv) {
                 chunkFilename: 'css/[id].[contenthash:8].chunk.css',
             }),
             // generate manifest file
-            new ManifestPlugin({
+            new WebpackManifestPlugin({
                 fileName: 'asset-manifest.json',
                 publicPath: paths.publicPath,
                 generate: (seed, files, entrypoints) => {
@@ -404,17 +402,12 @@ module.exports = function (webpackEnv) {
                 ],
             }),
         ].filter(Boolean),
-        // tell Webpack to provide empty mocks for imported Node modules not used in the browser
-        node: {
-            module: 'empty',
-            dgram: 'empty',
-            dns: 'mock',
-            fs: 'empty',
-            http2: 'empty',
-            net: 'empty',
-            tls: 'empty',
-            child_process: 'empty',
-        },
+        // TODO tell Webpack to provide empty mocks for imported Node modules not used in the browser
+        // node: {
+        //     global: false,
+        //     __filename: false,
+        //     __dirname: false,
+        // },
         // turn off performance hints as FileSizeReporter is used instead
         performance: {
             hints: false,
