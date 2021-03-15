@@ -155,23 +155,6 @@ choosePort(HOST, DEFAULT_PORT)
 
         // configure WebpackDevMiddleware
         devServer.use(WebpackDevMiddleware(compiler, {
-            compress: true,
-            contentBase: paths.appPublic,
-            watchContentBase: true,
-            publicPath: config.output.publicPath,
-            // enable hot reloading
-            hot: true,
-            // display only error messages, formatted warning stats will be shown in terminal
-            logLevel: 'error',
-            quiet: true,
-            // do not watch node_modules
-            watchOptions: {
-                ignored: /node_modules/,
-            },
-            // allow period symbol in paths
-            historyApiFallback: {
-                disableDotRule: true,
-            },
             // enable server side rendering
             // index needs to be falsy due to incompatibility with HtmlWebpackPlugin:
             // https://github.com/webpack/webpack-dev-middleware/issues/142

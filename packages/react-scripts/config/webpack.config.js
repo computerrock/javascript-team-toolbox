@@ -54,6 +54,13 @@ module.exports = function (webpackEnv) {
         devtool: isEnvProduction ? (shouldUseSourceMap ? 'source-map' : false)
             : isEnvDevelopment && 'cheap-module-source-map',
         target: 'web',
+        stats: {
+            warnings: false,
+            errors: false,
+            assets: false,
+            modules: false,
+            entrypoints: false,
+        },
         entry: isEnvProduction ? paths.appIndexJs
             : isEnvDevelopment && [
             require.resolve('webpack-hot-middleware/client') + '?/__what&name=client',
@@ -79,7 +86,6 @@ module.exports = function (webpackEnv) {
             // minify code in production
             minimizer: [
                 new TerserPlugin({
-                    sourceMap: shouldUseSourceMap,
                     terserOptions: {
                         parse: {
                             ecma: 8,
