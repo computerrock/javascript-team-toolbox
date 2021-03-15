@@ -48,7 +48,7 @@ module.exports = function (webpackEnv) {
             },
             plugins: [
                 // check that used modules are inside the source scope
-                new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+                // new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
             ],
         },
         module: {
