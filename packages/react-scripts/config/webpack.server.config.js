@@ -3,6 +3,7 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -55,28 +56,12 @@ module.exports = function (webpackEnv) {
             },
             plugins: [
                 // check that used modules are inside the source scope
-                // new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+                new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
             ],
         },
         module: {
             strictExportPresence: true,
             rules: [
-                // eslint
-                {
-                    test: /\.(js|jsx|mjs)$/,
-                    include: paths.appSources,
-                    enforce: 'pre',
-                    use: [
-                        {
-                            loader: require.resolve('eslint-loader'),
-                            options: {
-                                formatter: eslintFormatter,
-                                eslintPath: require.resolve('eslint'),
-                                fix: true,
-                            },
-                        },
-                    ],
-                },
                 {
                     oneOf: [
                         // js/jsx
@@ -191,6 +176,13 @@ module.exports = function (webpackEnv) {
         plugins: [
             // make environment variables available in application code
             new webpack.DefinePlugin(env.stringified),
+            // eslint
+            new ESLintPlugin({
+                extensions: ['js', 'jsx', 'mjs'],
+                formatter: eslintFormatter,
+                eslintPath: require.resolve('eslint'),
+                fix: true,
+            }),
             // lint styles
             new StyleLintPlugin({
                 syntax: 'scss',
