@@ -156,6 +156,14 @@ module.exports = function (webpackEnv) {
                                 baseConfig: isExtendingESLintConfig ? undefined
                                     : {
                                         extends: [require.resolve('@computerrock/eslint-config-react-app')],
+                                        parserOptions: {
+                                            requireConfigFile: false,
+                                            babelOptions: {
+                                                babelrc: false,
+                                                configFile: false,
+                                                presets: [require.resolve('@computerrock/babel-preset-react-app')],
+                                            },
+                                        }
                                     },
                                 useEslintrc: isExtendingESLintConfig,
                                 // @remove-on-eject-end

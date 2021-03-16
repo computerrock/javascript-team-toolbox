@@ -1,4 +1,10 @@
 {
   "extends": "@computerrock/eslint-config-react-app",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "babelrc": true
+    }
+  },
   "rules": {}
 }
