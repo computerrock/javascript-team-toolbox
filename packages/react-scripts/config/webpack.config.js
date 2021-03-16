@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -137,40 +138,6 @@ module.exports = function (webpackEnv) {
         module: {
             strictExportPresence: true,
             rules: [
-                // eslint
-                {
-                    test: /\.(js|jsx|mjs)$/,
-                    include: paths.appSources,
-                    enforce: 'pre',
-                    use: [
-                        {
-                            loader: require.resolve('eslint-loader'),
-                            options: {
-                                cache: true,
-                                formatter: require.resolve('@computerrock/react-dev-utils/eslintFormatter'),
-                                eslintPath: require.resolve('eslint'),
-                                resolvePluginsRelativeTo: __dirname,
-                                fix: fixESLintErrors,
-                                // @remove-on-eject-begin
-                                ignore: isExtendingESLintConfig,
-                                baseConfig: isExtendingESLintConfig ? undefined
-                                    : {
-                                        extends: [require.resolve('@computerrock/eslint-config-react-app')],
-                                        parserOptions: {
-                                            requireConfigFile: false,
-                                            babelOptions: {
-                                                babelrc: false,
-                                                configFile: false,
-                                                presets: [require.resolve('@computerrock/babel-preset-react-app')],
-                                            },
-                                        }
-                                    },
-                                useEslintrc: isExtendingESLintConfig,
-                                // @remove-on-eject-end
-                            },
-                        },
-                    ],
-                },
                 {
                     oneOf: [
                         // js/jsx/mjs
@@ -342,6 +309,31 @@ module.exports = function (webpackEnv) {
             new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
             // make environment variables available in application code
             new webpack.DefinePlugin(env.stringified),
+            // eslint
+            new ESLintPlugin({
+                extensions: ['js', 'jsx', 'mjs'],
+                cache: true,
+                formatter: require.resolve('@computerrock/react-dev-utils/eslintFormatter'),
+                eslintPath: require.resolve('eslint'),
+                resolvePluginsRelativeTo: __dirname,
+                fix: fixESLintErrors,
+                // @remove-on-eject-begin
+                ignore: isExtendingESLintConfig,
+                baseConfig: isExtendingESLintConfig ? undefined
+                    : {
+                        extends: [require.resolve('@computerrock/eslint-config-react-app')],
+                        parserOptions: {
+                            requireConfigFile: false,
+                            babelOptions: {
+                                babelrc: false,
+                                configFile: false,
+                                presets: [require.resolve('@computerrock/babel-preset-react-app')],
+                            },
+                        }
+                    },
+                useEslintrc: isExtendingESLintConfig,
+                // @remove-on-eject-end
+            }),
             // lint styles
             new StyleLintPlugin({
                 syntax: 'scss',
