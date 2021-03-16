@@ -120,20 +120,21 @@ module.exports = function (webpackEnv) {
                                 {
                                     loader: require.resolve('postcss-loader'),
                                     options: {
-                                        ident: 'postcss',
                                         sourceMap: true,
-                                        plugins: () => [
-                                            require('postcss-flexbugs-fixes'),
-                                            autoprefixer({
-                                                browsers: [
-                                                    '>1%',
-                                                    'last 4 versions',
-                                                    'Firefox ESR',
-                                                    'not ie < 9',
-                                                ],
-                                                flexbox: 'no-2009',
-                                            }),
-                                        ],
+                                        postcssOptions: {
+                                            plugins: [
+                                                require('postcss-flexbugs-fixes'),
+                                                autoprefixer({
+                                                    browsers: [
+                                                        '>1%',
+                                                        'last 4 versions',
+                                                        'Firefox ESR',
+                                                        'not ie < 9',
+                                                    ],
+                                                    flexbox: 'no-2009',
+                                                }),
+                                            ],
+                                        },
                                     },
                                 },
                                 {
