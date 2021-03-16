@@ -43,6 +43,7 @@ const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 
 module.exports = {
     dotenv: resolveApp('.env'),
+    publicPath: getPublicPath(process.env.PUBLIC_URL),
     appPath: resolveApp('.'),
     appBuild: resolveApp('build'),
     appPublic: resolveApp('public'),
@@ -53,7 +54,11 @@ module.exports = {
     appSrc: resolveApp('src'),
     appSources: getSourcePaths(),
     appNodeModules: resolveApp('node_modules'),
-    publicPath: getPublicPath(process.env.PUBLIC_URL),
+    reactRefreshEntries: [
+        require.resolve('@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils'),
+        require.resolve('@pmmmwh/react-refresh-webpack-plugin/overlay'),
+        require.resolve('react-refresh/runtime'),
+    ],
     // @remove-on-eject-begin
     ownPath: resolveOwn('.'),
     ownNodeModules: resolveOwn('node_modules'),
