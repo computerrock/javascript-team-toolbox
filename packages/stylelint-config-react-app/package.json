@@ -15,8 +15,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "stylelint": "^13.3.3",
-    "stylelint-scss": "^3.17.2",
+    "stylelint": "^13.12.0",
+    "stylelint-scss": "^3.19.0",
     "stylelint-selector-bem-pattern": "^2.1.0"
   }
 }
