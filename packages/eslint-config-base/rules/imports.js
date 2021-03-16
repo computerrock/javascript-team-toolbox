@@ -59,6 +59,9 @@ module.exports = {
         // Prevent unnecessary path segments in import and require statements
         'import/no-useless-path-segments': 'warn',
 
+        // Forbid importing modules from parent directories
+        'import/no-relative-parent-imports': 'off',
+
         // Helpful warnings:
 
         // Report any invalid exports, i.e. re-export of the same name
@@ -100,6 +103,9 @@ module.exports = {
         // Forbid the use of mutable exports with var or let
         'import/no-mutable-exports': 'warn',
 
+        // Report modules without exports, or exports without matching import in another module
+        'import/no-unused-modules': 'warn',
+
         // Module systems:
 
         // Report potentially ambiguous parse goal (script vs. module)
@@ -113,6 +119,9 @@ module.exports = {
 
         // No Node.js builtin modules
         'import/no-nodejs-modules': 'off',
+
+        // Forbid imports with CommonJS exports
+        'import/no-import-module-exports': 'off',
 
         // Style guide:
 
@@ -155,6 +164,9 @@ module.exports = {
 
         // Forbid default exports
         'import/no-default-export': 'off',
+
+        // Forbid named exports
+        'import/no-named-export': 'off',
 
         // Forbid anonymous values as default exports
         'import/no-anonymous-default-export': 'off',

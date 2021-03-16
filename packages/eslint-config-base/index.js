@@ -19,7 +19,7 @@ module.exports = {
         './rules/jsdoc',
     ].map(require.resolve),
     'parserOptions': {
-        ecmaVersion: 2017,
+        ecmaVersion: 2019,
         sourceType: 'module',
         ecmaFeature: {
             experimentalObjectRestSpread: true,

@@ -17,7 +17,7 @@ module.exports = {
         },
     },
     rules: {
-        // Enforce emojis are wrapped in and provide screenreader access
+        // Enforce emojis are wrapped in <span> and provide screenreader access.
         'jsx-a11y/accessible-emoji': 'warn',
 
         // Enforce all elements that require alternative text have meaningful information to relay back to end user
@@ -43,6 +43,9 @@ module.exports = {
 
         // Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes
         'jsx-a11y/aria-unsupported-elements': 'warn',
+
+        // Enforce that autocomplete attributes are used correctly.
+        'jsx-a11y/autocomplete-valid': 'off',
 
         // Enforce a clickable non-interactive element has at least one keyboard event listener
         'jsx-a11y/click-events-have-key-events': 'off',

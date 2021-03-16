@@ -19,7 +19,7 @@ module.exports = {
         '@react-native-community',
     ],
     'parserOptions': {
-        ecmaVersion: 2017,
+        ecmaVersion: 2019,
         sourceType: 'module',
         ecmaFeatures: {
             jsx: true,

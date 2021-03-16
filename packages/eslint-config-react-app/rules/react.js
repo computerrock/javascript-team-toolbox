@@ -251,6 +251,9 @@ module.exports = {
         // Limit maximum of props on a single line in JSX
         'react/jsx-max-props-per-line': ['warn', {maximum: 1, when: 'multiline'}],
 
+        // Enforce a new line after jsx elements and expressions
+        'react/jsx-newline': 'off',
+
         // Prevent usage of .bind() and arrow functions in JSX props
         'react/jsx-no-bind': [
             'warn',
@@ -263,6 +266,9 @@ module.exports = {
 
         // Prevent comments from being inserted as text nodes
         'react/jsx-no-comment-textnodes': 'warn',
+
+        // Prevents JSX context provider values from taking values that will cause needless re-renders.
+        'react/jsx-no-constructed-context-values': 'off',
 
         // Prevent duplicate props in JSX
         'react/jsx-no-duplicate-props': ['warn', {ignoreCase: true}],

@@ -13,7 +13,8 @@ module.exports = {
     settings: {
         'jsdoc': {
             tagNamePreference: {
-                returns: 'return' },
+                returns: 'return'
+            },
             preferredTypes: {
                 Boolean: 'boolean',
                 Number: 'number',
@@ -37,6 +38,9 @@ module.exports = {
 
         // Reports invalid padding inside JSDoc blocks.
         'jsdoc/check-indentation': 'off',
+
+        // Reports invalid alignment of JSDoc block lines
+        'jsdoc/check-line-alignment': 'off',
 
         // Ensures that parameter names in JSDoc match those in the function declaration.
         'jsdoc/check-param-names': 'off',
@@ -68,17 +72,23 @@ module.exports = {
         // Enforces a consistent padding of the block description.
         'jsdoc/newline-after-description': 'off',
 
+        // This rule checks for multi-line-style comments which fail to meet the criteria of a jsdoc block
+        'jsdoc/no-bad-blocks': 'off',
+
+        // This rule reports defaults being used on the relevant portion of @param or @default.
+        'jsdoc/no-defaults': 'off',
+
         // This rule reports types being used on @param or @returns.
         'jsdoc/no-types': 'off',
 
         // Checks that types in jsdoc comments are defined. This can be used to check unimported types.
         'jsdoc/no-undefined-types': 'off',
 
-        // Requires that all functions have a description.
-        'jsdoc/require-description': 'off',
-
         // Requires that block description, explicit @description, and @param/@returns tag descriptions are written in complete sentences.
         'jsdoc/require-description-complete-sentence': 'off',
+
+        // Requires that all functions have a description.
+        'jsdoc/require-description': 'off',
 
         // Requires that all functions have examples.
         'jsdoc/require-example': 'off',
@@ -92,9 +102,6 @@ module.exports = {
         // Checks for presence of jsdoc comments, on class declarations as well as functions.
         'jsdoc/require-jsdoc': 'off',
 
-        // Requires that all function parameters are documented.
-        'jsdoc/require-param': 'off',
-
         // Requires that each @param tag has a description value.
         'jsdoc/require-param-description': 'off',
 
@@ -103,6 +110,9 @@ module.exports = {
 
         // Requires that each @param tag has a type value.
         'jsdoc/require-param-type': 'off',
+
+        // Requires that all function parameters are documented.
+        'jsdoc/require-param': 'off',
 
         // Requires that all @typedef and @namespace tags have @property when their type is a plain object, Object, or PlainObject.
         'jsdoc/require-property': 'off',
@@ -116,9 +126,6 @@ module.exports = {
         // Requires that each @property tag has a type value.
         'jsdoc/require-property-type': 'off',
 
-        // Requires returns are documented.
-        'jsdoc/require-returns': 'off',
-
         // Requires a return statement in function body if a @returns tag is specified in jsdoc comment.
         'jsdoc/require-returns-check': 'off',
 
@@ -127,6 +134,18 @@ module.exports = {
 
         // Requires that @returns tag has type value.
         'jsdoc/require-returns-type': 'off',
+
+        // Requires returns are documented.
+        'jsdoc/require-returns': 'off',
+
+        // Requires that throw statements are documented.
+        'jsdoc/require-throws': 'off',
+
+        // Requires that yields are documented.
+        'jsdoc/require-yields': 'off',
+
+        // Ensures that if a @yields is present that a yield is present in the function body.
+        'jsdoc/require-yields-check': 'off',
 
         // Requires all types to be valid JSDoc or Closure compiler types without syntax errors.
         'jsdoc/valid-types': 'off',
