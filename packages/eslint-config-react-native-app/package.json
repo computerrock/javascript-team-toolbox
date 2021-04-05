@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/eslint-config-react-native-app",
-  "version": "1.9.0-alpha.1",
+  "version": "1.9.0-alpha.2",
   "description": "ESLint configuration for React Native projects",
   "license": "MIT",
   "repository": {
@@ -15,8 +15,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@computerrock/eslint-config-base": "^1.9.0-alpha.1",
-    "@computerrock/eslint-config-react-app": "^1.9.0-alpha.1"
+    "@computerrock/eslint-config-base": "^1.9.0-alpha.2",
+    "@computerrock/eslint-config-react-app": "^1.9.0-alpha.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -25,8 +25,8 @@
     "eslint": "^7.22.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^32.3.0",
-    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-react-native": "^3.10.0"
