@@ -132,7 +132,11 @@ module.exports = function (webpackEnv) {
             },
             plugins: [
                 // check that used modules are inside the source scope
-                new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson, ...paths.reactRefreshEntries]),
+                new ModuleScopePlugin(paths.appSrc, [
+                    paths.appPackageJson,
+                    path.resolve(paths.appNodeModules, '@computerrock/babel-preset-react-app/node_modules/@babel/runtime/regenerator'),
+                    ...paths.reactRefreshEntries,
+                ]),
             ],
         },
         module: {
@@ -231,7 +235,9 @@ module.exports = function (webpackEnv) {
                                                     autoprefixer: {
                                                         flexbox: 'no-2009',
                                                         grid: true,
+                                                        overrideBrowserslist: undefined,
                                                     },
+                                                    browsers: undefined,
                                                     stage: 3,
                                                 }),
                                                 require('postcss-input-range', {strict: false}),
