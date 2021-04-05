@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 
-const NotFoundView = () => {
+const NotFoundScreen = () => {
     return (
         <Fragment>
             Page not found.
@@ -8,4 +8,4 @@ const NotFoundView = () => {
     );
 };
 
-export default NotFoundView;
+export default NotFoundScreen;

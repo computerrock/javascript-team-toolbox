@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {renderRoutes} from 'react-router-config';
 import '../ui-components/index.scss';
 
-const ApplicationView = ({route}) => {
+const ApplicationScreen = ({route}) => {
     return (
         <Fragment>
             {renderRoutes(route.routes)}
@@ -12,12 +12,12 @@ const ApplicationView = ({route}) => {
     );
 };
 
-ApplicationView.propTypes = {
+ApplicationScreen.propTypes = {
     route: PropTypes.object.isRequired,
     // someStateValue: PropTypes.object,
 };
 
-ApplicationView.defaultProps = {
+ApplicationScreen.defaultProps = {
     // no-op
     // someStateValue: null,
 };
@@ -38,4 +38,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(ApplicationView);
+)(ApplicationScreen);

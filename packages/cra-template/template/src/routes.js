@@ -1,7 +1,7 @@
 import routePaths from './routePaths';
-import ApplicationView from './application/ApplicationView';
-import NotFoundView from './application/NotFoundView';
-import DashboardView from './dashboard/DashboardView';
+import ApplicationScreen from './application/ApplicationScreen';
+import NotFoundScreen from './application/NotFoundScreen';
+import DashboardScreen from './dashboard/DashboardScreen';
 
 /**
  * Location object definition (react-router, history)
@@ -19,7 +19,7 @@ import DashboardView from './dashboard/DashboardView';
  *
  * @typedef {Object} ConnectedRoute
  * @property {string} path - any valid URL path that path-to-regexp understands.
- * @property {?Object} component - React component
+ * @property {?Object} component - React component for application screen
  * @property {?function} render - render prop function
  * @property {?Location} location - for matching against different location than one in history
  * @property {?boolean} exact - when true, will only match if the path matches the location.pathname exactly
@@ -37,18 +37,18 @@ import DashboardView from './dashboard/DashboardView';
  * @type {Array<ConnectedRoute>}
  */
 export default [{
-    component: ApplicationView,
+    component: ApplicationScreen,
     locationChangeSideEffects: [],
     routes: [
         {
             path: routePaths.DASHBOARD,
             exact: true,
-            component: DashboardView,
+            component: DashboardScreen,
             locationChangeSideEffects: [],
         },
         {
             path: '*',
-            component: NotFoundView,
+            component: NotFoundScreen,
         },
     ],
 }];

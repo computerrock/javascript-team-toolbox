@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 
-const DashboardView = () => {
+const DashboardScreen = () => {
     return (
         <Fragment>
             Dashboard view.
@@ -8,4 +8,4 @@ const DashboardView = () => {
     );
 };
 
-export default DashboardView;
+export default DashboardScreen;
