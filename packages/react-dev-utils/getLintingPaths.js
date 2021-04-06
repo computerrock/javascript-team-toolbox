@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-function getLintingPaths(context, sourcePaths = '', globPattern = '**/*.(s(c|a)ss|css)') {
+function getLintingPaths(context, sourcePaths = '', globPattern = '**/*.*') {
     if (typeof sourcePaths === 'string') {
         sourcePaths = [sourcePaths];
     }

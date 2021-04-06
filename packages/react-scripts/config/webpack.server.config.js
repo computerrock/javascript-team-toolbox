@@ -184,14 +184,14 @@ module.exports = function (webpackEnv) {
                 eslintPath: require.resolve('eslint'),
                 fix: true,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources),
+                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(js|jsx|mjs)'),
             }),
             // lint styles
             new StyleLintPlugin({
                 syntax: 'scss',
                 fix: false,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources),
+                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(s(c|a)ss|css)'),
             }),
             // SVG sprite loader
             new SpriteLoaderPlugin(),

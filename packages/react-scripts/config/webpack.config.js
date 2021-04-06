@@ -325,7 +325,7 @@ module.exports = function (webpackEnv) {
                 resolvePluginsRelativeTo: __dirname,
                 fix: fixESLintErrors,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources),
+                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(js|jsx|mjs)'),
                 // @remove-on-eject-begin
                 ignore: isExtendingESLintConfig,
                 baseConfig: isExtendingESLintConfig ? undefined
@@ -348,7 +348,7 @@ module.exports = function (webpackEnv) {
                 syntax: 'scss',
                 fix: fixStylelintErrors,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources),
+                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(s(c|a)ss|css)'),
                 // @remove-on-eject-begin
                 configBasedir: isExtendingStylelintConfig
                     ? paths.ownPath : undefined,
