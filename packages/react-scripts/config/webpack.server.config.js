@@ -13,10 +13,14 @@ const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlug
 const getLintingPaths = require('@computerrock/react-dev-utils/getLintingPaths');
 const getEnvironment = require('./env');
 const paths = require('./paths');
+const getSourcePaths = require('./getSourcePaths');
 
 // get environment variables to inject into app.
 // omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
 const env = getEnvironment(paths.publicPath.slice(0, -1));
+
+// get source paths
+const appSources = getSourcePaths();
 
 module.exports = function (webpackEnv) {
     const isEnvDevelopment = webpackEnv === 'development';
@@ -67,7 +71,7 @@ module.exports = function (webpackEnv) {
                         // js/jsx
                         {
                             test: /\.(js|jsx|mjs)$/,
-                            include: paths.appSources,
+                            include: appSources,
                             loader: require.resolve('babel-loader'),
                             options: {
                                 cacheDirectory: true,
@@ -184,14 +188,14 @@ module.exports = function (webpackEnv) {
                 eslintPath: require.resolve('eslint'),
                 fix: true,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(js|jsx|mjs)'),
+                files: getLintingPaths(paths.appSrc, appSources, '**/*.(js|jsx|mjs)'),
             }),
             // lint styles
             new StyleLintPlugin({
                 syntax: 'scss',
                 fix: false,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(s(c|a)ss|css)'),
+                files: getLintingPaths(paths.appSrc, appSources, '**/*.(s(c|a)ss|css)'),
             }),
             // SVG sprite loader
             new SpriteLoaderPlugin(),

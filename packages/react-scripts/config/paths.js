@@ -5,7 +5,6 @@ const fs = require('fs');
 const {URL} = require('url');
 
 const appDirectory = fs.realpathSync(process.cwd());
-const appConfig = require(path.resolve(appDirectory, 'app.config.js'));
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const getPublicPath = envPublicPath => {
@@ -26,17 +25,6 @@ const getPublicPath = envPublicPath => {
         ? (isEnvDevelopment ? '/' : envPublicPath) : validPublicPath.pathname
 };
 
-const getSourcePaths = () => {
-    const sourcePaths = [
-        resolveApp('src'),
-    ];
-    (appConfig.moduleSourcePaths || []).forEach(moduleSourcePath => {
-        sourcePaths.push(fs.realpathSync(process.cwd() + '/node_modules/' + moduleSourcePath));
-    });
-
-    return sourcePaths;
-};
-
 // @remove-on-eject-begin
 const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 // @remove-on-eject-end
@@ -52,7 +40,6 @@ module.exports = {
     appServerJs: resolveApp('src/server.js'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
-    appSources: getSourcePaths(),
     appNodeModules: resolveApp('node_modules'),
     reactRefreshEntries: [
         require.resolve('@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils'),

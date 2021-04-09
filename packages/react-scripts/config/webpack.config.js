@@ -22,6 +22,7 @@ const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent
 const getLintingPaths = require('@computerrock/react-dev-utils/getLintingPaths');
 const getEnvironment = require('./env');
 const paths = require('./paths');
+const getSourcePaths = require('./getSourcePaths');
 // @remove-on-eject-begin
 const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdentifier');
 // @remove-on-eject-end
@@ -29,6 +30,9 @@ const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdenti
 // get environment variables to inject into app.
 // omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
 const env = getEnvironment(paths.publicPath.slice(0, -1));
+
+// get source paths
+const appSources = getSourcePaths();
 
 // set environment user settings
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -147,7 +151,7 @@ module.exports = function (webpackEnv) {
                         // js/jsx/mjs
                         {
                             test: /\.(js|jsx|mjs)$/,
-                            include: paths.appSources,
+                            include: appSources,
                             loader: require.resolve('babel-loader'),
                             options: {
                                 cacheDirectory: true,
@@ -325,7 +329,7 @@ module.exports = function (webpackEnv) {
                 resolvePluginsRelativeTo: __dirname,
                 fix: fixESLintErrors,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(js|jsx|mjs)'),
+                files: getLintingPaths(paths.appSrc, appSources, '**/*.(js|jsx|mjs)'),
                 // @remove-on-eject-begin
                 ignore: isExtendingESLintConfig,
                 baseConfig: isExtendingESLintConfig ? undefined
@@ -348,7 +352,7 @@ module.exports = function (webpackEnv) {
                 syntax: 'scss',
                 fix: fixStylelintErrors,
                 context: paths.appSrc,
-                files: getLintingPaths(paths.appSrc, paths.appSources, '**/*.(s(c|a)ss|css)'),
+                files: getLintingPaths(paths.appSrc, appSources, '**/*.(s(c|a)ss|css)'),
                 // @remove-on-eject-begin
                 configBasedir: isExtendingStylelintConfig
                     ? paths.ownPath : undefined,
