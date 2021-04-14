@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/test-project-app",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.0",
   "private": true,
   "description": "FILL APPLICATION DESCRIPTION",
   "author": "Computer Rock",
@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@computerrock/react-app-polyfill": "^1.0.0-alpha.2",
-    "@computerrock/react-scripts": "3.4.0-alpha.11",
-    "@computerrock/test-ui-lib": "^0.1.0",
+    "@computerrock/react-scripts": "^3.4.0-alpha.12",
+    "@computerrock/test-ui-lib": "^1.0.0-alpha.0",
     "connected-react-router": "^6.9.1",
     "content-type": "^1.0.4",
     "flux-standard-action": "^2.1.1",
