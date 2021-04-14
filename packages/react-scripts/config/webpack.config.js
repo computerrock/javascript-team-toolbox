@@ -132,15 +132,21 @@ module.exports = function (webpackEnv) {
             modules: ['node_modules', paths.appNodeModules],
             extensions: ['.js', '.jsx', '.mjs', '.json'],
             alias: {
+                'react': path.resolve(paths.appNodeModules, 'react'),
+                'react-dom': path.resolve(paths.appNodeModules, 'react-dom'),
+                'prop-types': path.resolve(paths.appNodeModules, 'prop-types'),
                 'react-native': 'react-native-web',
             },
             plugins: [
+                // Ivan: disable ModuleScopePlugin for now, as there is more
+                //   work around it than necessary
+                //
                 // check that used modules are inside the source scope
-                new ModuleScopePlugin(paths.appSrc, [
-                    paths.appPackageJson,
-                    path.resolve(paths.appNodeModules, '@computerrock/babel-preset-react-app/node_modules/@babel/runtime/regenerator'),
-                    ...paths.reactRefreshEntries,
-                ]),
+                // new ModuleScopePlugin(paths.appSrc, [
+                //     paths.appPackageJson,
+                //     path.resolve(paths.appNodeModules, '@computerrock/babel-preset-react-app/node_modules/@babel/runtime/regenerator'),
+                //     ...paths.reactRefreshEntries,
+                // ]),
             ],
         },
         module: {

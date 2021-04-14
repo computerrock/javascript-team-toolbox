@@ -1,0 +1,120 @@
+@import './config';
+@import './functions';
+
+// Micro clearfix: http://www.cssmojo.com/the-very-latest-clearfix-reloaded/
+@mixin clearfix() {
+    &::after {
+        content: '' !important;
+        display: block !important;
+        clear: both !important;
+    }
+}
+
+// Applies accessible hiding to elements
+@mixin hidden-visually() {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+@mixin typography($typography-styles, $style) {
+    $typography-style: map-get($typography-styles, $style);
+
+    @each $property-key, $property-value in $typography-style {
+        #{$property-key}: $property-value;
+    }
+}
+
+@mixin get-values-for-changing-properties($changing-properties, $config, $state) {
+    @if $state {
+        @each $property-key, $property-value in $changing-properties {
+            #{$property-key}: map-get($config, #{$property-value}#{$state});
+        }
+    } @else {
+        @each $property-key, $property-value in $changing-properties {
+            #{$property-key}: map-get($config, #{$property-value});
+        }
+    }
+}
+
+@mixin get-style-for-block-component($component-name, $config, $changing-properties) {
+    .ace-c-#{$component-name} {
+        @include typography($typography-styles, map-get($config, #{$component-name}-typography));
+        @include get-values-for-changing-properties($changing-properties, $config, '');
+
+        @content;
+
+        &--is-disabled {
+            @include typography($typography-styles, map-get($config, #{$component-name}-typography-disabled));
+            @include get-values-for-changing-properties($changing-properties, $config, '-disabled');
+        }
+
+        &--is-selected {
+            @include typography($typography-styles, map-get($config, #{$component-name}-typography-selected));
+            @include get-values-for-changing-properties($changing-properties, $config, '-selected');
+        }
+
+        &--is-disabled#{&}--is-selected {
+            @include typography($typography-styles, map-get($config, #{$component-name}-typography-selected-disabled));
+            @include get-values-for-changing-properties($changing-properties, $config, '-selected-disabled');
+        }
+
+        &:hover:not(.ace-c-#{$component-name}--is-disabled) {
+            @include typography($typography-styles, map-get($config, #{$component-name}-typography-hover));
+            @include get-values-for-changing-properties($changing-properties, $config, '-hover');
+        }
+
+        &:hover:not(.ace-c-#{$component-name}--is-disabled).ace-c-#{$component-name}--is-selected {
+            @include typography($typography-styles, map-get($config, #{$component-name}-typography-selected-hover));
+            @include get-values-for-changing-properties($changing-properties, $config, '-selected-hover');
+        }
+
+        // Must follow LVHA-order: https://developer.mozilla.org/en-US/docs/Web/CSS/:active
+        // stylelint-disable-next-line no-descending-specificity
+        &:active:not(.ace-c-#{$component-name}--is-disabled) {
+            @include typography($typography-styles, map-get($config, #{$component-name}-typography-active));
+            @include get-values-for-changing-properties($changing-properties, $config, '-active');
+        }
+    }
+}
+
+@mixin get-style-for-element-component($block-name, $element-name, $config, $changing-properties) {
+    .ace-c-#{$block-name}__#{$element-name} {
+        @include get-values-for-changing-properties($changing-properties, $config, '');
+
+        @content;
+
+        .ace-c-#{$block-name}--is-disabled & {
+            @include get-values-for-changing-properties($changing-properties, $config, '-disabled');
+        }
+
+        .ace-c-#{$block-name}--is-selected & {
+            @include get-values-for-changing-properties($changing-properties, $config, '-selected');
+        }
+
+        .ace-c-#{$block-name}--is-disabled#{&}--is-selected & {
+            @include get-values-for-changing-properties($changing-properties, $config, '-selected-disabled');
+        }
+
+        .ace-c-#{$block-name}:hover:not(.ace-c-#{$block-name}--is-disabled) & {
+            @include get-values-for-changing-properties($changing-properties, $config, '-hover');
+        }
+
+        .ace-c-#{$block-name}:hover:not(.ace-c-#{$block-name}--is-disabled).ace-c-#{$block-name}--is-selected & {
+            @include get-values-for-changing-properties($changing-properties, $config, '-selected-hover');
+        }
+
+        // Must follow LVHA-order: https://developer.mozilla.org/en-US/docs/Web/CSS/:active
+        // stylelint-disable-next-line no-descending-specificity
+        .ace-c-#{$block-name}:active:not(.ace-c-#{$block-name}--is-disabled) & {
+            @include get-values-for-changing-properties($changing-properties, $config, '-active');
+        }
+    }
+}
