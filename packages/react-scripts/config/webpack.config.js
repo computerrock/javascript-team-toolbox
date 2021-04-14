@@ -132,6 +132,9 @@ module.exports = function (webpackEnv) {
             modules: ['node_modules', paths.appNodeModules],
             extensions: ['.js', '.jsx', '.mjs', '.json'],
             alias: {
+                'react': path.resolve(paths.appNodeModules, 'react'),
+                'react-dom': path.resolve(paths.appNodeModules, 'react-dom'),
+                'prop-types': path.resolve(paths.appNodeModules, 'prop-types'),
                 'react-native': 'react-native-web',
             },
             plugins: [
