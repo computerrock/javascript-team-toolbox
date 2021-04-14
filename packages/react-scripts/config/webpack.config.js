@@ -138,12 +138,15 @@ module.exports = function (webpackEnv) {
                 'react-native': 'react-native-web',
             },
             plugins: [
+                // Ivan: disable ModuleScopePlugin for now, as there is more
+                //   work around it than necessary
+                //
                 // check that used modules are inside the source scope
-                new ModuleScopePlugin(paths.appSrc, [
-                    paths.appPackageJson,
-                    path.resolve(paths.appNodeModules, '@computerrock/babel-preset-react-app/node_modules/@babel/runtime/regenerator'),
-                    ...paths.reactRefreshEntries,
-                ]),
+                // new ModuleScopePlugin(paths.appSrc, [
+                //     paths.appPackageJson,
+                //     path.resolve(paths.appNodeModules, '@computerrock/babel-preset-react-app/node_modules/@babel/runtime/regenerator'),
+                //     ...paths.reactRefreshEntries,
+                // ]),
             ],
         },
         module: {
