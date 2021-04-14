@@ -13,9 +13,9 @@ module.exports = {
 
         // filter webpack module rules
         const filteredRules = config.module.rules.filter(({test}) => !(test instanceof RegExp
-                && (test.test('.css') || test.test('.scss') || test.test('.svg') || test.test('.mp4'))));
+            && (test.test('.css') || test.test('.scss') || test.test('.svg') || test.test('.mp4'))));
         const storybookAssetsRules = config.module.rules.filter(({test}) => (test instanceof RegExp
-                && (test.test('.svg') || test.test('.mp4'))));
+            && (test.test('.svg') || test.test('.mp4'))));
 
         return {
             ...config,
@@ -100,7 +100,7 @@ module.exports = {
                                                     }),
                                                     require('postcss-input-range', {strict: false}),
                                                     postcssNormalize(),
-                                                ].filter(Boolean)
+                                                ].filter(Boolean),
                                             },
                                         },
                                     },
@@ -157,4 +157,17 @@ module.exports = {
             ].filter(Boolean),
         };
     },
+    previewHead: (head) => (`
+    ${head}
+    <script>
+        // https://github.com/pmmmwh/react-refresh-webpack-plugin/issues/176#issuecomment-683150213
+        window.$RefreshReg$ = () => {};
+        window.$RefreshSig$ = () => () => {};
+    </script>
+    <style>
+      #root {
+        overflow: visible !important;
+      }
+    </style>
+  `),
 };
