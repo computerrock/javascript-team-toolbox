@@ -1,6 +1,6 @@
 {
   "name": "@comrock/react-scripts-development-app",
-  "version": "1.0.0-alpha.12",
+  "version": "1.0.0-alpha.13",
   "private": true,
   "description": "Development app for custom react-script package",
   "author": "Computer Rock",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@computerrock/react-app-polyfill": "^1.0.0-alpha.2",
-    "@computerrock/react-scripts": "^3.4.0-alpha.12",
+    "@computerrock/react-scripts": "^3.4.0-alpha.13",
     "classnames": "^2.2.6",
     "include-media": "^1.4.9",
     "moment": "^2.25.3",
