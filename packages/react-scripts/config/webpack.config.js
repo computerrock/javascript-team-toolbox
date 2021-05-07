@@ -137,6 +137,9 @@ module.exports = function (webpackEnv) {
                 'prop-types': path.resolve(paths.appNodeModules, 'prop-types'),
                 'react-native': 'react-native-web',
             },
+            fallback: {
+                'util': require.resolve('util/'),
+            },
             plugins: [
                 // Ivan: disable ModuleScopePlugin for now, as there is more
                 //   work around it than necessary
