@@ -1,0 +1,34 @@
+{
+  "name": "@computerrock/tjs-template-rollup-monorepo-library",
+  "version": "0.1.0",
+  "description": "The rollup bundled monorepo library for Toolchain CLI project initialization utility.",
+  "keywords": [
+    "toolchain-js",
+    "toolchain",
+    "cli",
+    "template",
+    "lerna",
+    "rollup",
+    "monorepo",
+    "create",
+    "boilerplate",
+    "init",
+    "library"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.computerrock.com/javascript-team-toolbox",
+    "directory": "packages/tjs-template-rollup-monorepo-library"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "engines": {
+    "node": ">=12"
+  }
+}

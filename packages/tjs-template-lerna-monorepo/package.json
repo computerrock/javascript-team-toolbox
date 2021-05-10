@@ -1,0 +1,32 @@
+{
+  "name": "@computerrock/tjs-template-lerna-monorepo",
+  "version": "0.1.0",
+  "description": "The lerna monorepo multi-application project template for Toolchain CLI project initialization utility.",
+  "keywords": [
+    "toolchain-js",
+    "toolchain",
+    "cli",
+    "template",
+    "lerna",
+    "monorepo",
+    "create",
+    "boilerplate",
+    "init"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.computerrock.com/javascript-team-toolbox",
+    "directory": "packages/tjs-template-lerna-monorepo"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "engines": {
+    "node": ">=12"
+  }
+}

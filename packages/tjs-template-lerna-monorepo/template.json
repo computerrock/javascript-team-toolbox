@@ -1,0 +1,25 @@
+{
+  "toolchain": "@computerrock/toolchain-lerna-monorepo",
+  "package": {
+    "name": "@computerrock/project-name",
+    "description": "FILL PROJECT DESCRIPTION",
+    "author": "Computer Rock",
+    "license": "UNLICENSED",
+    "repository": {
+      "type": "git",
+      "url": "https://gitlab.computerrock.com/PROJECT-REPOSITORY"
+    },
+    "private": true,
+    "engines": {
+      "node": ">=12"
+    },
+    "devDependencies": {
+      "@computerrock/rollup-monorepo-bundler": "^1.0.1",
+      "lerna": "^4.0.0"
+    },
+    "scripts": {
+      "start-packages": "rollup-monorepo-bundler start",
+      "build-packages": "rollup-monorepo-bundler build"
+    }
+  }
+}

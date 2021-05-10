@@ -1,0 +1,32 @@
+{
+  "name": "@computerrock/tjs-template-react-app",
+  "version": "0.1.0",
+  "description": "The react app template for Toolchain CLI project initialization utility.",
+  "keywords": [
+    "toolchain-js",
+    "toolchain",
+    "cli",
+    "template",
+    "react",
+    "create",
+    "boilerplate",
+    "init",
+    "app"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.computerrock.com/javascript-team-toolbox",
+    "directory": "packages/tjs-template-react-app"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "engines": {
+    "node": ">=12"
+  }
+}
