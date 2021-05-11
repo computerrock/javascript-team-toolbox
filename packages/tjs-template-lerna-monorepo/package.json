@@ -1,7 +1,7 @@
 {
   "name": "@computerrock/tjs-template-lerna-monorepo",
   "version": "1.0.1",
-  "description": "The lerna monorepo multi-application project template for Toolchain CLI project initialization utility.",
+  "description": "The Lerna monorepo multi-application project template for Toolchain CLI project initialization utility.",
   "keywords": [
     "toolchain-js",
     "toolchain",

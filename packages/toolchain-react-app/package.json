@@ -1,11 +1,12 @@
 {
   "name": "@computerrock/toolchain-react-app",
   "version": "1.0.1",
-  "description": "The react app bundler for Toolchain CLI project initialization utility.",
+  "description": "The React app bundler for Toolchain CLI project initialization utility.",
   "keywords": [
     "toolchain-js",
     "toolchain",
     "cli",
+    "project",
     "template",
     "react",
     "create",
