@@ -1,6 +1,6 @@
 module.exports = {
     'root': true,
-    'parser': 'babel-eslint',
+    'parser': '@babel/eslint-parser',
     'env': {
         browser: true,
         commonjs: true,
@@ -14,7 +14,7 @@ module.exports = {
         './rules/react-a11y',
     ].map(require.resolve),
     'parserOptions': {
-        ecmaVersion: 2017,
+        ecmaVersion: 2019,
         sourceType: 'module',
         ecmaFeatures: {
             jsx: true,

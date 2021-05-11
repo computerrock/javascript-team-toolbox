@@ -1,0 +1,38 @@
+{
+  "name": "@computerrock/toolchain-lerna-monorepo",
+  "version": "1.1.0",
+  "description": "The Lerna monorepo multi-application project starter for Toolchain CLI project initialization utility.",
+  "keywords": [
+    "toolchain-js",
+    "toolchain",
+    "cli",
+    "project",
+    "template",
+    "lerna",
+    "monorepo",
+    "create",
+    "boilerplate",
+    "init"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/computerrock/javascript-team-toolbox",
+    "directory": "packages/toolchain-lerna-monorepo"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "rc-config",
+    "scripts"
+  ],
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "@computerrock/react-dev-utils": "^1.3.0",
+    "chalk": "^4.1.0",
+    "fs-extra": "^9.1.0"
+  }
+}

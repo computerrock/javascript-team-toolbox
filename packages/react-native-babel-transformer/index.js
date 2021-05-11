@@ -18,6 +18,18 @@ module.exports.transform = function ({src, filename, options}) {
             );
     }
 
+    if (filename.endsWith('.webview.scss')) {
+        return sassTransformer
+            .renderToCSS({src, filename, options})
+            .then(css => {
+                return upstreamTransformer.transform({
+                    src: 'module.exports = ' + JSON.stringify(css),
+                    filename,
+                    options,
+                });
+            });
+    }
+
     if (filename.endsWith('.scss') || filename.endsWith('.sass')) {
         return sassTransformer
             .renderToCSS({src, filename, options})

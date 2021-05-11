@@ -7,7 +7,7 @@ module.exports = {
         './rules/language-features',
         './rules/style',
         './rules/scss',
-        './rules/bem',
+        './rules/selector-bem-pattern',
     ].map(require.resolve),
     'rules': {},
 };

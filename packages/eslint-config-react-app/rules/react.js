@@ -37,7 +37,9 @@ module.exports = {
         // Main list of rules
 
         // Enforces consistent naming for boolean props
-        'react/boolean-prop-naming': ['warn', {rule: '^(is|has|are)[A-Z]([A-Za-z0-9]?)+'}],
+        // all "missing" verbs and forms can be replaced like this:
+        // https://en.wikipedia.org/wiki/English_modal_verbs#Replacements_for_defective_forms
+        'react/boolean-prop-naming': ['warn', {rule: '^(is|are|has|have)[A-Z]([A-Za-z0-9]?)+'}],
 
         // Forbid "button" element without an explicit "type" attribute
         'react/button-has-type': 'warn',
@@ -249,6 +251,9 @@ module.exports = {
         // Limit maximum of props on a single line in JSX
         'react/jsx-max-props-per-line': ['warn', {maximum: 1, when: 'multiline'}],
 
+        // Enforce a new line after jsx elements and expressions
+        'react/jsx-newline': 'off',
+
         // Prevent usage of .bind() and arrow functions in JSX props
         'react/jsx-no-bind': [
             'warn',
@@ -261,6 +266,9 @@ module.exports = {
 
         // Prevent comments from being inserted as text nodes
         'react/jsx-no-comment-textnodes': 'warn',
+
+        // Prevents JSX context provider values from taking values that will cause needless re-renders.
+        'react/jsx-no-constructed-context-values': 'off',
 
         // Prevent duplicate props in JSX
         'react/jsx-no-duplicate-props': ['warn', {ignoreCase: true}],
@@ -330,10 +338,22 @@ module.exports = {
             'prop': 'parens-new-line',
         }],
 
-        // Checks rules of Hooks
+        // Rules of Hooks
+        //
+        // Only Call Hooks at the Top Level
+        // Don’t call Hooks inside loops, conditions, or nested functions. Instead, always use Hooks
+        // at the top level of your React function. By following this rule, you ensure that Hooks are
+        // called in the same order each time a component renders.
+        //
+        // Only Call Hooks from React Functions
+        // Don’t call Hooks from regular JavaScript functions. Instead, you can:
+        //
+        // ✅ Call Hooks from React function components.
+        // ✅ Call Hooks from custom Hooks (we’ll learn about them on the next page).
+        //
+        // By following this rule, you ensure that all stateful logic in a component is clearly visible
+        // from its source code.
         'react-hooks/rules-of-hooks': 'error',
-
-        // Checks effect dependencies
         'react-hooks/exhaustive-deps': 'warn',
     },
 };

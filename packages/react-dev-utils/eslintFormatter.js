@@ -7,12 +7,18 @@
 
 'use strict';
 
+const path = require('path');
 const chalk = require('chalk');
 const stripAnsi = require('strip-ansi');
 const table = require('text-table');
+const cwd = process.cwd();
 
 function isError(message) {
     return message.fatal || message.severity === 2;
+}
+
+function getRelativePath(filePath) {
+    return path.relative(cwd, filePath);
 }
 
 function formatter(results) {
@@ -67,6 +73,8 @@ function formatter(results) {
             },
         });
 
+        // print filename, relative path and errors
+        output += chalk.underline(`${getRelativePath(result.filePath)}\n`);
         output += `${outputTable}\n\n`;
     });
 
