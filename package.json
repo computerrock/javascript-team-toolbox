@@ -1,15 +1,16 @@
 {
-  "name": "@comrock/javascript-team-toolbox",
-  "version": "1.0.0",
-  "description": "JavaScript Technology Team Toolbox - team documentation and libraries",
+  "name": "@computerrock/javascript-team-guides",
+  "version": "2.0.0",
+  "description": "JavaScript Technology Team Guides - In this project you will find all necessary information, how-tos, and guides you need when working on Computer Rock projects.",
   "author": "Computer Rock",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://spoiledmilk.git.beanstalkapp.com/javascript-team-toolbox.git"
+    "url": "https://gitlab.computerrock.com/js/javascript-team-guides"
   },
   "private": true,
-  "devDependencies": {
-    "lerna": "^3.16.1"
-  }
+  "engines": {
+    "node": ">=12"
+  },
+  "devDependencies": {}
 }
