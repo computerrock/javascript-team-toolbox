@@ -1,15 +1,18 @@
 {
-  "name": "@comrock/javascript-team-toolbox",
-  "version": "1.0.0",
-  "description": "JavaScript Technology Team Toolbox - team documentation and libraries",
+  "name": "@computerrock/javascript-team-toolbox",
+  "version": "2.0.0",
+  "description": "JavaScript Technology Team Toolbox - collection of packages used in daily development",
   "author": "Computer Rock",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://spoiledmilk.git.beanstalkapp.com/javascript-team-toolbox.git"
+    "url": "https://github.com/computerrock/javascript-team-toolbox"
   },
   "private": true,
+  "engines": {
+    "node": ">=12"
+  },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^4.0.0"
   }
 }

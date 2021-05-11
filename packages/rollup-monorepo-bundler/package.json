@@ -5,7 +5,8 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/computerrock/javascript-team-toolbox"
+    "url": "https://github.com/computerrock/javascript-team-toolbox",
+    "directory": "packages/rollup-monorepo-bundler"
   },
   "publishConfig": {
     "access": "public"

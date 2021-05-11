@@ -3,10 +3,11 @@
   "version": "1.1.0",
   "description": "Custom transformer for react-native",
   "author": "Computer Rock",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://spoiledmilk.beanstalkapp.com/javascript-team-toolbox"
+    "url": "https://github.com/computerrock/javascript-team-toolbox",
+    "directory": "packages/react-native-babel-transformer"
   },
   "publishConfig": {
     "access": "public"
