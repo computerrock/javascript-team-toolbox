@@ -1,0 +1,4 @@
+{
+  "extends": ["@computerrock/stylelint-config-react-app"],
+  "rules": {}
+}

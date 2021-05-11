@@ -1,0 +1,28 @@
+{
+  "toolchain": "@computerrock/toolchain-rollup-monorepo-library",
+  "package": {
+    "name": "@computerrock/project-name",
+    "description": "FILL PROJECT DESCRIPTION",
+    "author": "Computer Rock",
+    "license": "UNLICENSED",
+    "repository": {
+      "type": "git",
+      "url": "https://gitlab.computerrock.com/PROJECT-REPOSITORY"
+    },
+    "private": true,
+    "main": "./dist/index.js",
+    "module": "./dist/index.esm.js",
+    "files": [
+      "dist"
+    ],
+    "devDependencies": {
+      "@computerrock/rollup-monorepo-bundler": "^1.1.0"
+    },
+    "dependencies": {},
+    "scripts": {
+      "start": "rollup-monorepo-bundler start",
+      "prepare": "rollup-monorepo-bundler build",
+      "build": "rollup-monorepo-bundler build"
+    }
+  }
+}
