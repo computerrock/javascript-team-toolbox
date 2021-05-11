@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/toolchain-rollup-monorepo-library",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "The Rollup monorepo library bundler for Toolchain CLI project initialization utility.",
   "keywords": [
     "toolchain-js",
