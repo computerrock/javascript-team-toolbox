@@ -1,4 +1,4 @@
-# Project setup guide
+# Project setup guide (old, needs restructuring)
 
 Here, we go over steps to start new JavaScript project and explain some parts of project configuration for 
 React based projects.

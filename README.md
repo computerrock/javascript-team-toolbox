@@ -17,8 +17,7 @@ Then, set up your work environment and get your self familiar with team developm
 In [`./other-docs/`](./other-docs) folder you will find other equally useful guides and files. Feel free to check them 
 out on your own. Have an idea about some new useful guide? Please submit it in pull request.
 
+## Project starter packs & new project initialization
 
-### Projects and starter packs
-
-If you need to set up new project, or just want to learn how project is bootstrapped please check 
-[`Project setup`](./project-setup.md) document.
+If you need to set up new project, please check [`javascript-team-toolbox/README.md`](https://gitlab.computerrock.com/js/javascript-team-toolbox/-/blob/master/README.md) 
+document. Here you will find quick start guide on how to bootstrap new project from the appropriate template.
