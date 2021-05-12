@@ -170,6 +170,9 @@ $ git pull --rebase origin/develop
 $ # ... resolve potential conflicts 
 $ git push origin feature-name
 
+# if branch was already on remote, you will probably need to push force it:
+$ git push -f origin feature-name
+
 # then make pull request for code review & merging the branch 
 ```
 
