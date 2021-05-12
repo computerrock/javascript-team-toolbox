@@ -161,11 +161,23 @@ Creating a feature branch:
 $ git checkout -b feature-name origin/develop
 ```
 
+Preparing branch for pull request and code review:
+
+```bash
+$ git fetch origin                # make sure you have latest state
+$ git checkout feature-name
+$ git pull --rebase origin/develop
+$ # ... resolve potential conflicts 
+$ git push origin feature-name
+
+# then make pull request for code review & merging the branch 
+```
+
 Incorporating a finished feature back to `develop`:
 
 ```bash
 $ git checkout develop
-$ git checkout --pull-rebase origin/develop # make sure you have latest state
+$ git pull --rebase origin/develop    # make sure you have latest state
 $ git merge --no-ff feature-name
 $ git push origin develop
 $ git branch -d feature-name # delete branch
