@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/react-app-polyfill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Polyfills for commonly used language features",
   "license": "MIT",
   "repository": {
