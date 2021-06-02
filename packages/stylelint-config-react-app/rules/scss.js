@@ -32,7 +32,7 @@ module.exports = {
         'scss/at-function-parentheses-space-before': 'never',
 
         // Specify a pattern for Sass/SCSS-like function names.
-        'scss/at-function-pattern': '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+        'scss/at-function-pattern': '^(-|_)*([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
 
         // Require or disallow a newline after the closing brace of @if statements (Autofixable).
         'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
@@ -62,7 +62,7 @@ module.exports = {
         'scss/at-mixin-parentheses-space-before': 'never',
 
         // Specify a pattern for Sass/SCSS-like mixin names.
-        'scss/at-mixin-pattern': '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+        'scss/at-mixin-pattern': '^(-|_)*([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
 
         // Disallow parentheses in conditional @ rules (if, elsif, while).
         // 'scss/at-rule-conditional-no-parentheses': true,
@@ -89,7 +89,7 @@ module.exports = {
         'scss/dollar-variable-no-missing-interpolation': true,
 
         // Specify a pattern for Sass-like variables.
-        'scss/dollar-variable-pattern': '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+        'scss/dollar-variable-pattern': '^(-|_)*([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
 
         // Specify a pattern for %-placeholders.
         'scss/percent-placeholder-pattern': '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
