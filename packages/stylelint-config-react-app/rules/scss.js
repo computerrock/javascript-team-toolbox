@@ -26,7 +26,7 @@ module.exports = {
         'scss/at-extend-no-missing-placeholder': true,
 
         // Require named parameters in SCSS function call rule.
-        'scss/at-function-named-arguments': 'never',
+        // 'scss/at-function-named-arguments': 'never',
 
         // Require or disallow a space before @function parentheses (Autofixable).
         'scss/at-function-parentheses-space-before': 'never',
@@ -56,7 +56,7 @@ module.exports = {
         'scss/at-mixin-argumentless-call-parentheses': 'always',
 
         // Require named parameters in at-mixin call rule.
-        'scss/at-mixin-named-arguments': 'never',
+        // 'scss/at-mixin-named-arguments': 'never',
 
         // Require or disallow a space before @mixin parentheses (Autofixable).
         'scss/at-mixin-parentheses-space-before': 'never',
