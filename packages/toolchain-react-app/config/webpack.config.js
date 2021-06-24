@@ -22,7 +22,7 @@ const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent
 const getLintingPaths = require('@computerrock/react-dev-utils/getLintingPaths');
 const getEnvironment = require('./env');
 const paths = require('./paths');
-const getSourcePaths = require('./getSourcePaths');
+const getModuleSourcePaths = require('./getModuleSourcePaths');
 // @remove-on-eject-begin
 const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdentifier');
 // @remove-on-eject-end
@@ -32,7 +32,7 @@ const getCacheIdentifier = require('@computerrock/react-dev-utils/getCacheIdenti
 const env = getEnvironment(paths.publicPath.slice(0, -1));
 
 // get source paths
-const appSources = getSourcePaths();
+const appSources = getModuleSourcePaths();
 
 // set environment user settings
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';

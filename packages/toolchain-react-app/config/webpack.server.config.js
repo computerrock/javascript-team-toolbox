@@ -13,14 +13,14 @@ const ModuleScopePlugin = require('@computerrock/react-dev-utils/ModuleScopePlug
 const getLintingPaths = require('@computerrock/react-dev-utils/getLintingPaths');
 const getEnvironment = require('./env');
 const paths = require('./paths');
-const getSourcePaths = require('./getSourcePaths');
+const getModuleSourcePaths = require('./getModuleSourcePaths');
 
 // get environment variables to inject into app.
 // omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
 const env = getEnvironment(paths.publicPath.slice(0, -1));
 
 // get source paths
-const appSources = getSourcePaths();
+const appSources = getModuleSourcePaths();
 
 module.exports = function (webpackEnv) {
     const isEnvDevelopment = webpackEnv === 'development';
