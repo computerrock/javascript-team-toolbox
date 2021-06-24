@@ -2,7 +2,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent');
 const postcssNormalize = require('postcss-normalize');
-const paths = require('./config/paths');
+const getModuleSourcePaths = require('./config/getModuleSourcePaths');
+
+// get source paths
+const moduleSourcePaths = getModuleSourcePaths();
 
 module.exports = {
     webpackFinal: async (config, {configType}) => {
@@ -12,10 +15,28 @@ module.exports = {
         const isEnvDevelopment = configType === 'DEVELOPMENT';
 
         // filter webpack module rules
-        const filteredRules = config.module.rules.filter(({test}) => !(test instanceof RegExp
+        let filteredRules = config.module.rules.filter(({test}) => !(test instanceof RegExp
             && (test.test('.css') || test.test('.scss') || test.test('.svg') || test.test('.mp4'))));
         const storybookAssetsRules = config.module.rules.filter(({test}) => (test instanceof RegExp
             && (test.test('.svg') || test.test('.mp4'))));
+
+        filteredRules = filteredRules.map(moduleRule => {
+            const {test, include} = moduleRule;
+            if (test.test('.js')
+                && (typeof include.test === 'function' ? !include.test('node_modules/acorn-jsx') : true)) {
+                return {
+                    ...moduleRule,
+                    ...(typeof moduleRule.include === 'function' ? {
+                        include: (input) => {
+                            return moduleRule.include(input)
+                                || !!moduleSourcePaths.find(moduleSourcePath => input.includes(moduleSourcePath));
+                        },
+                    } : {}),
+                };
+            }
+
+            return moduleRule;
+        });
 
         return {
             ...config,
@@ -29,7 +50,7 @@ module.exports = {
                             {
                                 test: [/\.svg$/],
                                 issuer: /\.(js|jsx|mjs)$/,
-                                include: paths.libSrc,
+                                include: moduleSourcePaths,
                                 use: [
                                     {
                                         loader: require.resolve('svg-sprite-loader'),
@@ -46,7 +67,7 @@ module.exports = {
                             {
                                 test: [/\.svg$/],
                                 issuer: /\.(css|scss)$/,
-                                include: paths.libSrc,
+                                include: moduleSourcePaths,
                                 use: [
                                     {
                                         loader: require.resolve('svg-url-loader'),
@@ -123,7 +144,7 @@ module.exports = {
                             // media
                             {
                                 test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-                                include: paths.libSrc,
+                                include: moduleSourcePaths,
                                 loader: require.resolve('url-loader'),
                                 options: {
                                     limit: imageInlineSizeLimit,
@@ -132,7 +153,7 @@ module.exports = {
                             },
                             // catch all
                             {
-                                include: paths.libSrc,
+                                include: moduleSourcePaths,
                                 exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.svg$/],
                                 loader: require.resolve('file-loader'),
                                 options: {

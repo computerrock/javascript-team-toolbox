@@ -4,18 +4,18 @@ const path = require('path');
 const fs = require('fs');
 
 const appDirectory = fs.realpathSync(process.cwd());
-const appConfig = require(path.resolve(appDirectory, 'app.config.js'));
+const bundlerConfig = require(path.resolve(appDirectory, 'bundler.config.js'));
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-const getSourcePaths = () => {
+const getModuleSourcePaths = () => {
     const sourcePaths = [
         resolveApp('src'),
     ];
-    (appConfig.moduleSourcePaths || []).forEach(moduleSourcePath => {
+    (bundlerConfig.moduleSourcePaths || []).forEach(moduleSourcePath => {
         sourcePaths.push(fs.realpathSync(process.cwd() + '/node_modules/' + moduleSourcePath));
     });
 
     return sourcePaths;
 };
 
-module.exports = getSourcePaths;
+module.exports = getModuleSourcePaths;
