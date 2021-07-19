@@ -247,8 +247,9 @@ module.exports = function (webpackEnv) {
                                                 require('postcss-preset-env')({
                                                     autoprefixer: {
                                                         flexbox: 'no-2009',
-                                                        grid: true,
                                                         overrideBrowserslist: undefined,
+                                                        // https://nicedoc.io/postcss/autoprefixer#does-autoprefixer-polyfill-grid-layout-for-ie
+                                                        grid: false,
                                                     },
                                                     browsers: undefined,
                                                     stage: 3,
