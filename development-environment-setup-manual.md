@@ -20,6 +20,11 @@ $ brew install wget # example usage
 $ brew list # lists installed packages
 ``` 
 
+If you have an M1 chip in your computer, you may need to [manually](https://stackoverflow.com/questions/65487249/getting-a-warning-when-installing-homebrew-on-macos-big-sur-m1-chip) add a homebrew PATH:
+```shell
+$ echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/yourusename/.zprofile
+eval $(/opt/homebrew/bin/brew shellenv) 
+```
 
 ### [Ubuntu] System requirements: none
 
@@ -175,6 +180,10 @@ $ nvm ls
 # to install any other version of node:
 $ nvm install vX.X.X
 ```
+
+On a computer with an M1 chip, you may have a problem installing node.js, if so then do you will need to install node using Rosetta 2:
+1. How to open terminal in Rosetta2 mode -> got to Application -> right click on terminal app -> get Info -> Select "Open using Rosetta" -> restart Terminal;
+2. In Terminal, write -> `arch -x86_64 zsh`, Now you will be able to install any version of node `nvm install X.X.X`;
 
 It is recommended to install these global packages:
 
