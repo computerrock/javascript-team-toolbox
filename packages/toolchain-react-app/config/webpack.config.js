@@ -8,7 +8,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
 const safePostCssParser = require('postcss-safe-parser');
 const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
@@ -111,19 +111,12 @@ module.exports = function (webpackEnv) {
                         },
                     },
                 }),
-                new OptimizeCSSAssetsPlugin({
-                    cssProcessorOptions: {
-                        parser: safePostCssParser,
-                        map: shouldUseSourceMap ? {
-                            // `inline: false` forces the sourcemap to be output into a separate file
-                            inline: false,
-                            // `annotation: true` appends the sourceMappingURL to the end of
-                            // the css file, helping the browser find the sourcemap
-                            annotation: true,
-                        } : false,
-                    },
-                    cssProcessorPluginOptions: {
-                        preset: ['default', {minifyFontValues: {removeQuotes: false}}],
+                new CssMinimizerPlugin({
+                    include: appSources,
+                    minimizerOptions: {
+                        processorOptions: {
+                            parser: safePostCssParser,
+                        },
                     },
                 }),
             ],

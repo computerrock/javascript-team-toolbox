@@ -22,6 +22,9 @@ const env = getEnvironment(paths.publicPath.slice(0, -1));
 // get source paths
 const appSources = getModuleSourcePaths();
 
+/**
+ * TODO: Non-functional, needs upgrade
+ */
 module.exports = function (webpackEnv) {
     const isEnvDevelopment = webpackEnv === 'development';
     const isEnvProduction = webpackEnv === 'production';
