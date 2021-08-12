@@ -2,11 +2,31 @@
 
 ### Getting started 
 
-This is custom Lerna monorepo template you can use to quickly bootstrap new multi-application project. 
+This is custom Lerna monorepo template you can use to quickly bootstrap new multi-application project. You may need this 
+kind of setup if your project is more complex, and should contain multiple React applications which most certainly share 
+some libraries and UI components. 
 
-Modify `package.json` and `README.md` files  according to you project specification. Project specific packages should 
-be placed in `./packages` folder. For more detailed explanation please consult `Project setup` document you can find 
-in Computer Rock JavaScript team guides. 
+After initialization, please modify `package.json` and `README.md` files  according to you project specification. For 
+more detailed explanation please consult `Project setup` document you can find in Computer Rock JavaScript team guides. 
+
+## Adding applications and libraries
+
+Project specific packages should be placed in `./packages` folder. Inside this folder you can initialize as many React 
+application projects and libraries as you may need. 
+
+In order to add application package you may initialize package from `@computerrock/react-app` template
+(or some other library template) by running:
+
+```shell
+$ npx create-toolchain my-project-name --template @computerrock/react-app
+```
+
+In order to add shared library package you may initialize package from `@computerrock/rollup-monorepo-library` template
+(or some other library template) by running:
+
+```shell
+$ npx create-toolchain my-project-name --template @computerrock/rollup-monorepo-library
+```
 
 ## Development builds
 
@@ -16,6 +36,7 @@ for reference). After, you can install dependencies and run project as described
 ```shell
 # Installation process starts in monorepo project root folder:
 $ npm install # to install monorepo supporting packages
+$ npm install -g lerna # to install lerna globally
 $ lerna bootstrap # to install node modules in each of the packages and link dependent packages
 
 # to run packages configured for rollup bundling:
