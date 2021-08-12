@@ -154,7 +154,7 @@ module.exports = {
                             // catch all
                             {
                                 include: moduleSourcePaths,
-                                exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.svg$/],
+                                exclude: [/\.(js|jsx|mjs)$/, /\.mdx$/, /\.html$/, /\.json$/, /\.svg$/],
                                 loader: require.resolve('file-loader'),
                                 options: {
                                     name: 'media/[name].[contenthash:8].[ext]',

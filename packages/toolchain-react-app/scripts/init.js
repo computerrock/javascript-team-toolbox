@@ -112,7 +112,7 @@ module.exports = function (
         '.nvmrc',
         'gitignore',
         'jest.config.js',
-        'app.config.js',
+        'bundler.config.js',
     ];
     rcConfigurationFiles.forEach(file => {
         const rcFilePath = path.join(paths.ownPath, 'config/rc', file);
