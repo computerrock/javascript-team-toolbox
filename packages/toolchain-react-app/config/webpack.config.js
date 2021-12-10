@@ -265,7 +265,10 @@ module.exports = function (webpackEnv) {
                                     loader: require.resolve('sass-loader'),
                                     options: isEnvDevelopment ? {
                                         sourceMap: shouldUseSourceMap,
-                                    } : undefined,
+                                        warnRuleAsWarning: true,
+                                    } : {
+                                        warnRuleAsWarning: true,
+                                    },
                                 },
                             ].filter(Boolean),
                         },
