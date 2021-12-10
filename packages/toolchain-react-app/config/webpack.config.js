@@ -416,6 +416,7 @@ module.exports = function (webpackEnv) {
                     // a route with query params (e.g. auth callbacks).
                     new RegExp('/[^/?]+\\.[^/]+$'),
                 ],
+                maximumFileSizeToCacheInBytes: 10000000,
             }),
         ].filter(Boolean),
         // TODO tell Webpack to provide empty mocks for imported Node modules not used in the browser
