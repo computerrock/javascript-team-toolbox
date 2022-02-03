@@ -354,6 +354,9 @@ module.exports = {
         // By following this rule, you ensure that all stateful logic in a component is clearly visible
         // from its source code.
         'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
+        'react-hooks/exhaustive-deps': ["warn", {
+            // TODO `newCustomHook` placeholder left for next function
+            "additionalHooks": "(useRouteUnmountEffect|newCustomHook)"
+        }],
     },
 };
