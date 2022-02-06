@@ -26,8 +26,14 @@ module.exports = function (pkg, options) {
             },
         ],
         external: [
-            ...options.external || [],
-        ].map(externalPath => path.join(basePath, 'node_modules/', externalPath)),
+            ...(options.reduce((optionsExternal, optionsObject) => {
+                return [
+                    ...optionsExternal,
+                    ...(optionsObject.external && Array.isArray(optionsObject.external)
+                        ? optionsObject.external : []),
+                ];
+            }, [])),
+        ],
         plugins: [
             eslint({
                 extensions: ['js', 'jsx', 'mjs'],
