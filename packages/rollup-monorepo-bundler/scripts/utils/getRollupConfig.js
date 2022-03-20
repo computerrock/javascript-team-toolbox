@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const loadConfigFile = require('rollup/dist/shared/loadConfigFile.js');
+const loadConfigFile = require('rollup/dist/loadConfigFile');
 const getSortedPackages = require('./getSortedPackages');
 const createRollupConfig = require('../../config/rollup.config');
 
