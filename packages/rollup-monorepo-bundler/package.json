@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/rollup-monorepo-bundler",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Rollup bundler for Lerna monorepo packages.",
   "license": "MIT",
   "repository": {
