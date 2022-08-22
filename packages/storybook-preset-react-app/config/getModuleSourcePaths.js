@@ -11,8 +11,8 @@ const getModuleSourcePaths = () => {
     const sourcePaths = [
         resolveApp('src'),
     ];
-    (bundlerConfig.moduleSourcePaths || []).forEach(moduleSourcePath => {
-        sourcePaths.push(fs.realpathSync(process.cwd() + '/node_modules/' + moduleSourcePath));
+    (bundlerConfig.sourceModules || []).forEach(sourceModule => {
+        sourcePaths.push(fs.realpathSync(process.cwd() + '/node_modules/' + sourceModule + '/src'));
     });
 
     return sourcePaths;
