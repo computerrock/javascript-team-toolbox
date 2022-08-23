@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/toolchain-react-app",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The React app bundler for Toolchain CLI project initialization utility.",
   "keywords": [
     "toolchain-js",
@@ -67,8 +67,8 @@
     "eslint-webpack-plugin": "^2.5.4",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
-    "fs-extra": "^9.1.0",
     "find-pkg": "^2.0.0",
+    "fs-extra": "^9.1.0",
     "html-webpack-plugin": "^5.3.1",
     "jest": "^26.6.3",
     "jest-environment-jsdom-fourteen": "^1.0.1",
