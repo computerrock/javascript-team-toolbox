@@ -1,8 +1,10 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const getLocalBEMIdent = require('@computerrock/react-dev-utils/getLocalBEMIdent');
 const postcssNormalize = require('postcss-normalize');
 const getModuleSourcePaths = require('./config/getModuleSourcePaths');
+const paths = require('./config/paths');
 
 // get source paths
 const moduleSourcePaths = getModuleSourcePaths();
@@ -37,6 +39,13 @@ module.exports = {
 
             return moduleRule;
         });
+
+        // TODO temporary fix for unsuccessful resolving of required @computerrock/formation-ui libraries
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            'react-redux': path.resolve(paths.libNodeModules, 'react-redux'),
+            'redux-saga': path.resolve(paths.libNodeModules, 'redux-saga'),
+        };
 
         return {
             ...config,
