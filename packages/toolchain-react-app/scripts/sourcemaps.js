@@ -25,7 +25,7 @@ if (!process.env.DATADOG_ENABLE) {
 
 try {
     execSync(`
-npx --yes @datadog/datadog-ci sourcemaps upload ${paths.appBuild} \
+npx --yes -q @datadog/datadog-ci sourcemaps upload ${paths.appBuild} \
 --service=${process.env.DATADOG_SERVICE} \
 --release-version=${packageJSON.version} \
 --minified-path-prefix=${process.env.DATADOG_SOURCEMAPS_URL}
