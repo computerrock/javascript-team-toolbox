@@ -1,6 +1,9 @@
 import routePaths from './routePaths';
+import authOIDC from './authOIDC';
+import authOAuth2 from './authOAuth2';
 import ApplicationScreen from './application/ApplicationScreen';
 import NotFoundScreen from './application/NotFoundScreen';
+import AuthRedirectionScreen from './application/AuthRedirectionScreen';
 import DashboardScreen from './dashboard/DashboardScreen';
 
 /**
@@ -41,10 +44,45 @@ export default [{
     locationChangeSideEffects: [],
     routes: [
         {
+            path: routePaths.OIDC_AUTHORIZE,
+            exact: true,
+            component: AuthRedirectionScreen,
+            locationChangeSideEffects: [
+                [authOIDC.authorize],
+            ],
+        },
+        {
+            path: routePaths.OIDC_AUTHENTICATE,
+            exact: true,
+            component: AuthRedirectionScreen,
+            locationChangeSideEffects: [
+                [authOIDC.authenticate],
+            ],
+        },
+        {
+            path: routePaths.OAUTH2_AUTHORIZE,
+            exact: true,
+            component: AuthRedirectionScreen,
+            locationChangeSideEffects: [
+                [authOAuth2.authorize],
+            ],
+        },
+        {
+            path: routePaths.OAUTH2_AUTHENTICATE,
+            exact: true,
+            component: AuthRedirectionScreen,
+            locationChangeSideEffects: [
+                [authOAuth2.authenticate],
+            ],
+        },
+        {
             path: routePaths.DASHBOARD,
             exact: true,
             component: DashboardScreen,
-            locationChangeSideEffects: [],
+            locationChangeSideEffects: [
+                // [authOIDC.loadAuthSession],
+                // [authOAuth2.loadAuthSession],
+            ],
         },
         {
             path: '*',

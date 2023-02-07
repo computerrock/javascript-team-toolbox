@@ -3,7 +3,7 @@ import React, {Fragment} from 'react';
 const DashboardScreen = () => {
     return (
         <Fragment>
-            Dashboard view.
+            Dashboard screen.
         </Fragment>
     );
 };

@@ -1,12 +1,11 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import {Provider} from 'react-redux';
-import createMemoryHistory from 'history/createMemoryHistory';
-import {StaticRouter} from 'react-router';
-import {renderRoutes} from 'react-router-config';
+import {FormationAppServer, configureStore} from '@computerrock/formation-core';
+import {createMemoryHistory, renderRoutes} from '@computerrock/formation-router';
 import routes from './routes';
-import configureStore from './store';
-import rootSaga from './saga';
+import reducers from './reducers';
+import sagas from './sagas';
+import serviceManager from './serviceManager';
 import './styles/index.scss';
 
 export const render = async function render(req, res, context) {
@@ -16,19 +15,24 @@ export const render = async function render(req, res, context) {
     });
 
     // initialize store
-    const store = configureStore({}, history);
-    const sagaTask = store.runSaga(rootSaga);
+    const store = configureStore({
+        routes,
+        history,
+        reducers,
+        serviceManager,
+    });
+    const sagaTask = store.runSagas(sagas);
 
     // application
     const application = (
-        <Provider store={store}>
-            <StaticRouter
-                location={req.url}
-                context={context}
-            >
-                {renderRoutes(routes)}
-            </StaticRouter>
-        </Provider>
+        <FormationAppServer
+            store={store}
+            routes={routes}
+            reqUrl={req.url}
+            context={context}
+        >
+            {renderRoutes(routes)}
+        </FormationAppServer>
     );
 
     // run saga through initial render

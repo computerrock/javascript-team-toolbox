@@ -1,7 +1,7 @@
 {
   "name": "@computerrock/toolchain-react-app",
   "version": "2.2.2",
-  "description": "The React app bundler for Toolchain CLI project initialization utility.",
+  "description": "The Formation Framework template for starting react app project.",
   "keywords": [
     "toolchain-js",
     "toolchain",

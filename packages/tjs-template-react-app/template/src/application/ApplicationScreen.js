@@ -1,12 +1,13 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {renderRoutes} from 'react-router-config';
-import '../ui-components/index.scss';
+import {renderRoutes} from '@computerrock/formation-router';
+import '@computerrock/formation-ui/index.module.scss';
 
 const ApplicationScreen = ({route}) => {
     return (
         <Fragment>
+            Application: <br />
             {renderRoutes(route.routes)}
         </Fragment>
     );
