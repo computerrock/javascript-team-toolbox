@@ -7,7 +7,7 @@ import '@computerrock/formation-ui/index.module.scss';
 const ApplicationScreen = ({route}) => {
     return (
         <Fragment>
-            Application: <br />
+            Application: <br />a
             {renderRoutes(route.routes)}
         </Fragment>
     );

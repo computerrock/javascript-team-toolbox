@@ -169,7 +169,7 @@ module.exports = function (
     } else {
         command = 'npm';
         remove = 'uninstall';
-        args = ['install', '--save', verbose && '--verbose'].filter(e => e);
+        args = ['install', '--save', '--legacy-peer-deps', verbose && '--verbose'].filter(e => e);
     }
 
     // Install additional template dependencies
