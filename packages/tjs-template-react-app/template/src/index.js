@@ -1,6 +1,6 @@
 import '@computerrock/react-app-polyfill/ie11';
 import '@computerrock/react-app-polyfill/stable';
-import React from 'react';
+import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {FormationApp, configureStore, serviceWorker} from '@computerrock/formation-core';

@@ -1,10 +1,11 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const DemoModal = () => {
+const DemoModal = ({hasBackdrop}) => {
     return (
         <Fragment>
             Demo modal (TODO)
+            {hasBackdrop}
         </Fragment>
     );
 };
