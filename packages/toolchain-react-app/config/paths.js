@@ -40,6 +40,8 @@ module.exports = {
     appServerJs: resolveApp('src/server.js'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
+    appThemeConfig: fs.existsSync(resolveApp('src/theme-config.scss'))
+        ? resolveApp('src/theme-config.scss') : null,
     appNodeModules: resolveApp('node_modules'),
     reactRefreshEntries: [
         require.resolve('@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils'),

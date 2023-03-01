@@ -266,6 +266,35 @@ module.exports = function (webpackEnv) {
                                     options: {
                                         sourceMap: isEnvDevelopment ? shouldUseSourceMap : undefined,
                                         warnRuleAsWarning: true,
+                                        additionalData: function (content, loaderContext) {
+                                            // if no theme config, just return content
+                                            if (!paths.appThemeConfig) return content;
+
+                                            // check if resource is in appSources and is actually a SCSS
+                                            const isValidResourcePath = appSources.reduce((isInSourcesPath, appSource) => {
+                                                if (!loaderContext.resourcePath) return false;
+                                                if (loaderContext.resourcePath && !loaderContext.resourcePath.includes('.scss')) return false;
+
+                                                const relativePath = path.relative(appSource, loaderContext.resourcePath);
+                                                isInSourcesPath = isInSourcesPath
+                                                    || (relativePath && !relativePath.startsWith('..') && !path.isAbsolute(relativePath));
+                                                return isInSourcesPath;
+                                            }, false);
+
+                                            // if not valid resource path, just return content
+                                            if (!isValidResourcePath) return content;
+
+                                            // import theme config before main code
+                                            const lastUseIndex = content.lastIndexOf('@use');
+                                            if (lastUseIndex < 0) {
+                                                return `@import '${paths.appThemeConfig}';\n${content}`;
+                                            }
+
+                                            const newLineIndex = content.indexOf('\n', lastUseIndex) + 1;
+                                            return content.slice(0, newLineIndex)
+                                                + `\n@import '${paths.appThemeConfig}';\n`
+                                                + content.slice(newLineIndex);
+                                        },
                                     },
                                 },
                             ].filter(Boolean),
