@@ -1,5 +1,8 @@
 # JavaScript Technology Team Guides
 
+> JS team guides are moved to [Computer Rock Confluence](https://computerrock.atlassian.net/wiki/spaces/JS) space for JavaScript team. 
+> Consider this content not up-to-date.
+
 In this project you will find all necessary information, how-tos, and guides you need when working on projects.
 
 For the overview of what we do please check [`JavaScript Technology Team Guide`](./javascript-technology-team-guide.md).
