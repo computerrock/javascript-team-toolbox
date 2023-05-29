@@ -1,7 +1,7 @@
 import '@computerrock/react-app-polyfill/ie11';
 import '@computerrock/react-app-polyfill/stable';
 import React, {Fragment} from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import PropTypes from 'prop-types';
 import {FormationApp, configureStore, serviceWorker} from '@computerrock/formation-core';
 import {createBrowserHistory, renderRoutes} from '@computerrock/formation-router';
@@ -56,14 +56,15 @@ Application.propTypes = {
 };
 
 // render application
-ReactDOM.render(<Application store={store} history={history} />, document.getElementById('root'));
+const root = ReactDOMClient.createRoot(document.getElementById('root'));
+root.render(<Application store={store} history={history} />);
 
 // webpack hot module replacement for ./routes configuration,
 // ./saga configuration and state is not hot reloaded but needs to
 // be accepted so HMR can work properly
 if (module.hot) {
     module.hot.accept(['./routes', './sagas'], () => {
-        ReactDOM.render(<Application store={store} history={history} />, document.getElementById('root'));
+        root.render(<Application store={store} history={history} />);
     });
 }
 
