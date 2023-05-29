@@ -149,8 +149,8 @@ inquirer
         if (fs.existsSync(jestConfig)) {
             console.log(`  Updating ${chalk.cyan('jest.config.js')} configuration`);
             let content = fs.readFileSync(jestConfig, 'utf8');
-            content = content.replace(/@computerrock\/react-scripts\/config\/jest\/babelTransform/g, '<rootDir>/node_modules/babel-jest');
-            content = content.replace(/@computerrock\/react-scripts/g, '<rootDir>');
+            content = content.replace(/@computerrock\/toolchain-react-app\/config\/jest\/babelTransform/g, '<rootDir>/node_modules/babel-jest');
+            content = content.replace(/@computerrock\/toolchain-react-app/g, '<rootDir>');
 
             try {
                 fs.writeFileSync(jestConfig, content, 'utf8');
