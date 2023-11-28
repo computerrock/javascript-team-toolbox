@@ -113,6 +113,7 @@ module.exports = function (webpackEnv) {
                 }),
                 new CssMinimizerPlugin({
                     include: appSources,
+                    parallel: false, // If a function is passed as a parser, the parallel option must be disabled.
                     minimizerOptions: {
                         processorOptions: {
                             parser: safePostCssParser,
