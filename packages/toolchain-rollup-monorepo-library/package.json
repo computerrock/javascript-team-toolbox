@@ -32,7 +32,7 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@computerrock/react-dev-utils": "^1.3.1",
+    "@computerrock/react-dev-utils": "../react-dev-utils",
     "chalk": "^4.1.0",
     "fs-extra": "^9.1.0"
   }

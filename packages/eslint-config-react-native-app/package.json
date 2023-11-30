@@ -16,8 +16,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@computerrock/eslint-config-base": "^1.9.1",
-    "@computerrock/eslint-config-react-app": "^1.10.1"
+    "@computerrock/eslint-config-base": "../eslint-config-base",
+    "@computerrock/eslint-config-react-app": "../eslint-config-react-app"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
