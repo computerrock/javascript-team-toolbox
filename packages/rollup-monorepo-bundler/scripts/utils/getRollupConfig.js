@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const loadConfigFile = require('rollup/dist/loadConfigFile.js');
+const { loadConfigFile } = require('rollup/dist/loadConfigFile.js');
 const getSortedPackages = require('./getSortedPackages');
 const createRollupConfig = require('../../config/rollup.config');
 
@@ -13,7 +13,7 @@ const getRollupConfig = async function getRollupConfig() {
         const basePath = path.relative(__dirname, pkg.location);
         let packageRollupConfig;
         try {
-            const {options, warnings} = await loadConfigFile(path.join(__dirname, basePath, 'rollup.config.js'), {format: 'es'});
+            const {options, warnings} = await loadConfigFile(path.join(__dirname, basePath, 'rollup.config.mjs'), {format: 'es'});
             packageRollupConfig = {pkg, options, warnings};
         } catch (e) {
             // no-op

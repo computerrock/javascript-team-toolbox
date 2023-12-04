@@ -29,6 +29,7 @@
     "@computerrock/babel-preset-react-app": "../babel-preset-react-app",
     "@computerrock/eslint-config-react-app": "../eslint-config-react-app",
     "@computerrock/react-dev-utils": "../react-dev-utils",
+    "@computerrock/eslint-config-base": "../eslint-config-base",
     "@lerna/batch-packages": "^3.16.0",
     "@lerna/filter-packages": "^4.0.0",
     "@lerna/project": "^4.0.0",
