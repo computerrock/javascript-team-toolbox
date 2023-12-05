@@ -196,13 +196,8 @@ module.exports = function (webpackEnv) {
                         {
                             test: [/\.svg$/],
                             issuer: /\.(css|scss)$/,
+                            type: 'asset/inline',
                             use: [
-                                {
-                                    loader: require.resolve('svg-url-loader'),
-                                    options: {
-                                        iesafe: true,
-                                    },
-                                },
                                 require.resolve('svg-transform-loader'),
                                 require.resolve('svgo-loader'),
                             ],
@@ -303,18 +298,22 @@ module.exports = function (webpackEnv) {
                         // media
                         {
                             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-                            loader: require.resolve('url-loader'),
-                            options: {
-                                limit: imageInlineSizeLimit,
-                                name: 'media/[name].[contenthash:8].[ext]',
+                            type: 'asset',
+                            parser: {
+                                dataUrlCondition: {
+                                  maxSize: imageInlineSizeLimit,
+                                }
+                            },
+                            generator: {
+                                filename: 'media/[name].[contenthash:8].[ext]',
                             },
                         },
                         // catch all
                         {
                             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.svg$/],
-                            loader: require.resolve('file-loader'),
-                            options: {
-                                name: 'media/[name].[contenthash:8].[ext]',
+                            type: 'asset/resource',
+                            generator: {
+                                filename: 'media/[name].[contenthash:8].[ext]',
                             },
                         },
                     ],
