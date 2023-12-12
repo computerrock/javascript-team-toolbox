@@ -147,7 +147,7 @@ module.exports = {
         'no-new-wrappers': 'warn',
 
         // disallow `\8` and `\9` escape sequences in string literals
-        // 'no-nonoctal-decimal-escape': 'warn',
+        'no-nonoctal-decimal-escape': 'off',
 
         // disallow octal literals
         'no-octal': 'warn',

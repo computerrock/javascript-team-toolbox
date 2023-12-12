@@ -76,14 +76,9 @@ module.exports = {
                             {
                                 test: [/\.svg$/],
                                 issuer: /\.(css|scss)$/,
+                                type: 'asset/inline',
                                 include: moduleSourcePaths,
                                 use: [
-                                    {
-                                        loader: require.resolve('svg-url-loader'),
-                                        options: {
-                                            iesafe: true,
-                                        },
-                                    },
                                     require.resolve('svg-transform-loader'),
                                     require.resolve('svgo-loader'),
                                 ],
@@ -154,19 +149,23 @@ module.exports = {
                             {
                                 test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
                                 include: moduleSourcePaths,
-                                loader: require.resolve('url-loader'),
-                                options: {
-                                    limit: imageInlineSizeLimit,
-                                    name: 'media/[name].[contenthash:8].[ext]',
+                                type: 'asset',
+                                parser: {
+                                    dataUrlCondition: {
+                                        maxSize: imageInlineSizeLimit,
+                                    }
+                                },
+                                generator: {
+                                    filename: 'media/[name].[contenthash:8].[ext]',
                                 },
                             },
                             // catch all
                             {
                                 include: moduleSourcePaths,
                                 exclude: [/\.(js|jsx|mjs)$/, /\.mdx$/, /\.html$/, /\.json$/, /\.svg$/],
-                                loader: require.resolve('file-loader'),
-                                options: {
-                                    name: 'media/[name].[contenthash:8].[ext]',
+                                type: 'asset/resource',
+                                generator: {
+                                    filename: 'media/[name].[contenthash:8].[ext]',
                                 },
                             },
                             // default storybook assets rules

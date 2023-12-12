@@ -31,10 +31,10 @@
     "WebpackDevServerUtils.js"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=20"
   },
   "dependencies": {
-    "address": "^1.1.2",
+    "address": "^1.2.2",
     "chalk": "^4.1.0",
     "change-case": "^4.1.2",
     "cross-spawn": "^7.0.3",
@@ -45,9 +45,9 @@
     "gzip-size": "^6.0.0",
     "inquirer": "^8.0.0",
     "is-root": "^2.1.0",
-    "loader-utils": "^2.0.0",
+    "loader-utils": "^2.0.4",
     "normalize-path": "^3.0.0",
-    "recursive-readdir": "^2.2.2",
+    "recursive-readdir": "^2.2.3",
     "strip-ansi": "^6.0.0",
     "text-table": "^0.2.0"
   }

@@ -10,7 +10,7 @@
   },
   "private": true,
   "engines": {
-    "node": ">=12"
+    "node": ">=20"
   },
   "devDependencies": {
     "lerna": "^4.0.0"

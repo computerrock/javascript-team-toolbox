@@ -16,9 +16,20 @@ const getRollupConfig = require('./utils/getRollupConfig');
 
 getRollupConfig()
     .then(async options => {
-        for (const optionsObj of options) {
-            const bundle = await rollup.rollup(optionsObj);
-            await Promise.all(optionsObj.output.map(bundle.write));
+        let bundle;
+        try {
+            for (const optionsObj of options) {
+                bundle = await rollup.rollup(optionsObj);
+                await Promise.all(optionsObj.output.map(bundle.write));
+            }
+        } catch (error) {
+            // do some error reporting
+            console.error(error);
+        }
+
+        if (bundle) {
+            // closes the bundle
+            await bundle.close();
         }
 
         const watcher = rollup.watch(options);
