@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/tjs-template-react-app",
-  "version": "1.5.0",
+  "version": "2.0.0-alpha.0",
   "description": "The Formation Framework template for starting react app project.",
   "keywords": [
     "toolchain-js",
