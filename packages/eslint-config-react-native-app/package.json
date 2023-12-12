@@ -13,11 +13,11 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=12"
+    "node": ">=20"
   },
   "dependencies": {
-    "@computerrock/eslint-config-base": "../eslint-config-base",
-    "@computerrock/eslint-config-react-app": "../eslint-config-react-app"
+    "@computerrock/eslint-config-base": "^1.9.1",
+    "@computerrock/eslint-config-react-app": "^1.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",

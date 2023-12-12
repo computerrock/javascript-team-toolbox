@@ -18,7 +18,7 @@
     "stable.js"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=20"
   },
   "dependencies": {
     "core-js": "^3.33.3",
