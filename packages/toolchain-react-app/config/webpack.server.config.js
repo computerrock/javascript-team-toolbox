@@ -21,6 +21,7 @@ const env = getEnvironment(paths.publicPath.slice(0, -1));
 
 // get source paths
 const appSources = getModuleSourcePaths();
+const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
 
 /**
  * TODO: Non-functional, needs upgrade
