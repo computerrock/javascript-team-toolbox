@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/toolchain-react-app",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0",
   "description": "The Formation Framework template for starting react app project.",
   "keywords": [
     "toolchain-js",
@@ -40,10 +40,10 @@
     "@babel/core": "^7.23.3",
     "@babel/eslint-parser": "^7.23.3",
     "@babel/runtime-corejs3": "^7.23.3",
-    "@computerrock/babel-preset-react-app": "^3.0.0-alpha.0",
-    "@computerrock/eslint-config-react-app": "^2.0.0-alpha.0",
-    "@computerrock/react-dev-utils": "^2.0.0-alpha.0",
-    "@computerrock/stylelint-config-react-app": "^2.0.0-alpha.0",
+    "@computerrock/babel-preset-react-app": "^3.0.0",
+    "@computerrock/eslint-config-react-app": "^2.0.0",
+    "@computerrock/react-dev-utils": "^2.0.0",
+    "@computerrock/stylelint-config-react-app": "^2.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
     "babel-jest": "^29.7.0",
