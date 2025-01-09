@@ -1,6 +1,6 @@
 {
   "name": "@computerrock/toolchain-react-app",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "The Formation Framework template for starting react app project.",
   "keywords": [
     "toolchain-js",
