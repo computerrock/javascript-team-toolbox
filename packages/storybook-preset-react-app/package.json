@@ -32,7 +32,7 @@
     "postcss-safe-parser": "^6.0.0",
     "resolve-from": "^5.0.0",
     "resolve-url-loader": "^3.1.5",
-    "sass": "^1.32.8",
+    "sass": "1.69.7",
     "sass-loader": "^12.4.0",
     "style-loader": "^2.0.0",
     "svg-sprite-loader": "^6.0.11",
